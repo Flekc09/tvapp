@@ -1,7 +1,7 @@
 # TV App — Design Spec
 
 **Date:** 2026-09-22
-**Status:** Approved by owner 2026-09-22, revised after engineering and viewer adversarial reviews
+**Status:** Approved by owner 2026-09-22, revised after engineering, viewer and cold-executor reviews (2026-09-23)
 **Owner:** Corey Payne
 
 ## 1. Purpose
@@ -101,7 +101,7 @@ The catalog base URL is an Advanced setting with the GitHub Pages address as the
 2. **Fetch source data.** Download channels, feeds, streams, categories, countries, subdivisions, cities and logos from the iptv-org API. Roughly 30 MB raw.
 3. **Group.** See 4.2.
 4. **Detect format and test.** See 4.3.
-5. **Rank.** Within each catalog channel, compute a catalog score from 7-day uptime, then declared quality, then median response time, with a small penalty for raw IP hosts. Order streams by that score.
+5. **Rank.** Within each catalog channel, compute a catalog score from 7-day uptime, then declared quality, then the median response time over the history window, with a small penalty for raw IP hosts. Order streams by health (`up`, then `unverified`, then `down`) and within each by that score.
 6. **Guard.** See 4.5.
 7. **Write.** `catalog.json.gz`, updated `history.json`, and `latest.json` holding only version and byte size so the TV can check for updates with a request under 1 KB. `version` is the run's Unix epoch seconds, so a same-day re-run always produces a new version.
 
@@ -112,7 +112,8 @@ The unit the viewer tunes, and the unit failover operates within, is a **catalog
 - A stream whose feed has a country-level or wider broadcast area (`c/US`, `r/EUR`), or no feed, belongs to the catalog channel with the iptv-org channel id, for example `ABC.us`.
 - A stream whose feed has a city- or state-level broadcast area (`ct/USCLT`, `s/US-NC`) belongs to a **split** catalog channel with id `<channel>@<feed>`, for example `ABC.us@WSOCTV`, named `<channel name> · <feed name>` with a `region` field holding the city or state name from the cities or subdivisions file, for example "Charlotte". It inherits the parent's country, categories, network and logo.
 - Streams with no channel record become synthetic channels named from their playlist title, with country guessed from the URL's ccTLD where possible and category `other`. Nothing is dropped.
-- Closed channels (`closed` set) are excluded with their streams.
+- Closed channels (`closed` set) are excluded with their streams. A stream whose channel id has no channel record at all is treated exactly like a stream with no channel: it becomes a synthetic channel.
+- A feed counts as regional when any of its broadcast areas is a subdivision or city, even if a country-level area is also listed.
 - Channels with `is_nsfw` or the `xxx` category are kept and flagged `adult: true`. The app hides them by default.
 - Channels with no categories get `other`. The category id `other` is displayed as "Other".
 
@@ -133,7 +134,7 @@ Format is decided from Content-Type and URL suffix first, then body:
 Status rules:
 
 - **`up`**: the format-specific test passed.
-- **`unverified`**: HTTP 403 or 451, or a 200 body that does not match any known format. These are the signatures of geo-blocking, missing tokens, or a host that answers but is not playable from the runner. Unverified streams stay in the catalog and rank last within their channel, so a TV in the stream's home region can still try them.
+- **`unverified`**: HTTP 401, 403, 429 or 451, or a 200 body that does not match any known format. These are the signatures of geo-blocking, missing tokens, rate limiting, or a host that answers but is not playable from the runner. Unverified streams stay in the catalog and rank last within their channel, so a TV in the stream's home region can still try them.
 - **`down`**: timeout, refused connection, DNS failure, 404, or any 5xx.
 
 The runner's egress region is logged per run, since GitHub-hosted runners are Azure hosts in unspecified regions and results depend on it.
@@ -187,7 +188,7 @@ Each layer is independently testable and holds no logic belonging to another.
 
 **Data layer.** Room database. Catalog tables (`countries`, `categories`, `channels`, `streams`) carry a `source` column and an `import_id`. User-added M3U content lives in the same tables with `source = 'user:<id>'`. Local-only tables: `favorites` (with a `position` column), `recents`, `user_sources`, `stream_stats`, `stream_failures`, `channel_status`, `settings`.
 
-**Sync.** On launch and every 24 hours the app fetches `latest.json` (under 1 KB) and records whether a newer version exists. The download and import run only when idle: no video playing for 10 minutes, or the device otherwise unused, scheduled through WorkManager. Import stream-parses the gzipped JSON, never holding the whole document in memory, inserting in batches of 1,000 under a new `import_id`. When the import completes, one small transaction flips the active `import_id` and deletes the old iptv rows, so lists never flicker or go empty. User rows are untouched. Favorites whose channel id no longer exists after a sync are kept and shown as "no longer available" until the user removes them. The only exception to "idle only" is first launch, which imports immediately behind a progress screen.
+**Sync.** On launch and every 24 hours the app fetches `latest.json` (under 1 KB) and records whether a newer version exists. The download and import run only when idle, and "idle" is decided by the app, not the platform: the sync worker checks that nothing has played for 10 minutes before downloading, and retries later otherwise. WorkManager's device-idle constraint is not used because it has no defined meaning on a TV that is never unplugged. Import stream-parses the gzipped JSON, never holding the whole document in memory, inserting in batches of 1,000 under a new `import_id`. When the import completes, one small transaction flips the active `import_id` and deletes the old iptv rows, so lists never flicker or go empty. User rows are untouched. Favorites whose channel id no longer exists after a sync are kept and shown as "no longer available" until the user removes them. The only exception to "idle only" is first launch, which imports immediately behind a progress screen.
 
 **Source layer.** One interface, two implementations: the iptv-org catalog and user-added M3U URLs. The M3U parser handles standard `#EXTINF` attributes including logo and group title, plus `#EXTVLCOPT` header lines for referrer and user agent. Both feed the same tables tagged by source, so favorites, search and lists behave identically regardless of origin.
 
@@ -212,11 +213,11 @@ The 1-second start threshold applies once a segment is arriving. Live HLS start 
 ### 5.4 Fast tune
 
 - **Prefetch on focus.** Highlighting a channel in any list fetches that channel's top-ranked stream playlist (about 1 KB) through the shared client, debounced by 300 ms. Same for the next and previous channels in the current list while watching.
-- **Preload without decoding.** Media3's preload manager loads the playlist and first segments of the highlighted channel (in lists) or the adjacent channels (while watching) into the buffer without starting a decoder. On OK or channel up/down the preloaded source is handed to the player, saving the network round-trips. No second video decoder is ever opened. Preload is skipped when the candidate stream is on the same host as the currently playing stream, to respect single-connection hosts. Setting: preload count 0, 1 or 2, default 1, and the first release test on real hardware decides whether the default stays.
-- **Live preview in lists.** While the Channels overlay is open, the currently playing channel keeps playing in an inset. After the highlight rests on a different channel for 700 ms, the inset switches to that channel, reusing the preloaded source. The decoder is only ever used by one stream at a time. Moving the highlight again cancels the switch. This is the cable-box guide viewers already know, and without program data the picture is the guide.
+- **Segment preload: a spike, not a feature.** Media3's preload manager preloads a source to a fixed start position, and at the pinned version nothing in its source or release notes says it handles live streams, whose start position moves every segment. Owner decision 2026-09-23: preload is not designed into version 1. Before it is, a two-hour spike on the real stick measures tune time with and without the preload manager on five live channels. If the median improves by 300 ms or more it becomes a V1.1 feature with its own design; otherwise it is dropped. Prefetch on focus, above, is the part that is known to work and ships in V1.
+- **Live preview in lists.** While the Channels overlay is open, the currently playing channel keeps playing in an inset. After the highlight rests on a different channel for 700 ms, the inset tunes to that channel through the normal tune path, prefetch having already warmed the playlist. Moving the highlight again cancels the pending switch. One player, one surface: the inset is the same video view as full screen, animated to a corner, so the picture never blinks during the transition. Back from the overlay keeps whatever is playing. This is the cable-box guide viewers already know, and without program data the picture is the guide.
 - **Rank by measured startup.** Stream order within a channel incorporates locally measured time-to-first-frame (5.6), so the fastest-starting source from this TV goes first.
 
-Continuously buffering every favorite is rejected: it multiplies bandwidth, trips single-connection limits on many hosts, produces stale live segments, and exceeds the device's decoder count.
+Continuously buffering every favorite is rejected: it multiplies bandwidth, trips single-connection limits on many hosts, produces stale live segments, and exceeds the device's decoder count. Prefetch for the next and previous channel while surfing always happens; it is a 1 KB request.
 
 ### 5.5 Stream selection and failover
 
@@ -234,14 +235,14 @@ Continuously buffering every favorite is rejected: it multiplies bandwidth, trip
 
 1. Try the first stream. First-frame cutoff is 4 seconds for streams that have alternatives remaining, and the remaining budget for the last stream in the queue and for single-stream channels. A player error fails the stream immediately.
 2. A stream that exceeds its cutoff is marked `slow`, not `failed`, and is not demoted. It is skipped for this tune only. A player error marks it `failed` and demotes it.
-3. If a stream dies mid-play after having worked, try the next, showing a one-line "Switching source" toast, and rejoin at the live edge. Within the current tune, a stream that has already failed is retried only after every other stream has also failed, so a channel whose feeds all drop and recover (token expiry) still comes back.
+3. If a stream dies mid-play after having worked, that is a new tune with a fresh 10-second budget: try the next stream, showing a one-line "Switching source" toast, and rejoin at the live edge. Streams that never produced a frame are not retried within a tune. Streams that worked and then died are retried after every untried stream has been tried, so a channel whose feeds all drop and recover (token expiry) still comes back, with at least a 2-second gap before re-trying a stream that just died.
 4. While trying alternatives the banner shows "Trying source 2 of 5". If the budget runs out, show "This channel isn't working right now" with "Try again" and "Next channel". Try again starts a fresh queue.
 5. Demotion is a local record with an `elapsedRealtime` timestamp, immune to wall-clock changes. It expires after one hour. Demoted means tried last, never skipped.
 6. Failures are not recorded while the system reports no validated network, or after 3 consecutive channels fail within a minute, which indicates a network or shared-host outage rather than bad streams.
 7. **Doesn't work here.** A channel with no successful play in at least 3 attempts spread across 3 separate days gets `channel_status = broken_here`. It is hidden from lists and surf order, stays in Favorites with a plain "Not working" badge, and comes back through the setting "Show channels that don't work here". One successful play clears the status.
 8. The app never switches away from a stream that is playing acceptably, even if a higher-ranked one recovers. The queue is rebuilt fresh on the next tune. "Current tune" means from the moment a channel is selected until another channel is selected.
 9. Switching is silent where possible: the old surface holds its last frame until the new stream produces one.
-10. The Sources menu lists every stream for the channel as "Source 1 · 720p · Working", "Not checked", or "Not working". Picking one manually plays it, clears its demotion, and suppresses automatic failover for that attempt so the app does not override the viewer's choice. If the manual pick fails, the normal queue resumes.
+10. The Sources menu lists every stream for the channel as "Source 1 · 720p · Working", "Not checked", or "Not working". Picking one manually plays it, clears its demotion, and suppresses automatic failover for that attempt so the app does not override the viewer's choice. If the manual pick fails, the normal queue resumes from its top with a "Trying source" line.
 
 **Surf order.** Channel up and down move through the currently visible list (a country, a category, Favorites, Recent, or All), skipping hidden channels, so surfing stays within whatever was being browsed.
 
@@ -284,10 +285,20 @@ Fixed here: which surfaces exist, how the remote moves between them, and what ea
 4. **Search.** Platform on-screen keyboard, live results matching channel name, alternate names, network, region and category. Each result shows flag, region, category and status. Voice search where the remote has a microphone.
 5. **Favorites.** Channels filtered to favorites, one press from anywhere. Move up and down to reorder. Position becomes the channel number shown in the strip and honored by digit keys.
 6. **Settings.** Two tiers.
-   - *Settings:* startup behavior, sleep timer (30 / 60 / 90 minutes), show channels that don't work here, show adult channels (behind a 4-digit PIN set on first use), preload count.
+   - *Settings:* startup behavior, sleep timer (30 / 60 / 90 minutes), show channels that don't work here, show adult channels (behind a 4-digit PIN set on first use).
    - *Advanced* (long-press to enter): M3U sources, catalog base URL, force catalog refresh, catalog version and date, auto-switch on poor signal, and Diagnostics: current stream URL, format, resolution, bitrate, buffer level, measured tune time.
 
 **Language rule.** Nothing on screen says HLS, TS, DASH, unverified, unsorted, demoted, or a stream count. Status words are Working, Not checked, Not working.
+
+**Display rules (all TV sizes).** Android TV presents every device as the same logical canvas regardless of panel size: 960 × 540 dp, at 1.5× density on 720p sets and 2× on 1080p sets, and 4K sets run the UI at 1080p logical and upscale it. There is therefore one layout, and the following rules make it work from 32 inches to 85 inches at ten feet:
+
+- **Overscan safe area.** Nothing interactive or informational inside the outer 5 percent: a 48 dp inset left and right, 27 dp top and bottom. Video itself fills the full frame.
+- **Text.** Body text 16 sp minimum, list rows and the banner 20 to 24 sp, headings 28 to 32 sp. Never below 12 sp anywhere, including Diagnostics.
+- **Focus.** The focused element is always visibly different from ten feet: a scale of about 1.1 plus a 3 dp high-contrast border, never colour alone. Focus is never lost when a list updates.
+- **Contrast.** WCAG AA 4.5:1 for text on its background; the banner and overlays sit on a scrim over video so contrast holds over any picture.
+- **Video surface.** A `SurfaceView`, not a `TextureView`, so 4K and HDR streams pass through to the panel at native resolution while the UI stays at 1080p logical. Aspect ratio is preserved: 4:3 and odd-sized streams are pillarboxed, never stretched. The resize mode is a setting with Fit as default and Zoom available.
+- **Assets.** Logos are loaded at a fixed 96 × 96 dp box with the image scaled to fit; the banner and launcher icon ship at xhdpi and xxhdpi.
+- **Testing.** The emulator profiles "Television (720p)" and "Television (1080p)", plus the real stick on the largest TV in the house. Every screen is checked at both emulator sizes before it is called done.
 
 Rules for every surface: focus is always visible from ten feet, OK on any focused channel row plays it, and a favorite or recent channel is reachable from any surface in three presses.
 
@@ -322,7 +333,9 @@ Rules for every surface: focus is always visible from ten feet, OK on any focuse
 
 ## 10. Release plan
 
-**Version 1.** Everything in this spec. Owner decision 2026-09-22: ship the full feature set as one release. The implementation plan sequences the work so the core path (catalog job, sync, Player, Channels, failover) is working end to end first, and preload, live preview, measurement, the poor-signal prompt, Browse and Diagnostics are layered on afterward, but nothing ships until all of it is done.
+**Version 1.** Everything in this spec except segment preload. Owner decision 2026-09-22: ship the full feature set as one release. The implementation plan sequences the work so the core path (catalog job, sync, Player, Channels, failover) is working end to end first, and prefetch, live preview, measurement, the poor-signal prompt, Browse and Diagnostics are layered on afterward, but nothing ships until all of it is done.
+
+**Version 1.1.** Segment preload, if the spike in 5.4 shows it helps on live streams.
 
 **Version 2.** Google TV launcher rows (last channel and favorites on the home screen), automatic switching on degradation, program guide data where obtainable, program-first Home, Continue Watching, custom collections.
 
@@ -341,7 +354,9 @@ Rules for every surface: focus is always visible from ten feet, OK on any focuse
 | Navigation model | Player root with overlays, audio continues | Separate screens that tear down the player |
 | Rewind | None; pause holds and rejoins live | 60-second local timeshift |
 | Multi-source monitoring | Passive measurement, switch only on bad | Live probing and switching to best |
-| Favorites pre-buffering | Preload playlist and segments for 1 to 2 channels, no decoding | Continuous buffering of all favorites, second decoding player |
+| Favorites pre-buffering | Playlist prefetch on focus and for surf neighbours; segment preload deferred to a measured spike | Continuous buffering of all favorites, second decoding player, unmeasured preload manager on live HLS |
+| Video surface | One `SurfaceView` animated between full screen and the inset | Two views swapped on overlay open |
+| Idle sync | Worker checks "nothing played for 10 minutes" itself | WorkManager device-idle constraint |
 | List preview | Live inset of the highlighted channel after 700 ms dwell | Static list with no what's-on |
 | Dead channels | Hidden by default, "doesn't work here" learned over 3 days | Shown and tried every time |
 | Adult content | Flagged in catalog, hidden behind PIN | Dropped from catalog, or shown |
