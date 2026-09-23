@@ -126,9 +126,14 @@ export interface ApiLogo {
   channel: string; feed: string | null; in_use: boolean; width: number; height: number;
   format: string; url: string;
 }
+// broadcast_area entries look like "c/US" (country), "r/EUR" (region), "s/US-NC" (subdivision), "ct/USCLT" (city).
+export interface ApiFeed { channel: string; id: string; name: string; is_main: boolean; broadcast_area: string[] }
+export interface ApiSubdivision { country: string; code: string; name: string }
+export interface ApiCity { country: string; subdivision: string | null; code: string; name: string }
 export interface SourceData {
   channels: ApiChannel[]; streams: ApiStream[]; categories: ApiCategory[];
-  countries: ApiCountry[]; logos: ApiLogo[];
+  countries: ApiCountry[]; logos: ApiLogo[]; feeds: ApiFeed[];
+  subdivisions: ApiSubdivision[]; cities: ApiCity[];
 }
 
 // Output catalog (spec section 4.3).
@@ -138,8 +143,8 @@ export type Format = 'hls' | 'ts' | 'dash' | 'unknown';
 export interface CatalogCountry { code: string; name: string; flag: string }
 export interface CatalogCategory { id: string; name: string }
 export interface CatalogChannel {
-  id: string; name: string; altNames: string[]; country: string | null;
-  categories: string[]; network: string | null; logo: string | null;
+  id: string; name: string; altNames: string[]; country: string | null; region: string | null;
+  categories: string[]; network: string | null; logo: string | null; adult: boolean; hasUp: boolean;
 }
 export interface CatalogStream {
   channel: string; url: string; format: Format; quality: string | null;
@@ -218,7 +223,7 @@ Co-Authored-By: Claude Fable 5.1 <noreply@anthropic.com>"
 - Test: `catalog/test/fetch-source.test.ts`
 
 **Interfaces:**
-- Produces: `fetchSource(fetchFn: FetchFn, baseUrl?: string): Promise<SourceData>`. Throws on any non-2xx or invalid JSON. Default base URL `https://iptv-org.github.io/api`.
+- Produces: `fetchSource(fetchFn: FetchFn, baseUrl?: string): Promise<SourceData>`. Downloads eight files: channels, streams, categories, countries, logos, feeds, subdivisions, cities. Throws on any non-2xx or invalid JSON. Default base URL `https://iptv-org.github.io/api`.
 
 - [ ] **Step 1: Write the failing tests**
 
@@ -237,12 +242,12 @@ function fakeFetch(files: Record<string, unknown>, failUrl?: string) {
   }) as typeof fetch;
 }
 
-const ok = { channels: [], streams: [], categories: [], countries: [], logos: [] };
+const ok = { channels: [], streams: [], categories: [], countries: [], logos: [], feeds: [], subdivisions: [], cities: [] };
 
 describe('fetchSource', () => {
-  it('downloads the five files and returns them keyed', async () => {
+  it('downloads the eight files and returns them keyed', async () => {
     const data = await fetchSource(fakeFetch(ok), 'https://x/api');
-    expect(Object.keys(data).sort()).toEqual(['categories', 'channels', 'countries', 'logos', 'streams']);
+    expect(Object.keys(data).sort()).toEqual(['categories', 'channels', 'cities', 'countries', 'feeds', 'logos', 'streams', 'subdivisions']);
   });
   it('throws if any file is non-2xx', async () => {
     await expect(fetchSource(fakeFetch(ok, 'https://x/api/streams.json'), 'https://x/api'))
@@ -266,7 +271,7 @@ Expected: FAIL, cannot find module `../src/fetch-source.js`.
 ```ts
 import type { FetchFn, SourceData } from './types.js';
 
-const FILES = ['channels', 'streams', 'categories', 'countries', 'logos'] as const;
+const FILES = ['channels', 'streams', 'categories', 'countries', 'logos', 'feeds', 'subdivisions', 'cities'] as const;
 
 export async function fetchSource(
   fetchFn: FetchFn,
@@ -309,7 +314,11 @@ Co-Authored-By: Claude Fable 5.1 <noreply@anthropic.com>"
 - Test: `catalog/test/group.test.ts`
 
 **Interfaces:**
-- Produces: `groupStreams(src: SourceData): Grouped`. Only channels with at least one stream are returned. Streams with no channel get a synthetic channel with id `synthetic:<10 hex chars of sha1(url)>`, category `unsorted`, country from the URL's ccTLD if it matches a known country code, else null. Closed channels and `is_nsfw` channels are excluded along with their streams. Also `pickLogo(logos: ApiLogo[], channelId: string): string | null`.
+- Produces: `groupStreams(src: SourceData): Grouped`, `pickLogo(logos: ApiLogo[], channelId: string): string | null`, `syntheticId(url: string): string`. Rules (spec 4.2):
+  - Only catalog channels with at least one stream are returned. `hasUp` is left `false` here; Task 11 fills it.
+  - A stream whose feed (looked up in `feeds` by channel id and feed id) has any `s/` or `ct/` broadcast area belongs to a split channel `<channel>@<feedId>` named `<channel name> · <feed name>` with `region` from the cities file (`ct/` code) or the subdivisions file (`s/` code), inheriting the parent's country, categories, network and logo. Any other feed, a missing feed, or a feed id not found in `feeds` maps to the plain channel id.
+  - Streams with no channel get a synthetic channel with id `synthetic:<10 hex chars of sha1(url)>`, category `other`, country from the URL's ccTLD if it matches a known country code, else null.
+  - Closed channels are excluded with their streams. Channels with `is_nsfw` or the `xxx` category are kept with `adult: true`. Channels with no categories get `['other']`.
 
 - [ ] **Step 1: Write the failing tests**
 
@@ -319,21 +328,30 @@ import { describe, it, expect } from 'vitest';
 import { groupStreams, pickLogo, syntheticId } from '../src/group.js';
 import type { SourceData } from '../src/types.js';
 
+const st = (channel: string | null, feed: string | null, title: string, url: string, extra: Partial<SourceData['streams'][number]> = {}) =>
+  ({ channel, feed, title, url, quality: null, labels: [], user_agent: null, referrer: null, ...extra });
+
 const base: SourceData = {
   channels: [
     { id: 'ABC.us', name: 'ABC', alt_names: ['ABC East'], network: 'ABC', country: 'US', categories: ['general'], is_nsfw: false, closed: null },
     { id: 'Old.us', name: 'Old', alt_names: [], network: null, country: 'US', categories: [], is_nsfw: false, closed: '2020-01-01' },
     { id: 'NoStreams.us', name: 'No Streams', alt_names: [], network: null, country: 'US', categories: [], is_nsfw: false, closed: null },
-    { id: 'Adult.us', name: 'Adult', alt_names: [], network: null, country: 'US', categories: ['xxx'], is_nsfw: true, closed: null },
+    { id: 'Adult.us', name: 'Adult', alt_names: [], network: null, country: 'US', categories: ['xxx'], is_nsfw: false, closed: null },
+    { id: 'NoCat.us', name: 'No Cat', alt_names: [], network: null, country: 'US', categories: [], is_nsfw: false, closed: null },
   ],
   streams: [
-    { channel: 'ABC.us', feed: 'East', title: 'ABC', url: 'http://a/1.m3u8', quality: '1080p', labels: [], user_agent: null, referrer: null },
-    { channel: 'ABC.us', feed: 'West', title: 'ABC W', url: 'http://a/2.m3u8', quality: null, labels: [], user_agent: 'UA', referrer: 'http://r' },
-    { channel: 'Old.us', feed: null, title: 'Old', url: 'http://old/1.m3u8', quality: null, labels: [], user_agent: null, referrer: null },
-    { channel: 'Adult.us', feed: null, title: 'Adult', url: 'http://adult/1.m3u8', quality: null, labels: [], user_agent: null, referrer: null },
-    { channel: null, feed: null, title: 'TV Publica', url: 'http://playcom.trapemn.tv:1935/x/playlist.m3u8', quality: '1080p', labels: [], user_agent: null, referrer: null },
-    { channel: null, feed: null, title: 'Mystery', url: 'http://1.2.3.4:8080/y/index.m3u8', quality: null, labels: [], user_agent: null, referrer: null },
-    { channel: 'Ghost.xx', feed: null, title: 'Ghost', url: 'http://ghost/1.m3u8', quality: null, labels: [], user_agent: null, referrer: null },
+    st('ABC.us', 'East', 'ABC', 'http://a/1.m3u8', { quality: '1080p' }),
+    st('ABC.us', 'West', 'ABC W', 'http://a/2.m3u8', { user_agent: 'UA', referrer: 'http://r' }),
+    st('ABC.us', 'WSOCTV', 'WSOC', 'http://wsoc/1.m3u8'),
+    st('ABC.us', 'WSOCTV', 'WSOC alt', 'http://wsoc/2.m3u8'),
+    st('ABC.us', 'KATC', 'KATC', 'http://katc/1.m3u8'),
+    st('ABC.us', 'MissingFeed', 'x', 'http://missing/1.m3u8'),
+    st('Old.us', null, 'Old', 'http://old/1.m3u8'),
+    st('Adult.us', null, 'Adult', 'http://adult/1.m3u8'),
+    st('NoCat.us', null, 'No Cat', 'http://nocat/1.m3u8'),
+    st(null, null, 'TV Publica', 'http://playcom.trapemn.tv:1935/x/playlist.m3u8', { quality: '1080p' }),
+    st(null, null, 'Mystery', 'http://1.2.3.4:8080/y/index.m3u8'),
+    st('Ghost.xx', null, 'Ghost', 'http://ghost/1.m3u8'),
   ],
   categories: [{ id: 'general', name: 'General' }],
   countries: [{ name: 'United States', code: 'US', flag: '🇺🇸', languages: [] }, { name: 'Tuvalu', code: 'TV', flag: '🇹🇻', languages: [] }],
@@ -342,30 +360,49 @@ const base: SourceData = {
     { channel: 'ABC.us', feed: null, in_use: true, width: 300, height: 200, format: 'PNG', url: 'http://l/main.png' },
     { channel: 'ABC.us', feed: null, in_use: false, width: 300, height: 200, format: 'PNG', url: 'http://l/old.png' },
   ],
+  feeds: [
+    { channel: 'ABC.us', id: 'East', name: 'East', is_main: true, broadcast_area: ['c/US'] },
+    { channel: 'ABC.us', id: 'West', name: 'West', is_main: false, broadcast_area: ['c/US'] },
+    { channel: 'ABC.us', id: 'WSOCTV', name: 'WSOC-TV', is_main: false, broadcast_area: ['ct/USCLT'] },
+    { channel: 'ABC.us', id: 'KATC', name: 'KATC', is_main: false, broadcast_area: ['s/US-LA'] },
+  ],
+  subdivisions: [{ country: 'US', code: 'US-LA', name: 'Louisiana' }],
+  cities: [{ country: 'US', subdivision: 'US-NC', code: 'USCLT', name: 'Charlotte' }],
 };
 
 describe('groupStreams', () => {
   const g = groupStreams(base);
-  it('keeps only channels that have streams and are open and not nsfw', () => {
-    const ids = g.channels.map(c => c.id).sort();
+  const byId = (id: string) => g.channels.find(c => c.id === id);
+  it('keeps only open channels that have streams; adult channels are kept and flagged', () => {
+    const ids = g.channels.map(c => c.id);
     expect(ids).not.toContain('Old.us');
     expect(ids).not.toContain('NoStreams.us');
-    expect(ids).not.toContain('Adult.us');
     expect(ids).toContain('ABC.us');
+    expect(byId('Adult.us')!.adult).toBe(true);
+    expect(byId('ABC.us')!.adult).toBe(false);
   });
   it('maps channel fields and picks the main in-use logo', () => {
-    const abc = g.channels.find(c => c.id === 'ABC.us')!;
-    expect(abc).toEqual({ id: 'ABC.us', name: 'ABC', altNames: ['ABC East'], country: 'US', categories: ['general'], network: 'ABC', logo: 'http://l/main.png' });
+    expect(byId('ABC.us')).toEqual({ id: 'ABC.us', name: 'ABC', altNames: ['ABC East'], country: 'US', region: null, categories: ['general'], network: 'ABC', logo: 'http://l/main.png', adult: false, hasUp: false });
   });
-  it('keeps both streams of a channel with headers mapped', () => {
-    const s = g.streams.filter(s => s.channel === 'ABC.us');
-    expect(s).toHaveLength(2);
-    expect(s[1]).toEqual({ channel: 'ABC.us', url: 'http://a/2.m3u8', quality: null, referrer: 'http://r', userAgent: 'UA' });
+  it('country-level feeds and unknown feed ids stay on the plain channel', () => {
+    const urls = g.streams.filter(s => s.channel === 'ABC.us').map(s => s.url);
+    expect(urls).toEqual(['http://a/1.m3u8', 'http://a/2.m3u8', 'http://missing/1.m3u8']);
+    expect(g.streams.find(s => s.url === 'http://a/2.m3u8')).toEqual({ channel: 'ABC.us', url: 'http://a/2.m3u8', quality: null, referrer: 'http://r', userAgent: 'UA' });
   });
-  it('drops streams whose channel is closed, nsfw, or unknown id', () => {
+  it('a city-level feed becomes its own channel with region from cities, inheriting parent fields', () => {
+    const wsoc = byId('ABC.us@WSOCTV')!;
+    expect(wsoc).toEqual({ id: 'ABC.us@WSOCTV', name: 'ABC · WSOC-TV', altNames: ['ABC East'], country: 'US', region: 'Charlotte', categories: ['general'], network: 'ABC', logo: 'http://l/main.png', adult: false, hasUp: false });
+    expect(g.streams.filter(s => s.channel === 'ABC.us@WSOCTV').map(s => s.url)).toEqual(['http://wsoc/1.m3u8', 'http://wsoc/2.m3u8']);
+  });
+  it('a state-level feed gets its region from subdivisions', () => {
+    expect(byId('ABC.us@KATC')!.region).toBe('Louisiana');
+  });
+  it('channels with no categories get other', () => {
+    expect(byId('NoCat.us')!.categories).toEqual(['other']);
+  });
+  it('drops streams whose channel is closed or unknown', () => {
     const urls = g.streams.map(s => s.url);
     expect(urls).not.toContain('http://old/1.m3u8');
-    expect(urls).not.toContain('http://adult/1.m3u8');
     expect(urls).not.toContain('http://ghost/1.m3u8');
   });
   it('creates a synthetic channel for streams with no channel, guessing country from ccTLD', () => {
@@ -373,18 +410,17 @@ describe('groupStreams', () => {
     expect(syn).toHaveLength(2);
     const publica = syn.find(c => c.name === 'TV Publica')!;
     expect(publica.country).toBe('TV');
-    expect(publica.categories).toEqual(['unsorted']);
+    expect(publica.categories).toEqual(['other']);
+    expect(publica.adult).toBe(false);
     expect(publica.id).toBe(syntheticId('http://playcom.trapemn.tv:1935/x/playlist.m3u8'));
-    const mystery = syn.find(c => c.name === 'Mystery')!;
-    expect(mystery.country).toBeNull();
+    expect(syn.find(c => c.name === 'Mystery')!.country).toBeNull();
   });
   it('the same URL under two channels keeps both links', () => {
     const src: SourceData = { ...base, streams: [
-      { channel: 'ABC.us', feed: null, title: null, url: 'http://same/x.m3u8', quality: null, labels: [], user_agent: null, referrer: null },
-      { channel: 'NoStreams.us', feed: null, title: null, url: 'http://same/x.m3u8', quality: null, labels: [], user_agent: null, referrer: null },
+      st('ABC.us', null, 'x', 'http://same/x.m3u8'),
+      st('NoStreams.us', null, 'x', 'http://same/x.m3u8'),
     ] };
-    const g2 = groupStreams(src);
-    expect(g2.streams.map(s => s.channel).sort()).toEqual(['ABC.us', 'NoStreams.us']);
+    expect(groupStreams(src).streams.map(s => s.channel).sort()).toEqual(['ABC.us', 'NoStreams.us']);
   });
 });
 
@@ -406,7 +442,7 @@ Expected: FAIL, cannot find module.
 `catalog/src/group.ts`:
 ```ts
 import { createHash } from 'node:crypto';
-import type { ApiLogo, CatalogChannel, Grouped, GroupedStream, SourceData } from './types.js';
+import type { ApiChannel, ApiFeed, ApiLogo, CatalogChannel, Grouped, GroupedStream, SourceData } from './types.js';
 
 export function syntheticId(url: string): string {
   return 'synthetic:' + createHash('sha1').update(url).digest('hex').slice(0, 10);
@@ -426,48 +462,68 @@ function ccTldCountry(url: string, codes: Set<string>): string | null {
   return tld.length === 2 && codes.has(tld) ? tld : null;
 }
 
+function isRegional(feed: ApiFeed): boolean {
+  return feed.broadcast_area.some(a => a.startsWith('s/') || a.startsWith('ct/'));
+}
+
+function regionName(feed: ApiFeed, cityName: Map<string, string>, subName: Map<string, string>): string | null {
+  for (const a of feed.broadcast_area) if (a.startsWith('ct/')) { const n = cityName.get(a.slice(3)); if (n) return n; }
+  for (const a of feed.broadcast_area) if (a.startsWith('s/')) { const n = subName.get(a.slice(2)); if (n) return n; }
+  return null;
+}
+
 export function groupStreams(src: SourceData): Grouped {
   const codes = new Set(src.countries.map(c => c.code));
-  const open = new Map(src.channels.filter(c => !c.closed && !c.is_nsfw).map(c => [c.id, c]));
-  const usedIds = new Set<string>();
+  const cityName = new Map(src.cities.map(c => [c.code, c.name]));
+  const subName = new Map(src.subdivisions.map(s => [s.code, s.name]));
+  const feedByKey = new Map(src.feeds.map(f => [`${f.channel}|${f.id}`, f]));
+  const open = new Map(src.channels.filter(c => !c.closed).map(c => [c.id, c]));
+  const channels = new Map<string, CatalogChannel>();
   const streams: GroupedStream[] = [];
-  const synthetic = new Map<string, CatalogChannel>();
+
+  const baseOf = (c: ApiChannel): CatalogChannel => ({
+    id: c.id, name: c.name, altNames: c.alt_names ?? [], country: c.country ?? null, region: null,
+    categories: c.categories?.length ? c.categories : ['other'], network: c.network ?? null,
+    logo: pickLogo(src.logos, c.id), adult: !!c.is_nsfw || (c.categories ?? []).includes('xxx'), hasUp: false,
+  });
 
   for (const s of src.streams) {
-    if (s.channel) {
-      if (!open.has(s.channel)) continue; // closed, nsfw, or unknown id
-      usedIds.add(s.channel);
-      streams.push({ channel: s.channel, url: s.url, quality: s.quality, referrer: s.referrer, userAgent: s.user_agent });
-    } else {
+    const stream = (channel: string): GroupedStream =>
+      ({ channel, url: s.url, quality: s.quality, referrer: s.referrer, userAgent: s.user_agent });
+
+    if (!s.channel) {
       const id = syntheticId(s.url);
-      if (!synthetic.has(id)) {
-        synthetic.set(id, {
-          id, name: s.title?.trim() || s.url, altNames: [], country: ccTldCountry(s.url, codes),
-          categories: ['unsorted'], network: null, logo: null,
+      if (!channels.has(id)) {
+        channels.set(id, {
+          id, name: s.title?.trim() || s.url, altNames: [], country: ccTldCountry(s.url, codes), region: null,
+          categories: ['other'], network: null, logo: null, adult: false, hasUp: false,
         });
       }
-      streams.push({ channel: id, url: s.url, quality: s.quality, referrer: s.referrer, userAgent: s.user_agent });
+      streams.push(stream(id));
+      continue;
+    }
+    const c = open.get(s.channel);
+    if (!c) continue; // closed or unknown id
+    const feed = s.feed ? feedByKey.get(`${s.channel}|${s.feed}`) : undefined;
+    if (feed && isRegional(feed)) {
+      const id = `${c.id}@${feed.id}`;
+      if (!channels.has(id)) {
+        channels.set(id, { ...baseOf(c), id, name: `${c.name} · ${feed.name}`, region: regionName(feed, cityName, subName) });
+      }
+      streams.push(stream(id));
+    } else {
+      if (!channels.has(c.id)) channels.set(c.id, baseOf(c));
+      streams.push(stream(c.id));
     }
   }
-
-  const channels: CatalogChannel[] = [];
-  for (const id of usedIds) {
-    const c = open.get(id)!;
-    channels.push({
-      id: c.id, name: c.name, altNames: c.alt_names ?? [], country: c.country ?? null,
-      categories: c.categories?.length ? c.categories : ['unsorted'], network: c.network ?? null,
-      logo: pickLogo(src.logos, c.id),
-    });
-  }
-  channels.push(...synthetic.values());
-  return { channels, streams };
+  return { channels: [...channels.values()], streams };
 }
 ```
 
 - [ ] **Step 4: Run to verify pass**
 
 Run: `cd catalog && npx vitest run test/group.test.ts`
-Expected: 8 pass.
+Expected: 11 pass.
 
 - [ ] **Step 5: Commit**
 
@@ -1305,7 +1361,7 @@ import { describe, it, expect } from 'vitest';
 import { validateLogos } from '../src/logos.js';
 import type { CatalogChannel } from '../src/types.js';
 
-const ch = (id: string, logo: string | null): CatalogChannel => ({ id, name: id, altNames: [], country: null, categories: [], network: null, logo });
+const ch = (id: string, logo: string | null): CatalogChannel => ({ id, name: id, altNames: [], country: null, region: null, categories: [], network: null, logo, adult: false, hasUp: false });
 
 describe('validateLogos', () => {
   it('keeps image responses, nulls everything else, and checks each url once', async () => {
@@ -1402,15 +1458,20 @@ const src: SourceData = {
   countries: [{ code: 'US', name: 'United States', flag: '🇺🇸', languages: [] }, { code: 'FR', name: 'France', flag: '🇫🇷', languages: [] }],
 };
 const grouped: Grouped = {
-  channels: [{ id: 'A.us', name: 'A', altNames: [], country: 'US', categories: ['news'], network: null, logo: null }],
+  channels: [
+    { id: 'A.us', name: 'A', altNames: [], country: 'US', region: null, categories: ['news'], network: null, logo: null, adult: false, hasUp: false },
+    { id: 'B.us', name: 'B', altNames: [], country: 'US', region: null, categories: ['news'], network: null, logo: null, adult: false, hasUp: false },
+  ],
   streams: [
     { channel: 'A.us', url: 'http://1.2.3.4/x.m3u8', quality: '1080p', referrer: null, userAgent: null },
     { channel: 'A.us', url: 'http://cdn/x.m3u8', quality: '720p', referrer: 'r', userAgent: 'u' },
+    { channel: 'B.us', url: 'http://dead/x.m3u8', quality: null, referrer: null, userAgent: null },
   ],
 };
 const results = new Map<string, ProbeResult>([
   ['http://1.2.3.4/x.m3u8', { url: 'http://1.2.3.4/x.m3u8', health: 'down', format: 'hls', responseMs: 300, reason: 'x', finalHost: '1.2.3.4' }],
   ['http://cdn/x.m3u8', { url: 'http://cdn/x.m3u8', health: 'up', format: 'hls', responseMs: 200, reason: 'ok', finalHost: 'cdn' }],
+  ['http://dead/x.m3u8', { url: 'http://dead/x.m3u8', health: 'down', format: 'unknown', responseMs: null, reason: 'timeout', finalHost: null }],
 ]);
 const history: History = { generatedAt: '2026-09-22', upRate: 0.5, streams: {
   'http://1.2.3.4/x.m3u8': [{ d: '2026-09-21', s: 'up', ms: 1 }, { d: '2026-09-22', s: 'down', ms: 300 }],
@@ -1420,12 +1481,16 @@ const history: History = { generatedAt: '2026-09-22', upRate: 0.5, streams: {
 describe('buildCatalog', () => {
   const cat = buildCatalog({ grouped, results, history, src, version: 1758520800, generatedAt: '2026-09-22T06:00:00Z' });
   it('carries version and time', () => { expect(cat.version).toBe(1758520800); expect(cat.generatedAt).toBe('2026-09-22T06:00:00Z'); });
-  it('lists only referenced countries and adds the unsorted category', () => {
+  it('lists only referenced countries and adds the other category', () => {
     expect(cat.countries).toEqual([{ code: 'US', name: 'United States', flag: '🇺🇸' }]);
-    expect(cat.categories).toEqual([{ id: 'news', name: 'News' }, { id: 'unsorted', name: 'Unsorted' }]);
+    expect(cat.categories).toEqual([{ id: 'news', name: 'News' }, { id: 'other', name: 'Other' }]);
+  });
+  it('sets hasUp when any stream is up or unverified', () => {
+    expect(cat.channels.find(c => c.id === 'A.us')!.hasUp).toBe(true);
+    expect(cat.channels.find(c => c.id === 'B.us')!.hasUp).toBe(false);
   });
   it('orders streams within a channel by score descending and fills fields', () => {
-    expect(cat.streams.map(s => s.url)).toEqual(['http://cdn/x.m3u8', 'http://1.2.3.4/x.m3u8']);
+    expect(cat.streams.filter(s => s.channel === 'A.us').map(s => s.url)).toEqual(['http://cdn/x.m3u8', 'http://1.2.3.4/x.m3u8']);
     const top = cat.streams[0];
     expect(top).toMatchObject({ channel: 'A.us', format: 'hls', quality: '720p', referrer: 'r', userAgent: 'u', health: 'up', uptime7d: 1, responseMs: 200 });
     expect(top.score).toBeGreaterThan(cat.streams[1].score);
@@ -1499,10 +1564,13 @@ export function buildCatalog(input: {
   const order = new Map(grouped.channels.map((c, i) => [c.id, i]));
   streams.sort((a, b) => (order.get(a.channel)! - order.get(b.channel)!) || (b.score - a.score));
 
-  const used = new Set(grouped.channels.map(c => c.country).filter((c): c is string => !!c));
+  const withUp = new Set(streams.filter(s => s.health !== 'down').map(s => s.channel));
+  const channels = grouped.channels.map(c => ({ ...c, hasUp: withUp.has(c.id) }));
+
+  const used = new Set(channels.map(c => c.country).filter((c): c is string => !!c));
   const countries = src.countries.filter(c => used.has(c.code)).map(c => ({ code: c.code, name: c.name, flag: c.flag }));
-  const categories = [...src.categories.map(c => ({ id: c.id, name: c.name })), { id: 'unsorted', name: 'Unsorted' }];
-  return { version, generatedAt, countries, categories, channels: grouped.channels, streams };
+  const categories = [...src.categories.map(c => ({ id: c.id, name: c.name })), { id: 'other', name: 'Other' }];
+  return { version, generatedAt, countries, categories, channels, streams };
 }
 ```
 
@@ -1527,7 +1595,7 @@ export async function writeOutputs(outDir: string, catalog: Catalog, history: Hi
 - [ ] **Step 4: Run to verify pass**
 
 Run: `cd catalog && npx vitest run test/build.test.ts test/write.test.ts`
-Expected: 5 pass.
+Expected: 6 pass.
 
 - [ ] **Step 5: Commit**
 
@@ -1568,19 +1636,20 @@ const out = join(import.meta.dirname, '..', 'test', 'fixtures', 'api');
 const src = await fetchSource(fetch);
 const keepIds = new Set(['ABC.us', 'CBS.us', 'SECNetwork.us', 'FoxSports1.us', 'BBCNews.uk', 'DWEnglish.de', 'NHKWorldJapan.jp', 'FranceInfo.fr']);
 const channels = src.channels.filter(c => keepIds.has(c.id));
-const streams = src.streams.filter(s => (s.channel && keepIds.has(s.channel)) || s.channel === null).slice(0, 80);
+const streams = src.streams.filter(s => (s.channel && keepIds.has(s.channel)) || s.channel === null).slice(0, 120);
 const logos = src.logos.filter(l => keepIds.has(l.channel));
+const feeds = src.feeds.filter(f => keepIds.has(f.channel));
+const areaCodes = new Set(feeds.flatMap(f => f.broadcast_area));
+const cities = src.cities.filter(c => areaCodes.has(`ct/${c.code}`));
+const subdivisions = src.subdivisions.filter(s => areaCodes.has(`s/${s.code}`));
 await mkdir(out, { recursive: true });
-await writeFile(join(out, 'channels.json'), JSON.stringify(channels, null, 1));
-await writeFile(join(out, 'streams.json'), JSON.stringify(streams, null, 1));
-await writeFile(join(out, 'logos.json'), JSON.stringify(logos, null, 1));
-await writeFile(join(out, 'categories.json'), JSON.stringify(src.categories, null, 1));
-await writeFile(join(out, 'countries.json'), JSON.stringify(src.countries, null, 1));
-console.log(`fixture: ${channels.length} channels, ${streams.length} streams, ${logos.length} logos`);
+const files = { channels, streams, logos, feeds, cities, subdivisions, categories: src.categories, countries: src.countries };
+for (const [name, data] of Object.entries(files)) await writeFile(join(out, `${name}.json`), JSON.stringify(data, null, 1));
+console.log(`fixture: ${channels.length} channels, ${streams.length} streams, ${feeds.length} feeds, ${cities.length} cities, ${subdivisions.length} subdivisions`);
 ```
 
 Run: `cd catalog && npm run fixture`
-Expected: prints counts, files appear under `catalog/test/fixtures/api/`. Inspect `streams.json` and confirm it contains at least one stream with `"channel": null` and at least one with a `referrer`. If not, widen `.slice(0, 80)` until it does.
+Expected: prints counts, eight files appear under `catalog/test/fixtures/api/`. Inspect `streams.json` and confirm it contains at least one stream with `"channel": null`, at least one with a `referrer`, and at least one `ABC.us` stream whose feed appears in `feeds.json` with a `ct/` broadcast area. If not, widen `.slice(0, 120)` until it does.
 
 - [ ] **Step 2: Write the failing integration test**
 
@@ -1627,7 +1696,9 @@ describe('runPipeline (offline, fixture API)', () => {
     expect(cat.version).toBe(Math.floor(Date.parse('2026-09-22T06:00:00Z') / 1000));
     expect(cat.streams).toHaveLength(r.stats.streams);
     expect(cat.channels.some(c => c.id.startsWith('synthetic:'))).toBe(true);
-    expect(cat.categories.some(c => c.id === 'unsorted')).toBe(true);
+    expect(cat.channels.some(c => c.id.includes('@') && c.region !== null)).toBe(true);
+    expect(cat.channels.every(c => typeof c.hasUp === 'boolean' && typeof c.adult === 'boolean')).toBe(true);
+    expect(cat.categories.some(c => c.id === 'other')).toBe(true);
     const hist = JSON.parse(await readFile(join(outDir, 'history.json'), 'utf8'));
     expect(Object.keys(hist.streams)).toHaveLength(r.stats.streams);
     expect(hist.streams[cat.streams[0].url]).toHaveLength(1);
@@ -1928,7 +1999,7 @@ Push to GitHub, complete the README's one-time setup, trigger the workflow manua
 
 ## Self-review
 
-**Spec coverage.** 3.1 runtime, artifact deploy, keepalive, bandwidth note: Task 13. 3.3 catalog base URL as an app setting: app plan. 4.1 steps 1 to 7: Tasks 7, 2, 3, 6, 8, 9, 11 and 12. 4.2 format table and status rules: Tasks 4 and 6. Per-host cap and default UA: Tasks 5 and 6. Egress logging: Task 13. 4.3 file format: Tasks 1 and 11. Logo validation: Task 10. 4.4 guards and issue on failure: Tasks 9, 12 and 13. Section 7 job rows: Tasks 9, 12, 13. Section 8 catalog tests, including master/media, ended, TS, DASH, no-channel-id, headers, offline snapshot: Tasks 3, 4, 6, 12.
+**Spec coverage.** 3.1 runtime, artifact deploy, keepalive, bandwidth note: Task 13. 3.3 catalog base URL as an app setting: app plan. 4.1 steps 1 to 7: Tasks 7, 2, 3, 6, 8, 9, 11 and 12. 4.2 grouping rules, affiliate splitting, adult flag, `other`: Task 3. 4.3 format table and status rules: Tasks 4 and 6. Per-host cap and default UA: Tasks 5 and 6. Egress logging: Task 13. 4.4 file format including `region`, `adult`, `hasUp`: Tasks 1, 3 and 11. Logo validation: Task 10. 4.5 guards and issue on failure: Tasks 9, 12 and 13. Section 7 job rows: Tasks 9, 12, 13. Section 8 catalog tests, including master/media, ended, TS, DASH, no-channel-id, headers, offline snapshot: Tasks 3, 4, 6, 12.
 
 **Gap found and fixed:** the spec's "Guard" step also requires that history is not updated on a failed guard. `runPipeline` returns before `writeOutputs`, so `history.json` is untouched. Covered by the second pipeline test asserting no catalog file is written.
 
