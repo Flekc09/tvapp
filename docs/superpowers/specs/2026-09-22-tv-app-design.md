@@ -52,7 +52,7 @@ Consequences:
 - Many channels have 5 to 30 duplicate feeds. Grouping and ranking them is the core backend job.
 - iptv-org models local affiliates as feeds of one network channel. "ABC" has 33 streams, most of them different cities' stations. The viewer needs those as separate channels, and failover must stay within one station's feeds.
 - The US network and sports feeds the owner cares most about are community-submitted restreams on bare IPs. They are the least stable part of the catalog and can disappear from iptv-org at any time. Failover and user-added sources are therefore core features, not extras.
-- Most of the catalog is plain HTTP, and raw-IP hosts cannot have valid TLS certificates. The app must allow cleartext traffic.
+- About one stream in five (3,453) is plain HTTP, but that includes nearly every raw-IP host and therefore the US sports restreams (SEC Network 1 of 1, ESPNU 2 of 2, Fox Sports 1 2 of 3). The app must allow cleartext HTTP or those channels cannot play. Only 3 streams are HTTPS on a raw IP, so self-signed certificates are not accepted anywhere; HTTPS is validated normally.
 - Nearly a thousand streams will not play without per-stream headers. The player must honor them from day one.
 - Not every URL is HLS. The catalog also contains raw MPEG-TS over HTTP, DASH manifests, and dead hosts returning HTML. Format must be detected, not assumed.
 - The catalog carries adult channels (an `xxx` category and an `is_nsfw` flag). They must be hidden by default.
@@ -175,7 +175,7 @@ Logos are validated by the job with a HEAD request. Dead logo URLs are replaced 
 ### 5.1 Platform requirements
 
 - Manifest declares `LEANBACK_LAUNCHER`, `android.software.leanback`, touchscreen not required, and a 320x180 banner, so the app appears in the TV launcher after sideloading.
-- Cleartext HTTP is enabled through a network security config, and the HTTP data source allows cross-protocol redirects. Self-signed HTTPS on raw-IP hosts is accepted for stream traffic only.
+- Cleartext HTTP is enabled through a network security config, and the HTTP data source allows cross-protocol redirects. HTTPS certificates are validated normally with no exceptions; the 3 self-signed raw-IP streams in the catalog simply fail.
 - One shared OkHttp client is used for catalog sync, playlist prefetch, and ExoPlayer's data source, so connection pooling and DNS caching carry across, and the app's user agent matches what the catalog job sends.
 - `largeHeap` is set. Minimum target device is 1 GB RAM.
 - The player holds the screen on (`FLAG_KEEP_SCREEN_ON`) while video is playing and releases it when an overlay is open with no video, or on "not working". On resume from standby the current channel is re-tuned to the live edge. On Home or standby the player is released promptly so bandwidth stops.
