@@ -28,7 +28,7 @@
 
 Inputs the spec implies but a first implementation is likely to break on. Each has a pinned test in the task named.
 
-1. **A stream URL that redirects from HTTPS to HTTP, or across hosts.** Node `fetch` follows redirects by default, so the probe must record the final URL's host for the per-host limiter and the raw-IP penalty, and must treat a redirect to a login page as `unverified`. Test in Task 6.
+1. **A stream URL that redirects from HTTPS to HTTP, or across hosts.** Node `fetch` follows redirects by default, so the probe must detect the format from the final URL, record the final host for the raw-IP penalty, and treat a redirect to a login page as `unverified`. The per-host limiter is keyed on the original host; that is accepted. Test in Task 6.
 2. **A master playlist whose media playlist URI is relative.** Resolving it against the master's URL, not the original stream URL after redirects, gives a 404 and a false `down`. Test in Task 6.
 3. **A stream that appears twice in `streams.json` with the same URL under different channels.** History is keyed by URL, so both channels share one health record. Grouping must keep both channel links. Test in Task 3.
 4. **A history file from a previous run that contains URLs no longer in the catalog.** They must be dropped, not carried forever. Test in Task 7.
@@ -60,6 +60,7 @@ Inputs the spec implies but a first implementation is likely to break on. Each h
   "engines": { "node": ">=22" },
   "scripts": {
     "build": "tsc -p tsconfig.json",
+    "typecheck": "tsc --noEmit -p tsconfig.json",
     "test": "vitest run",
     "run": "tsx src/main.ts",
     "fixture": "tsx scripts/make-fixture.ts"
@@ -68,7 +69,7 @@ Inputs the spec implies but a first implementation is likely to break on. Each h
     "@types/node": "^22.0.0",
     "tsx": "^4.19.0",
     "typescript": "^5.6.0",
-    "vitest": "^2.1.0"
+    "vitest": "^3.0.0"
   }
 }
 ```
@@ -202,8 +203,8 @@ describe('types', () => {
 
 - [ ] **Step 6: Install and run**
 
-Run: `cd catalog && npm install && npm test`
-Expected: 1 test passes.
+Run: `cd catalog && npm install && npm run typecheck && npm test`
+Expected: typecheck clean, 1 test passes. Every later task's test step is followed by `npm run typecheck`; strict mode is a constraint only if something enforces it.
 
 - [ ] **Step 7: Commit**
 
@@ -318,7 +319,7 @@ Co-Authored-By: Claude Fable 5.1 <noreply@anthropic.com>"
   - Only catalog channels with at least one stream are returned. `hasUp` is left `false` here; Task 11 fills it.
   - A stream whose feed (looked up in `feeds` by channel id and feed id) has any `s/` or `ct/` broadcast area belongs to a split channel `<channel>@<feedId>` named `<channel name> · <feed name>` with `region` from the cities file (`ct/` code) or the subdivisions file (`s/` code), inheriting the parent's country, categories, network and logo. Any other feed, a missing feed, or a feed id not found in `feeds` maps to the plain channel id.
   - Streams with no channel get a synthetic channel with id `synthetic:<10 hex chars of sha1(url)>`, category `other`, country from the URL's ccTLD if it matches a known country code, else null.
-  - Closed channels are excluded with their streams. Channels with `is_nsfw` or the `xxx` category are kept with `adult: true`. Channels with no categories get `['other']`.
+  - Closed channels are excluded with their streams. A stream whose channel id is not in `channels.json` is kept as a synthetic channel, exactly like a stream with no channel. A feed is regional when any of its broadcast areas is `s/` or `ct/`, even if a `c/` entry is also present. Channels with `is_nsfw` or the `xxx` category are kept with `adult: true`. Channels with no categories get `['other']`.
 
 - [ ] **Step 1: Write the failing tests**
 
@@ -338,6 +339,7 @@ const base: SourceData = {
     { id: 'NoStreams.us', name: 'No Streams', alt_names: [], network: null, country: 'US', categories: [], is_nsfw: false, closed: null },
     { id: 'Adult.us', name: 'Adult', alt_names: [], network: null, country: 'US', categories: ['xxx'], is_nsfw: false, closed: null },
     { id: 'NoCat.us', name: 'No Cat', alt_names: [], network: null, country: 'US', categories: [], is_nsfw: false, closed: null },
+    { id: 'Nsfw.us', name: 'Nsfw', alt_names: [], network: null, country: 'US', categories: ['general'], is_nsfw: true, closed: null },
   ],
   streams: [
     st('ABC.us', 'East', 'ABC', 'http://a/1.m3u8', { quality: '1080p' }),
@@ -346,6 +348,8 @@ const base: SourceData = {
     st('ABC.us', 'WSOCTV', 'WSOC alt', 'http://wsoc/2.m3u8'),
     st('ABC.us', 'KATC', 'KATC', 'http://katc/1.m3u8'),
     st('ABC.us', 'MissingFeed', 'x', 'http://missing/1.m3u8'),
+    st('ABC.us', 'MIXED', 'Mixed', 'http://mixed/1.m3u8'),
+    st('Nsfw.us', null, 'Nsfw', 'http://nsfw/1.m3u8'),
     st('Old.us', null, 'Old', 'http://old/1.m3u8'),
     st('Adult.us', null, 'Adult', 'http://adult/1.m3u8'),
     st('NoCat.us', null, 'No Cat', 'http://nocat/1.m3u8'),
@@ -365,6 +369,7 @@ const base: SourceData = {
     { channel: 'ABC.us', id: 'West', name: 'West', is_main: false, broadcast_area: ['c/US'] },
     { channel: 'ABC.us', id: 'WSOCTV', name: 'WSOC-TV', is_main: false, broadcast_area: ['ct/USCLT'] },
     { channel: 'ABC.us', id: 'KATC', name: 'KATC', is_main: false, broadcast_area: ['s/US-LA'] },
+    { channel: 'ABC.us', id: 'MIXED', name: 'Mixed', is_main: false, broadcast_area: ['c/US', 'ct/USCLT'] },
   ],
   subdivisions: [{ country: 'US', code: 'US-LA', name: 'Louisiana' }],
   cities: [{ country: 'US', subdivision: 'US-NC', code: 'USCLT', name: 'Charlotte' }],
@@ -400,14 +405,21 @@ describe('groupStreams', () => {
   it('channels with no categories get other', () => {
     expect(byId('NoCat.us')!.categories).toEqual(['other']);
   });
-  it('drops streams whose channel is closed or unknown', () => {
+  it('drops streams whose channel is closed, but keeps unknown channel ids as synthetic channels', () => {
     const urls = g.streams.map(s => s.url);
     expect(urls).not.toContain('http://old/1.m3u8');
-    expect(urls).not.toContain('http://ghost/1.m3u8');
+    expect(g.streams.find(s => s.url === 'http://ghost/1.m3u8')!.channel).toBe(syntheticId('http://ghost/1.m3u8'));
+  });
+  it('flags is_nsfw channels as adult even without the xxx category', () => {
+    expect(byId('Nsfw.us')!.adult).toBe(true);
+  });
+  it('a feed with both a country and a city area is regional (any s/ or ct/ entry splits)', () => {
+    expect(byId('ABC.us@MIXED')!.region).toBe('Charlotte');
+    expect(g.streams.find(s => s.url === 'http://mixed/1.m3u8')!.channel).toBe('ABC.us@MIXED');
   });
   it('creates a synthetic channel for streams with no channel, guessing country from ccTLD', () => {
     const syn = g.channels.filter(c => c.id.startsWith('synthetic:'));
-    expect(syn).toHaveLength(2);
+    expect(syn).toHaveLength(3);
     const publica = syn.find(c => c.name === 'TV Publica')!;
     expect(publica.country).toBe('TV');
     expect(publica.categories).toEqual(['other']);
@@ -478,6 +490,7 @@ export function groupStreams(src: SourceData): Grouped {
   const subName = new Map(src.subdivisions.map(s => [s.code, s.name]));
   const feedByKey = new Map(src.feeds.map(f => [`${f.channel}|${f.id}`, f]));
   const open = new Map(src.channels.filter(c => !c.closed).map(c => [c.id, c]));
+  const closedIds = new Set(src.channels.filter(c => !!c.closed).map(c => c.id));
   const channels = new Map<string, CatalogChannel>();
   const streams: GroupedStream[] = [];
 
@@ -491,7 +504,7 @@ export function groupStreams(src: SourceData): Grouped {
     const stream = (channel: string): GroupedStream =>
       ({ channel, url: s.url, quality: s.quality, referrer: s.referrer, userAgent: s.user_agent });
 
-    if (!s.channel) {
+    const synthetic = () => {
       const id = syntheticId(s.url);
       if (!channels.has(id)) {
         channels.set(id, {
@@ -500,10 +513,11 @@ export function groupStreams(src: SourceData): Grouped {
         });
       }
       streams.push(stream(id));
-      continue;
-    }
+    };
+    if (!s.channel) { synthetic(); continue; }
+    if (closedIds.has(s.channel)) continue; // closed channel: excluded with its streams
     const c = open.get(s.channel);
-    if (!c) continue; // closed or unknown id
+    if (!c) { synthetic(); continue; } // unknown channel id: kept as a synthetic channel (spec 4.2, nothing is dropped)
     const feed = s.feed ? feedByKey.get(`${s.channel}|${s.feed}`) : undefined;
     if (feed && isRegional(feed)) {
       const id = `${c.id}@${feed.id}`;
@@ -523,7 +537,7 @@ export function groupStreams(src: SourceData): Grouped {
 - [ ] **Step 4: Run to verify pass**
 
 Run: `cd catalog && npx vitest run test/group.test.ts`
-Expected: 11 pass.
+Expected: 13 pass.
 
 - [ ] **Step 5: Commit**
 
@@ -693,7 +707,7 @@ export function detectFormat(url: string, contentType: string | null, head: Uint
 - [ ] **Step 4: Run to verify pass**
 
 Run: `cd catalog && npx vitest run test/detect.test.ts`
-Expected: 13 pass.
+Expected: 12 pass.
 
 - [ ] **Step 5: Commit**
 
@@ -831,7 +845,7 @@ Co-Authored-By: Claude Fable 5.1 <noreply@anthropic.com>"
 - Consumes: `detectFormat`, `parseHls`, `isTsSync`, `isMpd` from Task 4.
 - Produces: `probeStream(stream: GroupedStream, fetchFn: FetchFn, opts?: { timeoutMs?: number; now?: () => number }): Promise<ProbeResult>` and `DEFAULT_UA = 'TVApp/1.0 (Android TV; Media3)'` and `hostOf(url: string): string`.
 
-Rules implemented (spec 4.2): GET with timeout, headers from the stream, else default UA. 403/451 → `unverified`. 404/5xx, timeout, network error → `down`. 200 → detect format; HLS master → follow first media URI resolved against the *final* response URL, require segments and no ENDLIST; HLS media → same check; TS → sync bytes; DASH → MPD check; unknown → `unverified`. `responseMs` is time to first response headers. `finalHost` is the host of the final URL after redirects.
+Rules implemented (spec 4.3): GET with timeout, headers from the stream, else default UA. 401/403/429/451 → `unverified` (geo-block, missing token, rate limit). 404/5xx, timeout before headers, network error → `down`. A body that stalls after headers is judged on the bytes received. 200 → detect format; HLS master → follow first media URI resolved against the *final* response URL, require segments and no ENDLIST; HLS media → same check; TS → sync bytes; DASH → MPD check; unknown → `unverified`. `responseMs` is time to first response headers. `finalHost` is the host of the final URL after redirects.
 
 - [ ] **Step 1: Write the failing tests**
 
@@ -856,7 +870,7 @@ function fake(routes: Record<string, Route>, seen: { url: string; headers: Recor
       const t = setTimeout(res, r.delayMs);
       init?.signal?.addEventListener('abort', () => { clearTimeout(t); rej(new DOMException('aborted', 'AbortError')); });
     });
-    const res = new Response(r.body ?? '', { status: r.status, headers: { 'content-type': r.type ?? 'application/vnd.apple.mpegurl' } });
+    const res = new Response((r.body ?? '') as BodyInit, { status: r.status, headers: { 'content-type': r.type ?? 'application/vnd.apple.mpegurl' } });
     Object.defineProperty(res, 'url', { value: r.url ?? url });
     return res;
   }) as typeof fetch;
@@ -883,8 +897,8 @@ describe('probeStream', () => {
     const r = await probeStream(s('http://a/x.m3u8'), fake({ 'http://a/x.m3u8': { status: 200, body: MASTER } }));
     expect(r.health).toBe('down'); expect(r.reason).toMatch(/404/);
   });
-  it('403 and 451 are unverified; 404 and 503 are down', async () => {
-    for (const [code, h] of [[403, 'unverified'], [451, 'unverified'], [404, 'down'], [503, 'down']] as const) {
+  it('401, 403, 429 and 451 are unverified; 404 and 503 are down', async () => {
+    for (const [code, h] of [[401, 'unverified'], [403, 'unverified'], [429, 'unverified'], [451, 'unverified'], [404, 'down'], [503, 'down']] as const) {
       const r = await probeStream(s('http://a/x.m3u8'), fake({ 'http://a/x.m3u8': { status: code } }));
       expect(r.health, `status ${code}`).toBe(h);
     }
@@ -892,6 +906,10 @@ describe('probeStream', () => {
   it('a 200 html body is unverified with format unknown', async () => {
     const r = await probeStream(s('http://a/live'), fake({ 'http://a/live': { status: 200, body: '<html>expired</html>', type: 'text/html' } }));
     expect(r.health).toBe('unverified'); expect(r.format).toBe('unknown');
+  });
+  it('format is detected from the final url after a redirect, not the original', async () => {
+    const r = await probeStream(s('http://a/live'), fake({ 'http://a/live': { status: 200, body: MEDIA, type: 'application/octet-stream', url: 'http://cdn/x.m3u8' } }));
+    expect(r.health).toBe('up'); expect(r.format).toBe('hls'); expect(r.finalHost).toBe('cdn');
   });
   it('a redirect to an html login page is unverified', async () => {
     const r = await probeStream(s('http://a/x.m3u8'), fake({ 'http://a/x.m3u8': { status: 200, body: '<html>login</html>', type: 'text/html', url: 'http://a/login' } }));
@@ -906,9 +924,19 @@ describe('probeStream', () => {
     const r = await probeStream(s('http://a/m.mpd'), fake({ 'http://a/m.mpd': { status: 200, body: '<MPD><Period/></MPD>', type: 'application/dash+xml' } }));
     expect(r.health).toBe('up'); expect(r.format).toBe('dash');
   });
-  it('timeout is down with reason timeout', async () => {
+  it('timeout before any response is down with reason timeout', async () => {
     const r = await probeStream(s('http://a/x.m3u8'), fake({ 'http://a/x.m3u8': { status: 200, body: MEDIA, delayMs: 500 } }), { timeoutMs: 50 });
     expect(r.health).toBe('down'); expect(r.reason).toBe('timeout');
+  });
+  it('a TS stream that sends headers and one packet then stalls is judged on what arrived', async () => {
+    const ts = new Uint8Array(400); ts[0] = 0x47; ts[188] = 0x47;
+    const stall = (async (input: string | URL | Request, init?: RequestInit) => {
+      const stream = new ReadableStream<Uint8Array>({ start(ctrl) { ctrl.enqueue(ts); /* never closes */ init?.signal?.addEventListener('abort', () => ctrl.error(new DOMException('aborted', 'AbortError'))); } });
+      const res = new Response(stream, { status: 200, headers: { 'content-type': 'video/mp2t' } });
+      Object.defineProperty(res, 'url', { value: String(input) }); return res;
+    }) as typeof fetch;
+    const r = await probeStream(s('http://a/live.ts'), stall, { timeoutMs: 100 });
+    expect(r.health).toBe('up'); expect(r.format).toBe('ts'); expect(r.responseMs).not.toBeNull();
   });
   it('a thrown network error is down', async () => {
     const f = (async () => { throw new TypeError('fetch failed'); }) as typeof fetch;
@@ -917,8 +945,10 @@ describe('probeStream', () => {
   });
   it('sends the stream headers when present and the default UA otherwise', async () => {
     const seen: { url: string; headers: Record<string, string> }[] = [];
-    await probeStream(s('http://a/x.m3u8', { referrer: 'http://r/', userAgent: 'Custom' }), fake({ 'http://a/x.m3u8': { status: 200, body: MEDIA } }, seen));
+    await probeStream(s('http://a/x.m3u8', { referrer: 'http://r/', userAgent: 'Custom' }), fake({ 'http://a/x.m3u8': { status: 200, body: MASTER }, 'http://a/media/mono.m3u8': { status: 200, body: MEDIA } }, seen));
     expect(seen[0].headers['user-agent']).toBe('Custom'); expect(seen[0].headers['referer']).toBe('http://r/');
+    expect(seen[1].url).toBe('http://a/media/mono.m3u8'); // the media follow-up carries the same headers
+    expect(seen[1].headers['user-agent']).toBe('Custom'); expect(seen[1].headers['referer']).toBe('http://r/');
     seen.length = 0;
     await probeStream(s('http://a/x.m3u8'), fake({ 'http://a/x.m3u8': { status: 200, body: MEDIA } }, seen));
     expect(seen[0].headers['user-agent']).toBe(DEFAULT_UA);
@@ -963,12 +993,20 @@ async function get(url: string, headers: Record<string, string>, fetchFn: FetchF
     const ms = now() - t0;
     let head = new Uint8Array(0);
     if (res.body) {
+      // Playlists are read in full (capped at 1 MB) so an #EXT-X-ENDLIST past 64 KB is not missed; TS needs only two packets; everything else 64 KB.
+      const ct = (res.headers.get('content-type') ?? '').toLowerCase();
+      const wantBytes = ct.includes('mpegurl') ? 1_048_576 : ct.includes('mp2t') ? 2 * 188 + 1 : HEAD_BYTES;
       const reader = res.body.getReader();
       const chunks: Uint8Array[] = []; let total = 0;
-      while (total < HEAD_BYTES) {
-        const { done, value } = await reader.read();
-        if (done) break;
-        chunks.push(value); total += value.length;
+      try {
+        while (total < wantBytes) {
+          const { done, value } = await reader.read();
+          if (done) break;
+          chunks.push(value); total += value.length;
+        }
+      } catch (e) {
+        // Body stalled and the timeout fired: headers arrived, so judge the bytes we have instead of reporting a timeout.
+        if ((e as Error).name !== 'AbortError') throw e;
       }
       await reader.cancel().catch(() => {});
       head = new Uint8Array(total);
@@ -1000,7 +1038,7 @@ export async function probeStream(
     return result(url, 'down', 'unknown', null, reason, null);
   }
   const finalHost = hostOf(got.finalUrl);
-  if (got.status === 403 || got.status === 451) return result(url, 'unverified', 'unknown', got.ms, `http ${got.status}`, finalHost);
+  if ([401, 403, 429, 451].includes(got.status)) return result(url, 'unverified', 'unknown', got.ms, `http ${got.status}`, finalHost);
   if (got.status < 200 || got.status >= 300) return result(url, 'down', 'unknown', got.ms, `http ${got.status}`, finalHost);
 
   const format = detectFormat(got.finalUrl, got.contentType, got.head);
@@ -1036,7 +1074,7 @@ export async function probeStream(
 - [ ] **Step 4: Run to verify pass**
 
 Run: `cd catalog && npx vitest run test/probe.test.ts`
-Expected: 12 pass.
+Expected: 15 pass.
 
 - [ ] **Step 5: Commit**
 
@@ -1057,7 +1095,7 @@ Co-Authored-By: Claude Fable 5.1 <noreply@anthropic.com>"
 
 **Interfaces:**
 - Produces:
-  - `loadHistory(fetchFn: FetchFn, baseUrl: string): Promise<History>` returns empty history on 404 or network error, throws on other non-2xx (a 500 from Pages should abort rather than silently reset history).
+  - `loadHistory(fetchFn: FetchFn, baseUrl: string): Promise<History>` returns empty history only on 404; throws on a network error or any other non-2xx, so a blip never resets history or disables the guard.
   - `mergeHistory(prev: History, results: ProbeResult[], today: string): History` keeps the last 7 dated entries per URL, replaces an entry with the same date, drops URLs not in `results`.
   - `uptime7d(entries: HistoryEntry[]): number` = fraction of entries that are `up`, 0 for empty.
   - `emptyHistory(): History`.
@@ -1078,9 +1116,9 @@ describe('loadHistory', () => {
     const f = (async () => new Response('', { status: 404 })) as typeof fetch;
     expect(await loadHistory(f, 'https://p')).toEqual(emptyHistory());
   });
-  it('returns empty history on network error', async () => {
+  it('rethrows a network error rather than pretending it is the first run', async () => {
     const f = (async () => { throw new TypeError('fetch failed'); }) as typeof fetch;
-    expect(await loadHistory(f, 'https://p')).toEqual(emptyHistory());
+    await expect(loadHistory(f, 'https://p')).rejects.toThrow(/fetch failed/);
   });
   it('throws on 500', async () => {
     const f = (async () => new Response('', { status: 500 })) as typeof fetch;
@@ -1141,9 +1179,8 @@ export function emptyHistory(): History {
 }
 
 export async function loadHistory(fetchFn: FetchFn, baseUrl: string): Promise<History> {
-  let res: Response;
-  try { res = await fetchFn(`${baseUrl}/history.json`, { cache: 'no-store' }); }
-  catch { return emptyHistory(); }
+  // Only a 404 means "first run". A network error must propagate: treating it as first run would wipe 7-day history and disable the guard (spec 4.5).
+  const res = await fetchFn(`${baseUrl}/history.json`, { cache: 'no-store' });
   if (res.status === 404) return emptyHistory();
   if (!res.ok) throw new Error(`loadHistory: history.json returned ${res.status}`);
   const body = (await res.json()) as History;
@@ -1298,7 +1335,7 @@ import { checkGuard } from '../src/guard.js';
 
 describe('checkGuard', () => {
   it('passes on first run with no previous rate', () => { expect(checkGuard(null, 0.6)).toEqual({ ok: true }); });
-  it('passes when the drop is within 25 points', () => { expect(checkGuard(0.6, 0.36)).toEqual({ ok: true }); });
+  it('passes when the drop is within 25 points, including exactly 25', () => { expect(checkGuard(0.6, 0.36)).toEqual({ ok: true }); expect(checkGuard(0.6, 0.35)).toEqual({ ok: true }); });
   it('fails when the drop exceeds 25 points', () => {
     const r = checkGuard(0.6, 0.30);
     expect(r.ok).toBe(false); if (!r.ok) expect(r.reason).toMatch(/0\.60.*0\.30/);
@@ -1441,7 +1478,7 @@ Co-Authored-By: Claude Fable 5.1 <noreply@anthropic.com>"
 **Interfaces:**
 - Consumes: `Grouped`, `ProbeResult`, `History`, `scoreStream`, `uptime7d`, `hostOf`.
 - Produces:
-  - `buildCatalog(input: { grouped: Grouped; results: Map<string, ProbeResult>; history: History; src: SourceData; version: number; generatedAt: string }): Catalog`. Streams within a channel are sorted by score descending. Every channel's `hasUp` is set true when any of its streams is `up` or `unverified`. Countries list only codes referenced by a channel. Categories are the API list plus `{ id: 'other', name: 'Other' }`.
+  - `buildCatalog(input: { grouped: Grouped; results: Map<string, ProbeResult>; history: History; src: SourceData; version: number; generatedAt: string }): Catalog`. Streams within a channel are sorted by health (`up`, then `unverified`, then `down`) and then by score descending. The score uses the median of the history window's response times. Every channel's `hasUp` is set true when any of its streams is `up` or `unverified`. Countries list only codes referenced by a channel. Categories are the API list plus `{ id: 'other', name: 'Other' }`.
   - `writeOutputs(outDir: string, catalog: Catalog, history: History): Promise<Latest>` writes `catalog.json.gz` (gzip level 9), `history.json`, `latest.json` and returns the `Latest` object written.
 
 - [ ] **Step 1: Write the failing tests**
@@ -1453,7 +1490,7 @@ import { buildCatalog } from '../src/build.js';
 import type { Grouped, History, ProbeResult, SourceData } from '../src/types.js';
 
 const src: SourceData = {
-  channels: [], streams: [], logos: [],
+  channels: [], streams: [], logos: [], feeds: [], subdivisions: [], cities: [],
   categories: [{ id: 'news', name: 'News' }],
   countries: [{ code: 'US', name: 'United States', flag: '🇺🇸', languages: [] }, { code: 'FR', name: 'France', flag: '🇫🇷', languages: [] }],
 };
@@ -1461,21 +1498,27 @@ const grouped: Grouped = {
   channels: [
     { id: 'A.us', name: 'A', altNames: [], country: 'US', region: null, categories: ['news'], network: null, logo: null, adult: false, hasUp: false },
     { id: 'B.us', name: 'B', altNames: [], country: 'US', region: null, categories: ['news'], network: null, logo: null, adult: false, hasUp: false },
+    { id: 'C.us', name: 'C', altNames: [], country: 'US', region: null, categories: ['news'], network: null, logo: null, adult: false, hasUp: false },
   ],
   streams: [
     { channel: 'A.us', url: 'http://1.2.3.4/x.m3u8', quality: '1080p', referrer: null, userAgent: null },
     { channel: 'A.us', url: 'http://cdn/x.m3u8', quality: '720p', referrer: 'r', userAgent: 'u' },
+    { channel: 'A.us', url: 'http://unv/x.m3u8', quality: '1080p', referrer: null, userAgent: null },
     { channel: 'B.us', url: 'http://dead/x.m3u8', quality: null, referrer: null, userAgent: null },
+    { channel: 'C.us', url: 'http://geo/x.m3u8', quality: null, referrer: null, userAgent: null },
   ],
 };
 const results = new Map<string, ProbeResult>([
   ['http://1.2.3.4/x.m3u8', { url: 'http://1.2.3.4/x.m3u8', health: 'down', format: 'hls', responseMs: 300, reason: 'x', finalHost: '1.2.3.4' }],
   ['http://cdn/x.m3u8', { url: 'http://cdn/x.m3u8', health: 'up', format: 'hls', responseMs: 200, reason: 'ok', finalHost: 'cdn' }],
   ['http://dead/x.m3u8', { url: 'http://dead/x.m3u8', health: 'down', format: 'unknown', responseMs: null, reason: 'timeout', finalHost: null }],
+  ['http://unv/x.m3u8', { url: 'http://unv/x.m3u8', health: 'unverified', format: 'unknown', responseMs: 50, reason: 'http 403', finalHost: 'unv' }],
+  ['http://geo/x.m3u8', { url: 'http://geo/x.m3u8', health: 'unverified', format: 'unknown', responseMs: 50, reason: 'http 403', finalHost: 'geo' }],
 ]);
 const history: History = { generatedAt: '2026-09-22', upRate: 0.5, streams: {
   'http://1.2.3.4/x.m3u8': [{ d: '2026-09-21', s: 'up', ms: 1 }, { d: '2026-09-22', s: 'down', ms: 300 }],
   'http://cdn/x.m3u8': [{ d: '2026-09-22', s: 'up', ms: 200 }],
+  'http://unv/x.m3u8': Array.from({ length: 7 }, (_, i) => ({ d: `2026-09-${16 + i}`, s: 'up' as const, ms: 50 })),
 } };
 
 describe('buildCatalog', () => {
@@ -1485,16 +1528,25 @@ describe('buildCatalog', () => {
     expect(cat.countries).toEqual([{ code: 'US', name: 'United States', flag: '🇺🇸' }]);
     expect(cat.categories).toEqual([{ id: 'news', name: 'News' }, { id: 'other', name: 'Other' }]);
   });
-  it('sets hasUp when any stream is up or unverified', () => {
+  it('sets hasUp when any stream is up or unverified, false when all are down', () => {
     expect(cat.channels.find(c => c.id === 'A.us')!.hasUp).toBe(true);
     expect(cat.channels.find(c => c.id === 'B.us')!.hasUp).toBe(false);
+    expect(cat.channels.find(c => c.id === 'C.us')!.hasUp).toBe(true);
   });
-  it('orders streams within a channel by score descending and fills fields', () => {
-    expect(cat.streams.filter(s => s.channel === 'A.us').map(s => s.url)).toEqual(['http://cdn/x.m3u8', 'http://1.2.3.4/x.m3u8']);
-    const top = cat.streams[0];
-    expect(top).toMatchObject({ channel: 'A.us', format: 'hls', quality: '720p', referrer: 'r', userAgent: 'u', health: 'up', uptime7d: 1, responseMs: 200 });
-    expect(top.score).toBeGreaterThan(cat.streams[1].score);
-    expect(cat.streams[1].uptime7d).toBe(0.5);
+  it('orders streams within a channel by health first, then score, and fills fields', () => {
+    const a = cat.streams.filter(s => s.channel === 'A.us');
+    expect(a.map(s => s.url)).toEqual(['http://cdn/x.m3u8', 'http://unv/x.m3u8', 'http://1.2.3.4/x.m3u8']);
+    const [cdn, unv, ip] = a;
+    expect(cdn).toMatchObject({ format: 'hls', quality: '720p', referrer: 'r', userAgent: 'u', health: 'up', uptime7d: 1, responseMs: 200 });
+    expect(unv.score).toBeGreaterThan(cdn.score); // higher score, but unverified ranks below up
+    expect(ip.uptime7d).toBe(0.5);
+  });
+  it('scores with the median response time from history, not just tonight', () => {
+    const h = { generatedAt: null, upRate: null, streams: { 'http://cdn/x.m3u8': [{ d: '1', s: 'up' as const, ms: 100 }, { d: '2', s: 'up' as const, ms: 4000 }, { d: '3', s: 'up' as const, ms: 4500 }] } };
+    const c2 = buildCatalog({ grouped: { channels: grouped.channels.slice(0, 1), streams: grouped.streams.filter(s => s.url === 'http://cdn/x.m3u8') }, results, history: h, src, version: 1, generatedAt: 'x' });
+    const c3 = buildCatalog({ grouped: { channels: grouped.channels.slice(0, 1), streams: grouped.streams.filter(s => s.url === 'http://cdn/x.m3u8') }, results, history: { ...h, streams: { 'http://cdn/x.m3u8': [{ d: '1', s: 'up', ms: 100 }] } }, src, version: 1, generatedAt: 'x' });
+    expect(c2.streams[0].responseMs).toBe(200); // tonight's value is what the file carries
+    expect(c2.streams[0].score).toBeLessThan(c3.streams[0].score); // but the median 4000 drags the score down
   });
   it('a stream with no probe result is down with unknown format', () => {
     const g2: Grouped = { ...grouped, streams: [{ channel: 'A.us', url: 'http://none', quality: null, referrer: null, userAgent: null }] };
@@ -1553,16 +1605,21 @@ export function buildCatalog(input: {
     const entries = history.streams[s.url] ?? [];
     const uptime = uptime7d(entries);
     const responseMs = r?.responseMs ?? null;
+    // Spec 4.1 step 5: score uses the median response time over the history window, not just tonight's.
+    const msHistory = entries.map(e => e.ms).filter((m): m is number => m !== null).sort((a, b) => a - b);
+    const medianMs = msHistory.length ? msHistory[Math.floor(msHistory.length / 2)] : responseMs;
     const host = r?.finalHost ?? hostOf(s.url);
     return {
       channel: s.channel, url: s.url, format: r?.format ?? 'unknown', quality: s.quality,
       referrer: s.referrer, userAgent: s.userAgent, health: r?.health ?? 'down',
-      uptime7d: uptime, responseMs, score: scoreStream({ uptime, quality: s.quality, responseMs, host }),
+      uptime7d: uptime, responseMs, score: scoreStream({ uptime, quality: s.quality, responseMs: medianMs, host }),
       checkedAt: generatedAt,
     };
   });
+  // Spec 4.3: unverified and down streams rank last within their channel regardless of score.
   const order = new Map(grouped.channels.map((c, i) => [c.id, i]));
-  streams.sort((a, b) => (order.get(a.channel)! - order.get(b.channel)!) || (b.score - a.score));
+  const healthRank = (h: string) => (h === 'up' ? 0 : h === 'unverified' ? 1 : 2);
+  streams.sort((a, b) => (order.get(a.channel)! - order.get(b.channel)!) || (healthRank(a.health) - healthRank(b.health)) || (b.score - a.score));
 
   const withUp = new Set(streams.filter(s => s.health !== 'down').map(s => s.channel));
   const channels = grouped.channels.map(c => ({ ...c, hasUp: withUp.has(c.id) }));
@@ -1595,7 +1652,7 @@ export async function writeOutputs(outDir: string, catalog: Catalog, history: Hi
 - [ ] **Step 4: Run to verify pass**
 
 Run: `cd catalog && npx vitest run test/build.test.ts test/write.test.ts`
-Expected: 6 pass.
+Expected: 7 pass.
 
 - [ ] **Step 5: Commit**
 
@@ -1620,7 +1677,7 @@ Co-Authored-By: Claude Fable 5.1 <noreply@anthropic.com>"
 **Interfaces:**
 - Consumes: everything above.
 - Produces: `runPipeline(opts: { fetchFn: FetchFn; apiBase: string; pagesBase: string; outDir: string; now: () => Date; concurrency?: number; perHost?: number; timeoutMs?: number; log?: (s: string) => void }): Promise<{ published: boolean; reason?: string; latest?: Latest; stats: { channels: number; streams: number; up: number; down: number; unverified: number } }>`.
-- `main.ts` reads env: `PAGES_BASE` (required, e.g. `https://user.github.io/tv-app`), `OUT_DIR` (default `out`), `API_BASE` (default iptv-org), `CONCURRENCY` (50), `PER_HOST` (2). Exits 1 if not published.
+- `main.ts` reads env: `PAGES_BASE` (required, e.g. `https://user.github.io/tv-app`), `OUT_DIR` (default `out`), `API_BASE` (default iptv-org), `CONCURRENCY` (50), `PER_HOST` (2), `TIMEOUT_MS` (10000), `ALLOW_EMPTY_HISTORY` (`1` to tolerate an unreachable history file; local runs only). Exits 1 if not published.
 
 - [ ] **Step 1: Write the fixture generator**
 
@@ -1634,9 +1691,10 @@ import { fetchSource } from '../src/fetch-source.js';
 
 const out = join(import.meta.dirname, '..', 'test', 'fixtures', 'api');
 const src = await fetchSource(fetch);
-const keepIds = new Set(['ABC.us', 'CBS.us', 'SECNetwork.us', 'FoxSports1.us', 'BBCNews.uk', 'DWEnglish.de', 'NHKWorldJapan.jp', 'FranceInfo.fr']);
+const keepIds = new Set(['ABC.us', 'CBS.us', 'SECNetwork.us', 'FoxSports1.us', 'BBCNews.uk', 'NHKWorldJapan.jp']);
 const channels = src.channels.filter(c => keepIds.has(c.id));
-const streams = src.streams.filter(s => (s.channel && keepIds.has(s.channel)) || s.channel === null).slice(0, 120);
+// All channel-linked streams for the kept ids, plus a slice of channel-less streams (the API lists those first, so a plain slice would contain nothing else).
+const streams = [...src.streams.filter(s => s.channel && keepIds.has(s.channel)), ...src.streams.filter(s => s.channel === null).slice(0, 40)];
 const logos = src.logos.filter(l => keepIds.has(l.channel));
 const feeds = src.feeds.filter(f => keepIds.has(f.channel));
 const areaCodes = new Set(feeds.flatMap(f => f.broadcast_area));
@@ -1649,7 +1707,7 @@ console.log(`fixture: ${channels.length} channels, ${streams.length} streams, ${
 ```
 
 Run: `cd catalog && npm run fixture`
-Expected: prints counts, eight files appear under `catalog/test/fixtures/api/`. Inspect `streams.json` and confirm it contains at least one stream with `"channel": null`, at least one with a `referrer`, and at least one `ABC.us` stream whose feed appears in `feeds.json` with a `ct/` broadcast area. If not, widen `.slice(0, 120)` until it does.
+Expected: prints counts, eight files appear under `catalog/test/fixtures/api/`. Inspect `streams.json` and confirm it contains at least one stream with `"channel": null`, at least one with a `referrer`, and at least one `ABC.us` stream whose feed appears in `feeds.json` with a `ct/` broadcast area. The kept ids guarantee the affiliate case; if the channel-less cases are missing, raise the slice of 40.
 
 - [ ] **Step 2: Write the failing integration test**
 
@@ -1668,9 +1726,10 @@ const MEDIA = '#EXTM3U\n#EXT-X-TARGETDURATION:10\n#EXTINF:10,\na.ts\n';
 
 // Serves fixture API files, a previous history, and fakes every stream host:
 // hosts containing "dead" 404, hosts containing "geo" 403, everything else is a live media playlist.
-function fakeFetch(prevHistory: unknown | null) {
+function fakeFetch(prevHistory: unknown | null, calls: Map<string, number> = new Map()) {
   return (async (input: string | URL | Request, init?: RequestInit) => {
     const url = String(input);
+    calls.set(url, (calls.get(url) ?? 0) + 1);
     if (url.startsWith('https://api.test/')) {
       const name = url.split('/').pop()!;
       return new Response(await readFile(join(FIX, name), 'utf8'), { status: 200 });
@@ -1688,7 +1747,8 @@ function fakeFetch(prevHistory: unknown | null) {
 describe('runPipeline (offline, fixture API)', () => {
   it('first run publishes a catalog with every fixture stream and starts history', async () => {
     const outDir = await mkdtemp(join(tmpdir(), 'pipe-'));
-    const r = await runPipeline({ fetchFn: fakeFetch(null), apiBase: 'https://api.test', pagesBase: 'https://pages.test', outDir, now: () => new Date('2026-09-22T06:00:00Z'), concurrency: 8, perHost: 2, timeoutMs: 1000, log: () => {} });
+    const calls = new Map<string, number>();
+    const r = await runPipeline({ fetchFn: fakeFetch(null, calls), apiBase: 'https://api.test', pagesBase: 'https://pages.test', outDir, now: () => new Date('2026-09-22T06:00:00Z'), concurrency: 8, perHost: 2, timeoutMs: 1000, log: () => {} });
     expect(r.published).toBe(true);
     expect(r.stats.streams).toBeGreaterThan(10);
     expect(r.stats.up).toBeGreaterThan(0);
@@ -1700,7 +1760,9 @@ describe('runPipeline (offline, fixture API)', () => {
     expect(cat.channels.every(c => typeof c.hasUp === 'boolean' && typeof c.adult === 'boolean')).toBe(true);
     expect(cat.categories.some(c => c.id === 'other')).toBe(true);
     const hist = JSON.parse(await readFile(join(outDir, 'history.json'), 'utf8'));
-    expect(Object.keys(hist.streams)).toHaveLength(r.stats.streams);
+    const uniqueUrls = new Set(cat.streams.map(s => s.url));
+    expect(Object.keys(hist.streams)).toHaveLength(uniqueUrls.size);
+    for (const u of uniqueUrls) expect(calls.get(u) ?? 0, `probe count for ${u}`).toBe(1); // each URL probed once, even if linked from two channels
     expect(hist.streams[cat.streams[0].url]).toHaveLength(1);
     const latest = JSON.parse(await readFile(join(outDir, 'latest.json'), 'utf8'));
     expect(latest.version).toBe(cat.version);
@@ -1717,6 +1779,8 @@ describe('runPipeline (offline, fixture API)', () => {
     expect(r.published).toBe(false);
     expect(r.reason).toMatch(/up rate fell/);
     await expect(readFile(join(outDir, 'catalog.json.gz'))).rejects.toThrow();
+    await expect(readFile(join(outDir, 'history.json'))).rejects.toThrow(); // history must not advance on a failed guard
+    await expect(readFile(join(outDir, 'latest.json'))).rejects.toThrow();
   });
   it('second run extends history to two entries', async () => {
     const outDir = await mkdtemp(join(tmpdir(), 'pipe-'));
@@ -1744,7 +1808,7 @@ import { buildCatalog } from './build.js';
 import { fetchSource } from './fetch-source.js';
 import { groupStreams } from './group.js';
 import { checkGuard } from './guard.js';
-import { loadHistory, mergeHistory } from './history.js';
+import { emptyHistory, loadHistory, mergeHistory } from './history.js';
 import { createLimiter } from './limiter.js';
 import { validateLogos } from './logos.js';
 import { hostOf, probeStream } from './probe.js';
@@ -1754,6 +1818,7 @@ import { writeOutputs } from './write.js';
 export interface PipelineOpts {
   fetchFn: FetchFn; apiBase: string; pagesBase: string; outDir: string; now: () => Date;
   concurrency?: number; perHost?: number; timeoutMs?: number; log?: (s: string) => void;
+  allowEmptyHistory?: boolean; // local runs only; CI never sets it
 }
 export interface PipelineResult {
   published: boolean; reason?: string; latest?: Latest;
@@ -1766,7 +1831,9 @@ export async function runPipeline(o: PipelineOpts): Promise<PipelineResult> {
   const today = started.toISOString().slice(0, 10);
 
   log('fetching previous history');
-  const prev = await loadHistory(o.fetchFn, o.pagesBase);
+  const prev = o.allowEmptyHistory
+    ? await loadHistory(o.fetchFn, o.pagesBase).catch(e => { log(`history unavailable (${(e as Error).message}); ALLOW_EMPTY_HISTORY set, starting empty`); return emptyHistory(); })
+    : await loadHistory(o.fetchFn, o.pagesBase);
   log(`previous upRate: ${prev.upRate ?? 'none'}`);
 
   log('fetching source data');
@@ -1821,6 +1888,7 @@ const result = await runPipeline({
   concurrency: Number(process.env.CONCURRENCY ?? 50),
   perHost: Number(process.env.PER_HOST ?? 2),
   timeoutMs: Number(process.env.TIMEOUT_MS ?? 10_000),
+  allowEmptyHistory: process.env.ALLOW_EMPTY_HISTORY === '1',
 });
 console.log(JSON.stringify(result.stats));
 if (!result.published) { console.error(`NOT PUBLISHED: ${result.reason}`); process.exit(1); }
@@ -1828,13 +1896,13 @@ if (!result.published) { console.error(`NOT PUBLISHED: ${result.reason}`); proce
 
 - [ ] **Step 5: Run to verify pass**
 
-Run: `cd catalog && npx vitest run`
-Expected: all tests pass, including the 3 pipeline tests.
+Run: `cd catalog && npm run typecheck && npx vitest run`
+Expected: typecheck clean, all tests pass, including the 3 pipeline tests.
 
 - [ ] **Step 6: Run the real pipeline once locally against the live API**
 
-Run: `cd catalog && PAGES_BASE=https://example.invalid OUT_DIR=out npm run run`
-Expected: completes in under 60 minutes on home broadband (per-host cap slows it), prints stats with thousands of `up`, writes `catalog/out/catalog.json.gz` between 1.5 and 4 MB. `history.json` load will 404-equivalent (DNS failure on `.invalid` is caught as network error and treated as empty), so the guard passes. Record the stats and runtime in the commit message.
+Run: `cd catalog && PAGES_BASE=https://example.invalid ALLOW_EMPTY_HISTORY=1 OUT_DIR=out npm run run`
+Expected: completes in under 60 minutes on home broadband (per-host cap slows it), prints stats with thousands of `up`, writes `catalog/out/catalog.json.gz` between 1.5 and 4 MB. `ALLOW_EMPTY_HISTORY=1` lets the DNS failure on `.invalid` start with empty history; without it the run aborts, which is the CI behavior. Record the stats and runtime in the commit message.
 
 - [ ] **Step 7: Commit**
 
@@ -1899,9 +1967,9 @@ jobs:
       - name: Install
         working-directory: catalog
         run: npm ci
-      - name: Test
+      - name: Typecheck and test
         working-directory: catalog
-        run: npm test
+        run: npm run typecheck && npm test
       - name: Build catalog
         working-directory: catalog
         env:
@@ -1912,15 +1980,6 @@ jobs:
         uses: actions/upload-pages-artifact@v3
         with:
           path: catalog/out
-      - name: Open issue on failure
-        if: failure()
-        env:
-          GH_TOKEN: ${{ github.token }}
-        run: |
-          gh issue create \
-            --title "Catalog run failed $(date -u +%F)" \
-            --body "Run: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}" \
-            --label catalog-failure || true
 
   deploy:
     needs: build
@@ -1939,7 +1998,25 @@ jobs:
       - uses: gautamkrishnar/keepalive-workflow@v2
         with:
           use_api: true
+
+  report-failure:
+    needs: [build, deploy]
+    if: failure()
+    runs-on: ubuntu-latest
+    steps:
+      - name: Open issue
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+        run: |
+          gh label create catalog-failure --color B60205 --description "Nightly catalog run failed" --force
+          gh issue create \
+            --title "Catalog run failed $(date -u +%F)" \
+            --body "Run: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}" \
+            --label catalog-failure
 ```
+
+The issue is opened by a separate job that depends on both `build` and `deploy`, so a failure in either opens one, and the label is created on the spot so the first failure is never swallowed.
 
 - [ ] **Step 2: Write the README**
 
@@ -1955,7 +2032,7 @@ Nightly job that turns the iptv-org API into `catalog.json.gz`, `history.json` a
 2. Settings → Pages → Source: **GitHub Actions**.
 3. Settings → Secrets and variables → Actions → Variables → New: `PAGES_BASE` = `https://<owner>.github.io/<repo>`.
 4. Actions → catalog → Run workflow. First run takes 30 to 60 minutes. When it finishes, `https://<owner>.github.io/<repo>/latest.json` must return JSON.
-5. Create the label `catalog-failure` under Issues → Labels so failure issues get tagged.
+5. Nothing else. The workflow creates the `catalog-failure` label itself the first time it needs it.
 
 ## Platform rules
 
@@ -1970,7 +2047,7 @@ Nightly job that turns the iptv-org API into `catalog.json.gz`, `history.json` a
     npm test
     PAGES_BASE=https://<owner>.github.io/<repo> npm run run     # writes ./out
 
-Env: `PAGES_BASE` (required), `OUT_DIR` (out), `API_BASE`, `CONCURRENCY` (50), `PER_HOST` (2), `TIMEOUT_MS` (10000).
+Env: `PAGES_BASE` (required), `OUT_DIR` (out), `API_BASE`, `CONCURRENCY` (50), `PER_HOST` (2), `TIMEOUT_MS` (10000), `ALLOW_EMPTY_HISTORY` (`1` for local runs when the Pages site is unreachable; never set in CI).
 
 ## Guards
 
@@ -1979,8 +2056,8 @@ The run refuses to publish, and opens an issue, when the up-rate falls more than
 
 - [ ] **Step 3: Validate the workflow file parses**
 
-Run: `npx --yes @action-validator/cli .github/workflows/catalog.yml 2>&1 || python3 -c "import yaml,sys; yaml.safe_load(open('.github/workflows/catalog.yml')); print('yaml ok')"`
-Expected: no errors, or `yaml ok` from the fallback.
+Run: `npx --yes js-yaml .github/workflows/catalog.yml > /dev/null && echo yaml ok`
+Expected: `yaml ok`. (`js-yaml` exits non-zero on a parse error; `@action-validator/cli` exits 0 on everything including a missing file, so it proves nothing.) If `actionlint` is installed, run it too for schema-level checks.
 
 - [ ] **Step 4: Commit**
 
