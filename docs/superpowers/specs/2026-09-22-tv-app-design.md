@@ -1,7 +1,7 @@
 # TV App — Design Spec
 
 **Date:** 2026-09-22
-**Status:** Draft for owner review, revised after adversarial review
+**Status:** Approved by owner 2026-09-22
 **Owner:** Corey Payne
 
 ## 1. Purpose
@@ -263,11 +263,16 @@ Rules for every screen: focus is always visible from ten feet, OK on any focused
 
 ## 10. Release plan
 
-> TAILOR: owner to confirm the V1 / V1.1 split below, recommended by adversarial review to keep the first release to a few weeks of solo work.
+**Version 1.** Everything in this spec. Owner decision 2026-09-22: the adversarial review recommended splitting a smaller first release, and the owner chose to ship the full feature set as one release. The implementation plan therefore sequences the work so the core path (catalog job, sync, Player, Guide, failover) is working end to end first, and preload, measurement, the poor-signal prompt, Browse and Diagnostics are layered on afterward, but nothing ships until all of it is done.
 
-**Version 1.** Catalog job with format detection, health test, history and guards. Catalog sync with streaming parse. Player, Guide, Search, Favorites, Settings. User M3U sources. Failover with the sort key and one-hour demotion, outage guard, single-stream and manual-pick rules. Platform plumbing: Leanback, cleartext, shared client, logos.
-
-**Version 1.1.** Preload without decoding, prefetch on focus, passive measurement and `localScore`, poor-signal prompt, Browse screen, Diagnostics page, fake HLS server instrumented test.
+- Catalog job with format detection, health test, history and guards.
+- Catalog sync with streaming parse.
+- Player, Guide, Browse, Search, Favorites, Settings, Diagnostics.
+- User M3U sources.
+- Failover with the sort key and one-hour demotion, outage guard, single-stream and manual-pick rules.
+- Preload without decoding, prefetch on focus, passive measurement and `localScore`, poor-signal prompt.
+- Platform plumbing: Leanback, cleartext, shared client, logos.
+- Test suite including the fake HLS server instrumented test.
 
 **Version 2.** Automatic switching on degradation, program guide data where obtainable, program-first Home, Continue Watching, custom collections.
 
