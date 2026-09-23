@@ -31,7 +31,7 @@ A pipeline of pure TypeScript modules: fetch eight iptv-org API files → group 
 
 ### TV app (`app/`)
 
-Single activity. Room holds the imported catalog plus local state. Catalog imports are staged under a new `importId` and flipped atomically; user M3U sources live in the same tables under `importId = 0` and survive imports. `playback/FailoverEngine.kt` is a pure decision class (queue, 10 s tune budget, per-stream cutoffs, 2 s retry gap, fresh budget on every mid-play death); `PlayerController` applies its decisions to one ExoPlayer and records failures. The UI is one root player surface with overlays drawn over the still-playing video; the Channels inset is the same view animated to a corner, never a second view or decoder. All logic that can run on the JVM (queue ordering, budget, broken-here, parsers, key routing, first-launch state machine) has injected clocks and no Android imports.
+Single activity. Room holds the imported catalog plus local state. Catalog imports are staged under a new `importId` and flipped atomically. There are no user-added M3U sources (removed 2026-09-23; extras go into the catalog job). `playback/FailoverEngine.kt` is a pure decision class (queue, 10 s tune budget, per-stream cutoffs, 2 s retry gap, fresh budget on every mid-play death); `PlayerController` applies its decisions to one ExoPlayer and records failures. The UI is one root player surface with overlays drawn over the still-playing video; the Channels inset is the same view animated to a corner, never a second view or decoder. All logic that can run on the JVM (queue ordering, budget, broken-here, the catalog parser, key routing, first-launch state machine) has injected clocks and no Android imports.
 
 ### Invariants the two halves share
 

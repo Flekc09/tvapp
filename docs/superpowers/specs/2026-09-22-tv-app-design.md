@@ -51,7 +51,7 @@ Consequences:
 
 - Many channels have 5 to 30 duplicate feeds. Grouping and ranking them is the core backend job.
 - iptv-org models local affiliates as feeds of one network channel. "ABC" has 33 streams, most of them different cities' stations. The viewer needs those as separate channels, and failover must stay within one station's feeds.
-- The US network and sports feeds the owner cares most about are community-submitted restreams on bare IPs. They are the least stable part of the catalog and can disappear from iptv-org at any time. Failover and user-added sources are therefore core features, not extras.
+- The US network and sports feeds the owner cares most about are community-submitted restreams on bare IPs. They are the least stable part of the catalog and can disappear from iptv-org at any time. Failover is therefore a core feature, not an extra. Owner decision 2026-09-23: feeds the owner wants that iptv-org lacks are added on the backend (a future extras input to the catalog job), never per TV; the app has no user-added sources.
 - About one stream in five (3,453) is plain HTTP, but that includes nearly every raw-IP host and therefore the US sports restreams (SEC Network 1 of 1, ESPNU 2 of 2, Fox Sports 1 2 of 3). The app must allow cleartext HTTP or those channels cannot play. Only 3 streams are HTTPS on a raw IP, so self-signed certificates are not accepted anywhere; HTTPS is validated normally.
 - Nearly a thousand streams will not play without per-stream headers. The player must honor them from day one.
 - Not every URL is HLS. The catalog also contains raw MPEG-TS over HTTP, DASH manifests, and dead hosts returning HTML. Format must be detected, not assumed.
@@ -85,7 +85,7 @@ Two GitHub platform rules the job must respect:
 
 ### 3.2 TV app (`app/`)
 
-Kotlin, Jetpack Compose for TV, Media3 ExoPlayer, Room database. Downloads the catalog when the version changes and the device is idle, stores it locally, renders everything from the local copy. Favorites, recents, settings and user sources live only on the device.
+Kotlin, Jetpack Compose for TV, Media3 ExoPlayer, Room database. Downloads the catalog when the version changes and the device is idle, stores it locally, renders everything from the local copy. Favorites, recents and settings live only on the device.
 
 ### 3.3 Deployment model
 
@@ -186,11 +186,11 @@ Logos are validated by the job with a HEAD request. Dead logo URLs are replaced 
 
 Each layer is independently testable and holds no logic belonging to another.
 
-**Data layer.** Room database. Catalog tables (`countries`, `categories`, `channels`, `streams`) carry a `source` column and an `import_id`. User-added M3U content lives in the same tables with `source = 'user:<id>'`. Local-only tables: `favorites` (with a `position` column), `recents`, `user_sources`, `stream_stats`, `stream_failures`, `channel_status`, `settings`.
+**Data layer.** Room database. Catalog tables (`countries`, `categories`, `channels`, `streams`) carry a `source` column and an `import_id`. Local-only tables: `favorites` (with a `position` column), `recents`, `stream_stats`, `stream_failures`, `channel_status`, `settings`. (User-added M3U content was removed from V1 on 2026-09-23; the `source` column stays for a future backend extras feed.)
 
 **Sync.** On launch and every 24 hours the app fetches `latest.json` (under 1 KB) and records whether a newer version exists. The download and import run only when idle, and "idle" is decided by the app, not the platform: the sync worker checks that nothing has played for 10 minutes before downloading, and retries later otherwise. WorkManager's device-idle constraint is not used because it has no defined meaning on a TV that is never unplugged. Import stream-parses the gzipped JSON, never holding the whole document in memory, inserting in batches of 1,000 under a new `import_id`. When the import completes, one small transaction flips the active `import_id` and deletes the old iptv rows, so lists never flicker or go empty. User rows are untouched. Favorites whose channel id no longer exists after a sync are kept and shown as "no longer available" until the user removes them. The only exception to "idle only" is first launch, which imports immediately behind a progress screen.
 
-**Source layer.** One interface, two implementations: the iptv-org catalog and user-added M3U URLs. The M3U parser handles standard `#EXTINF` attributes including logo and group title, plus `#EXTVLCOPT` header lines for referrer and user agent. Both feed the same tables tagged by source, so favorites, search and lists behave identically regardless of origin.
+**Source layer.** One source: the catalog published by the job. Anything the owner wants beyond iptv-org enters through the job, so every TV sees the same list and nothing is typed on a TV. (User-added M3U URLs were removed 2026-09-23.)
 
 **Playback layer.** One player controller wrapping Media3 ExoPlayer, taking a channel id and owning stream selection, failover, preload and measurement. Per-stream referrer and user agent go into the data source factory. `BehindLiveWindowException` is handled by re-seeking to the live edge, not as a stream failure.
 
@@ -286,7 +286,7 @@ Fixed here: which surfaces exist, how the remote moves between them, and what ea
 5. **Favorites.** Channels filtered to favorites, one press from anywhere. Move up and down to reorder. Position becomes the channel number shown in the strip and honored by digit keys.
 6. **Settings.** Two tiers.
    - *Settings:* startup behavior, sleep timer (30 / 60 / 90 minutes), show channels that don't work here, show adult channels (behind a 4-digit PIN set on first use).
-   - *Advanced* (long-press to enter): M3U sources, catalog base URL, force catalog refresh, catalog version and date, auto-switch on poor signal, and Diagnostics: current stream URL, format, resolution, bitrate, buffer level, measured tune time.
+   - *Advanced* (long-press to enter): catalog base URL, force catalog refresh, catalog version and date, auto-switch on poor signal, and Diagnostics: current stream URL, format, resolution, bitrate, buffer level, measured tune time.
 
 **Language rule.** Nothing on screen says HLS, TS, DASH, unverified, unsorted, demoted, or a stream count. Status words are Working, Not checked, Not working.
 
@@ -315,7 +315,6 @@ Rules for every surface: focus is always visible from ten feet, OK on any focuse
 | Playback | Tune budget exhausted | "This channel isn't working right now", Try again, Next channel |
 | Playback | Network not validated | Play attempts continue, failures not recorded |
 | Playback | Standby resume | Re-tune current channel to live edge |
-| M3U source | URL doesn't parse | Show the first failing line |
 
 ## 8. Testing
 
@@ -345,7 +344,7 @@ Rules for every surface: focus is always visible from ten feet, OK on any focuse
 
 | Decision | Choice | Rejected alternatives |
 |---|---|---|
-| Content source | iptv-org, whole catalog, plus user M3U | Family antenna network, paid IPTV provider |
+| Content source | iptv-org, whole catalog, with owner extras added on the backend when needed (2026-09-23) | Family antenna network, paid IPTV provider, per-TV user M3U playlists (removed 2026-09-23: the backend is the one source; family and friends never paste links on a TV) |
 | Platform | Android TV / Google TV, sideloaded | Roku, Tizen, webOS, Play Store |
 | Backend | Nightly GitHub Actions job to static files via Pages artifact | Fully on-device processing, self-hosted server, committing to a branch |
 | History persistence | `history.json` on Pages, read at start of each run | Actions cache, external database |
