@@ -4,14 +4,15 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## State of the repository
 
-Planning is complete; no product code exists yet. The repo holds an approved design spec, two implementation plans, and two framework agents. Read the spec before touching anything, and execute only from the plans.
+Planning and UI design are complete; no product code exists yet. The repo holds an approved design spec, two implementation plans, a UI design package, and two framework agents. Read the spec before touching anything, and execute only from the plans.
 
 - `docs/superpowers/specs/2026-09-22-tv-app-design.md` — the approved spec. Every decision, with the rejected alternatives, is in its section 11.
 - `docs/superpowers/plans/2026-09-22-catalog-job.md` — 13 tasks, TypeScript. Build this first; the app consumes its output.
-- `docs/superpowers/plans/2026-09-22-tv-app.md` — 19 tasks, Kotlin / Android TV. Task 18 is a throwaway spike, Task 19 is the hardware release checklist.
+- `docs/superpowers/plans/2026-09-22-tv-app.md` — 19 tasks, Kotlin / Android TV. Task 5 is a stub (user M3U playlists were cut 2026-09-23; numbering kept so cross-references hold), Task 18 is a throwaway spike, Task 19 is the hardware release checklist.
+- `docs/ui/` — the UI design package, owner-approved and past the ui-ux agent's Gate S on 2026-09-23: `frontend-brief.md`, `screens-and-flows.md` (screen inventory, red routes, deviations D1–D12), `design-tokens.md`, `component-states.md`, and `screens/01`–`08`, one spec per surface with layout in dp, the four states, and the owner's decisions. Mockups are a private Design artifact, "TV App screens" (link in each screen spec). The UI tasks of the app plan (12–17) were rewritten to match this package; when the two disagree, the screen spec is the design and the plan is the build order.
 - `.claude/agents/sdlc.md` governs the engineering lifecycle; `.claude/agents/ui-ux.md` guides screen design. The owner designs the UI screen by screen with Claude using the ui-ux playbooks; do not generate all screens in one pass.
 
-The spec and both plans have been through adversarial reviews (engineering, viewer psychology, cold-executor). The catalog plan's tasks were executed verbatim in a scratch directory and pass (69 tests) with type-checking. The app plan's library calls were verified against Media3, Room and Compose sources at the pinned versions. Do not "fix" the plans from memory; if a step fails, record the exact error and fix minimally, then update the plan.
+The spec, both plans and the UI package have been through adversarial reviews (engineering, viewer psychology, cold-executor, and a UI review whose blockers, majors and minors were all applied). The catalog plan's tasks were executed verbatim in a scratch directory and pass (69 tests) with type-checking. The app plan's library calls were verified against Media3, Room and Compose sources at the pinned versions. Do not "fix" the plans from memory; if a step fails, record the exact error and fix minimally, then update the plan.
 
 ## What is being built
 
@@ -40,6 +41,12 @@ Single activity. Room holds the imported catalog plus local state. Catalog impor
 - Nothing on screen says HLS, TS, DASH, unverified, demoted, unsorted, or a stream count. Status words are Working, Not checked, Not working.
 - Cleartext HTTP is allowed (the sports restreams need it); HTTPS is validated normally with no self-signed exceptions.
 
+### UI rules that are easy to get wrong
+
+- The stick's own remote (Chromecast with Google TV, onn) sends only D-pad, OK, Back, Home and app keys. GUIDE, digits, LAST_CHANNEL and CHANNEL_UP/DOWN arrive only as CEC pass-through from a TV remote and are accelerators. Every route must work with D-pad, OK and Back; **hold Back** is the favorites key on every surface (flow map D10), and the "isn't working" card is an overlay so its buttons take focus.
+- `docs/ui/screens-and-flows.md` section 2 is the one per-surface key table; `KeyRouter` implements exactly that.
+- Text never sits on the scrim alone, status words never ellipsise (fixed slot), wide rows grow 8 dp rather than scale, and `python3 docs/ui/tools/contrast.py` must print zero FAIL lines after any colour or opacity change.
+
 ## Commands
 
 None run yet. Once the plans are executed:
@@ -52,6 +59,11 @@ npm run typecheck && npm test            # strict TypeScript is only enforced by
 npx vitest run test/probe.test.ts        # one file
 npm run fixture                          # regenerate test/fixtures/api from the live API (rarely)
 PAGES_BASE=https://<owner>.github.io/<repo> ALLOW_EMPTY_HISTORY=1 OUT_DIR=out npm run run   # local full run; never set ALLOW_EMPTY_HISTORY in CI
+```
+
+UI package:
+```
+python3 docs/ui/tools/contrast.py        # every text/background ratio; zero FAIL lines is the gate
 ```
 
 TV app (Android Studio, Android TV emulator "Television (1080p)" API 34):
