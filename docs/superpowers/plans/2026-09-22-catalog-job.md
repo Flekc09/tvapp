@@ -1441,7 +1441,7 @@ Co-Authored-By: Claude Fable 5.1 <noreply@anthropic.com>"
 **Interfaces:**
 - Consumes: `Grouped`, `ProbeResult`, `History`, `scoreStream`, `uptime7d`, `hostOf`.
 - Produces:
-  - `buildCatalog(input: { grouped: Grouped; results: Map<string, ProbeResult>; history: History; src: SourceData; version: number; generatedAt: string }): Catalog`. Streams within a channel are sorted by score descending. Countries list only codes referenced by a channel. Categories are the API list plus `{ id: 'unsorted', name: 'Unsorted' }`.
+  - `buildCatalog(input: { grouped: Grouped; results: Map<string, ProbeResult>; history: History; src: SourceData; version: number; generatedAt: string }): Catalog`. Streams within a channel are sorted by score descending. Every channel's `hasUp` is set true when any of its streams is `up` or `unverified`. Countries list only codes referenced by a channel. Categories are the API list plus `{ id: 'other', name: 'Other' }`.
   - `writeOutputs(outDir: string, catalog: Catalog, history: History): Promise<Latest>` writes `catalog.json.gz` (gzip level 9), `history.json`, `latest.json` and returns the `Latest` object written.
 
 - [ ] **Step 1: Write the failing tests**
