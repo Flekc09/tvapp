@@ -1512,7 +1512,7 @@ Co-Authored-By: Claude Fable 5.1 <noreply@anthropic.com>"
 **Interfaces:**
 - Consumes: `Grouped`, `ProbeResult`, `History`, `scoreStream`, `uptime7d`, `hostOf`.
 - Produces:
-  - `buildCatalog(input: { grouped: Grouped; results: Map<string, ProbeResult>; history: History; src: SourceData; version: number; generatedAt: string }): Catalog`. Streams within a channel are sorted by health (`up`, then `unverified`, then `down`) and then by score descending. The score uses the median of the history window's response times. Every channel's `hasUp` is set true when any of its streams is `up` or `unverified`. Countries list only codes referenced by a channel. Categories are the API list plus `{ id: 'other', name: 'Other' }`.
+  - `buildCatalog(input: { grouped: Grouped; results: Map<string, ProbeResult>; history: History; src: SourceData; version: number; generatedAt: string }): Catalog`. Streams within a channel are sorted by health (`up`, then `unverified`, then `down`) and then by score descending. The score uses the median of the history window's response times. Every channel's `hasUp` is set true when any of its streams is `up` or `unverified` tonight, or has `uptime7d > 0` (was `up` at least once in the merged 7-day window) (Opus adversarial review 2026-09-23, major 15). Countries list only codes referenced by a channel. Categories are the API list plus `{ id: 'other', name: 'Other' }`.
   - `writeOutputs(outDir: string, catalog: Catalog, history: History): Promise<Latest>` writes `catalog.json.gz` (gzip level 9), `history.json`, `latest.json` and returns the `Latest` object written.
 
 - [ ] **Step 1: Write the failing tests**
@@ -1533,6 +1533,7 @@ const grouped: Grouped = {
     { id: 'A.us', name: 'A', altNames: [], country: 'US', region: null, categories: ['news'], network: null, logo: null, adult: false, hasUp: false },
     { id: 'B.us', name: 'B', altNames: [], country: 'US', region: null, categories: ['news'], network: null, logo: null, adult: false, hasUp: false },
     { id: 'C.us', name: 'C', altNames: [], country: 'US', region: null, categories: ['news'], network: null, logo: null, adult: false, hasUp: false },
+    { id: 'D.us', name: 'D', altNames: [], country: 'US', region: null, categories: ['news'], network: null, logo: null, adult: false, hasUp: false },
   ],
   streams: [
     { channel: 'A.us', url: 'http://1.2.3.4/x.m3u8', quality: '1080p', referrer: null, userAgent: null },
@@ -1540,6 +1541,7 @@ const grouped: Grouped = {
     { channel: 'A.us', url: 'http://unv/x.m3u8', quality: '1080p', referrer: null, userAgent: null },
     { channel: 'B.us', url: 'http://dead/x.m3u8', quality: null, referrer: null, userAgent: null },
     { channel: 'C.us', url: 'http://geo/x.m3u8', quality: null, referrer: null, userAgent: null },
+    { channel: 'D.us', url: 'http://5.6.7.8/x.m3u8', quality: null, referrer: null, userAgent: null },
   ],
 };
 const results = new Map<string, ProbeResult>([
@@ -1548,10 +1550,12 @@ const results = new Map<string, ProbeResult>([
   ['http://dead/x.m3u8', { url: 'http://dead/x.m3u8', health: 'down', format: 'unknown', responseMs: null, reason: 'timeout', finalHost: null }],
   ['http://unv/x.m3u8', { url: 'http://unv/x.m3u8', health: 'unverified', format: 'unknown', responseMs: 50, reason: 'http 403', finalHost: 'unv' }],
   ['http://geo/x.m3u8', { url: 'http://geo/x.m3u8', health: 'unverified', format: 'unknown', responseMs: 50, reason: 'http 403', finalHost: 'geo' }],
+  ['http://5.6.7.8/x.m3u8', { url: 'http://5.6.7.8/x.m3u8', health: 'down', format: 'unknown', responseMs: null, reason: 'timeout', finalHost: null }],
 ]);
 const history: History = { generatedAt: '2026-09-22', upRate: 0.5, streams: {
   'http://1.2.3.4/x.m3u8': [{ d: '2026-09-21', s: 'up', ms: 1 }, { d: '2026-09-22', s: 'down', ms: 300 }],
   'http://cdn/x.m3u8': [{ d: '2026-09-22', s: 'up', ms: 200 }],
+  'http://5.6.7.8/x.m3u8': [{ d: '2026-09-19', s: 'up', ms: 900 }, { d: '2026-09-20', s: 'down', ms: null }, { d: '2026-09-22', s: 'down', ms: null }],
   'http://unv/x.m3u8': Array.from({ length: 7 }, (_, i) => ({ d: `2026-09-${16 + i}`, s: 'up' as const, ms: 50 })),
 } };
 
@@ -1566,6 +1570,10 @@ describe('buildCatalog', () => {
     expect(cat.channels.find(c => c.id === 'A.us')!.hasUp).toBe(true);
     expect(cat.channels.find(c => c.id === 'B.us')!.hasUp).toBe(false);
     expect(cat.channels.find(c => c.id === 'C.us')!.hasUp).toBe(true);
+  });
+  it('keeps hasUp when every stream is down tonight but one was up in the 7-day window', () => {
+    // Opus adversarial review 2026-09-23, major 15: a runner-side down must not hide a channel that works from a home connection.
+    expect(cat.channels.find(c => c.id === 'D.us')!.hasUp).toBe(true);
   });
   it('orders streams within a channel by health first, then score, and fills fields', () => {
     const a = cat.streams.filter(s => s.channel === 'A.us');
@@ -1655,7 +1663,8 @@ export function buildCatalog(input: {
   const healthRank = (h: string) => (h === 'up' ? 0 : h === 'unverified' ? 1 : 2);
   streams.sort((a, b) => (order.get(a.channel)! - order.get(b.channel)!) || (healthRank(a.health) - healthRank(b.health)) || (b.score - a.score));
 
-  const withUp = new Set(streams.filter(s => s.health !== 'down').map(s => s.channel));
+  // Spec 4.4 (Opus adversarial review 2026-09-23, major 15): a stream that was up at least once in the 7-day window keeps its channel listed.
+  const withUp = new Set(streams.filter(s => s.health !== 'down' || s.uptime7d > 0).map(s => s.channel));
   const channels = grouped.channels.map(c => ({ ...c, hasUp: withUp.has(c.id) }));
 
   const used = new Set(channels.map(c => c.country).filter((c): c is string => !!c));
@@ -1686,7 +1695,7 @@ export async function writeOutputs(outDir: string, catalog: Catalog, history: Hi
 - [ ] **Step 4: Run to verify pass**
 
 Run: `cd catalog && npx vitest run test/build.test.ts test/write.test.ts`
-Expected: 7 pass.
+Expected: 8 pass.
 
 - [ ] **Step 5: Commit**
 

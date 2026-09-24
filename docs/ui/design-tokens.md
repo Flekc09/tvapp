@@ -28,7 +28,7 @@ One ramp, six sizes, base 16 sp. Line height is 1.25 × size, rounded to a 4 dp 
 | `text-xl` | 32 / 40 sp | Medium 500 | overlay headings ("Channels", "Settings"), collection column title | headings 28–32 sp |
 | `text-2xl` | 48 / 56 sp (the one size whose line height is not 1.25 ×; 56 keeps the banner's right column inside 100 dp) | Regular 400, tabular | clock in the banner, first-launch count | — |
 
-Text rules: sentence case everywhere; labels front-loaded ("Show adult channels", not "Adult channel visibility"); the language rule from the brief (no HLS, TS, DASH, unverified, unsorted, demoted, stream count; status words exactly Working, Not checked, Not working). Truncate with an ellipsis at one line for rows, two lines for banner names and dialog bodies; never shrink text to fit.
+Text rules: sentence case everywhere; labels front-loaded ("Show adult channels", not "Adult channel visibility"); the language rule from the brief (no HLS, TS, DASH, unverified, unsorted, demoted, stream count; status words exactly Working, Not checked, Not working; positions within a tune and the Diagnostics format row are allowed, see spec §6). Truncate with an ellipsis at one line for rows, two lines for banner names and dialog bodies; never shrink text to fit.
 
 ## 3. Spacing, sizing, shape
 

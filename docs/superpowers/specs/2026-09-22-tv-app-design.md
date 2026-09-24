@@ -51,7 +51,7 @@ Consequences:
 
 - Many channels have 5 to 30 duplicate feeds. Grouping and ranking them is the core backend job.
 - iptv-org models local affiliates as feeds of one network channel. "ABC" has 33 streams, most of them different cities' stations. The viewer needs those as separate channels, and failover must stay within one station's feeds.
-- The US network and sports feeds the owner cares most about are community-submitted restreams on bare IPs. They are the least stable part of the catalog and can disappear from iptv-org at any time. Failover is therefore a core feature, not an extra. Owner decision 2026-09-23: feeds the owner wants that iptv-org lacks are added on the backend (a future extras input to the catalog job), never per TV; the app has no user-added sources.
+- The US network and sports feeds the owner cares most about are community-submitted restreams on bare IPs. They are the least stable part of the catalog and can disappear from iptv-org at any time. Failover is therefore a core feature, not an extra. Owner decision 2026-09-23: feeds the owner wants that iptv-org lacks are never added per TV; the app has no user-added sources. Owner decision 2026-09-24 (Opus adversarial review 2026-09-23, major 19): they are not added on the backend either. Missing feeds are submitted upstream to iptv-org by pull request, and the catalog job publishes only what iptv-org publishes. The residual risk is recorded in section 11.
 - About one stream in five (3,453) is plain HTTP, but that includes nearly every raw-IP host and therefore the US sports restreams (SEC Network 1 of 1, ESPNU 2 of 2, Fox Sports 1 2 of 3). The app must allow cleartext HTTP or those channels cannot play. Only 3 streams are HTTPS on a raw IP, so self-signed certificates are not accepted anywhere; HTTPS is validated normally.
 - Nearly a thousand streams will not play without per-stream headers. The player must honor them from day one.
 - Not every URL is HLS. The catalog also contains raw MPEG-TS over HTTP, DASH manifests, and dead hosts returning HTML. Format must be detected, not assumed.
@@ -160,7 +160,7 @@ Four lists. Estimated 2 to 3 MB gzipped, 15 to 20 MB uncompressed, about 12 MB i
 }
 ```
 
-`hasUp` is true when at least one of the channel's streams is `up` or `unverified`. The app uses it as the default list filter without joining the streams table.
+`hasUp` is true when at least one of the channel's streams is `up` or `unverified`, or was `up` at least once in the 7-day history window (`uptime7d > 0`). The runner tests from a datacenter address, and raw-IP restreams that refuse it may still play from a home connection; the first GitHub run (2026-09-24) marked 4,043 streams down against 3,550 from the owner's connection the same day (Opus adversarial review 2026-09-23, major 15). The app uses it as the default list filter without joining the streams table.
 
 Logos are validated by the job with a HEAD request. Dead logo URLs are replaced with null so the app never requests them.
 
@@ -187,7 +187,7 @@ Logos are validated by the job with a HEAD request. Dead logo URLs are replaced 
 
 Each layer is independently testable and holds no logic belonging to another.
 
-**Data layer.** Room database. Catalog tables (`countries`, `categories`, `channels`, `streams`) carry a `source` column and an `import_id`. Local-only tables: `favorites` (with a `position` column), `recents`, `stream_stats`, `stream_failures`, `channel_status`, `settings`. (User-added M3U content was removed from V1 on 2026-09-23; the `source` column stays for a future backend extras feed.)
+**Data layer.** Room database. Catalog tables (`countries`, `categories`, `channels`, `streams`) carry a `source` column and an `import_id`. Local-only tables: `favorites` (with a `position` column), `recents`, `stream_stats`, `stream_failures`, `channel_status`, `settings`. (User-added M3U content was removed from V1 on 2026-09-23, and a backend extras feed was ruled out on 2026-09-24; the `source` column stays so a later source does not need a migration.)
 
 **Sync.** On launch and every 24 hours the app fetches `latest.json` (under 1 KB) and records whether a newer version exists. The download and import run only when idle, and "idle" is decided by the app, not the platform: the sync worker checks that nothing has played for 10 minutes before downloading, and retries later otherwise. WorkManager's device-idle constraint is not used because it has no defined meaning on a TV that is never unplugged. Import stream-parses the gzipped JSON, never holding the whole document in memory, inserting in batches of 1,000 under a new `import_id`. When the import completes, one small transaction flips the active `import_id` and deletes the old iptv rows, so lists never flicker or go empty. User rows are untouched. Favorites whose channel id no longer exists after a sync are kept and shown as "no longer available" until the user removes them. The only exception to "idle only" is first launch, which imports immediately behind a progress screen.
 
@@ -289,7 +289,7 @@ Fixed here: which surfaces exist, how the remote moves between them, and what ea
    - *Settings:* startup behavior, sleep timer (30 / 60 / 90 minutes), show channels that don't work here, show adult channels (behind a 4-digit PIN set on first use).
    - *Advanced* (long-press to enter): catalog base URL, force catalog refresh, catalog version and date, auto-switch on poor signal, and Diagnostics: current stream URL, format, resolution, bitrate, buffer level, measured tune time.
 
-**Language rule.** Nothing on screen says HLS, TS, DASH, unverified, unsorted, demoted, or a stream count. Status words are Working, Not checked, Not working.
+**Language rule.** Nothing on screen says HLS, TS, DASH, unverified, unsorted, demoted, or a stream count. Status words are Working, Not checked, Not working. "A stream count" means a total in a list, a row or a status line ("5 sources"); a position within a tune or the Sources list ("Trying source 2 of 5", "Source 3") is allowed. Diagnostics, the owner-facing technical screen under Advanced, is exempt from the format words and shows the format (owner decisions 2026-09-24, Opus adversarial review 2026-09-23, minors 9 and 14).
 
 **Display rules (all TV sizes).** Android TV presents every device as the same logical canvas regardless of panel size: 960 × 540 dp, at 1.5× density on 720p sets and 2× on 1080p sets, and 4K sets run the UI at 1080p logical and upscale it. There is therefore one layout, and the following rules make it work from 32 inches to 85 inches at ten feet:
 
@@ -345,7 +345,11 @@ Rules for every surface: focus is always visible from ten feet, OK on any focuse
 
 | Decision | Choice | Rejected alternatives |
 |---|---|---|
-| Content source | iptv-org, whole catalog, with owner extras added on the backend when needed (2026-09-23) | Family antenna network, paid IPTV provider, per-TV user M3U playlists (removed 2026-09-23: the backend is the one source; family and friends never paste links on a TV) |
+| Content source | iptv-org, whole catalog; feeds it lacks are submitted upstream to iptv-org (2026-09-24) | Family antenna network, paid IPTV provider, per-TV user M3U playlists (removed 2026-09-23: the backend is the one source; family and friends never paste links on a TV), a backend extras input published from the owner's account (removed 2026-09-24, below) |
+| Legal exposure of the published catalog | Accepted and recorded: the public repo and Pages site republish iptv-org's list, US sports restreams included, with health data, under the owner's GitHub account. A DMCA notice can take down the repo or Pages; TVs keep their last catalog and recovery is the per-TV catalog URL setting (section 3.3). No pay-TV feed originates here (2026-09-24, Opus review major 19) | Own extras file with pay-TV restreams (the owner's account would be the first publisher), hashed URLs joined on the TV against iptv-org's playlist (cannot carry feeds iptv-org lacks), private repo (Pages needs a paid plan) |
+| Runner-side `down` | A channel stays listed if any stream was up in the last 7 days (2026-09-24, Opus review major 15) | Hide on tonight's result alone (hides restreams that refuse datacenter addresses on every TV), never hide on the server result (lists fill with dead channels) |
+| Language rule scope | Bans totals ("5 sources"), allows positions within a tune ("Trying source 2 of 5"); Diagnostics shows the format word (2026-09-24, Opus review minors 9 and 14) | Ban every number (the failover line loses its progress cue), keep format words off Diagnostics too (the owner's one technical screen loses its most useful row) |
+| LAST and digits on overlays | LAST is Previous on every surface; digits jump by letter in Channels and type in a text field; CHANNEL ± is ignored on list overlays (2026-09-24, Opus review minor 4) | Ignore all three on overlays (loses the Channels jump-by-letter accelerator) |
 | Platform | Android TV / Google TV, sideloaded | Roku, Tizen, webOS, Play Store |
 | Backend | Nightly GitHub Actions job to static files via Pages artifact | Fully on-device processing, self-hosted server, committing to a branch |
 | History persistence | `history.json` on Pages, read at start of each run | Actions cache, external database |
