@@ -50,6 +50,16 @@ export async function probeStream(
   stream: GroupedStream, fetchFn: FetchFn,
   opts: { timeoutMs?: number; now?: () => number } = {},
 ): Promise<ProbeResult> {
+  // Never rejects: the pipeline awaits every probe in one Promise.all, so a single throw (a variant URI `new URL` cannot parse,
+  // for example) would cancel the whole nightly run after 20 minutes of probing (final review 2026-09-24).
+  try { return await probeOnce(stream, fetchFn, opts); }
+  catch (e) { return result(stream.url, 'down', 'unknown', null, `error: ${(e as Error).message}`, null); }
+}
+
+async function probeOnce(
+  stream: GroupedStream, fetchFn: FetchFn,
+  opts: { timeoutMs?: number; now?: () => number },
+): Promise<ProbeResult> {
   const timeoutMs = opts.timeoutMs ?? 10_000;
   const now = opts.now ?? (() => performance.now());
   const headers: Record<string, string> = { 'user-agent': stream.userAgent ?? DEFAULT_UA };

@@ -12,7 +12,7 @@ Nightly job that turns the iptv-org API into `catalog.json.gz`, `history.json` a
 
 ## Platform rules
 
-- GitHub disables scheduled workflows after 60 days with no repository activity. The `keepalive` job re-enables it through the API each run.
+- GitHub disables scheduled workflows after 60 days with no repository activity. The `keepalive` job re-enables it with one API call each run (no third-party action).
 - Output is deployed as a Pages artifact, never committed. The repo does not grow.
 - Pages soft bandwidth limit is 100 GB/month. This project uses a tiny fraction.
 

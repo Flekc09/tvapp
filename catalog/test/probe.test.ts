@@ -106,6 +106,11 @@ describe('probeStream', () => {
     await probeStream(s('http://a/x.m3u8'), fake({ 'http://a/x.m3u8': { status: 200, body: MEDIA } }, seen));
     expect(seen[0].headers['user-agent']).toBe(DEFAULT_UA);
   });
+  it('never throws: a master whose media uri cannot be resolved is down with the error as the reason', async () => {
+    // One malformed variant URI must not reject through the pipeline's Promise.all and cancel the whole nightly run (final review 2026-09-24).
+    const r = await probeStream(s('http://a/x.m3u8'), fake({ 'http://a/x.m3u8': { status: 200, body: '#EXTM3U\n#EXT-X-STREAM-INF:BANDWIDTH=1\nhttp://bad host:abc/x.m3u8\n' } }));
+    expect(r.health).toBe('down'); expect(r.format).toBe('unknown'); expect(r.reason).toMatch(/Invalid URL/);
+  });
 });
 
 describe('hostOf', () => {

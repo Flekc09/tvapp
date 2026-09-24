@@ -10,12 +10,9 @@ on:
         type: boolean
         default: false
 
-permissions:
-  contents: read
-  pages: write
-  id-token: write
-  issues: write
-  actions: write   # keepalive re-enables the schedule via API
+# Permissions are granted per job (final review 2026-09-24): only `deploy` can publish to Pages, only
+# `report-failure` can write issues, only `keepalive` can touch the workflow itself.
+permissions: {}
 
 concurrency:
   group: catalog
@@ -25,6 +22,8 @@ jobs:
   build:
     runs-on: ubuntu-latest
     timeout-minutes: 120
+    permissions:
+      contents: read
     outputs:
       version: ${{ steps.built.outputs.version }}
     steps:
@@ -61,6 +60,9 @@ jobs:
   deploy:
     needs: build
     runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
@@ -82,16 +84,23 @@ jobs:
 
   keepalive:
     runs-on: ubuntu-latest
+    permissions:
+      actions: write
     steps:
-      - uses: actions/checkout@v4
-      - uses: gautamkrishnar/keepalive-workflow@v2
-        with:
-          use_api: true
+      # GitHub disables a scheduled workflow after 60 days without repository activity. Re-enabling it through the
+      # API each run is what the gautamkrishnar/keepalive-workflow action did; that repository is blocked by GitHub
+      # (terms of service, since 2025-04-21) so the call is made directly, with no third-party code (final review 2026-09-24).
+      - name: Re-enable the schedule
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh api -X PUT "repos/${{ github.repository }}/actions/workflows/catalog.yml/enable"
 
   report-failure:
     needs: [build, deploy]
     if: failure()
     runs-on: ubuntu-latest
+    permissions:
+      issues: write
     steps:
       - name: Open issue
         env:
