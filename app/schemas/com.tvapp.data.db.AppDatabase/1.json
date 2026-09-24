@@ -1,0 +1,524 @@
+{
+  "formatVersion": 1,
+  "database": {
+    "version": 1,
+    "identityHash": "a29081f6f8951e8c1da0752d1e61eb41",
+    "entities": [
+      {
+        "tableName": "countries",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`code` TEXT NOT NULL, `name` TEXT NOT NULL, `flag` TEXT NOT NULL, `importId` INTEGER NOT NULL, PRIMARY KEY(`code`, `importId`))",
+        "fields": [
+          {
+            "fieldPath": "code",
+            "columnName": "code",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "name",
+            "columnName": "name",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "flag",
+            "columnName": "flag",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "importId",
+            "columnName": "importId",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": false,
+          "columnNames": [
+            "code",
+            "importId"
+          ]
+        }
+      },
+      {
+        "tableName": "categories",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` TEXT NOT NULL, `name` TEXT NOT NULL, `importId` INTEGER NOT NULL, PRIMARY KEY(`id`, `importId`))",
+        "fields": [
+          {
+            "fieldPath": "id",
+            "columnName": "id",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "name",
+            "columnName": "name",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "importId",
+            "columnName": "importId",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": false,
+          "columnNames": [
+            "id",
+            "importId"
+          ]
+        }
+      },
+      {
+        "tableName": "channels",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` TEXT NOT NULL, `name` TEXT NOT NULL, `altNames` TEXT NOT NULL, `country` TEXT, `region` TEXT, `categories` TEXT NOT NULL, `network` TEXT, `logo` TEXT, `adult` INTEGER NOT NULL, `hasUp` INTEGER NOT NULL, `source` TEXT NOT NULL, `importId` INTEGER NOT NULL, `bestHealth` TEXT NOT NULL, PRIMARY KEY(`id`, `importId`))",
+        "fields": [
+          {
+            "fieldPath": "id",
+            "columnName": "id",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "name",
+            "columnName": "name",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "altNames",
+            "columnName": "altNames",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "country",
+            "columnName": "country",
+            "affinity": "TEXT"
+          },
+          {
+            "fieldPath": "region",
+            "columnName": "region",
+            "affinity": "TEXT"
+          },
+          {
+            "fieldPath": "categories",
+            "columnName": "categories",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "network",
+            "columnName": "network",
+            "affinity": "TEXT"
+          },
+          {
+            "fieldPath": "logo",
+            "columnName": "logo",
+            "affinity": "TEXT"
+          },
+          {
+            "fieldPath": "adult",
+            "columnName": "adult",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "hasUp",
+            "columnName": "hasUp",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "source",
+            "columnName": "source",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "importId",
+            "columnName": "importId",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "bestHealth",
+            "columnName": "bestHealth",
+            "affinity": "TEXT",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": false,
+          "columnNames": [
+            "id",
+            "importId"
+          ]
+        },
+        "indices": [
+          {
+            "name": "index_channels_importId",
+            "unique": false,
+            "columnNames": [
+              "importId"
+            ],
+            "orders": [],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_channels_importId` ON `${TABLE_NAME}` (`importId`)"
+          },
+          {
+            "name": "index_channels_country",
+            "unique": false,
+            "columnNames": [
+              "country"
+            ],
+            "orders": [],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_channels_country` ON `${TABLE_NAME}` (`country`)"
+          },
+          {
+            "name": "index_channels_name",
+            "unique": false,
+            "columnNames": [
+              "name"
+            ],
+            "orders": [],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_channels_name` ON `${TABLE_NAME}` (`name`)"
+          }
+        ]
+      },
+      {
+        "tableName": "streams",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `channelId` TEXT NOT NULL, `url` TEXT NOT NULL, `format` TEXT NOT NULL, `quality` TEXT, `referrer` TEXT, `userAgent` TEXT, `health` TEXT NOT NULL, `uptime7d` REAL NOT NULL, `responseMs` INTEGER, `score` REAL NOT NULL, `source` TEXT NOT NULL, `importId` INTEGER NOT NULL)",
+        "fields": [
+          {
+            "fieldPath": "id",
+            "columnName": "id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "channelId",
+            "columnName": "channelId",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "url",
+            "columnName": "url",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "format",
+            "columnName": "format",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "quality",
+            "columnName": "quality",
+            "affinity": "TEXT"
+          },
+          {
+            "fieldPath": "referrer",
+            "columnName": "referrer",
+            "affinity": "TEXT"
+          },
+          {
+            "fieldPath": "userAgent",
+            "columnName": "userAgent",
+            "affinity": "TEXT"
+          },
+          {
+            "fieldPath": "health",
+            "columnName": "health",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "uptime7d",
+            "columnName": "uptime7d",
+            "affinity": "REAL",
+            "notNull": true
+          },
+          {
+            "fieldPath": "responseMs",
+            "columnName": "responseMs",
+            "affinity": "INTEGER"
+          },
+          {
+            "fieldPath": "score",
+            "columnName": "score",
+            "affinity": "REAL",
+            "notNull": true
+          },
+          {
+            "fieldPath": "source",
+            "columnName": "source",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "importId",
+            "columnName": "importId",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": true,
+          "columnNames": [
+            "id"
+          ]
+        },
+        "indices": [
+          {
+            "name": "index_streams_channelId",
+            "unique": false,
+            "columnNames": [
+              "channelId"
+            ],
+            "orders": [],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_streams_channelId` ON `${TABLE_NAME}` (`channelId`)"
+          },
+          {
+            "name": "index_streams_importId",
+            "unique": false,
+            "columnNames": [
+              "importId"
+            ],
+            "orders": [],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_streams_importId` ON `${TABLE_NAME}` (`importId`)"
+          },
+          {
+            "name": "index_streams_url",
+            "unique": false,
+            "columnNames": [
+              "url"
+            ],
+            "orders": [],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_streams_url` ON `${TABLE_NAME}` (`url`)"
+          }
+        ]
+      },
+      {
+        "tableName": "favorites",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`channelId` TEXT NOT NULL, `position` INTEGER NOT NULL, `name` TEXT NOT NULL, PRIMARY KEY(`channelId`))",
+        "fields": [
+          {
+            "fieldPath": "channelId",
+            "columnName": "channelId",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "position",
+            "columnName": "position",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "name",
+            "columnName": "name",
+            "affinity": "TEXT",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": false,
+          "columnNames": [
+            "channelId"
+          ]
+        }
+      },
+      {
+        "tableName": "recents",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`channelId` TEXT NOT NULL, `lastWatchedMs` INTEGER NOT NULL, PRIMARY KEY(`channelId`))",
+        "fields": [
+          {
+            "fieldPath": "channelId",
+            "columnName": "channelId",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "lastWatchedMs",
+            "columnName": "lastWatchedMs",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": false,
+          "columnNames": [
+            "channelId"
+          ]
+        }
+      },
+      {
+        "tableName": "stream_stats",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `streamUrl` TEXT NOT NULL, `ttffMs` INTEGER, `rebuffers` INTEGER NOT NULL, `bitrateKbps` INTEGER, `playedMs` INTEGER NOT NULL, `recordedElapsedMs` INTEGER NOT NULL)",
+        "fields": [
+          {
+            "fieldPath": "id",
+            "columnName": "id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "streamUrl",
+            "columnName": "streamUrl",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "ttffMs",
+            "columnName": "ttffMs",
+            "affinity": "INTEGER"
+          },
+          {
+            "fieldPath": "rebuffers",
+            "columnName": "rebuffers",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "bitrateKbps",
+            "columnName": "bitrateKbps",
+            "affinity": "INTEGER"
+          },
+          {
+            "fieldPath": "playedMs",
+            "columnName": "playedMs",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "recordedElapsedMs",
+            "columnName": "recordedElapsedMs",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": true,
+          "columnNames": [
+            "id"
+          ]
+        },
+        "indices": [
+          {
+            "name": "index_stream_stats_streamUrl",
+            "unique": false,
+            "columnNames": [
+              "streamUrl"
+            ],
+            "orders": [],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_stream_stats_streamUrl` ON `${TABLE_NAME}` (`streamUrl`)"
+          }
+        ]
+      },
+      {
+        "tableName": "stream_failures",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `streamUrl` TEXT NOT NULL, `failedElapsedMs` INTEGER NOT NULL)",
+        "fields": [
+          {
+            "fieldPath": "id",
+            "columnName": "id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "streamUrl",
+            "columnName": "streamUrl",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "failedElapsedMs",
+            "columnName": "failedElapsedMs",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": true,
+          "columnNames": [
+            "id"
+          ]
+        },
+        "indices": [
+          {
+            "name": "index_stream_failures_streamUrl",
+            "unique": false,
+            "columnNames": [
+              "streamUrl"
+            ],
+            "orders": [],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_stream_failures_streamUrl` ON `${TABLE_NAME}` (`streamUrl`)"
+          }
+        ]
+      },
+      {
+        "tableName": "channel_status",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`channelId` TEXT NOT NULL, `status` TEXT NOT NULL, `failedDays` TEXT NOT NULL, PRIMARY KEY(`channelId`))",
+        "fields": [
+          {
+            "fieldPath": "channelId",
+            "columnName": "channelId",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "status",
+            "columnName": "status",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "failedDays",
+            "columnName": "failedDays",
+            "affinity": "TEXT",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": false,
+          "columnNames": [
+            "channelId"
+          ]
+        }
+      },
+      {
+        "tableName": "settings",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`key` TEXT NOT NULL, `value` TEXT NOT NULL, PRIMARY KEY(`key`))",
+        "fields": [
+          {
+            "fieldPath": "key",
+            "columnName": "key",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "value",
+            "columnName": "value",
+            "affinity": "TEXT",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": false,
+          "columnNames": [
+            "key"
+          ]
+        }
+      }
+    ],
+    "setupQueries": [
+      "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, 'a29081f6f8951e8c1da0752d1e61eb41')"
+    ]
+  }
+}
