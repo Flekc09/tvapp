@@ -119,7 +119,7 @@ The unit the viewer tunes, and the unit failover operates within, is a **catalog
 
 ### 4.3 Format detection and health test
 
-Each stream gets one GET with a 10 second timeout, sending its referrer and user agent if present, otherwise sending the exact default user agent the TV app uses. Per-host concurrency is capped at 2 to avoid rate limiting.
+Each stream gets one GET with a 10 second timeout, sending its referrer and user agent if present, otherwise sending the exact default user agent the TV app uses. The user agent is the only header the invariant covers: Node's fetch also sends `sec-fetch-mode` and `accept-language`, which OkHttp does not. Accepted: no host in the 2026-09-23 sample varied on them, and matching would mean dropping `fetch` for a raw HTTP client (Opus adversarial review 2026-09-23, minor 23). Per-host concurrency is capped at 2 to avoid rate limiting.
 
 Format is decided from Content-Type and URL suffix first, then body:
 
@@ -145,7 +145,7 @@ Four lists. Estimated 2 to 3 MB gzipped, 15 to 20 MB uncompressed, about 12 MB i
 
 ```
 {
-  "version": 1758520800,
+  "version": 1790056800,
   "generatedAt": "2026-09-22T06:00:00Z",
   "countries":  [{ "code": "US", "name": "United States", "flag": "🇺🇸" }],
   "categories": [{ "id": "sports", "name": "Sports" }],
@@ -259,7 +259,7 @@ Fixed here: which surfaces exist, how the remote moves between them, and what ea
 
 **Model.** The player is the root and is always underneath. Everything else is an overlay drawn over the still-playing, dimmed or inset video, with audio continuing. Back closes the topmost overlay. Back on the bare player shows "Press Back again to exit" and exits on a second press within 2 seconds. The app relaunches to the last channel after an exit, a crash, or a CEC power-off.
 
-**Startup.** Default is the last channel, full screen, immediately. Settings offers Last channel, a chosen favorite, or Channels overlay. On a fresh install, the first launch shows a progress screen ("Loading channels… 4,200 of 10,000. This only happens once.") and then opens the Channels overlay filtered to the device locale's country, working channels first.
+**Startup.** Default is the last channel, full screen, immediately. Settings offers Last channel, a chosen favorite, or Channels overlay. On a fresh install, the first launch shows a progress screen ("Loading channels… 4,200 so far. This only happens once.", with a bar by downloaded bytes; the catalog carries no channel total) and then opens the Channels overlay filtered to the device locale's country, working channels first.
 
 **Default filters.** Every list hides channels that are adult, have no working stream (`hasUp` false), or are `broken_here`, unless the corresponding setting is on. "Other" and country-less synthetic channels appear only under Browse → Other and in Search, never in the default country list.
 
@@ -276,7 +276,7 @@ Fixed here: which surfaces exist, how the remote moves between them, and what ea
 | Play/Pause, `MEDIA_PLAY_PAUSE` | Pause (hold picture, mute) / rejoin live. |
 | Digits 0 to 9 | Favorite by position number. |
 
-**Banner.** Appears within one frame of any channel change and on OK. Shows logo, name, region, country flag, clock, favorite star, list name and position ("Favorites 3 / 12"), measured resolution, and a "Previous: SEC Network" hint. Auto-hides 3 seconds after video is up.
+**Banner.** Appears within one frame of any channel change and on OK. Shows logo, name, region, country flag, clock, favorite star, list name and position ("Favorites · 3 of 12"), measured resolution, and a "Previous: SEC Network" hint. Auto-hides 3 seconds after video is up.
 
 **Surfaces.**
 
@@ -319,7 +319,7 @@ Rules for every surface: focus is always visible from ten feet, OK on any focuse
 
 ## 8. Testing
 
-**Catalog job.** Unit tests for grouping including affiliate splitting and the adult flag, format detection, ranking, history merge, and M3U parsing against fixture files, including streams without a channel id, streams with headers, master and media playlists, an ended playlist, a TS stream, and a DASH manifest. One integration test runs the full pipeline against a saved snapshot of the iptv-org API so it is repeatable offline.
+**Catalog job.** Unit tests for grouping including affiliate splitting and the adult flag, format detection, ranking, history merge, and playlist parsing against fixture files, including streams without a channel id, streams with headers, master and media playlists, an ended playlist, a TS stream, and a DASH manifest. One integration test runs the full pipeline against a saved snapshot of the iptv-org API so it is repeatable offline.
 
 **TV app.** Unit tests for the sort key, demotion expiry with a fake elapsed clock, the outage guard, the tune budget and cancellation, the broken-here rule across fake days, sync version logic, the import-id flip, and the streaming catalog parser against a 20 MB fixture. Instrumented test on the Android TV emulator: load a fixture catalog, tune a channel, kill the stream via a local fake HLS server, assert failover to the next stream and the toast. Remote-navigation tests asserting every overlay is reachable, Back never exits on first press from an overlay, every favorite is at most three presses from playing, and adult channels never appear with the setting off.
 

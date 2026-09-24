@@ -47,7 +47,7 @@ Base unit 4 dp; multiples only.
 | `column-w` | 224 dp | Channels collection column, on its own `panel`; wide enough for "United States · 2,731" at `text-md` + `text-sm` without ellipsis |
 | `panel-wide` | 560 dp | the single left panel of Search, Settings, Advanced, Diagnostics |
 | `panel-half` | 272 dp | each of Browse's two panels |
-| `dialog-w` | 480 dp | every dialog and the "isn't working" card; `dialog-h-pin` 320, `dialog-h-text` 236, `dialog-h-card` 200 |
+| `dialog-w` | 480 dp | every dialog and the "isn't working" card; `dialog-h-pin` 416 (title, hint, rings, a 4-row keypad and the error line need it; 320 did not fit, owner decision 2026-09-24, Opus adversarial review 2026-09-23, minor 12), `dialog-h-text` 236, `dialog-h-card` 200 |
 | `card` | 136 × 84 dp | a channel card in the strip |
 | `strip-h` | 108 dp | the strip panel |
 | `key` | 56 × 48 dp | a PIN keypad key |
@@ -69,10 +69,11 @@ Direction B is translucent panels over video. Opacity is therefore a contrast de
 | Token | Value | Use | Composite over a white frame |
 |---|---|---|---|
 | `scrim` | black at 45 % | full-frame dim under every overlay that has focusable rows (Channels, Browse, Search, Favorites, Settings, Advanced, Diagnostics, Sources, context menu, dialogs, the card); the preview inset is cut out of it. **Never under the banner, the toasts or the strip**: the picture stays undimmed there. **No text ever sits on the scrim alone**: over a white frame the scrim gives `#8C8C8C`, on which `color-text` is 3.08:1 and fails; every text element sits on `panel` or `panel-strong` (adversarial review 2026-09-23, major 4; `contrast.py` prints the scrim-only surface as a reminder). | `#8C8C8C`, text forbidden |
-| `panel` | `#1B2027` at 85 % | banner, toasts, the strip, list panels, menus | `#3D4147` alone; `#2C3036` with scrim |
-| `panel-strong` | `#1B2027` at 95 % | dialogs: PIN, "isn't working" card, No-catalog screen, channel list address | `#21252C` with scrim |
+| `panel` | `#1B2027` at 85 % | banner, toasts, list panels, menus | `#3D4147` alone; `#2C3036` with scrim |
+| `panel-strong` | `#1B2027` at 95 % | dialogs: PIN, "isn't working" card, No-catalog screen, channel list address; the strip, which has no scrim and whose focused card on `panel` put accent text at 4.44:1 (owner decision 2026-09-24, Opus adversarial review 2026-09-23, minor 2) | `#21252C` with scrim; `#262B32` alone (the strip) |
 | `blur` | 24 dp | backdrop blur behind `panel` and `panel-strong` where the device supports `RenderEffect` (API 31+); on older devices the panel alone carries the look, and every ratio below already assumes no blur |
 | `focus-tint` | white at 10 % | background of the focused row, on top of the row's panel | `#41454A` on an overlay |
+| `press-tint` | white at 15 % | background of a focused element while OK is held (the Active state), replacing `focus-tint` for the press; 20 % put muted text at 4.26:1 (owner decision 2026-09-24, Opus adversarial review 2026-09-23, minor 2) | `#4C4F54` on an overlay; `#474B51` on the strip |
 | `track` | white at 24 % | progress track, slider track | — |
 
 Surfaces used by the ratios below:
@@ -80,6 +81,8 @@ Surfaces used by the ratios below:
 - `surface-overlay` = `scrim` + `panel` → `#2C3036`
 - `surface-dialog` = `scrim` + `panel-strong` → `#21252C`
 - `surface-focused` = `focus-tint` over `surface-overlay` → `#41454A`
+- `surface-pressed` = `press-tint` over `surface-overlay` → `#4C4F54`
+- `surface-strip` = `panel-strong` over the picture, no scrim → `#262B32`; focused card `#3C4046`; pressed card `#474B51`
 
 ## 5. Colour
 
@@ -89,14 +92,14 @@ Cool neutral greys, one blue accent, three status hues used only for marks. **Co
 |---|---|---|---|
 | `color-bg` | `#000000` | window background before video, letterbox bars | — (video area) |
 | `color-panel` | `#1B2027` | base of `panel` and `panel-strong` | see §4 |
-| `color-text` | `#F3F5F8` | all primary text; status words; disabled labels (see rule below) | on `surface-banner` 9.40 ✓ · `surface-overlay` 12.15 ✓ · `surface-dialog` 14.08 ✓ · `surface-focused` 8.84 ✓ |
-| `color-text-muted` | `#C3CAD3` | secondary text: region, category, "3 of 12", hints, descriptions | banner 6.21 ✓ · overlay 8.03 ✓ · dialog 9.31 ✓ · focused 5.84 ✓ |
-| `color-accent` | `#A8C7FA` | favorite star (filled), progress fill, the selected collection entry's label, the current source's label, link-like affordances | banner 5.97 ✓ · overlay 7.72 ✓ · dialog 8.94 ✓ · focused 5.62 ✓ · fill vs `track` 3.57 ✓ (non-text floor 3) |
+| `color-text` | `#F3F5F8` | all primary text; status words; disabled labels (see rule below) | on `surface-banner` 9.40 ✓ · `surface-overlay` 12.15 ✓ · `surface-dialog` 14.08 ✓ · `surface-focused` 8.84 ✓ · `surface-pressed` 7.53 ✓ · strip focused 9.55 ✓ · strip pressed 8.03 ✓ |
+| `color-text-muted` | `#C3CAD3` | secondary text: region, category, "3 of 12", hints, descriptions | banner 6.21 ✓ · overlay 8.03 ✓ · dialog 9.31 ✓ · focused 5.84 ✓ · pressed 4.98 ✓ · strip focused 6.31 ✓ · strip pressed 5.31 ✓ |
+| `color-accent` | `#A8C7FA` | favorite star (filled), progress fill, the selected collection entry's label, the current source's label, link-like affordances | banner 5.97 ✓ · overlay 7.72 ✓ · dialog 8.94 ✓ · focused 5.62 ✓ · pressed 4.78 ✓ · strip focused 6.07 ✓ · strip pressed 5.10 ✓ · fill vs `track` 3.57 ✓ (non-text floor 3) |
 | `color-focus-border` | `#FFFFFF` | the 3 dp focus ring | banner 10.27 ✓ · overlay 13.26 ✓ · dialog 15.38 ✓ (non-text floor 3) |
 | `color-line` | white at 12 % | hairline dividers | decorative, no floor |
 | `mark-ok` | `#7FD1A0` | ● beside "Working" | banner 5.64 ✓ · overlay 7.28 ✓ · dialog 8.44 ✓ (non-text floor 3) |
 | `mark-warn` | `#F5CF6B` | ◐ beside "Not checked" | banner 6.85 ✓ · overlay 8.86 ✓ · dialog 10.27 ✓ |
-| `mark-bad` | `#F49A9A` | ○ beside "Not working" and "no longer available" | banner 4.86 ✓ · overlay 6.28 ✓ · dialog 7.28 ✓ |
+| `mark-bad` | `#F49A9A` | ○ beside "Not working" and "no longer available" | banner 4.86 ✓ · overlay 6.28 ✓ · dialog 7.28 ✓ · pressed 3.89 ✓ · strip pressed 4.15 ✓ |
 
 Rules that follow from the numbers:
 - **Status words are always `color-text`, never tinted.** The mark carries the hue, the word carries the meaning, and each mark has its own shape (filled, half, hollow) so the three are distinct in greyscale.

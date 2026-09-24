@@ -15,7 +15,7 @@ Everything else sits inside the safe area, x 48–912, y 27–513.
 |---|---|---|---|
 | Banner panel | x 48, y 381 (bottom edge at 513) | 864 × 132 | `panel` (no scrim), `radius-md`, `blur` where supported, inner padding `space-4` |
 | Logo | x 64, y 399 | `logo-lg` 96 × 96 | `radius-sm` clip; placeholder shows the channel's first letter |
-| Name row | x 176, y 399 | up to 480 wide, 32 line (the clock and list position need the rest) | `text-lg` `color-text`, one line, ellipsis; favorite star 32 dp immediately after the name text, `space-2` gap |
+| Name row | x 176, y 399 | up to 440 wide, 32 line: 440 + `space-2` + the 32 dp star ends at x 656, leaving `space-6` before the clock's left edge (about x 691 for "12:41 PM" at `text-2xl`); 480 collided (Opus adversarial review 2026-09-23, minor 11) | `text-lg` `color-text`, one line, ellipsis; favorite star 32 dp immediately after the name text, `space-2` gap |
 | Region row | x 176, y 439 | 20 line | `text-sm` `color-text-muted`: `flag` 24 × 16, then "Baton Rouge, Louisiana · United States"; no region: just flag and country |
 | Status row | x 176, y 467 | 20 line, reserved even when empty | `text-sm` `color-text`: measured resolution ("1080p") once known; "Trying source 2 of 5" while alternatives are tried; "Paused" while paused; otherwise empty, height kept so rows never jump |
 | Clock | right edge x 896, y 391 | 56 line | `text-2xl` tabular `color-text`, 12-hour with AM/PM per device locale |

@@ -15,7 +15,7 @@ def over(fg, alpha, bg): return tuple(round(alpha * f + (1 - alpha) * b) for f, 
 
 WHITE, BLACK = hx('#FFFFFF'), hx('#000000')
 PANEL = hx('#1B2027')
-SCRIM_A, PANEL_A, PANEL_STRONG_A, FOCUS_TINT_A, TRACK_A = 0.45, 0.85, 0.95, 0.10, 0.24
+SCRIM_A, PANEL_A, PANEL_STRONG_A, FOCUS_TINT_A, PRESS_TINT_A, TRACK_A = 0.45, 0.85, 0.95, 0.10, 0.15, 0.24
 TEXT, MUTED, ACCENT = hx('#F3F5F8'), hx('#C3CAD3'), hx('#A8C7FA')
 MARK_OK, MARK_WARN, MARK_BAD, FOCUS_BORDER = hx('#7FD1A0'), hx('#F5CF6B'), hx('#F49A9A'), hx('#FFFFFF')
 
@@ -30,6 +30,12 @@ if __name__ == '__main__':
             'surface-dialog (scrim + strong panel)': surface(SCRIM_A, PANEL_STRONG_A, picture),
         }
         surfaces['surface-overlay, focused row'] = over(WHITE, FOCUS_TINT_A, surfaces['surface-overlay (scrim + panel)'])
+        # Opus adversarial review 2026-09-23, minor 2: the pressed row and the strip's cards were not measured. Owner decision 2026-09-24:
+        # press-tint 15 % (was 20 %, which put muted text at 4.26:1) and the strip on panel-strong (on panel its focused card's accent was 4.44:1).
+        surfaces['surface-overlay, pressed row'] = over(WHITE, PRESS_TINT_A, surfaces['surface-overlay (scrim + panel)'])
+        surfaces['surface-strip (strong panel, no scrim)'] = surface(0, PANEL_STRONG_A, picture)
+        surfaces['surface-strip, focused card'] = over(WHITE, FOCUS_TINT_A, surfaces['surface-strip (strong panel, no scrim)'])
+        surfaces['surface-strip, pressed card'] = over(WHITE, PRESS_TINT_A, surfaces['surface-strip (strong panel, no scrim)'])
         for sname, bg in surfaces.items():
             print(f'{sname} -> {h(bg)}')
             for lbl, fg, floor in (('text', TEXT, 4.5), ('text-muted', MUTED, 4.5), ('accent', ACCENT, 4.5),
@@ -38,4 +44,4 @@ if __name__ == '__main__':
     ov = surface(SCRIM_A, PANEL_A, WHITE)
     print('\nprogress fill (accent) vs track (white .24 over overlay):', f'{cr(ACCENT, over(WHITE, TRACK_A, ov)):.2f}:1 (floor 3)')
     sc = over(BLACK, SCRIM_A, WHITE)
-    print(f'\nscrim alone over white -> {h(sc)}: text {cr(TEXT, sc):.2f}:1, muted {cr(MUTED, sc):.2f}:1 -> no text may sit on the scrim without a panel (these are informational, not FAIL lines)')
+    print(f'\nscrim alone over white -> {h(sc)}: text {cr(TEXT, sc):.2f}:1, muted {cr(MUTED, sc):.2f}:1 -> no text may sit on the scrim without a panel (informational; the floors do not apply)')
