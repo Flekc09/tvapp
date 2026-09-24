@@ -258,6 +258,12 @@ describe('fetchSource', () => {
     const f = (async () => new Response('<html>', { status: 200 })) as typeof fetch;
     await expect(fetchSource(f, 'https://x/api')).rejects.toThrow(/JSON/);
   });
+  it('gives up on a response that never arrives instead of holding the runner', async () => {
+    const f = ((_: unknown, init?: RequestInit) => new Promise((_res, rej) => {
+      init?.signal?.addEventListener('abort', () => rej(new DOMException('timed out', 'TimeoutError')));
+    })) as typeof fetch;
+    await expect(fetchSource(f, 'https://x/api', 20)).rejects.toThrow(/timed out/);
+  });
 });
 ```
 
@@ -277,11 +283,12 @@ const FILES = ['channels', 'streams', 'categories', 'countries', 'logos', 'feeds
 export async function fetchSource(
   fetchFn: FetchFn,
   baseUrl = 'https://iptv-org.github.io/api',
+  timeoutMs = 60_000,
 ): Promise<SourceData> {
   const out: Partial<SourceData> = {};
   for (const name of FILES) {
     const url = `${baseUrl}/${name}.json`;
-    const res = await fetchFn(url);
+    const res = await fetchFn(url, { signal: AbortSignal.timeout(timeoutMs) }); // a hung response must not hold the runner for the job timeout (catalog branch review 2026-09-24, minor 6)
     if (!res.ok) throw new Error(`fetchSource: ${name}.json returned ${res.status}`);
     let body: unknown;
     try { body = await res.json(); } catch { throw new Error(`fetchSource: ${name}.json is not valid JSON`); }
@@ -295,7 +302,7 @@ export async function fetchSource(
 - [ ] **Step 4: Run to verify pass**
 
 Run: `cd catalog && npx vitest run test/fetch-source.test.ts`
-Expected: 3 pass.
+Expected: 4 pass.
 
 - [ ] **Step 5: Commit**
 
@@ -976,6 +983,23 @@ describe('probeStream', () => {
     const r = await probeStream(s('http://a/x.m3u8'), fake({ 'http://a/x.m3u8': { status: 200, body: '#EXTM3U\n#EXT-X-STREAM-INF:BANDWIDTH=1\nhttp://bad host:abc/x.m3u8\n' } }));
     expect(r.health).toBe('down'); expect(r.format).toBe('unknown'); expect(r.reason).toMatch(/Invalid URL/);
   });
+  it('reads a .m3u8 served as octet-stream in full, so an ENDLIST past 64 KB is seen', async () => {
+    const enc = new TextEncoder();
+    const parts = [MEDIA, ...Array<string>(30).fill('#X\n'.repeat(1_000)), '#EXT-X-ENDLIST\n'].map(t => enc.encode(t)); // 90 KB in 3 KB chunks
+    const f = (async () => {
+      const body = new ReadableStream<Uint8Array>({ start(c) { for (const p of parts) c.enqueue(p); c.close(); } });
+      return new Response(body, { status: 200, headers: { 'content-type': 'application/octet-stream' } });
+    }) as typeof fetch;
+    const r = await probeStream(s('http://a/x.m3u8?token=1'), f);
+    expect(r.health).toBe('down'); expect(r.reason).toBe('playlist ended');
+  });
+  it('a variant answering 200 with html is unverified, as the same body at the top level is', async () => {
+    const r = await probeStream(s('http://a/x.m3u8'), fake({
+      'http://a/x.m3u8': { status: 200, body: MASTER },
+      'http://a/media/mono.m3u8': { status: 200, body: '<html>login</html>', type: 'text/html' },
+    }));
+    expect(r.health).toBe('unverified'); expect(r.format).toBe('hls'); expect(r.reason).toBe('media not a playlist');
+  });
 });
 
 describe('hostOf', () => {
@@ -1017,8 +1041,10 @@ async function get(url: string, headers: Record<string, string>, fetchFn: FetchF
     let head = new Uint8Array(0);
     if (res.body) {
       // Playlists are read in full (capped at 1 MB) so an #EXT-X-ENDLIST past 64 KB is not missed; TS needs only two packets; everything else 64 KB.
+      // A .m3u8 served as octet-stream is a playlist too (catalog branch review 2026-09-24, minor 7).
       const ct = (res.headers.get('content-type') ?? '').toLowerCase();
-      const wantBytes = ct.includes('mpegurl') ? 1_048_576 : ct.includes('mp2t') ? 2 * 188 + 1 : HEAD_BYTES;
+      const isPlaylist = ct.includes('mpegurl') || /\.m3u8?$/i.test(new URL(res.url || url).pathname);
+      const wantBytes = isPlaylist ? 1_048_576 : ct.includes('mp2t') ? 2 * 188 + 1 : HEAD_BYTES;
       const reader = res.body.getReader();
       const chunks: Uint8Array[] = []; let total = 0;
       try {
@@ -1089,6 +1115,7 @@ async function probeOnce(
       if ([401, 403, 429, 451].includes(media.status)) return result(url, 'unverified', 'hls', got.ms, `media http ${media.status}`, finalHost); // geo-blocked variant behind a public master (spec 4.3; Opus adversarial review 2026-09-23, major 12)
       if (media.status < 200 || media.status >= 300) return result(url, 'down', 'hls', got.ms, `media http ${media.status}`, finalHost);
       parsed = parseHls(new TextDecoder().decode(media.head));
+      if (parsed.kind === 'invalid') return result(url, 'unverified', 'hls', got.ms, 'media not a playlist', finalHost); // same as the top level: an html login page is not proof of death (minor 8)
       if (parsed.kind !== 'media') return result(url, 'down', 'hls', got.ms, 'media playlist invalid', finalHost);
     }
     if (parsed.ended) return result(url, 'down', 'hls', got.ms, 'playlist ended', finalHost);
@@ -1108,7 +1135,7 @@ async function probeOnce(
 - [ ] **Step 4: Run to verify pass**
 
 Run: `cd catalog && npx vitest run test/probe.test.ts`
-Expected: 16 pass.
+Expected: 18 pass.
 
 - [ ] **Step 5: Commit**
 
@@ -1163,6 +1190,16 @@ describe('loadHistory', () => {
     const f = (async () => new Response(JSON.stringify(h), { status: 200 })) as typeof fetch;
     expect(await loadHistory(f, 'https://p')).toEqual(h);
   });
+  it('rejects a file whose streams is null', async () => {
+    const f = (async () => new Response(JSON.stringify({ generatedAt: 'x', upRate: 0.5, streams: null }), { status: 200 })) as typeof fetch;
+    await expect(loadHistory(f, 'https://p')).rejects.toThrow(/malformed/);
+  });
+  it('gives up on a response that never arrives', async () => {
+    const f = ((_: unknown, init?: RequestInit) => new Promise((_res, rej) => {
+      init?.signal?.addEventListener('abort', () => rej(new DOMException('timed out', 'TimeoutError')));
+    })) as typeof fetch;
+    await expect(loadHistory(f, 'https://p', 20)).rejects.toThrow(/timed out/);
+  });
 });
 
 describe('mergeHistory', () => {
@@ -1212,13 +1249,14 @@ export function emptyHistory(): History {
   return { generatedAt: null, upRate: null, streams: {} };
 }
 
-export async function loadHistory(fetchFn: FetchFn, baseUrl: string): Promise<History> {
+export async function loadHistory(fetchFn: FetchFn, baseUrl: string, timeoutMs = 60_000): Promise<History> {
   // Only a 404 means "first run". A network error must propagate: treating it as first run would wipe 7-day history and disable the guard (spec 4.5).
-  const res = await fetchFn(`${baseUrl}/history.json`, { cache: 'no-store' });
+  const res = await fetchFn(`${baseUrl}/history.json`, { cache: 'no-store', signal: AbortSignal.timeout(timeoutMs) }); // catalog branch review 2026-09-24, minor 6
   if (res.status === 404) return emptyHistory();
   if (!res.ok) throw new Error(`loadHistory: history.json returned ${res.status}`);
   const body = (await res.json()) as History;
-  if (!body || typeof body !== 'object' || typeof body.streams !== 'object') throw new Error('loadHistory: malformed history.json');
+  // `typeof null` is 'object', so `streams: null` needs its own check (catalog branch review 2026-09-24, minor 9).
+  if (!body || typeof body !== 'object' || !body.streams || typeof body.streams !== 'object' || Array.isArray(body.streams)) throw new Error('loadHistory: malformed history.json');
   return body;
 }
 
@@ -1244,7 +1282,7 @@ export function mergeHistory(prev: History, results: ProbeResult[], today: strin
 - [ ] **Step 4: Run to verify pass**
 
 Run: `cd catalog && npx vitest run test/history.test.ts`
-Expected: 7 pass.
+Expected: 9 pass.
 
 - [ ] **Step 5: Commit**
 
@@ -1713,6 +1751,8 @@ Co-Authored-By: Claude Fable 5.1 <noreply@anthropic.com>"
 **Files:**
 - Create: `catalog/src/pipeline.ts`
 - Create: `catalog/src/main.ts`
+- Create: `catalog/src/env.ts`
+- Test: `catalog/test/env.test.ts`
 - Create: `catalog/scripts/make-fixture.ts`
 - Create: `catalog/test/fixtures/api/*.json` (generated by the script, then committed)
 - Test: `catalog/test/pipeline.test.ts`
@@ -1761,7 +1801,7 @@ import { mkdtemp, readFile } from 'node:fs/promises';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import { gunzipSync } from 'node:zlib';
-import { runPipeline } from '../src/pipeline.js';
+import { runPipeline, uniqueStreams } from '../src/pipeline.js';
 import type { Catalog } from '../src/types.js';
 
 const FIX = join(import.meta.dirname, 'fixtures', 'api');
@@ -1848,6 +1888,16 @@ describe('runPipeline (offline, fixture API)', () => {
     expect(h2.streams[anyUrl]).toHaveLength(2);
   });
 });
+
+describe('uniqueStreams', () => {
+  it('probes a url listed twice with the record that carries headers', () => {
+    const plain = { channel: 'A', url: 'http://h/x.m3u8', quality: null, referrer: null, userAgent: null };
+    const withRef = { channel: 'B', url: 'http://h/x.m3u8', quality: null, referrer: 'http://r/', userAgent: null };
+    const other = { channel: 'C', url: 'http://h/y.m3u8', quality: null, referrer: null, userAgent: null };
+    expect(uniqueStreams([withRef, plain, other])).toEqual([withRef, other]);
+    expect(uniqueStreams([plain, withRef, other])).toEqual([withRef, other]);
+  });
+});
 ```
 
 - [ ] **Step 3: Run to verify failure**
@@ -1867,7 +1917,7 @@ import { emptyHistory, loadHistory, mergeHistory } from './history.js';
 import { createLimiter } from './limiter.js';
 import { validateLogos } from './logos.js';
 import { hostOf, probeStream } from './probe.js';
-import type { FetchFn, Latest, ProbeResult } from './types.js';
+import type { FetchFn, GroupedStream, Latest, ProbeResult } from './types.js';
 import { writeOutputs } from './write.js';
 
 export interface PipelineOpts {
@@ -1898,7 +1948,7 @@ export async function runPipeline(o: PipelineOpts): Promise<PipelineResult> {
   log(`grouped: ${grouped.channels.length} channels, ${grouped.streams.length} streams`);
 
   const limiter = createLimiter(o.concurrency ?? 50, o.perHost ?? 2);
-  const uniqueUrls = [...new Map(grouped.streams.map(s => [s.url, s])).values()];
+  const uniqueUrls = uniqueStreams(grouped.streams);
   const results = new Map<string, ProbeResult>();
   let done = 0;
   await Promise.all(uniqueUrls.map(s => limiter.run(hostOf(s.url), async () => {
@@ -1927,11 +1977,23 @@ export async function runPipeline(o: PipelineOpts): Promise<PipelineResult> {
   log(`wrote version ${latest.version}, ${latest.bytes} bytes gz`);
   return { published: true, latest, stats };
 }
+
+// One probe per URL. When streams.json lists a URL twice, probe with the record that carries a user agent or referrer:
+// a server that needs them fails without them, and history is keyed by URL (catalog branch review 2026-09-24, minor 3).
+export function uniqueStreams(streams: GroupedStream[]): GroupedStream[] {
+  const byUrl = new Map<string, GroupedStream>();
+  for (const s of streams) {
+    const kept = byUrl.get(s.url);
+    if (!kept || (!kept.userAgent && !kept.referrer && (s.userAgent || s.referrer))) byUrl.set(s.url, s);
+  }
+  return [...byUrl.values()];
+}
 ```
 
 `catalog/src/main.ts`:
 ```ts
 import { runPipeline } from './pipeline.js';
+import { envNumber, trimBase } from './env.js';
 
 const pagesBase = process.env.PAGES_BASE;
 if (!pagesBase) { console.error('PAGES_BASE is required, e.g. https://user.github.io/tv-app'); process.exit(2); }
@@ -1939,12 +2001,12 @@ if (!pagesBase) { console.error('PAGES_BASE is required, e.g. https://user.githu
 const result = await runPipeline({
   fetchFn: fetch,
   apiBase: process.env.API_BASE ?? 'https://iptv-org.github.io/api',
-  pagesBase,
+  pagesBase: trimBase(pagesBase),
   outDir: process.env.OUT_DIR ?? 'out',
   now: () => new Date(),
-  concurrency: Number(process.env.CONCURRENCY ?? 50),
-  perHost: Number(process.env.PER_HOST ?? 2),
-  timeoutMs: Number(process.env.TIMEOUT_MS ?? 10_000),
+  concurrency: envNumber(process.env.CONCURRENCY, 50),
+  perHost: envNumber(process.env.PER_HOST, 2),
+  timeoutMs: envNumber(process.env.TIMEOUT_MS, 10_000),
   allowEmptyHistory: process.env.ALLOW_EMPTY_HISTORY === '1',
   force: process.env.FORCE_PUBLISH === '1',
 });
@@ -1952,10 +2014,49 @@ console.log(JSON.stringify(result.stats));
 if (!result.published) { console.error(`NOT PUBLISHED: ${result.reason}`); process.exit(1); }
 ```
 
+`catalog/src/env.ts` (catalog branch review 2026-09-24, minors 4 and 5):
+
+```ts
+// Environment parsing for main.ts. `Number('')` is 0, and a limiter with 0 slots never runs anything, so a blank
+// CONCURRENCY or PER_HOST would hang the job until its 120-minute timeout (catalog branch review 2026-09-24, minor 4).
+export function envNumber(value: string | undefined, fallback: number): number {
+  const n = Number(value);
+  return value?.trim() && Number.isFinite(n) && n > 0 ? n : fallback;
+}
+
+// A trailing slash in PAGES_BASE would make `${base}/history.json` a `//` path (minor 5).
+export function trimBase(url: string): string {
+  return url.replace(/\/+$/, '');
+}
+```
+
+`catalog/test/env.test.ts`:
+
+```ts
+import { describe, it, expect } from 'vitest';
+import { envNumber, trimBase } from '../src/env.js';
+
+describe('envNumber', () => {
+  it('uses the fallback for unset, blank, zero, negative or non-numeric values', () => {
+    for (const v of [undefined, '', '  ', '0', '-3', 'abc']) expect(envNumber(v, 50)).toBe(50);
+  });
+  it('reads a positive number', () => {
+    expect(envNumber('8', 50)).toBe(8);
+  });
+});
+
+describe('trimBase', () => {
+  it('drops trailing slashes so paths do not get a double slash', () => {
+    expect(trimBase('https://u.github.io/r/')).toBe('https://u.github.io/r');
+    expect(trimBase('https://u.github.io/r')).toBe('https://u.github.io/r');
+  });
+});
+```
+
 - [ ] **Step 5: Run to verify pass**
 
 Run: `cd catalog && npm run typecheck && npx vitest run`
-Expected: typecheck clean, all tests pass, including the 4 pipeline tests.
+Expected: typecheck clean, all tests pass, including the 5 pipeline tests and the 3 env tests.
 
 - [ ] **Step 6: Run the real pipeline once locally against the live API**
 
@@ -1965,7 +2066,7 @@ Expected: completes in under 60 minutes on home broadband (per-host cap slows it
 - [ ] **Step 7: Commit**
 
 ```bash
-git add catalog/src/pipeline.ts catalog/src/main.ts catalog/scripts/make-fixture.ts catalog/test/fixtures catalog/test/pipeline.test.ts
+git add catalog/src/pipeline.ts catalog/src/main.ts catalog/src/env.ts catalog/test/env.test.ts catalog/scripts/make-fixture.ts catalog/test/fixtures catalog/test/pipeline.test.ts
 git commit -m "catalog: pipeline entry point with offline integration test
 
 Live run: <N> channels, <N> streams, up <N>, down <N>, unverified <N>, <M> minutes.
@@ -2068,8 +2169,10 @@ jobs:
           EXPECTED: ${{ needs.build.outputs.version }}
         run: |
           # A wrong PAGES_BASE (typo, rename, custom domain) makes every night a "first run": history 404s and the guard never fires. Fail here instead.
+          # Strip a trailing slash and bust the edge cache (Pages serves max-age=600) so a stale copy is not blamed on PAGES_BASE (catalog branch review 2026-09-24, minor 5).
+          base="${PAGES_BASE%/}"
           for i in $(seq 1 20); do
-            got=$(curl -fsS --max-time 20 "$PAGES_BASE/latest.json" | jq -r .version 2>/dev/null || echo none)
+            got=$(curl -fsS --max-time 20 "$base/latest.json?v=$EXPECTED" | jq -r .version 2>/dev/null || echo none)
             if [ "$got" = "$EXPECTED" ]; then echo "Pages serves version $got"; exit 0; fi
             echo "attempt $i: Pages serves $got, expected $EXPECTED; waiting for propagation"; sleep 15
           done

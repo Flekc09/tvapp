@@ -3,7 +3,7 @@ import { mkdtemp, readFile } from 'node:fs/promises';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import { gunzipSync } from 'node:zlib';
-import { runPipeline } from '../src/pipeline.js';
+import { runPipeline, uniqueStreams } from '../src/pipeline.js';
 import type { Catalog } from '../src/types.js';
 
 const FIX = join(import.meta.dirname, 'fixtures', 'api');
@@ -88,5 +88,15 @@ describe('runPipeline (offline, fixture API)', () => {
     const h2 = JSON.parse(await readFile(join(outDir, 'history.json'), 'utf8'));
     const anyUrl = Object.keys(h2.streams)[0];
     expect(h2.streams[anyUrl]).toHaveLength(2);
+  });
+});
+
+describe('uniqueStreams', () => {
+  it('probes a url listed twice with the record that carries headers', () => {
+    const plain = { channel: 'A', url: 'http://h/x.m3u8', quality: null, referrer: null, userAgent: null };
+    const withRef = { channel: 'B', url: 'http://h/x.m3u8', quality: null, referrer: 'http://r/', userAgent: null };
+    const other = { channel: 'C', url: 'http://h/y.m3u8', quality: null, referrer: null, userAgent: null };
+    expect(uniqueStreams([withRef, plain, other])).toEqual([withRef, other]);
+    expect(uniqueStreams([plain, withRef, other])).toEqual([withRef, other]);
   });
 });

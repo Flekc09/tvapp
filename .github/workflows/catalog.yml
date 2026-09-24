@@ -75,8 +75,10 @@ jobs:
           EXPECTED: ${{ needs.build.outputs.version }}
         run: |
           # A wrong PAGES_BASE (typo, rename, custom domain) makes every night a "first run": history 404s and the guard never fires. Fail here instead.
+          # Strip a trailing slash and bust the edge cache (Pages serves max-age=600) so a stale copy is not blamed on PAGES_BASE (catalog branch review 2026-09-24, minor 5).
+          base="${PAGES_BASE%/}"
           for i in $(seq 1 20); do
-            got=$(curl -fsS --max-time 20 "$PAGES_BASE/latest.json" | jq -r .version 2>/dev/null || echo none)
+            got=$(curl -fsS --max-time 20 "$base/latest.json?v=$EXPECTED" | jq -r .version 2>/dev/null || echo none)
             if [ "$got" = "$EXPECTED" ]; then echo "Pages serves version $got"; exit 0; fi
             echo "attempt $i: Pages serves $got, expected $EXPECTED; waiting for propagation"; sleep 15
           done

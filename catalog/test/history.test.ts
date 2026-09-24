@@ -23,6 +23,16 @@ describe('loadHistory', () => {
     const f = (async () => new Response(JSON.stringify(h), { status: 200 })) as typeof fetch;
     expect(await loadHistory(f, 'https://p')).toEqual(h);
   });
+  it('rejects a file whose streams is null', async () => {
+    const f = (async () => new Response(JSON.stringify({ generatedAt: 'x', upRate: 0.5, streams: null }), { status: 200 })) as typeof fetch;
+    await expect(loadHistory(f, 'https://p')).rejects.toThrow(/malformed/);
+  });
+  it('gives up on a response that never arrives', async () => {
+    const f = ((_: unknown, init?: RequestInit) => new Promise((_res, rej) => {
+      init?.signal?.addEventListener('abort', () => rej(new DOMException('timed out', 'TimeoutError')));
+    })) as typeof fetch;
+    await expect(loadHistory(f, 'https://p', 20)).rejects.toThrow(/timed out/);
+  });
 });
 
 describe('mergeHistory', () => {

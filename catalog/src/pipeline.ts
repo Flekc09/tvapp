@@ -6,7 +6,7 @@ import { emptyHistory, loadHistory, mergeHistory } from './history.js';
 import { createLimiter } from './limiter.js';
 import { validateLogos } from './logos.js';
 import { hostOf, probeStream } from './probe.js';
-import type { FetchFn, Latest, ProbeResult } from './types.js';
+import type { FetchFn, GroupedStream, Latest, ProbeResult } from './types.js';
 import { writeOutputs } from './write.js';
 
 export interface PipelineOpts {
@@ -37,7 +37,7 @@ export async function runPipeline(o: PipelineOpts): Promise<PipelineResult> {
   log(`grouped: ${grouped.channels.length} channels, ${grouped.streams.length} streams`);
 
   const limiter = createLimiter(o.concurrency ?? 50, o.perHost ?? 2);
-  const uniqueUrls = [...new Map(grouped.streams.map(s => [s.url, s])).values()];
+  const uniqueUrls = uniqueStreams(grouped.streams);
   const results = new Map<string, ProbeResult>();
   let done = 0;
   await Promise.all(uniqueUrls.map(s => limiter.run(hostOf(s.url), async () => {
@@ -65,4 +65,15 @@ export async function runPipeline(o: PipelineOpts): Promise<PipelineResult> {
   const latest = await writeOutputs(o.outDir, catalog, history);
   log(`wrote version ${latest.version}, ${latest.bytes} bytes gz`);
   return { published: true, latest, stats };
+}
+
+// One probe per URL. When streams.json lists a URL twice, probe with the record that carries a user agent or referrer:
+// a server that needs them fails without them, and history is keyed by URL (catalog branch review 2026-09-24, minor 3).
+export function uniqueStreams(streams: GroupedStream[]): GroupedStream[] {
+  const byUrl = new Map<string, GroupedStream>();
+  for (const s of streams) {
+    const kept = byUrl.get(s.url);
+    if (!kept || (!kept.userAgent && !kept.referrer && (s.userAgent || s.referrer))) byUrl.set(s.url, s);
+  }
+  return [...byUrl.values()];
 }

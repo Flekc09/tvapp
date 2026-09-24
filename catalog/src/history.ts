@@ -6,13 +6,14 @@ export function emptyHistory(): History {
   return { generatedAt: null, upRate: null, streams: {} };
 }
 
-export async function loadHistory(fetchFn: FetchFn, baseUrl: string): Promise<History> {
+export async function loadHistory(fetchFn: FetchFn, baseUrl: string, timeoutMs = 60_000): Promise<History> {
   // Only a 404 means "first run". A network error must propagate: treating it as first run would wipe 7-day history and disable the guard (spec 4.5).
-  const res = await fetchFn(`${baseUrl}/history.json`, { cache: 'no-store' });
+  const res = await fetchFn(`${baseUrl}/history.json`, { cache: 'no-store', signal: AbortSignal.timeout(timeoutMs) }); // catalog branch review 2026-09-24, minor 6
   if (res.status === 404) return emptyHistory();
   if (!res.ok) throw new Error(`loadHistory: history.json returned ${res.status}`);
   const body = (await res.json()) as History;
-  if (!body || typeof body !== 'object' || typeof body.streams !== 'object') throw new Error('loadHistory: malformed history.json');
+  // `typeof null` is 'object', so `streams: null` needs its own check (catalog branch review 2026-09-24, minor 9).
+  if (!body || typeof body !== 'object' || !body.streams || typeof body.streams !== 'object' || Array.isArray(body.streams)) throw new Error('loadHistory: malformed history.json');
   return body;
 }
 
