@@ -20,7 +20,7 @@ Browse is pushed from the Channels column, so the picture is already in the inse
 
 **Categories panel, top to bottom:** heading (country name) · **chip** "Country: All" (`radius-full`, `text-sm`; on: `color-accent` fill, `color-panel` label, text "Country: All ✓") · **"All categories"** row with the country's total · the categories alphabetically, each with its count · "Other" last. With the chip on, the heading reads "All countries", the "All categories" row is hidden (that is the Channels "All" collection), and every count is worldwide.
 
-**Key hints (details panel):** **OK** Open · **2–9** Jump to a letter · **Back** Channels.
+**Key hints (details panel):** **OK** Open · **2–9** Jump to a letter · **Back** Channels · **Hold Back** Favorites (flow map D10).
 
 ## 2. Focus and movement
 

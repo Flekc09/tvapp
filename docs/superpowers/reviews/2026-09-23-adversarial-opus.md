@@ -14,7 +14,9 @@ Method: I read every line of items 1–5. I extracted the catalog plan's code an
 >
 > Status 2026-09-24: M12, M13 (catalog half; the `countryCounts` half is in the app plan and still open) and M14 applied to the catalog plan and spec with the same annotation. Re-verified by extracting the edited plan and running it: typecheck clean, 76/76, workflow YAML parses. The ccTLD change was measured on the 2026-09-23 API snapshot: guessed countries went from UK 777 / TV 390 / IO 28 to none of those, with CN 47, MN 11, RU 5 unchanged.
 >
-> Status 2026-09-24, later the same day: the owner decided M15 (applied in the catalog job), M19 (no backend extras), m4, m9 and m14 (spec section 11). The app-side majors M1–M11, M13's `countryCounts` half, M16, M17, M18 and M20 were applied to the app plan with the same annotation; library calls were checked against the Media3 1.11.0 and Compose UI 1.12.1 class files, but nothing was compiled (no JDK or Android SDK here). All other minors are still open.
+> Status 2026-09-24, later the same day: the owner decided M15 (applied in the catalog job), M19 (no backend extras), m4, m9 and m14 (spec section 11). The app-side majors M1–M11, M13's `countryCounts` half, M16, M17, M18 and M20 were applied to the app plan with the same annotation; library calls were checked against the Media3 1.11.0 and Compose UI 1.12.1 class files, but nothing was compiled (no JDK or Android SDK here).
+>
+> Status 2026-09-24, end of day: every minor is now closed. m2, m12 and m19 by owner decisions (press tint 15 % and the strip on `panel-strong`; PIN dialog 480 × 416; inset corners checked on the stick, square if the video will not clip), m23 accepted and recorded in spec §4.2, the rest applied to the spec, the UI package and both plans with the same annotation.
 
 ### B1. Every real catalog import fails: the job writes `responseMs` as a float and the app reads it with `nextInt()`
 - Where:

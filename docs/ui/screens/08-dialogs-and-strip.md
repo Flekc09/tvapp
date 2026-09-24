@@ -20,7 +20,7 @@ Neither the onn remote nor the Chromecast remote has number keys, so the dialog 
 | Keypad | 3 × 4 grid of `key` 56 × 48 dp keys, `radius-sm`, white 12 % fill, `text-md` tabular; last row: "Clear" · 0 · "⌫" (deletes one digit; never labelled Back, which is the remote key that cancels); focus starts on 1; each press fills a ring within `t-immediate`; the fourth digit submits |
 | Error | rings shake once (±8 dp over `t-normal`), empty; "That's not the PIN. Try again." or "The PINs didn't match. Start again." in `text-sm` `color-text` under the rings |
 
-No lockout in V1 (spec: household TV, the PIN guards content, not money). Back cancels; the toggle stays Off. Centred at x 240, 480 × 320.
+No lockout in V1 (spec: household TV, the PIN guards content, not money). Back cancels; the toggle stays Off. Centred at x 240, y 62, 480 × `dialog-h-pin` 416: padding 24 + title 32 + 16 + body 20 + 16 + rings 16 + 16 + keypad 216 (4 × 48 + 3 × 8) + 16 + error line 20 + 24. The earlier 320 could not hold the keypad (owner decision 2026-09-24, Opus adversarial review 2026-09-23, minor 12).
 
 ## 3. Add a playlist (#15): removed
 
@@ -45,11 +45,11 @@ Full screen, `color-bg`. Centred `panel-strong` 480 wide: "Can't reach the chann
 
 ## 7. Channel strip (#4)
 
-Left or Right on the player opens the strip along the bottom in place of the banner: a horizontal row of channel cards for the current list, the current channel centred and focused. The picture stays full frame and undimmed (no scrim: the strip is a peek, not a menu), with the strip on `panel` like the banner.
+Left or Right on the player opens the strip along the bottom in place of the banner: a horizontal row of channel cards for the current list, the current channel centred and focused. The picture stays full frame and undimmed (no scrim: the strip is a peek, not a menu), with the strip on `panel-strong`, a touch more opaque than the banner, because it carries focused cards.
 
 | Element | Tokens |
 |---|---|
-| Strip panel | x 48, y 405, 864 × `strip-h` 108, `panel`, `radius-md`, padding `space-3`, no scrim (tokens §4); a label at the left edge inside the panel, the first non-focusable 96 dp block: the list name and position, "Favorites · 3 of 12", `text-sm` muted |
+| Strip panel | x 48, y 405, 864 × `strip-h` 108, `panel-strong` (on `panel` a focused card's accent text was 4.44:1 over a bright picture; owner decision 2026-09-24, Opus adversarial review 2026-09-23, minor 2), `radius-md`, padding `space-3`, no scrim (tokens §4); a label at the left edge inside the panel, the first non-focusable 96 dp block: the list name and position, "Favorites · 3 of 12", `text-sm` muted |
 | Card | `card` 136 × 84, `radius-sm`, gap `space-2`; `logo-sm` centred at the top, name `text-sm` one line ellipsis beneath, the favorite number `text-sm` tabular in the top-left corner when the list is Favorites; five cards visible with partial cards at both ends so the strip reads as scrollable |
 | Focused card | ring + scale + tint; name in `color-text`; other cards' names `color-text-muted` |
 
@@ -75,5 +75,5 @@ Behaviour: Left/Right move focus one card and scroll the strip so the focused ca
 1. **The PIN dialog has an on-screen keypad.** Neither target remote has digits; without it the adult-content toggle cannot be turned on at all. Task 15 updated.
 2. **Text dialogs sit at the top of the safe area,** not centred, so the system keyboard never covers them.
 3. **The No-catalog screen has a "Change address" button.** Without it a wrong built-in address on a fresh install is unrecoverable from the TV. Task 16 updated.
-4. **First launch shows two determinate phases** (bytes, then channels). The plan's `FirstLaunchState.Progress` gains a `phase` so the screen can label them. Task 16 updated.
+4. **First launch shows one determinate bar** by downloaded bytes, with the running channel count in the text (§5). Download and import are one streamed pass, so there are no separate phases; an earlier two-phase draft was withdrawn (Opus adversarial review 2026-09-23, minor 6).
 5. **The strip never tunes on focus and has no scrim.** It is the one surface for skimming without committing; the Channels inset is where previews live.

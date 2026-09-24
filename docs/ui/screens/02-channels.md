@@ -13,7 +13,7 @@ The video keeps playing in the inset; everything else sits on `scrim` + `panel` 
 |---|---|---|---|
 | Collection column | x 48, y 27 | `column-w` 224 × 486 | on its own `panel` (never text on the scrim alone: 3.1:1 over a white frame); heading "Channels" `text-xl`, then entries at `row-h-dense` 48 |
 | List panel | x 288, y 27 | `list-w` 320 × 486 | `panel`, `radius-md`, inner padding `space-4`; rows at `row-h` 64, the list scrolls with the focused row kept at the vertical centre once it can |
-| Inset | x 624, y 27 | `inset-w` 288 × 162 | the one player surface, `radius-md`, white outline at 60 % 3 dp, cut out of the scrim |
+| Inset | x 624, y 27 | `inset-w` 288 × 162 | the one player surface, `radius-md`, white outline at 60 % 3 dp, cut out of the scrim. A `SurfaceView` may not clip to rounded corners: the Task 18 spike checks it on the stick, and if the video corners stay square, the inset and its outline become square too (owner decision 2026-09-24, Opus adversarial review 2026-09-23, minor 19) |
 | Details panel | x 624, y 205 | `detail-w` 288 × 308 | `panel`, `radius-md`, padding `space-4`: what the highlighted row is, and the key hints |
 
 Channels whose only category is "Other" appear under Browse → Other and in Search, never in a country list or All (spec §6); the list query excludes them when no category is chosen.

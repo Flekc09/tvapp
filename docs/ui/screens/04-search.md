@@ -23,7 +23,7 @@ Pushed from the Channels column; the picture stays in the inset. The left region
 
 **The system keyboard.** Android TV draws its own keyboard over the bottom of the screen, roughly y 320–540 on this canvas. The app handles it with the ime inset (`WindowInsets.ime`): while the keyboard is up the search panel shrinks to end at the keyboard's top edge (y ≈ 304) and the details panel is hidden; the inset stays. The results list scrolls inside the shorter panel so the focused result is never under the keyboard. When the keyboard closes the panel grows back over `t-normal`. The keyboard is the platform's; the mockup shows a labelled placeholder for it.
 
-**Key hints (details panel):** **OK** Watch · **Hold OK** Add to favorites · **Back** Close.
+**Key hints (details panel):** **OK** Watch · **Hold OK** Add to favorites · **Back** Close · **Hold Back** Favorites (flow map D10).
 
 ## 2. Focus and movement
 

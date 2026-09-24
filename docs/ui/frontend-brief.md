@@ -14,7 +14,7 @@ Red routes:
 2. **Change channel.** From the player, Up/Down surfs the current list with the banner moving instantly; from Channels, Favorites, Search or Browse, OK on any focused row plays it; a favorite or recent channel is reachable from any surface in three presses or fewer. Failure branch: tune budget exhausted → "This channel isn't working right now" with Try again and Next channel; never a spinner.
 3. **Keep watching when a feed dies.** Mid-play death → automatic failover with a one-line "Switching source" notice, no viewer action. Failure branch: all sources exhausted → the route-2 "isn't working" card; the poor-signal prompt offers "Try another source" without taking focus.
 
-Supporting flow (not a red route, but the first thing a new install shows): first launch → progress screen "Loading channels… 4,200 of 10,000. This only happens once." → Channels overlay filtered to the device country, working channels first.
+Supporting flow (not a red route, but the first thing a new install shows): first launch → progress screen "Loading channels… 4,200 so far. This only happens once." → Channels overlay filtered to the device country, working channels first.
 
 Out of scope (spec §1.2 and §10): program guide data, program-first Home, sports hub, team favorites, profiles, Simple Mode, multiview, rewind or timeshift, DVR, cross-device sync, voice beyond platform search, Google TV launcher rows, Play Store distribution, other platforms. Segment preload is a V1.1 spike. Automatic switching on degradation ships off by default and is not designed in V1. Any visual for a screen not in spec §6 is out of scope for this brief.
 
