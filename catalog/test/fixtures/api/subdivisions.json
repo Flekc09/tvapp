@@ -1,0 +1,86 @@
+[
+ {
+  "country": "US",
+  "code": "US-CO",
+  "name": "Colorado",
+  "parent": null
+ },
+ {
+  "country": "US",
+  "code": "US-FL",
+  "name": "Florida",
+  "parent": null
+ },
+ {
+  "country": "US",
+  "code": "US-HI",
+  "name": "Hawaii",
+  "parent": null
+ },
+ {
+  "country": "US",
+  "code": "US-ID",
+  "name": "Idaho",
+  "parent": null
+ },
+ {
+  "country": "US",
+  "code": "US-KS",
+  "name": "Kansas",
+  "parent": null
+ },
+ {
+  "country": "US",
+  "code": "US-MI",
+  "name": "Michigan",
+  "parent": null
+ },
+ {
+  "country": "US",
+  "code": "US-MO",
+  "name": "Missouri",
+  "parent": null
+ },
+ {
+  "country": "US",
+  "code": "US-MT",
+  "name": "Montana",
+  "parent": null
+ },
+ {
+  "country": "US",
+  "code": "US-NC",
+  "name": "North Carolina",
+  "parent": null
+ },
+ {
+  "country": "US",
+  "code": "US-NM",
+  "name": "New Mexico",
+  "parent": null
+ },
+ {
+  "country": "US",
+  "code": "US-OR",
+  "name": "Oregon",
+  "parent": null
+ },
+ {
+  "country": "US",
+  "code": "US-SD",
+  "name": "South Dakota",
+  "parent": null
+ },
+ {
+  "country": "US",
+  "code": "US-UT",
+  "name": "Utah",
+  "parent": null
+ },
+ {
+  "country": "US",
+  "code": "US-VA",
+  "name": "Virginia",
+  "parent": null
+ }
+]

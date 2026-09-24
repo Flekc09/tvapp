@@ -971,6 +971,11 @@ describe('probeStream', () => {
     await probeStream(s('http://a/x.m3u8'), fake({ 'http://a/x.m3u8': { status: 200, body: MEDIA } }, seen));
     expect(seen[0].headers['user-agent']).toBe(DEFAULT_UA);
   });
+  it('never throws: a master whose media uri cannot be resolved is down with the error as the reason', async () => {
+    // One malformed variant URI must not reject through the pipeline's Promise.all and cancel the whole nightly run (final review 2026-09-24).
+    const r = await probeStream(s('http://a/x.m3u8'), fake({ 'http://a/x.m3u8': { status: 200, body: '#EXTM3U\n#EXT-X-STREAM-INF:BANDWIDTH=1\nhttp://bad host:abc/x.m3u8\n' } }));
+    expect(r.health).toBe('down'); expect(r.format).toBe('unknown'); expect(r.reason).toMatch(/Invalid URL/);
+  });
 });
 
 describe('hostOf', () => {
@@ -1042,6 +1047,16 @@ export async function probeStream(
   stream: GroupedStream, fetchFn: FetchFn,
   opts: { timeoutMs?: number; now?: () => number } = {},
 ): Promise<ProbeResult> {
+  // Never rejects: the pipeline awaits every probe in one Promise.all, so a single throw (a variant URI `new URL` cannot parse,
+  // for example) would cancel the whole nightly run after 20 minutes of probing (final review 2026-09-24).
+  try { return await probeOnce(stream, fetchFn, opts); }
+  catch (e) { return result(stream.url, 'down', 'unknown', null, `error: ${(e as Error).message}`, null); }
+}
+
+async function probeOnce(
+  stream: GroupedStream, fetchFn: FetchFn,
+  opts: { timeoutMs?: number; now?: () => number },
+): Promise<ProbeResult> {
   const timeoutMs = opts.timeoutMs ?? 10_000;
   const now = opts.now ?? (() => performance.now());
   const headers: Record<string, string> = { 'user-agent': stream.userAgent ?? DEFAULT_UA };
@@ -1093,7 +1108,7 @@ export async function probeStream(
 - [ ] **Step 4: Run to verify pass**
 
 Run: `cd catalog && npx vitest run test/probe.test.ts`
-Expected: 15 pass.
+Expected: 16 pass.
 
 - [ ] **Step 5: Commit**
 
@@ -1936,7 +1951,7 @@ Expected: typecheck clean, all tests pass, including the 4 pipeline tests.
 - [ ] **Step 6: Run the real pipeline once locally against the live API**
 
 Run: `cd catalog && PAGES_BASE=https://example.invalid ALLOW_EMPTY_HISTORY=1 OUT_DIR=out npm run run`
-Expected: completes in under 60 minutes on home broadband (per-host cap slows it), prints stats with thousands of `up`, writes `catalog/out/catalog.json.gz` between 1.5 and 4 MB. `ALLOW_EMPTY_HISTORY=1` lets the DNS failure on `.invalid` start with empty history; without it the run aborts, which is the CI behavior. Record the stats and runtime in the commit message.
+Expected: completes in under 60 minutes on home broadband (per-host cap slows it), prints stats with thousands of `up`, writes `catalog/out/catalog.json.gz` of roughly 1 MB (measured 2026-09-24: 985,246 bytes for 12,160 channels and 17,432 streams in 21 minutes; the earlier "1.5 to 4 MB" was an estimate). `ALLOW_EMPTY_HISTORY=1` lets the DNS failure on `.invalid` start with empty history; without it the run aborts, which is the CI behavior. Record the stats and runtime in the commit message.
 
 - [ ] **Step 7: Commit**
 
@@ -1979,12 +1994,9 @@ on:
         type: boolean
         default: false
 
-permissions:
-  contents: read
-  pages: write
-  id-token: write
-  issues: write
-  actions: write   # keepalive re-enables the schedule via API
+# Permissions are granted per job (final review 2026-09-24): only `deploy` can publish to Pages, only
+# `report-failure` can write issues, only `keepalive` can touch the workflow itself.
+permissions: {}
 
 concurrency:
   group: catalog
@@ -1994,6 +2006,8 @@ jobs:
   build:
     runs-on: ubuntu-latest
     timeout-minutes: 120
+    permissions:
+      contents: read
     outputs:
       version: ${{ steps.built.outputs.version }}
     steps:
@@ -2030,6 +2044,9 @@ jobs:
   deploy:
     needs: build
     runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
@@ -2051,16 +2068,23 @@ jobs:
 
   keepalive:
     runs-on: ubuntu-latest
+    permissions:
+      actions: write
     steps:
-      - uses: actions/checkout@v4
-      - uses: gautamkrishnar/keepalive-workflow@v2
-        with:
-          use_api: true
+      # GitHub disables a scheduled workflow after 60 days without repository activity. Re-enabling it through the
+      # API each run is what the gautamkrishnar/keepalive-workflow action did; that repository is blocked by GitHub
+      # (terms of service, since 2025-04-21) so the call is made directly, with no third-party code (final review 2026-09-24).
+      - name: Re-enable the schedule
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh api -X PUT "repos/${{ github.repository }}/actions/workflows/catalog.yml/enable"
 
   report-failure:
     needs: [build, deploy]
     if: failure()
     runs-on: ubuntu-latest
+    permissions:
+      issues: write
     steps:
       - name: Open issue
         env:
@@ -2077,7 +2101,7 @@ jobs:
           fi
 ```
 
-The issue is opened by a separate job that depends on both `build` and `deploy`, so a failure in either opens one, and the label is created on the spot so the first failure is never swallowed. While a `catalog-failure` issue is open, later failures comment on it instead of opening one a night. The `force` input exists because the guard compares against the last *published* rate and a refused run never writes history: a permanent drop of more than 25 points would otherwise block every later run. The deploy job's last step fails when `latest.json` on Pages does not carry the version just built, which is what a wrong `PAGES_BASE` looks like; without it every night would be a silent "first run" with the guard off (Opus adversarial review 2026-09-23, major 14).
+The issue is opened by a separate job that depends on both `build` and `deploy`, so a failure in either opens one, and the label is created on the spot so the first failure is never swallowed. Permissions are per job so the only job that can publish to Pages is `deploy`, and the workflow uses no third-party action beyond GitHub's own: the keepalive is one `gh api` call to the enable-workflow endpoint, because the `gautamkrishnar/keepalive-workflow` repository is blocked by GitHub since 2025-04-21 and could never have been downloaded (final review 2026-09-24). While a `catalog-failure` issue is open, later failures comment on it instead of opening one a night. The `force` input exists because the guard compares against the last *published* rate and a refused run never writes history: a permanent drop of more than 25 points would otherwise block every later run. The deploy job's last step fails when `latest.json` on Pages does not carry the version just built, which is what a wrong `PAGES_BASE` looks like; without it every night would be a silent "first run" with the guard off (Opus adversarial review 2026-09-23, major 14).
 
 - [ ] **Step 2: Write the README**
 
@@ -2097,7 +2121,7 @@ Nightly job that turns the iptv-org API into `catalog.json.gz`, `history.json` a
 
 ## Platform rules
 
-- GitHub disables scheduled workflows after 60 days with no repository activity. The `keepalive` job re-enables it through the API each run.
+- GitHub disables scheduled workflows after 60 days with no repository activity. The `keepalive` job re-enables it with one API call each run (no third-party action).
 - Output is deployed as a Pages artifact, never committed. The repo does not grow.
 - Pages soft bandwidth limit is 100 GB/month. This project uses a tiny fraction.
 

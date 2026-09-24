@@ -1,0 +1,10451 @@
+[
+ {
+  "channel": "ABC.us",
+  "id": "Central",
+  "name": "Central",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "c/US"
+  ],
+  "timezones": [
+   "America/Chicago"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "480i"
+ },
+ {
+  "channel": "ABC.us",
+  "id": "East",
+  "name": "East",
+  "alt_names": [],
+  "is_main": true,
+  "broadcast_area": [
+   "c/US"
+  ],
+  "timezones": [
+   "America/New_York"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "480i"
+ },
+ {
+  "channel": "ABC.us",
+  "id": "K06QFD",
+  "name": "K06QF-D",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USQRN"
+  ],
+  "timezones": [
+   "America/New_York"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "720p"
+ },
+ {
+  "channel": "ABC.us",
+  "id": "K07ITD",
+  "name": "K07IT-D",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USW3G"
+  ],
+  "timezones": [
+   "America/New_York"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "720p"
+ },
+ {
+  "channel": "ABC.us",
+  "id": "K09DFD",
+  "name": "K09DF-D",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "s/US-ID"
+  ],
+  "timezones": [
+   "America/New_York"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "720p"
+ },
+ {
+  "channel": "ABC.us",
+  "id": "K10PRD",
+  "name": "K10PR-D",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "s/US-CO"
+  ],
+  "timezones": [
+   "America/New_York"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "720p"
+ },
+ {
+  "channel": "ABC.us",
+  "id": "K11ATD",
+  "name": "K11AT-D",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USGUC"
+  ],
+  "timezones": [
+   "America/Denver"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "480i"
+ },
+ {
+  "channel": "ABC.us",
+  "id": "K13PJD",
+  "name": "K13PJ-D",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "s/US-CO"
+  ],
+  "timezones": [
+   "America/New_York"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "1080i"
+ },
+ {
+  "channel": "ABC.us",
+  "id": "K14JZD",
+  "name": "K14JZ-D",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USEEZ"
+  ],
+  "timezones": [
+   "America/New_York"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "720p"
+ },
+ {
+  "channel": "ABC.us",
+  "id": "K16DHD",
+  "name": "K16DH-D",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USMLS"
+  ],
+  "timezones": [
+   "America/Denver"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "720p"
+ },
+ {
+  "channel": "ABC.us",
+  "id": "K19NND",
+  "name": "K19NN-D",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USMWH"
+  ],
+  "timezones": [
+   "America/New_York"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "480i"
+ },
+ {
+  "channel": "ABC.us",
+  "id": "K20JLD",
+  "name": "K20JL-D",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USELN"
+  ],
+  "timezones": [
+   "America/New_York"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "720p"
+ },
+ {
+  "channel": "ABC.us",
+  "id": "K21JKD",
+  "name": "K21JK-D",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USMTJ"
+  ],
+  "timezones": [
+   "America/Denver"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "720p"
+ },
+ {
+  "channel": "ABC.us",
+  "id": "K21LCD",
+  "name": "K21LC-D",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USCEZ"
+  ],
+  "timezones": [
+   "America/New_York"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "720p"
+ },
+ {
+  "channel": "ABC.us",
+  "id": "K23JDD",
+  "name": "K23JD-D",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "s/US-NM"
+  ],
+  "timezones": [
+   "America/New_York"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "1080i"
+ },
+ {
+  "channel": "ABC.us",
+  "id": "K24EZD",
+  "name": "K24EZ-D",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USIL3"
+  ],
+  "timezones": [
+   "America/New_York"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "720p"
+ },
+ {
+  "channel": "ABC.us",
+  "id": "K24IBD",
+  "name": "K24IB-D",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USVEI"
+  ],
+  "timezones": [
+   "America/New_York"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "720p"
+ },
+ {
+  "channel": "ABC.us",
+  "id": "K30FND",
+  "name": "K30FN-D",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USMKT"
+  ],
+  "timezones": [
+   "America/Chicago"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "480i"
+ },
+ {
+  "channel": "ABC.us",
+  "id": "K31FPD",
+  "name": "K31FP-D",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USM7Y"
+  ],
+  "timezones": [
+   "America/New_York"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "720p"
+ },
+ {
+  "channel": "ABC.us",
+  "id": "K31FRD",
+  "name": "K31FR-D",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USPS9"
+  ],
+  "timezones": [
+   "America/New_York"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "720p"
+ },
+ {
+  "channel": "ABC.us",
+  "id": "K31QKD",
+  "name": "K31QK-D",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USCOE"
+  ],
+  "timezones": [
+   "America/Los_Angeles"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "720p"
+ },
+ {
+  "channel": "ABC.us",
+  "id": "K43BUD",
+  "name": "K43BU-D",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USCVN"
+  ],
+  "timezones": [
+   "America/Denver"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "480i"
+ },
+ {
+  "channel": "ABC.us",
+  "id": "K45FZD",
+  "name": "K45FZ-D",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USLWS"
+  ],
+  "timezones": [
+   "America/Los_Angeles"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "480i"
+ },
+ {
+  "channel": "ABC.us",
+  "id": "KAAL",
+  "name": "KAAL",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USAUM"
+  ],
+  "timezones": [
+   "America/Chicago"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "720p"
+ },
+ {
+  "channel": "ABC.us",
+  "id": "KABCTV",
+  "name": "KABC-TV",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USLAX"
+  ],
+  "timezones": [
+   "America/Santiago"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "720p"
+ },
+ {
+  "channel": "ABC.us",
+  "id": "KAEFTV",
+  "name": "KAEF-TV",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USACV"
+  ],
+  "timezones": [
+   "America/Los_Angeles"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "720p"
+ },
+ {
+  "channel": "ABC.us",
+  "id": "KAIT",
+  "name": "KAIT",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USJBR"
+  ],
+  "timezones": [
+   "America/Chicago"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "720p"
+ },
+ {
+  "channel": "ABC.us",
+  "id": "KAKE",
+  "name": "KAKE",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USICT"
+  ],
+  "timezones": [
+   "America/Chicago"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "720p"
+ },
+ {
+  "channel": "ABC.us",
+  "id": "KAMC",
+  "name": "KAMC",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USLBB"
+  ],
+  "timezones": [
+   "America/Chicago"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "720p"
+ },
+ {
+  "channel": "ABC.us",
+  "id": "KAPP",
+  "name": "KAPP",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USYKM"
+  ],
+  "timezones": [
+   "America/Los_Angeles"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "720p"
+ },
+ {
+  "channel": "ABC.us",
+  "id": "KARZTV",
+  "name": "KARZ-TV",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USLIT"
+  ],
+  "timezones": [
+   "America/Chicago"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "720p"
+ },
+ {
+  "channel": "ABC.us",
+  "id": "KASYTV",
+  "name": "KASY-TV",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USABQ"
+  ],
+  "timezones": [
+   "America/Denver"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "1080p"
+ },
+ {
+  "channel": "ABC.us",
+  "id": "KATC",
+  "name": "KATC",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USLFT"
+  ],
+  "timezones": [
+   "America/Chicago"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "720p"
+ },
+ {
+  "channel": "ABC.us",
+  "id": "KATN",
+  "name": "KATN",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USFAI"
+  ],
+  "timezones": [
+   "America/Anchorage"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "720p"
+ },
+ {
+  "channel": "ABC.us",
+  "id": "KATV",
+  "name": "KATV",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USLIT"
+  ],
+  "timezones": [
+   "America/Chicago"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "720p"
+ },
+ {
+  "channel": "ABC.us",
+  "id": "KAUTTV",
+  "name": "KAUT-TV",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USOKC"
+  ],
+  "timezones": [
+   "America/Chicago"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "1080p"
+ },
+ {
+  "channel": "ABC.us",
+  "id": "KAVUTV",
+  "name": "KAVU-TV",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USVCT"
+  ],
+  "timezones": [
+   "America/Argentina/Cordoba"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "720p"
+ },
+ {
+  "channel": "ABC.us",
+  "id": "KBMT",
+  "name": "KBMT",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USBPT"
+  ],
+  "timezones": [
+   "America/Chicago"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "720p"
+ },
+ {
+  "channel": "ABC.us",
+  "id": "KBMY",
+  "name": "KBMY",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USBIS"
+  ],
+  "timezones": [
+   "America/Chicago"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "720p"
+ },
+ {
+  "channel": "ABC.us",
+  "id": "KCAUTV",
+  "name": "KCAU-TV",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USSUX"
+  ],
+  "timezones": [
+   "America/Chicago"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "720p"
+ },
+ {
+  "channel": "ABC.us",
+  "id": "KCDOTV",
+  "name": "KCDO-TV",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USSTK"
+  ],
+  "timezones": [
+   "America/New_York"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "720p"
+ },
+ {
+  "channel": "ABC.us",
+  "id": "KCRGTV",
+  "name": "KCRG-TV",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USCID"
+  ],
+  "timezones": [
+   "America/Chicago"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "720p"
+ },
+ {
+  "channel": "ABC.us",
+  "id": "KCWITV",
+  "name": "KCWI-TV",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USAMW"
+  ],
+  "timezones": [
+   "America/Chicago"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "720p"
+ },
+ {
+  "channel": "ABC.us",
+  "id": "KDKF",
+  "name": "KDKF",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USLMT"
+  ],
+  "timezones": [
+   "America/Los_Angeles"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "720p"
+ },
+ {
+  "channel": "ABC.us",
+  "id": "KDNLTV",
+  "name": "KDNL-TV",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "s/US-MO"
+  ],
+  "timezones": [
+   "America/New_York"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "720p"
+ },
+ {
+  "channel": "ABC.us",
+  "id": "KDRV",
+  "name": "KDRV",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USMFR"
+  ],
+  "timezones": [
+   "America/Los_Angeles"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "720p"
+ },
+ {
+  "channel": "ABC.us",
+  "id": "KECYTV",
+  "name": "KECY-TV",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USECO"
+  ],
+  "timezones": [
+   "America/Phoenix"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "720p"
+ },
+ {
+  "channel": "ABC.us",
+  "id": "KEROTV",
+  "name": "KERO-TV",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USBFL"
+  ],
+  "timezones": [
+   "America/Los_Angeles"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "720p"
+ },
+ {
+  "channel": "ABC.us",
+  "id": "KESQTV",
+  "name": "KESQ-TV",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USPSP"
+  ],
+  "timezones": [
+   "America/Los_Angeles"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "720p"
+ },
+ {
+  "channel": "ABC.us",
+  "id": "KETV",
+  "name": "KETV",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USOMA"
+  ],
+  "timezones": [
+   "America/Chicago"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "1080i"
+ },
+ {
+  "channel": "ABC.us",
+  "id": "KEYTTV",
+  "name": "KEYT-TV",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USSBA"
+  ],
+  "timezones": [
+   "America/Santiago"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "720p"
+ },
+ {
+  "channel": "ABC.us",
+  "id": "KEZI",
+  "name": "KEZI",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USEUG"
+  ],
+  "timezones": [
+   "America/Los_Angeles"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "720p"
+ },
+ {
+  "channel": "ABC.us",
+  "id": "KFBBTV",
+  "name": "KFBB-TV",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USGTF"
+  ],
+  "timezones": [
+   "America/Denver"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "720p"
+ },
+ {
+  "channel": "ABC.us",
+  "id": "KFSNTV",
+  "name": "KFSN-TV",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USFAT"
+  ],
+  "timezones": [
+   "America/Los_Angeles"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "720p"
+ },
+ {
+  "channel": "ABC.us",
+  "id": "KGBDLD",
+  "name": "KGBD-LD",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USGBD"
+  ],
+  "timezones": [
+   "America/New_York"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "720p"
+ },
+ {
+  "channel": "ABC.us",
+  "id": "KGNSTV",
+  "name": "KGNS-TV",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USLRD"
+  ],
+  "timezones": [
+   "America/Chicago"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "720p"
+ },
+ {
+  "channel": "ABC.us",
+  "id": "KGODT",
+  "name": "KGO-DT",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USSFO"
+  ],
+  "timezones": [
+   "America/Argentina/Cordoba"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "480i"
+ },
+ {
+  "channel": "ABC.us",
+  "id": "KGTV",
+  "name": "KGTV",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USSAN"
+  ],
+  "timezones": [
+   "America/Los_Angeles"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "720p"
+ },
+ {
+  "channel": "ABC.us",
+  "id": "KGUNTV",
+  "name": "KGUN-TV",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USTUZ"
+  ],
+  "timezones": [
+   "America/Phoenix"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "720p"
+ },
+ {
+  "channel": "ABC.us",
+  "id": "KGWCTV",
+  "name": "KGWC-TV",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USCPR"
+  ],
+  "timezones": [
+   "America/Denver"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "480i"
+ },
+ {
+  "channel": "ABC.us",
+  "id": "KHBBLD",
+  "name": "KHBB-LD",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USHLN"
+  ],
+  "timezones": [
+   "America/Denver"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "720p"
+ },
+ {
+  "channel": "ABC.us",
+  "id": "KHBS",
+  "name": "KHBS",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USFSM"
+  ],
+  "timezones": [
+   "America/Edmonton"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "720p"
+ },
+ {
+  "channel": "ABC.us",
+  "id": "KHDSLD",
+  "name": "KHDS-LD",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USSLN"
+  ],
+  "timezones": [
+   "America/Chicago"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "720p"
+ },
+ {
+  "channel": "ABC.us",
+  "id": "KHGITV",
+  "name": "KHGI-TV",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USEAR"
+  ],
+  "timezones": [
+   "America/Chicago"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "720p"
+ },
+ {
+  "channel": "ABC.us",
+  "id": "KHOGTV",
+  "name": "KHOG-TV",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USFYV"
+  ],
+  "timezones": [
+   "America/New_York"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "1080i"
+ },
+ {
+  "channel": "ABC.us",
+  "id": "KHQATV",
+  "name": "KHQA-TV",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USHBL"
+  ],
+  "timezones": [
+   "America/New_York"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "720p"
+ },
+ {
+  "channel": "ABC.us",
+  "id": "KHRR",
+  "name": "KHRR",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USTUZ"
+  ],
+  "timezones": [
+   "America/Phoenix"
+  ],
+  "languages": [
+   "spa"
+  ],
+  "format": "1080p"
+ },
+ {
+  "channel": "ABC.us",
+  "id": "KHVO",
+  "name": "KHVO",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USITO"
+  ],
+  "timezones": [
+   "Pacific/Honolulu"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "720p"
+ },
+ {
+  "channel": "ABC.us",
+  "id": "KIFITV",
+  "name": "KIFI-TV",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USIDA"
+  ],
+  "timezones": [
+   "America/Boise"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "720p"
+ },
+ {
+  "channel": "ABC.us",
+  "id": "KIII",
+  "name": "KIII",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USCRP"
+  ],
+  "timezones": [
+   "America/Chicago"
+  ],
+  "languages": [
+   "eng",
+   "spa"
+  ],
+  "format": "720p"
+ },
+ {
+  "channel": "ABC.us",
+  "id": "KITV",
+  "name": "KITV",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USHNL"
+  ],
+  "timezones": [
+   "Pacific/Honolulu"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "720p"
+ },
+ {
+  "channel": "ABC.us",
+  "id": "KIVITV",
+  "name": "KIVI-TV",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USNPA"
+  ],
+  "timezones": [
+   "America/New_York"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "720p"
+ },
+ {
+  "channel": "ABC.us",
+  "id": "KJUD",
+  "name": "KJUD",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USJNU"
+  ],
+  "timezones": [
+   "America/Juneau"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "720p"
+ },
+ {
+  "channel": "ABC.us",
+  "id": "KJZZTV",
+  "name": "KJZZ-TV",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USSLC"
+  ],
+  "timezones": [
+   "America/Denver"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "720p"
+ },
+ {
+  "channel": "ABC.us",
+  "id": "KLAXTV",
+  "name": "KLAX-TV",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USESF"
+  ],
+  "timezones": [
+   "Africa/Cairo"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "720p"
+ },
+ {
+  "channel": "ABC.us",
+  "id": "KLBY",
+  "name": "KLBY",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USCBK"
+  ],
+  "timezones": [
+   "America/New_York"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "720p"
+ },
+ {
+  "channel": "ABC.us",
+  "id": "KLKN",
+  "name": "KLKN",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USLNK"
+  ],
+  "timezones": [
+   "America/Chicago"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "1080i"
+ },
+ {
+  "channel": "ABC.us",
+  "id": "KLTV",
+  "name": "KLTV",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USTYR"
+  ],
+  "timezones": [
+   "America/Chicago"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "720p"
+ },
+ {
+  "channel": "ABC.us",
+  "id": "KLWY",
+  "name": "KLWY",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USCYS"
+  ],
+  "timezones": [
+   "America/Denver"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "480i"
+ },
+ {
+  "channel": "ABC.us",
+  "id": "KMAU",
+  "name": "KMAU",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "s/US-HI"
+  ],
+  "timezones": [
+   "Pacific/Honolulu"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "720p"
+ },
+ {
+  "channel": "ABC.us",
+  "id": "KMBCTV",
+  "name": "KMBC-TV",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USMKC"
+  ],
+  "timezones": [
+   "America/Chicago"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "1080i"
+ },
+ {
+  "channel": "ABC.us",
+  "id": "KMCY",
+  "name": "KMCY",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USMOT"
+  ],
+  "timezones": [
+   "America/Chicago"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "720p"
+ },
+ {
+  "channel": "ABC.us",
+  "id": "KMGHTV",
+  "name": "KMGH-TV",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USDEN"
+  ],
+  "timezones": [
+   "America/Denver"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "720p"
+ },
+ {
+  "channel": "ABC.us",
+  "id": "KMID",
+  "name": "KMID",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USMAF"
+  ],
+  "timezones": [
+   "America/Chicago"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "720p"
+ },
+ {
+  "channel": "ABC.us",
+  "id": "KMIZ",
+  "name": "KMIZ",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USCOU"
+  ],
+  "timezones": [
+   "America/New_York"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "720p"
+ },
+ {
+  "channel": "ABC.us",
+  "id": "KNOETV",
+  "name": "KNOE-TV",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USMLU"
+  ],
+  "timezones": [
+   "America/Chicago"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "720p"
+ },
+ {
+  "channel": "ABC.us",
+  "id": "KNSNTV",
+  "name": "KNSN-TV",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USRNO"
+  ],
+  "timezones": [
+   "America/Los_Angeles"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "720p"
+ },
+ {
+  "channel": "ABC.us",
+  "id": "KOATTV",
+  "name": "KOAT-TV",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USABQ"
+  ],
+  "timezones": [
+   "America/Denver"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "1080i"
+ },
+ {
+  "channel": "ABC.us",
+  "id": "KOCOTV",
+  "name": "KOCO-TV",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USOKC"
+  ],
+  "timezones": [
+   "America/Chicago"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "1080i"
+ },
+ {
+  "channel": "ABC.us",
+  "id": "KODETV",
+  "name": "KODE-TV",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USJLN"
+  ],
+  "timezones": [
+   "America/Chicago"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "720p"
+ },
+ {
+  "channel": "ABC.us",
+  "id": "KOHD",
+  "name": "KOHD",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USBZO"
+  ],
+  "timezones": [
+   "America/Los_Angeles"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "1080i"
+ },
+ {
+  "channel": "ABC.us",
+  "id": "KOLOTV",
+  "name": "KOLO-TV",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USRNO"
+  ],
+  "timezones": [
+   "America/Los_Angeles"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "720p"
+ },
+ {
+  "channel": "ABC.us",
+  "id": "KPOBTV",
+  "name": "KPOB-TV",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USPOF"
+  ],
+  "timezones": [
+   "America/Chicago"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "720p"
+ },
+ {
+  "channel": "ABC.us",
+  "id": "KPXJ",
+  "name": "KPXJ",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USMYX"
+  ],
+  "timezones": [
+   "America/New_York"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "1080p"
+ },
+ {
+  "channel": "ABC.us",
+  "id": "KQTV",
+  "name": "KQTV",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "s/US-MO"
+  ],
+  "timezones": [
+   "America/New_York"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "720p"
+ },
+ {
+  "channel": "ABC.us",
+  "id": "KRCA",
+  "name": "KRCA",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USRAL"
+  ],
+  "timezones": [
+   "America/Los_Angeles"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "720p"
+ },
+ {
+  "channel": "ABC.us",
+  "id": "KRCRTV",
+  "name": "KRCR-TV",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USRDD"
+  ],
+  "timezones": [
+   "America/Los_Angeles"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "720p"
+ },
+ {
+  "channel": "ABC.us",
+  "id": "KRDOTV",
+  "name": "KRDO-TV",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USCOS"
+  ],
+  "timezones": [
+   "America/Denver"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "720p"
+ },
+ {
+  "channel": "ABC.us",
+  "id": "KRGVTV",
+  "name": "KRGV-TV",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USWKO"
+  ],
+  "timezones": [
+   "America/New_York"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "720p"
+ },
+ {
+  "channel": "ABC.us",
+  "id": "KRHDCD",
+  "name": "KRHD-CD",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USCFD"
+  ],
+  "timezones": [
+   "America/Chicago"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "720p"
+ },
+ {
+  "channel": "ABC.us",
+  "id": "KRONTV",
+  "name": "KRON-TV",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USSFO"
+  ],
+  "timezones": [
+   "America/Argentina/Cordoba"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "720p"
+ },
+ {
+  "channel": "ABC.us",
+  "id": "KRWF",
+  "name": "KRWF",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USRWF"
+  ],
+  "timezones": [
+   "America/New_York"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "720p"
+ },
+ {
+  "channel": "ABC.us",
+  "id": "KSAWLD",
+  "name": "KSAW-LD",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USTWF"
+  ],
+  "timezones": [
+   "America/Boise"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "720p"
+ },
+ {
+  "channel": "ABC.us",
+  "id": "KSAX",
+  "name": "KSAX",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USAXN"
+  ],
+  "timezones": [
+   "Africa/Cairo"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "720p"
+ },
+ {
+  "channel": "ABC.us",
+  "id": "KSBSCD",
+  "name": "KSBS-CD",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USDEN"
+  ],
+  "timezones": [
+   "America/Denver"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "720p"
+ },
+ {
+  "channel": "ABC.us",
+  "id": "KSBW",
+  "name": "KSBW",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USSNS"
+  ],
+  "timezones": [
+   "America/Los_Angeles"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "720p"
+ },
+ {
+  "channel": "ABC.us",
+  "id": "KSFYTV",
+  "name": "KSFY-TV",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USFSD"
+  ],
+  "timezones": [
+   "America/Chicago"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "720p"
+ },
+ {
+  "channel": "ABC.us",
+  "id": "KSGWTV",
+  "name": "KSGW-TV",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USSHR"
+  ],
+  "timezones": [
+   "America/New_York"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "720p"
+ },
+ {
+  "channel": "ABC.us",
+  "id": "KSMOTV",
+  "name": "KSMO-TV",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USMKC"
+  ],
+  "timezones": [
+   "America/Chicago"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "1080p"
+ },
+ {
+  "channel": "ABC.us",
+  "id": "KSTPTV",
+  "name": "KSTP-TV",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USSTP"
+  ],
+  "timezones": [
+   "America/New_York"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "720p"
+ },
+ {
+  "channel": "ABC.us",
+  "id": "KSVI",
+  "name": "KSVI",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USBIL"
+  ],
+  "timezones": [
+   "America/Denver"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "720p"
+ },
+ {
+  "channel": "ABC.us",
+  "id": "KSWOTV",
+  "name": "KSWO-TV",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USLAW"
+  ],
+  "timezones": [
+   "America/Chicago"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "720p"
+ },
+ {
+  "channel": "ABC.us",
+  "id": "KSWX",
+  "name": "KSWX",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USDUC"
+  ],
+  "timezones": [
+   "America/New_York"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "480i"
+ },
+ {
+  "channel": "ABC.us",
+  "id": "KTBSTV",
+  "name": "KTBS-TV",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USSHV"
+  ],
+  "timezones": [
+   "America/Chicago"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "720p"
+ },
+ {
+  "channel": "ABC.us",
+  "id": "KTEN",
+  "name": "KTEN",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USADT"
+  ],
+  "timezones": [
+   "America/New_York"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "720p"
+ },
+ {
+  "channel": "ABC.us",
+  "id": "KTKATV",
+  "name": "KTKA-TV",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USTOP"
+  ],
+  "timezones": [
+   "America/Chicago"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "720p"
+ },
+ {
+  "channel": "ABC.us",
+  "id": "KTMF",
+  "name": "KTMF",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USMSO"
+  ],
+  "timezones": [
+   "America/Denver"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "720p"
+ },
+ {
+  "channel": "ABC.us",
+  "id": "KTMFLD",
+  "name": "KTMF-LD",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USFCA"
+  ],
+  "timezones": [
+   "America/Denver"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "720p"
+ },
+ {
+  "channel": "ABC.us",
+  "id": "KTRE",
+  "name": "KTRE",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USLFK"
+  ],
+  "timezones": [
+   "America/Chicago"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "720p"
+ },
+ {
+  "channel": "ABC.us",
+  "id": "KTRKTV",
+  "name": "KTRK-TV",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USHOU"
+  ],
+  "timezones": [
+   "America/Chicago"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "720p"
+ },
+ {
+  "channel": "ABC.us",
+  "id": "KTUL",
+  "name": "KTUL",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USTUL"
+  ],
+  "timezones": [
+   "America/Chicago"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "720p"
+ },
+ {
+  "channel": "ABC.us",
+  "id": "KTVO",
+  "name": "KTVO",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USIRK"
+  ],
+  "timezones": [
+   "America/New_York"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "720p"
+ },
+ {
+  "channel": "ABC.us",
+  "id": "KTVX",
+  "name": "KTVX",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USSLC"
+  ],
+  "timezones": [
+   "America/Denver"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "720p"
+ },
+ {
+  "channel": "ABC.us",
+  "id": "KTWOTV",
+  "name": "KTWO-TV",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USCPR"
+  ],
+  "timezones": [
+   "America/Denver"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "720p"
+ },
+ {
+  "channel": "ABC.us",
+  "id": "KTXELD",
+  "name": "KTXE-LD",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USSJT"
+  ],
+  "timezones": [
+   "America/Chicago"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "720p"
+ },
+ {
+  "channel": "ABC.us",
+  "id": "KTXSTV",
+  "name": "KTXS-TV",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USSWW"
+  ],
+  "timezones": [
+   "America/New_York"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "720p"
+ },
+ {
+  "channel": "ABC.us",
+  "id": "KUPK",
+  "name": "KUPK",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USGCK"
+  ],
+  "timezones": [
+   "America/Chicago"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "720p"
+ },
+ {
+  "channel": "ABC.us",
+  "id": "KVEW",
+  "name": "KVEW",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USKWC"
+  ],
+  "timezones": [
+   "America/Los_Angeles"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "720p"
+ },
+ {
+  "channel": "ABC.us",
+  "id": "KVHP",
+  "name": "KVHP",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USLCH"
+  ],
+  "timezones": [
+   "America/Chicago"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "720p"
+ },
+ {
+  "channel": "ABC.us",
+  "id": "KVIATV",
+  "name": "KVIA-TV",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USELP"
+  ],
+  "timezones": [
+   "America/Denver"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "720p"
+ },
+ {
+  "channel": "ABC.us",
+  "id": "KVIHTV",
+  "name": "KVIH-TV",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USCVN"
+  ],
+  "timezones": [
+   "America/Denver"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "720p"
+ },
+ {
+  "channel": "ABC.us",
+  "id": "KVIITV",
+  "name": "KVII-TV",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USAMA"
+  ],
+  "timezones": [
+   "America/Chicago"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "720p"
+ },
+ {
+  "channel": "ABC.us",
+  "id": "KVUE",
+  "name": "KVUE",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USAUS"
+  ],
+  "timezones": [
+   "America/Chicago"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "720p"
+ },
+ {
+  "channel": "ABC.us",
+  "id": "KWBATV",
+  "name": "KWBA-TV",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USAZS"
+  ],
+  "timezones": [
+   "America/New_York"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "720p"
+ },
+ {
+  "channel": "ABC.us",
+  "id": "KWNBLD",
+  "name": "KWNB-LD",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USMCK"
+  ],
+  "timezones": [
+   "America/New_York"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "720p"
+ },
+ {
+  "channel": "ABC.us",
+  "id": "KWYB",
+  "name": "KWYB",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USBTM"
+  ],
+  "timezones": [
+   "America/Denver"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "720p"
+ },
+ {
+  "channel": "ABC.us",
+  "id": "KWYBLD",
+  "name": "KWYB-LD",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USBZN"
+  ],
+  "timezones": [
+   "America/Denver"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "720p"
+ },
+ {
+  "channel": "ABC.us",
+  "id": "KXLYTV",
+  "name": "KXLY-TV",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USGEG"
+  ],
+  "timezones": [
+   "America/Los_Angeles"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "720p"
+ },
+ {
+  "channel": "ABC.us",
+  "id": "KXTV",
+  "name": "KXTV",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USSAC"
+  ],
+  "timezones": [
+   "America/Los_Angeles"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "720p"
+ },
+ {
+  "channel": "ABC.us",
+  "id": "KXVO",
+  "name": "KXVO",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USOMA"
+  ],
+  "timezones": [
+   "America/Chicago"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "1080p"
+ },
+ {
+  "channel": "ABC.us",
+  "id": "KXXV",
+  "name": "KXXV",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USACT"
+  ],
+  "timezones": [
+   "America/Chicago"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "720p"
+ },
+ {
+  "channel": "ABC.us",
+  "id": "KYTV",
+  "name": "KYTV",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USSGF"
+  ],
+  "timezones": [
+   "America/Chicago"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "720p"
+ },
+ {
+  "channel": "ABC.us",
+  "id": "KYUR",
+  "name": "KYUR",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USANC"
+  ],
+  "timezones": [
+   "America/Anchorage"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "720p"
+ },
+ {
+  "channel": "ABC.us",
+  "id": "KZKCLD",
+  "name": "KZKC-LD",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USBFL"
+  ],
+  "timezones": [
+   "America/Los_Angeles"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "480i"
+ },
+ {
+  "channel": "ABC.us",
+  "id": "KZSDLD",
+  "name": "KZSD-LD",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USSAN"
+  ],
+  "timezones": [
+   "America/Los_Angeles"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "480i"
+ },
+ {
+  "channel": "ABC.us",
+  "id": "Mountain",
+  "name": "Mountain",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "c/US"
+  ],
+  "timezones": [
+   "America/Phoenix"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "480i"
+ },
+ {
+  "channel": "ABC.us",
+  "id": "W28DPD",
+  "name": "W28DP-D",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USPSV"
+  ],
+  "timezones": [
+   "America/New_York"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "480i"
+ },
+ {
+  "channel": "ABC.us",
+  "id": "WAAYTV",
+  "name": "WAAY-TV",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USHSV"
+  ],
+  "timezones": [
+   "America/Chicago"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "720p"
+ },
+ {
+  "channel": "ABC.us",
+  "id": "WABCTV",
+  "name": "WABC-TV",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USNYC"
+  ],
+  "timezones": [
+   "America/New_York"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "720p"
+ },
+ {
+  "channel": "ABC.us",
+  "id": "WABGTV",
+  "name": "WABG-TV",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USGWO"
+  ],
+  "timezones": [
+   "Africa/Monrovia"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "720p"
+ },
+ {
+  "channel": "ABC.us",
+  "id": "WABM",
+  "name": "WABM",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USBHM"
+  ],
+  "timezones": [
+   "America/Chicago"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "720p"
+ },
+ {
+  "channel": "ABC.us",
+  "id": "WALB",
+  "name": "WALB",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USABY"
+  ],
+  "timezones": [
+   "Australia/Perth"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "720p"
+ },
+ {
+  "channel": "ABC.us",
+  "id": "WAOW",
+  "name": "WAOW",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USAUW"
+  ],
+  "timezones": [
+   "America/Chicago"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "720p"
+ },
+ {
+  "channel": "ABC.us",
+  "id": "WAPT",
+  "name": "WAPT",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USJAN"
+  ],
+  "timezones": [
+   "America/Chicago"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "1080i"
+ },
+ {
+  "channel": "ABC.us",
+  "id": "WATETV",
+  "name": "WATE-TV",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USTYS"
+  ],
+  "timezones": [
+   "America/New_York"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "720p"
+ },
+ {
+  "channel": "ABC.us",
+  "id": "WATMTV",
+  "name": "WATM-TV",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USAOO"
+  ],
+  "timezones": [
+   "America/New_York"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "720p"
+ },
+ {
+  "channel": "ABC.us",
+  "id": "WATNTV",
+  "name": "WATN-TV",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USMEM"
+  ],
+  "timezones": [
+   "America/Chicago"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "720p"
+ },
+ {
+  "channel": "ABC.us",
+  "id": "WAWVTV",
+  "name": "WAWV-TV",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USHUF"
+  ],
+  "timezones": [
+   "America/Indiana/Indianapolis"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "720p"
+ },
+ {
+  "channel": "ABC.us",
+  "id": "WAXNTV",
+  "name": "WAXN-TV",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USKNP"
+  ],
+  "timezones": [
+   "America/New_York"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "1080p"
+ },
+ {
+  "channel": "ABC.us",
+  "id": "WBAYTV",
+  "name": "WBAY-TV",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USGRB"
+  ],
+  "timezones": [
+   "America/Chicago"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "720p"
+ },
+ {
+  "channel": "ABC.us",
+  "id": "WBBJTV",
+  "name": "WBBJ-TV",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USMKL"
+  ],
+  "timezones": [
+   "America/Chicago"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "720p"
+ },
+ {
+  "channel": "ABC.us",
+  "id": "WBKBTV",
+  "name": "WBKB-TV",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USAPN"
+  ],
+  "timezones": [
+   "America/Detroit"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "720p"
+ },
+ {
+  "channel": "ABC.us",
+  "id": "WBKO",
+  "name": "WBKO",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USBWG"
+  ],
+  "timezones": [
+   "America/Chicago"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "720p"
+ },
+ {
+  "channel": "ABC.us",
+  "id": "WBKP",
+  "name": "WBKP",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USLMM"
+  ],
+  "timezones": [
+   "America/Detroit"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "720p"
+ },
+ {
+  "channel": "ABC.us",
+  "id": "WBMALD",
+  "name": "WBMA-LD",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USBHM"
+  ],
+  "timezones": [
+   "America/Chicago"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "720p"
+ },
+ {
+  "channel": "ABC.us",
+  "id": "WBNDLD",
+  "name": "WBND-LD",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USSBN"
+  ],
+  "timezones": [
+   "America/Indiana/Indianapolis"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "720p"
+ },
+ {
+  "channel": "ABC.us",
+  "id": "WBOYTV",
+  "name": "WBOY-TV",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USCKB"
+  ],
+  "timezones": [
+   "America/New_York"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "720p"
+ },
+ {
+  "channel": "ABC.us",
+  "id": "WBRZTV",
+  "name": "WBRZ-TV",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USBTR"
+  ],
+  "timezones": [
+   "America/Chicago"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "720p"
+ },
+ {
+  "channel": "ABC.us",
+  "id": "WBUP",
+  "name": "WBUP",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USISB"
+  ],
+  "timezones": [
+   "America/New_York"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "720p"
+ },
+ {
+  "channel": "ABC.us",
+  "id": "WCCTTV",
+  "name": "WCCT-TV",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USWAT"
+  ],
+  "timezones": [
+   "America/New_York"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "1080p"
+ },
+ {
+  "channel": "ABC.us",
+  "id": "WCHSTV",
+  "name": "WCHS-TV",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USCRW"
+  ],
+  "timezones": [
+   "America/New_York"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "720p"
+ },
+ {
+  "channel": "ABC.us",
+  "id": "WCIV",
+  "name": "WCIV",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USCHS"
+  ],
+  "timezones": [
+   "America/New_York"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "720p"
+ },
+ {
+  "channel": "ABC.us",
+  "id": "WCJBTV",
+  "name": "WCJB-TV",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USGNV"
+  ],
+  "timezones": [
+   "America/New_York"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "720p"
+ },
+ {
+  "channel": "ABC.us",
+  "id": "WCPOTV",
+  "name": "WCPO-TV",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USCVG"
+  ],
+  "timezones": [
+   "America/New_York"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "720p"
+ },
+ {
+  "channel": "ABC.us",
+  "id": "WCTITV",
+  "name": "WCTI-TV",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USEWN"
+  ],
+  "timezones": [
+   "America/New_York"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "720p"
+ },
+ {
+  "channel": "ABC.us",
+  "id": "WCVITV",
+  "name": "WCVI-TV",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "c/VI"
+  ],
+  "timezones": [
+   "America/St_Thomas"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "1080p"
+ },
+ {
+  "channel": "ABC.us",
+  "id": "WDAMTV",
+  "name": "WDAM-TV",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USLUL"
+  ],
+  "timezones": [
+   "America/Chicago"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "720p"
+ },
+ {
+  "channel": "ABC.us",
+  "id": "WDAYTV",
+  "name": "WDAY-TV",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USFAR"
+  ],
+  "timezones": [
+   "America/Chicago"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "720p"
+ },
+ {
+  "channel": "ABC.us",
+  "id": "WDAZTV",
+  "name": "WDAZ-TV",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USDVL"
+  ],
+  "timezones": [
+   "America/Chicago"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "720p"
+ },
+ {
+  "channel": "ABC.us",
+  "id": "WDHN",
+  "name": "WDHN",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USDHN"
+  ],
+  "timezones": [
+   "America/Chicago"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "720p"
+ },
+ {
+  "channel": "ABC.us",
+  "id": "WDIODT",
+  "name": "WDIO-DT",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USDLH"
+  ],
+  "timezones": [
+   "America/Chicago"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "720p"
+ },
+ {
+  "channel": "ABC.us",
+  "id": "WEARTV",
+  "name": "WEAR-TV",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USPNS"
+  ],
+  "timezones": [
+   "America/Chicago"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "720p"
+ },
+ {
+  "channel": "ABC.us",
+  "id": "WEEKTV",
+  "name": "WEEK-TV",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USPIA"
+  ],
+  "timezones": [
+   "America/Chicago"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "720p"
+ },
+ {
+  "channel": "ABC.us",
+  "id": "WEHT",
+  "name": "WEHT",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USEVV"
+  ],
+  "timezones": [
+   "America/Chicago"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "720p"
+ },
+ {
+  "channel": "ABC.us",
+  "id": "WENYTV",
+  "name": "WENY-TV",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USELM"
+  ],
+  "timezones": [
+   "America/New_York"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "720p"
+ },
+ {
+  "channel": "ABC.us",
+  "id": "West",
+  "name": "West",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "c/US"
+  ],
+  "timezones": [
+   "America/Los_Angeles"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "480i"
+ },
+ {
+  "channel": "ABC.us",
+  "id": "WEWSTV",
+  "name": "WEWS-TV",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USCLE"
+  ],
+  "timezones": [
+   "America/New_York"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "720p"
+ },
+ {
+  "channel": "ABC.us",
+  "id": "WFAA",
+  "name": "WFAA",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USDAL"
+  ],
+  "timezones": [
+   "America/Chicago"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "720p"
+ },
+ {
+  "channel": "ABC.us",
+  "id": "WFTV",
+  "name": "WFTV",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USORL"
+  ],
+  "timezones": [
+   "America/New_York"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "720p"
+ },
+ {
+  "channel": "ABC.us",
+  "id": "WFVXLD",
+  "name": "WFVX-LD",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USBGR"
+  ],
+  "timezones": [
+   "America/New_York"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "720p"
+ },
+ {
+  "channel": "ABC.us",
+  "id": "WGGBTV",
+  "name": "WGGB-TV",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USSFY"
+  ],
+  "timezones": [
+   "America/Chicago"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "720p"
+ },
+ {
+  "channel": "ABC.us",
+  "id": "WGNO",
+  "name": "WGNO",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USMSY"
+  ],
+  "timezones": [
+   "America/Chicago"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "720p"
+ },
+ {
+  "channel": "ABC.us",
+  "id": "WGTQ",
+  "name": "WGTQ",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "s/US-MI"
+  ],
+  "timezones": [
+   "America/New_York"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "720p"
+ },
+ {
+  "channel": "ABC.us",
+  "id": "WGTU",
+  "name": "WGTU",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USTVC"
+  ],
+  "timezones": [
+   "America/Detroit"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "720p"
+ },
+ {
+  "channel": "ABC.us",
+  "id": "WGWG",
+  "name": "WGWG",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USCHS"
+  ],
+  "timezones": [
+   "America/New_York"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "720p"
+ },
+ {
+  "channel": "ABC.us",
+  "id": "WGWW",
+  "name": "WGWW",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USANB"
+  ],
+  "timezones": [
+   "America/Chicago"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "720p"
+ },
+ {
+  "channel": "ABC.us",
+  "id": "WGXA",
+  "name": "WGXA",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USMCN"
+  ],
+  "timezones": [
+   "America/New_York"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "720p"
+ },
+ {
+  "channel": "ABC.us",
+  "id": "WHAMTV",
+  "name": "WHAM-TV",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USROC"
+  ],
+  "timezones": [
+   "America/New_York"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "720p"
+ },
+ {
+  "channel": "ABC.us",
+  "id": "WHASTV",
+  "name": "WHAS-TV",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USLUI"
+  ],
+  "timezones": [
+   "America/Kentucky/Louisville"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "720p"
+ },
+ {
+  "channel": "ABC.us",
+  "id": "WHSVTV",
+  "name": "WHSV-TV",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USHBV"
+  ],
+  "timezones": [
+   "America/New_York"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "720p"
+ },
+ {
+  "channel": "ABC.us",
+  "id": "WIRTDT",
+  "name": "WIRT-DT",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USIBB"
+  ],
+  "timezones": [
+   "America/New_York"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "720p"
+ },
+ {
+  "channel": "ABC.us",
+  "id": "WISNTV",
+  "name": "WISN-TV",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USMKE"
+  ],
+  "timezones": [
+   "America/Chicago"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "1080i"
+ },
+ {
+  "channel": "ABC.us",
+  "id": "WIVT",
+  "name": "WIVT",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USBIO"
+  ],
+  "timezones": [
+   "America/New_York"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "720p"
+ },
+ {
+  "channel": "ABC.us",
+  "id": "WJAR",
+  "name": "WJAR",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USPVD"
+  ],
+  "timezones": [
+   "America/New_York"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "720p"
+ },
+ {
+  "channel": "ABC.us",
+  "id": "WJBF",
+  "name": "WJBF",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USAGS"
+  ],
+  "timezones": [
+   "America/New_York"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "1080i"
+ },
+ {
+  "channel": "ABC.us",
+  "id": "WJCL",
+  "name": "WJCL",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USSAV"
+  ],
+  "timezones": [
+   "America/New_York"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "1080i"
+ },
+ {
+  "channel": "ABC.us",
+  "id": "WJETTV",
+  "name": "WJET-TV",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USERI"
+  ],
+  "timezones": [
+   "America/New_York"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "720p"
+ },
+ {
+  "channel": "ABC.us",
+  "id": "WJHLTV",
+  "name": "WJHL-TV",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USJCI"
+  ],
+  "timezones": [
+   "America/New_York"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "720p"
+ },
+ {
+  "channel": "ABC.us",
+  "id": "WJLATV",
+  "name": "WJLA-TV",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USWAS"
+  ],
+  "timezones": [
+   "America/New_York"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "720p"
+ },
+ {
+  "channel": "ABC.us",
+  "id": "WJMNTV",
+  "name": "WJMN-TV",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USESC"
+  ],
+  "timezones": [
+   "America/Detroit"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "720p"
+ },
+ {
+  "channel": "ABC.us",
+  "id": "WJRTTV",
+  "name": "WJRT-TV",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USFNT"
+  ],
+  "timezones": [
+   "America/Detroit"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "720p"
+ },
+ {
+  "channel": "ABC.us",
+  "id": "WJXX",
+  "name": "WJXX",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USORP"
+  ],
+  "timezones": [
+   "America/New_York"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "720p"
+ },
+ {
+  "channel": "ABC.us",
+  "id": "WKBNTV",
+  "name": "WKBN-TV",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USYNG"
+  ],
+  "timezones": [
+   "America/New_York"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "720p"
+ },
+ {
+  "channel": "ABC.us",
+  "id": "WKBWTV",
+  "name": "WKBW-TV",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USBUF"
+  ],
+  "timezones": [
+   "America/New_York"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "720p"
+ },
+ {
+  "channel": "ABC.us",
+  "id": "WKOW",
+  "name": "WKOW",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USMSN"
+  ],
+  "timezones": [
+   "America/Chicago"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "720p"
+ },
+ {
+  "channel": "ABC.us",
+  "id": "WLOS",
+  "name": "WLOS",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USAEV"
+  ],
+  "timezones": [
+   "America/New_York"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "720p"
+ },
+ {
+  "channel": "ABC.us",
+  "id": "WLOX",
+  "name": "WLOX",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USBIX"
+  ],
+  "timezones": [
+   "America/Chicago"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "720p"
+ },
+ {
+  "channel": "ABC.us",
+  "id": "WLSTV",
+  "name": "WLS-TV",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USCHI"
+  ],
+  "timezones": [
+   "America/Chicago"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "480i"
+ },
+ {
+  "channel": "ABC.us",
+  "id": "WMARTV",
+  "name": "WMAR-TV",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USBAL"
+  ],
+  "timezones": [
+   "America/New_York"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "720p"
+ },
+ {
+  "channel": "ABC.us",
+  "id": "WMBB",
+  "name": "WMBB",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USPFN"
+  ],
+  "timezones": [
+   "America/Panama"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "720p"
+ },
+ {
+  "channel": "ABC.us",
+  "id": "WMDT",
+  "name": "WMDT",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USSBY"
+  ],
+  "timezones": [
+   "America/New_York"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "720p"
+ },
+ {
+  "channel": "ABC.us",
+  "id": "WMOW",
+  "name": "WMOW",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USRWZ"
+  ],
+  "timezones": [
+   "America/Chicago"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "720p"
+ },
+ {
+  "channel": "ABC.us",
+  "id": "WMTW",
+  "name": "WMTW",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USPLD"
+  ],
+  "timezones": [
+   "America/Chicago"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "1080i"
+ },
+ {
+  "channel": "ABC.us",
+  "id": "WMURTV",
+  "name": "WMUR-TV",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USMHT"
+  ],
+  "timezones": [
+   "Europe/London"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "1080i"
+ },
+ {
+  "channel": "ABC.us",
+  "id": "WMYD",
+  "name": "WMYD",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USDET"
+  ],
+  "timezones": [
+   "America/Detroit"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "1080p"
+ },
+ {
+  "channel": "ABC.us",
+  "id": "WNCF",
+  "name": "WNCF",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USMGM"
+  ],
+  "timezones": [
+   "America/Chicago"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "720p"
+ },
+ {
+  "channel": "ABC.us",
+  "id": "WNYOTV",
+  "name": "WNYO-TV",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USBUF"
+  ],
+  "timezones": [
+   "America/New_York"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "720p"
+ },
+ {
+  "channel": "ABC.us",
+  "id": "WOAYTV",
+  "name": "WOAY-TV",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USKHJ"
+  ],
+  "timezones": [
+   "America/New_York"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "720p"
+ },
+ {
+  "channel": "ABC.us",
+  "id": "WOHLCD",
+  "name": "WOHL-CD",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USLIA"
+  ],
+  "timezones": [
+   "America/Lima"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "720p"
+ },
+ {
+  "channel": "ABC.us",
+  "id": "WOIDT",
+  "name": "WOI-DT",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USDSM"
+  ],
+  "timezones": [
+   "America/Chicago"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "720p"
+ },
+ {
+  "channel": "ABC.us",
+  "id": "WOLOTV",
+  "name": "WOLO-TV",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USCAE"
+  ],
+  "timezones": [
+   "America/New_York"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "720p"
+ },
+ {
+  "channel": "ABC.us",
+  "id": "WORATV",
+  "name": "WORA-TV",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "c/PR"
+  ],
+  "timezones": [
+   "America/Puerto_Rico"
+  ],
+  "languages": [
+   "eng",
+   "spa"
+  ],
+  "format": "720p"
+ },
+ {
+  "channel": "ABC.us",
+  "id": "WOTV",
+  "name": "WOTV",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USBTL"
+  ],
+  "timezones": [
+   "America/Detroit"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "720p"
+ },
+ {
+  "channel": "ABC.us",
+  "id": "WPBF",
+  "name": "WPBF",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USTEU"
+  ],
+  "timezones": [
+   "America/New_York"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "1080i"
+ },
+ {
+  "channel": "ABC.us",
+  "id": "WPBNTV",
+  "name": "WPBN-TV",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USTVC"
+  ],
+  "timezones": [
+   "America/Detroit"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "720p"
+ },
+ {
+  "channel": "ABC.us",
+  "id": "WPDETV",
+  "name": "WPDE-TV",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USFLO"
+  ],
+  "timezones": [
+   "Europe/Rome"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "720p"
+ },
+ {
+  "channel": "ABC.us",
+  "id": "WPFO",
+  "name": "WPFO",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USWVL"
+  ],
+  "timezones": [
+   "Australia/Melbourne"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "1080p"
+ },
+ {
+  "channel": "ABC.us",
+  "id": "WPIX",
+  "name": "WPIX",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USNYC"
+  ],
+  "timezones": [
+   "America/New_York"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "1080p"
+ },
+ {
+  "channel": "ABC.us",
+  "id": "WPNMLD",
+  "name": "WPNM-LD",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USLIA"
+  ],
+  "timezones": [
+   "America/Lima"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "480i"
+ },
+ {
+  "channel": "ABC.us",
+  "id": "WPTA",
+  "name": "WPTA",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USFWA"
+  ],
+  "timezones": [
+   "America/Indiana/Indianapolis"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "720p"
+ },
+ {
+  "channel": "ABC.us",
+  "id": "WPVITV",
+  "name": "WPVI-TV",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USPHL"
+  ],
+  "timezones": [
+   "America/New_York"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "720p"
+ },
+ {
+  "channel": "ABC.us",
+  "id": "WQADTV",
+  "name": "WQAD-TV",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USMLI"
+  ],
+  "timezones": [
+   "America/New_York"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "720p"
+ },
+ {
+  "channel": "ABC.us",
+  "id": "WQOW",
+  "name": "WQOW",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USEAU"
+  ],
+  "timezones": [
+   "America/Chicago"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "720p"
+ },
+ {
+  "channel": "ABC.us",
+  "id": "WRBW",
+  "name": "WRBW",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USORL"
+  ],
+  "timezones": [
+   "America/New_York"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "1080p"
+ },
+ {
+  "channel": "ABC.us",
+  "id": "WRICTV",
+  "name": "WRIC-TV",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USPTB"
+  ],
+  "timezones": [
+   "Australia/Brisbane"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "720p"
+ },
+ {
+  "channel": "ABC.us",
+  "id": "WRTV",
+  "name": "WRTV",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USIND"
+  ],
+  "timezones": [
+   "America/Indiana/Indianapolis"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "720p"
+ },
+ {
+  "channel": "ABC.us",
+  "id": "WSAZTV",
+  "name": "WSAZ-TV",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USHNU"
+  ],
+  "timezones": [
+   "America/New_York"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "720p"
+ },
+ {
+  "channel": "ABC.us",
+  "id": "WSBTV",
+  "name": "WSB-TV",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USATL"
+  ],
+  "timezones": [
+   "America/New_York"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "480i"
+ },
+ {
+  "channel": "ABC.us",
+  "id": "WSES",
+  "name": "WSES",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USTCL"
+  ],
+  "timezones": [
+   "America/Chicago"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "720p"
+ },
+ {
+  "channel": "ABC.us",
+  "id": "WSILTV",
+  "name": "WSIL-TV",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USHSB"
+  ],
+  "timezones": [
+   "America/New_York"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "720p"
+ },
+ {
+  "channel": "ABC.us",
+  "id": "WSOCTV",
+  "name": "WSOC-TV",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USCLT"
+  ],
+  "timezones": [
+   "America/New_York"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "720p"
+ },
+ {
+  "channel": "ABC.us",
+  "id": "WSTMTV",
+  "name": "WSTM-TV",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USSYR"
+  ],
+  "timezones": [
+   "America/New_York"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "720p"
+ },
+ {
+  "channel": "ABC.us",
+  "id": "WSTRTV",
+  "name": "WSTR-TV",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USCVG"
+  ],
+  "timezones": [
+   "America/New_York"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "720p"
+ },
+ {
+  "channel": "ABC.us",
+  "id": "WSVN",
+  "name": "WSVN",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USMIA"
+  ],
+  "timezones": [
+   "America/New_York"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "720p"
+ },
+ {
+  "channel": "ABC.us",
+  "id": "WSYRTV",
+  "name": "WSYR-TV",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USSYR"
+  ],
+  "timezones": [
+   "America/New_York"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "720p"
+ },
+ {
+  "channel": "ABC.us",
+  "id": "WSYX",
+  "name": "WSYX",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USCMH"
+  ],
+  "timezones": [
+   "America/New_York"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "720p"
+ },
+ {
+  "channel": "ABC.us",
+  "id": "WTAETV",
+  "name": "WTAE-TV",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USPIT"
+  ],
+  "timezones": [
+   "America/New_York"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "1080i"
+ },
+ {
+  "channel": "ABC.us",
+  "id": "WTEN",
+  "name": "WTEN",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USUAN"
+  ],
+  "timezones": [
+   "America/New_York"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "480i"
+ },
+ {
+  "channel": "ABC.us",
+  "id": "WTNH",
+  "name": "WTNH",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USHVN"
+  ],
+  "timezones": [
+   "America/New_York"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "720p"
+ },
+ {
+  "channel": "ABC.us",
+  "id": "WTOKTV",
+  "name": "WTOK-TV",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USMEI"
+  ],
+  "timezones": [
+   "America/Chicago"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "720p"
+ },
+ {
+  "channel": "ABC.us",
+  "id": "WTRFTV",
+  "name": "WTRF-TV",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USHLG"
+  ],
+  "timezones": [
+   "America/New_York"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "720p"
+ },
+ {
+  "channel": "ABC.us",
+  "id": "WTTK",
+  "name": "WTTK",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USOKK"
+  ],
+  "timezones": [
+   "America/Indiana/Indianapolis"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "1080p"
+ },
+ {
+  "channel": "ABC.us",
+  "id": "WTTO",
+  "name": "WTTO",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USHWA"
+  ],
+  "timezones": [
+   "America/Chicago"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "720p"
+ },
+ {
+  "channel": "ABC.us",
+  "id": "WTVA",
+  "name": "WTVA",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USTUP"
+  ],
+  "timezones": [
+   "America/Chicago"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "720p"
+ },
+ {
+  "channel": "ABC.us",
+  "id": "WTVC",
+  "name": "WTVC",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USCHA"
+  ],
+  "timezones": [
+   "America/New_York"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "720p"
+ },
+ {
+  "channel": "ABC.us",
+  "id": "WTVD",
+  "name": "WTVD",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USDUR"
+  ],
+  "timezones": [
+   "America/New_York"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "720p"
+ },
+ {
+  "channel": "ABC.us",
+  "id": "WTVG",
+  "name": "WTVG",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USTOL"
+  ],
+  "timezones": [
+   "Europe/Madrid"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "720p"
+ },
+ {
+  "channel": "ABC.us",
+  "id": "WTVM",
+  "name": "WTVM",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USCSG"
+  ],
+  "timezones": [
+   "America/New_York"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "720p"
+ },
+ {
+  "channel": "ABC.us",
+  "id": "WTVO",
+  "name": "WTVO",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USRFD"
+  ],
+  "timezones": [
+   "America/Chicago"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "720p"
+ },
+ {
+  "channel": "ABC.us",
+  "id": "WTVQDT",
+  "name": "WTVQ-DT",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USLEX"
+  ],
+  "timezones": [
+   "America/New_York"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "720p"
+ },
+ {
+  "channel": "ABC.us",
+  "id": "WTXLTV",
+  "name": "WTXL-TV",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USTLH"
+  ],
+  "timezones": [
+   "America/New_York"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "720p"
+ },
+ {
+  "channel": "ABC.us",
+  "id": "WUPV",
+  "name": "WUPV",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USALD"
+  ],
+  "timezones": [
+   "Australia/Brisbane"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "720p"
+ },
+ {
+  "channel": "ABC.us",
+  "id": "WUTR",
+  "name": "WUTR",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USUCA"
+  ],
+  "timezones": [
+   "America/New_York"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "720p"
+ },
+ {
+  "channel": "ABC.us",
+  "id": "WVAWLD",
+  "name": "WVAW-LD",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USCHO"
+  ],
+  "timezones": [
+   "America/New_York"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "720p"
+ },
+ {
+  "channel": "ABC.us",
+  "id": "WVEC",
+  "name": "WVEC",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USHNV"
+  ],
+  "timezones": [
+   "America/New_York"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "720p"
+ },
+ {
+  "channel": "ABC.us",
+  "id": "WVIITV",
+  "name": "WVII-TV",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USBGR"
+  ],
+  "timezones": [
+   "America/New_York"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "720p"
+ },
+ {
+  "channel": "ABC.us",
+  "id": "WVNY",
+  "name": "WVNY",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USBTV"
+  ],
+  "timezones": [
+   "America/New_York"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "720p"
+ },
+ {
+  "channel": "ABC.us",
+  "id": "WWAY",
+  "name": "WWAY",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USILM"
+  ],
+  "timezones": [
+   "America/New_York"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "720p"
+ },
+ {
+  "channel": "ABC.us",
+  "id": "WWCPTV",
+  "name": "WWCP-TV",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USJST"
+  ],
+  "timezones": [
+   "America/New_York"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "720p"
+ },
+ {
+  "channel": "ABC.us",
+  "id": "WWHO",
+  "name": "WWHO",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USCIY"
+  ],
+  "timezones": [
+   "America/New_York"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "720p"
+ },
+ {
+  "channel": "ABC.us",
+  "id": "WWSB",
+  "name": "WWSB",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USZOR"
+  ],
+  "timezones": [
+   "America/New_York"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "720p"
+ },
+ {
+  "channel": "ABC.us",
+  "id": "WWTI",
+  "name": "WWTI",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USART"
+  ],
+  "timezones": [
+   "America/New_York"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "720p"
+ },
+ {
+  "channel": "ABC.us",
+  "id": "WXFTDT",
+  "name": "WXFT-DT",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USAUZ"
+  ],
+  "timezones": [
+   "America/Chicago"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "720p"
+ },
+ {
+  "channel": "ABC.us",
+  "id": "WXOW",
+  "name": "WXOW",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USLSE"
+  ],
+  "timezones": [
+   "America/Chicago"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "720p"
+ },
+ {
+  "channel": "ABC.us",
+  "id": "WXYZTV",
+  "name": "WXYZ-TV",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USDET"
+  ],
+  "timezones": [
+   "America/Detroit"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "720p"
+ },
+ {
+  "channel": "ABC.us",
+  "id": "WYTV",
+  "name": "WYTV",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USYNG"
+  ],
+  "timezones": [
+   "America/New_York"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "720p"
+ },
+ {
+  "channel": "ABC.us",
+  "id": "WZVNTV",
+  "name": "WZVN-TV",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USAPF"
+  ],
+  "timezones": [
+   "America/New_York"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "720p"
+ },
+ {
+  "channel": "ABC.us",
+  "id": "WZZM",
+  "name": "WZZM",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USGRR"
+  ],
+  "timezones": [
+   "America/Detroit"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "720p"
+ },
+ {
+  "channel": "BBCNews.uk",
+  "id": "Africa",
+  "name": "Africa",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "r/AFR"
+  ],
+  "timezones": [
+   "America/Toronto"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "576i"
+ },
+ {
+  "channel": "BBCNews.uk",
+  "id": "AsiaPacific",
+  "name": "Asia Pacific",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "r/APAC"
+  ],
+  "timezones": [
+   "America/Toronto"
+  ],
+  "languages": [
+   "eng",
+   "jpn"
+  ],
+  "format": "576i"
+ },
+ {
+  "channel": "BBCNews.uk",
+  "id": "Europe",
+  "name": "Europe",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "r/EUR"
+  ],
+  "timezones": [
+   "America/Toronto"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "1080i"
+ },
+ {
+  "channel": "BBCNews.uk",
+  "id": "LatinAmerica",
+  "name": "Latin America",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "r/LATAM"
+  ],
+  "timezones": [
+   "America/Toronto"
+  ],
+  "languages": [
+   "eng",
+   "spa"
+  ],
+  "format": "576i"
+ },
+ {
+  "channel": "BBCNews.uk",
+  "id": "MiddleEast",
+  "name": "Middle East",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "r/MIDEAST"
+  ],
+  "timezones": [
+   "America/Toronto"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "576i"
+ },
+ {
+  "channel": "BBCNews.uk",
+  "id": "NorthAmerica",
+  "name": "North America",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "r/NORAM"
+  ],
+  "timezones": [
+   "America/Toronto"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "576i"
+ },
+ {
+  "channel": "BBCNews.uk",
+  "id": "SouthAsia",
+  "name": "South Asia",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "r/SAS"
+  ],
+  "timezones": [
+   "America/Toronto"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "576i"
+ },
+ {
+  "channel": "BBCNews.uk",
+  "id": "UK",
+  "name": "UK",
+  "alt_names": [],
+  "is_main": true,
+  "broadcast_area": [
+   "c/UK"
+  ],
+  "timezones": [
+   "Europe/London"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "576i"
+ },
+ {
+  "channel": "BBCNews.uk",
+  "id": "UKHD",
+  "name": "UK HD",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "c/UK"
+  ],
+  "timezones": [
+   "Europe/London"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "1080i"
+ },
+ {
+  "channel": "CBS.us",
+  "id": "East",
+  "name": "East",
+  "alt_names": [],
+  "is_main": true,
+  "broadcast_area": [
+   "c/US"
+  ],
+  "timezones": [
+   "America/New_York"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "480i"
+ },
+ {
+  "channel": "CBS.us",
+  "id": "K04BJD",
+  "name": "K04BJ-D",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USLPH"
+  ],
+  "timezones": [
+   "America/New_York"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "1080i"
+ },
+ {
+  "channel": "CBS.us",
+  "id": "K07YVD",
+  "name": "K07YV-D",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USDLS"
+  ],
+  "timezones": [
+   "America/New_York"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "1080i"
+ },
+ {
+  "channel": "CBS.us",
+  "id": "K08OWD",
+  "name": "K08OW-D",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "s/US-MT"
+  ],
+  "timezones": [
+   "America/New_York"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "1080i"
+ },
+ {
+  "channel": "CBS.us",
+  "id": "K10GFD",
+  "name": "K10GF-D",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USMLS"
+  ],
+  "timezones": [
+   "America/Denver"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "1080i"
+ },
+ {
+  "channel": "CBS.us",
+  "id": "K13XDD",
+  "name": "K13XD-D",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USFAI"
+  ],
+  "timezones": [
+   "America/Anchorage"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "480i"
+ },
+ {
+  "channel": "CBS.us",
+  "id": "K14LZD",
+  "name": "K14LZ-D",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USAXN"
+  ],
+  "timezones": [
+   "America/Chicago"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "1080i"
+ },
+ {
+  "channel": "CBS.us",
+  "id": "K15FCD",
+  "name": "K15FC-D",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USTNP"
+  ],
+  "timezones": [
+   "America/New_York"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "480i"
+ },
+ {
+  "channel": "CBS.us",
+  "id": "K17KXD",
+  "name": "K17KX-D",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "s/US-CO"
+  ],
+  "timezones": [
+   "America/New_York"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "1080i"
+ },
+ {
+  "channel": "CBS.us",
+  "id": "K18IRD",
+  "name": "K18IR-D",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USOIV"
+  ],
+  "timezones": [
+   "America/Chicago"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "1080i"
+ },
+ {
+  "channel": "CBS.us",
+  "id": "K19JRD",
+  "name": "K19JR-D",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USOLF"
+  ],
+  "timezones": [
+   "America/New_York"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "1080i"
+ },
+ {
+  "channel": "CBS.us",
+  "id": "K21CCD",
+  "name": "K21CC-D",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USLWS"
+  ],
+  "timezones": [
+   "America/Los_Angeles"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "1080i"
+ },
+ {
+  "channel": "CBS.us",
+  "id": "K22JJD",
+  "name": "K22JJ-D",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USMZH"
+  ],
+  "timezones": [
+   "America/New_York"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "480i"
+ },
+ {
+  "channel": "CBS.us",
+  "id": "K24KGD",
+  "name": "K24KG-D",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USMDM"
+  ],
+  "timezones": [
+   "America/New_York"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "1080i"
+ },
+ {
+  "channel": "CBS.us",
+  "id": "K25HJD",
+  "name": "K25HJ-D",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "s/US-NM"
+  ],
+  "timezones": [
+   "America/New_York"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "1080i"
+ },
+ {
+  "channel": "CBS.us",
+  "id": "K27KSD",
+  "name": "K27KS-D",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USGBA",
+   "ct/US4MI"
+  ],
+  "timezones": [
+   "America/New_York"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "1080i"
+ },
+ {
+  "channel": "CBS.us",
+  "id": "K28MAD",
+  "name": "K28MA-D",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USA4R"
+  ],
+  "timezones": [
+   "America/New_York"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "1080i"
+ },
+ {
+  "channel": "CBS.us",
+  "id": "K29ELD",
+  "name": "K29EL-D",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USLGD"
+  ],
+  "timezones": [
+   "America/Los_Angeles"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "1080i"
+ },
+ {
+  "channel": "CBS.us",
+  "id": "K29IBD",
+  "name": "K29IB-D",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USGRV"
+  ],
+  "timezones": [
+   "America/New_York"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "1080i"
+ },
+ {
+  "channel": "CBS.us",
+  "id": "K30JDD",
+  "name": "K30JD-D",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USPRC"
+  ],
+  "timezones": [
+   "America/Phoenix"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "1080i"
+ },
+ {
+  "channel": "CBS.us",
+  "id": "K32DED",
+  "name": "K32DE-D",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USPDT"
+  ],
+  "timezones": [
+   "America/Los_Angeles"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "1080i"
+ },
+ {
+  "channel": "CBS.us",
+  "id": "K34DCD",
+  "name": "K34DC-D",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USAST"
+  ],
+  "timezones": [
+   "America/Los_Angeles"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "1080i"
+ },
+ {
+  "channel": "CBS.us",
+  "id": "K34JCD",
+  "name": "K34JC-D",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "s/US-UT"
+  ],
+  "timezones": [
+   "America/New_York"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "480i"
+ },
+ {
+  "channel": "CBS.us",
+  "id": "K36ACD",
+  "name": "K36AC-D",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USUM2"
+  ],
+  "timezones": [
+   "America/Phoenix"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "480i"
+ },
+ {
+  "channel": "CBS.us",
+  "id": "K38CZD",
+  "name": "K38CZ-D",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USYOC"
+  ],
+  "timezones": [
+   "America/New_York"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "480i"
+ },
+ {
+  "channel": "CBS.us",
+  "id": "K41GGD",
+  "name": "K41GG-D",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "s/US-OR"
+  ],
+  "timezones": [
+   "America/New_York"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "480i"
+ },
+ {
+  "channel": "CBS.us",
+  "id": "K41IPD",
+  "name": "K41IP-D",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USRAI"
+  ],
+  "timezones": [
+   "America/New_York"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "480i"
+ },
+ {
+  "channel": "CBS.us",
+  "id": "K47LMD",
+  "name": "K47LM-D",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USPRZ"
+  ],
+  "timezones": [
+   "America/New_York"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "480i"
+ },
+ {
+  "channel": "CBS.us",
+  "id": "K49FXD",
+  "name": "K49FX-D",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USALM"
+  ],
+  "timezones": [
+   "America/Denver"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "480i"
+ },
+ {
+  "channel": "CBS.us",
+  "id": "K50HUD",
+  "name": "K50HU-D",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USFLG"
+  ],
+  "timezones": [
+   "America/Phoenix"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "480i"
+ },
+ {
+  "channel": "CBS.us",
+  "id": "K50KKD",
+  "name": "K50KK-D",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USELN"
+  ],
+  "timezones": [
+   "America/New_York"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "480i"
+ },
+ {
+  "channel": "CBS.us",
+  "id": "KAJJCD",
+  "name": "KAJJ-CD",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USFCA"
+  ],
+  "timezones": [
+   "America/Denver"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "1080i"
+ },
+ {
+  "channel": "CBS.us",
+  "id": "KALBTV",
+  "name": "KALB-TV",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USESF"
+  ],
+  "timezones": [
+   "Africa/Cairo"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "720p"
+ },
+ {
+  "channel": "CBS.us",
+  "id": "KAUU",
+  "name": "KAUU",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USANC"
+  ],
+  "timezones": [
+   "America/Anchorage"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "480i"
+ },
+ {
+  "channel": "CBS.us",
+  "id": "KAUZTV",
+  "name": "KAUZ-TV",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USSPS"
+  ],
+  "timezones": [
+   "America/Chicago"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "1080i"
+ },
+ {
+  "channel": "CBS.us",
+  "id": "KAVUTV",
+  "name": "KAVU-TV",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USVCT"
+  ],
+  "timezones": [
+   "America/Argentina/Cordoba"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "480i"
+ },
+ {
+  "channel": "CBS.us",
+  "id": "KBAKTV",
+  "name": "KBAK-TV",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USBFL"
+  ],
+  "timezones": [
+   "America/Los_Angeles"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "1080i"
+ },
+ {
+  "channel": "CBS.us",
+  "id": "KBIMTV",
+  "name": "KBIM-TV",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USROW"
+  ],
+  "timezones": [
+   "America/Denver"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "1080i"
+ },
+ {
+  "channel": "CBS.us",
+  "id": "KBJRTV",
+  "name": "KBJR-TV",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USSUW"
+  ],
+  "timezones": [
+   "America/Chicago"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "1080i"
+ },
+ {
+  "channel": "CBS.us",
+  "id": "KBNZLD",
+  "name": "KBNZ-LD",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USBZO"
+  ],
+  "timezones": [
+   "America/Los_Angeles"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "1080i"
+ },
+ {
+  "channel": "CBS.us",
+  "id": "KBOITV",
+  "name": "KBOI-TV",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USBOI"
+  ],
+  "timezones": [
+   "America/Boise"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "1080i"
+ },
+ {
+  "channel": "CBS.us",
+  "id": "KBSDDT",
+  "name": "KBSD-DT",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "s/US-KS"
+  ],
+  "timezones": [
+   "America/New_York"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "1080i"
+ },
+ {
+  "channel": "CBS.us",
+  "id": "KBSHDT",
+  "name": "KBSH-DT",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USHYS"
+  ],
+  "timezones": [
+   "America/Chicago"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "1080i"
+ },
+ {
+  "channel": "CBS.us",
+  "id": "KBSLDT",
+  "name": "KBSL-DT",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USGLD"
+  ],
+  "timezones": [
+   "America/Denver"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "1080i"
+ },
+ {
+  "channel": "CBS.us",
+  "id": "KBTXTV",
+  "name": "KBTX-TV",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USCFD"
+  ],
+  "timezones": [
+   "America/Chicago"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "1080i"
+ },
+ {
+  "channel": "CBS.us",
+  "id": "KBZK",
+  "name": "KBZK",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USBZN"
+  ],
+  "timezones": [
+   "America/Denver"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "1080i"
+ },
+ {
+  "channel": "CBS.us",
+  "id": "KCBSTV",
+  "name": "KCBS-TV",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USLAX"
+  ],
+  "timezones": [
+   "America/Santiago"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "1080i"
+ },
+ {
+  "channel": "CBS.us",
+  "id": "KCBYTV",
+  "name": "KCBY-TV",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USCOB"
+  ],
+  "timezones": [
+   "America/Los_Angeles"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "1080i"
+ },
+ {
+  "channel": "CBS.us",
+  "id": "KCCI",
+  "name": "KCCI",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USDSM"
+  ],
+  "timezones": [
+   "America/Chicago"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "1080i"
+ },
+ {
+  "channel": "CBS.us",
+  "id": "KCCWTV",
+  "name": "KCCW-TV",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USQWK"
+  ],
+  "timezones": [
+   "America/New_York"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "1080i"
+ },
+ {
+  "channel": "CBS.us",
+  "id": "KCLOTV",
+  "name": "KCLO-TV",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USRAP"
+  ],
+  "timezones": [
+   "America/Chicago"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "1080i"
+ },
+ {
+  "channel": "CBS.us",
+  "id": "KCNCTV",
+  "name": "KCNC-TV",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USDEN"
+  ],
+  "timezones": [
+   "America/Denver"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "1080i"
+ },
+ {
+  "channel": "CBS.us",
+  "id": "KDBCTV",
+  "name": "KDBC-TV",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USELP"
+  ],
+  "timezones": [
+   "America/Denver"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "1080i"
+ },
+ {
+  "channel": "CBS.us",
+  "id": "KDKATV",
+  "name": "KDKA-TV",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USPIT"
+  ],
+  "timezones": [
+   "America/New_York"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "1080i"
+ },
+ {
+  "channel": "CBS.us",
+  "id": "KDLOTV",
+  "name": "KDLO-TV",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USFSD"
+  ],
+  "timezones": [
+   "America/Chicago"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "1080i"
+ },
+ {
+  "channel": "CBS.us",
+  "id": "KDSMTV",
+  "name": "KDSM-TV",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USDSM"
+  ],
+  "timezones": [
+   "America/Chicago"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "1080p"
+ },
+ {
+  "channel": "CBS.us",
+  "id": "KELOTV",
+  "name": "KELO-TV",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USFSD"
+  ],
+  "timezones": [
+   "America/Chicago"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "1080i"
+ },
+ {
+  "channel": "CBS.us",
+  "id": "KENS",
+  "name": "KENS",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USSAT"
+  ],
+  "timezones": [
+   "America/Santiago"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "1080i"
+ },
+ {
+  "channel": "CBS.us",
+  "id": "KEPRTV",
+  "name": "KEPR-TV",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USPSC"
+  ],
+  "timezones": [
+   "America/New_York"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "1080i"
+ },
+ {
+  "channel": "CBS.us",
+  "id": "KEYCTV",
+  "name": "KEYC-TV",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USMKT"
+  ],
+  "timezones": [
+   "America/Chicago"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "1080i"
+ },
+ {
+  "channel": "CBS.us",
+  "id": "KEYETV",
+  "name": "KEYE-TV",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USAUS"
+  ],
+  "timezones": [
+   "America/Chicago"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "1080i"
+ },
+ {
+  "channel": "CBS.us",
+  "id": "KEYTTV",
+  "name": "KEYT-TV",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USSBA"
+  ],
+  "timezones": [
+   "America/Santiago"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "1080i"
+ },
+ {
+  "channel": "CBS.us",
+  "id": "KFDATV",
+  "name": "KFDA-TV",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USAMA"
+  ],
+  "timezones": [
+   "America/Chicago"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "1080i"
+ },
+ {
+  "channel": "CBS.us",
+  "id": "KFDM",
+  "name": "KFDM",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USBPT"
+  ],
+  "timezones": [
+   "America/Chicago"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "1080i"
+ },
+ {
+  "channel": "CBS.us",
+  "id": "KFMBTV",
+  "name": "KFMB-TV",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USSAN"
+  ],
+  "timezones": [
+   "America/Los_Angeles"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "1080i"
+ },
+ {
+  "channel": "CBS.us",
+  "id": "KFQX",
+  "name": "KFQX",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USGJT"
+  ],
+  "timezones": [
+   "America/Denver"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "1080i"
+ },
+ {
+  "channel": "CBS.us",
+  "id": "KFSMTV",
+  "name": "KFSM-TV",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USFSM"
+  ],
+  "timezones": [
+   "America/Edmonton"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "1080i"
+ },
+ {
+  "channel": "CBS.us",
+  "id": "KFVSTV",
+  "name": "KFVS-TV",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USCGI"
+  ],
+  "timezones": [
+   "America/Chicago"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "1080i"
+ },
+ {
+  "channel": "CBS.us",
+  "id": "KFYF",
+  "name": "KFYF",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USFAI"
+  ],
+  "timezones": [
+   "America/Anchorage"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "480i"
+ },
+ {
+  "channel": "CBS.us",
+  "id": "KGAN",
+  "name": "KGAN",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USCID"
+  ],
+  "timezones": [
+   "America/Chicago"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "720p"
+ },
+ {
+  "channel": "CBS.us",
+  "id": "KGCW",
+  "name": "KGCW",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USBRL"
+  ],
+  "timezones": [
+   "America/New_York"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "480i"
+ },
+ {
+  "channel": "CBS.us",
+  "id": "KGIN",
+  "name": "KGIN",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USGRI"
+  ],
+  "timezones": [
+   "America/Chicago"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "1080i"
+ },
+ {
+  "channel": "CBS.us",
+  "id": "KGJTCD",
+  "name": "KGJT-CD",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USGJT"
+  ],
+  "timezones": [
+   "America/Denver"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "1080i"
+ },
+ {
+  "channel": "CBS.us",
+  "id": "KGWCTV",
+  "name": "KGWC-TV",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USCPR"
+  ],
+  "timezones": [
+   "America/Denver"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "720p"
+ },
+ {
+  "channel": "CBS.us",
+  "id": "KGWLTV",
+  "name": "KGWL-TV",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USLND"
+  ],
+  "timezones": [
+   "America/Denver"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "720p"
+ },
+ {
+  "channel": "CBS.us",
+  "id": "KGWNTV",
+  "name": "KGWN-TV",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USCYS"
+  ],
+  "timezones": [
+   "America/Denver"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "1080i"
+ },
+ {
+  "channel": "CBS.us",
+  "id": "KGWRTV",
+  "name": "KGWR-TV",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USRKS"
+  ],
+  "timezones": [
+   "America/New_York"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "720p"
+ },
+ {
+  "channel": "CBS.us",
+  "id": "KHOU",
+  "name": "KHOU",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USHOU"
+  ],
+  "timezones": [
+   "America/Chicago"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "1080i"
+ },
+ {
+  "channel": "CBS.us",
+  "id": "KHQATV",
+  "name": "KHQA-TV",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USHBL"
+  ],
+  "timezones": [
+   "America/New_York"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "1080i"
+ },
+ {
+  "channel": "CBS.us",
+  "id": "KHSLTV",
+  "name": "KHSL-TV",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USCIC"
+  ],
+  "timezones": [
+   "America/Los_Angeles"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "1080i"
+ },
+ {
+  "channel": "CBS.us",
+  "id": "KIFITV",
+  "name": "KIFI-TV",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USIDA"
+  ],
+  "timezones": [
+   "America/Boise"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "1080i"
+ },
+ {
+  "channel": "CBS.us",
+  "id": "KIMATV",
+  "name": "KIMA-TV",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USYKM"
+  ],
+  "timezones": [
+   "America/Los_Angeles"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "1080i"
+ },
+ {
+  "channel": "CBS.us",
+  "id": "KIMT",
+  "name": "KIMT",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USMCW"
+  ],
+  "timezones": [
+   "America/Chicago"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "1080i"
+ },
+ {
+  "channel": "CBS.us",
+  "id": "KIONTV",
+  "name": "KION-TV",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USMY3"
+  ],
+  "timezones": [
+   "America/Los_Angeles"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "1080i"
+ },
+ {
+  "channel": "CBS.us",
+  "id": "KIROTV",
+  "name": "KIRO-TV",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USSEA"
+  ],
+  "timezones": [
+   "America/Los_Angeles"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "1080i"
+ },
+ {
+  "channel": "CBS.us",
+  "id": "KJNBCD",
+  "name": "KJNB-CD",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USJBR"
+  ],
+  "timezones": [
+   "America/Chicago"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "480i"
+ },
+ {
+  "channel": "CBS.us",
+  "id": "KKTV",
+  "name": "KKTV",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USCOS"
+  ],
+  "timezones": [
+   "America/Denver"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "1080i"
+ },
+ {
+  "channel": "CBS.us",
+  "id": "KLASTV",
+  "name": "KLAS-TV",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USLAS"
+  ],
+  "timezones": [
+   "America/Los_Angeles"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "1080i"
+ },
+ {
+  "channel": "CBS.us",
+  "id": "KLBKTV",
+  "name": "KLBK-TV",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USLBB"
+  ],
+  "timezones": [
+   "America/Chicago"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "1080i"
+ },
+ {
+  "channel": "CBS.us",
+  "id": "KLEWTV",
+  "name": "KLEW-TV",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USLWS"
+  ],
+  "timezones": [
+   "America/Los_Angeles"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "1080i"
+ },
+ {
+  "channel": "CBS.us",
+  "id": "KLFYTV",
+  "name": "KLFY-TV",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USLFT"
+  ],
+  "timezones": [
+   "America/Chicago"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "1080i"
+ },
+ {
+  "channel": "CBS.us",
+  "id": "KLJB",
+  "name": "KLJB",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USDVN"
+  ],
+  "timezones": [
+   "America/Chicago"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "480i"
+ },
+ {
+  "channel": "CBS.us",
+  "id": "KLST",
+  "name": "KLST",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USSJT"
+  ],
+  "timezones": [
+   "America/Chicago"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "1080i"
+ },
+ {
+  "channel": "CBS.us",
+  "id": "KMOV",
+  "name": "KMOV",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "s/US-MO"
+  ],
+  "timezones": [
+   "America/New_York"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "1080i"
+ },
+ {
+  "channel": "CBS.us",
+  "id": "KMTVTV",
+  "name": "KMTV-TV",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USOMA"
+  ],
+  "timezones": [
+   "America/Chicago"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "1080i"
+ },
+ {
+  "channel": "CBS.us",
+  "id": "KMVT",
+  "name": "KMVT",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USTWF"
+  ],
+  "timezones": [
+   "America/Boise"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "1080i"
+ },
+ {
+  "channel": "CBS.us",
+  "id": "KMYU",
+  "name": "KMYU",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "s/US-UT"
+  ],
+  "timezones": [
+   "America/New_York"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "1080i"
+ },
+ {
+  "channel": "CBS.us",
+  "id": "KNOETV",
+  "name": "KNOE-TV",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USMLU"
+  ],
+  "timezones": [
+   "America/Chicago"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "1080i"
+ },
+ {
+  "channel": "CBS.us",
+  "id": "KNPLLD",
+  "name": "KNPL-LD",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USLBF"
+  ],
+  "timezones": [
+   "America/New_York"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "1080i"
+ },
+ {
+  "channel": "CBS.us",
+  "id": "KOAMTV",
+  "name": "KOAM-TV",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USPTS"
+  ],
+  "timezones": [
+   "America/New_York"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "1080i"
+ },
+ {
+  "channel": "CBS.us",
+  "id": "KOHD",
+  "name": "KOHD",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USBZO"
+  ],
+  "timezones": [
+   "America/Los_Angeles"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "1080i"
+ },
+ {
+  "channel": "CBS.us",
+  "id": "KOIN",
+  "name": "KOIN",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USPDX"
+  ],
+  "timezones": [
+   "Australia/Melbourne"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "1080i"
+ },
+ {
+  "channel": "CBS.us",
+  "id": "KOLDTV",
+  "name": "KOLD-TV",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USTUZ"
+  ],
+  "timezones": [
+   "America/Phoenix"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "1080i"
+ },
+ {
+  "channel": "CBS.us",
+  "id": "KOLN",
+  "name": "KOLN",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USLNK"
+  ],
+  "timezones": [
+   "America/Chicago"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "1080i"
+ },
+ {
+  "channel": "CBS.us",
+  "id": "KOLR",
+  "name": "KOLR",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USSGF"
+  ],
+  "timezones": [
+   "America/Chicago"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "1080i"
+ },
+ {
+  "channel": "CBS.us",
+  "id": "KOSATV",
+  "name": "KOSA-TV",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USOSD"
+  ],
+  "timezones": [
+   "Europe/Kyiv"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "1080i"
+ },
+ {
+  "channel": "CBS.us",
+  "id": "KOTVDT",
+  "name": "KOTV-DT",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USTUL"
+  ],
+  "timezones": [
+   "America/Chicago"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "1080i"
+ },
+ {
+  "channel": "CBS.us",
+  "id": "KOVR",
+  "name": "KOVR",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USSCK"
+  ],
+  "timezones": [
+   "America/Los_Angeles"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "1080i"
+ },
+ {
+  "channel": "CBS.us",
+  "id": "KPAXTV",
+  "name": "KPAX-TV",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USMSO"
+  ],
+  "timezones": [
+   "America/Denver"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "1080i"
+ },
+ {
+  "channel": "CBS.us",
+  "id": "KPHOTV",
+  "name": "KPHO-TV",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USPHX"
+  ],
+  "timezones": [
+   "America/Phoenix"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "1080i"
+ },
+ {
+  "channel": "CBS.us",
+  "id": "KPIC",
+  "name": "KPIC",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USRBG"
+  ],
+  "timezones": [
+   "America/Los_Angeles"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "1080i"
+ },
+ {
+  "channel": "CBS.us",
+  "id": "KPIXTV",
+  "name": "KPIX-TV",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USSFO"
+  ],
+  "timezones": [
+   "America/Argentina/Cordoba"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "1080i"
+ },
+ {
+  "channel": "CBS.us",
+  "id": "KPLOTV",
+  "name": "KPLO-TV",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "s/US-SD"
+  ],
+  "timezones": [
+   "America/New_York"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "1080i"
+ },
+ {
+  "channel": "CBS.us",
+  "id": "KPTH",
+  "name": "KPTH",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USSUX"
+  ],
+  "timezones": [
+   "America/Chicago"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "1080i"
+ },
+ {
+  "channel": "CBS.us",
+  "id": "KPTPLD",
+  "name": "KPTP-LD",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USOFK"
+  ],
+  "timezones": [
+   "America/New_York"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "1080i"
+ },
+ {
+  "channel": "CBS.us",
+  "id": "KRCG",
+  "name": "KRCG",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USJEF"
+  ],
+  "timezones": [
+   "America/Chicago"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "1080i"
+ },
+ {
+  "channel": "CBS.us",
+  "id": "KRCWTV",
+  "name": "KRCW-TV",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USSLE"
+  ],
+  "timezones": [
+   "Asia/Kolkata"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "1080p"
+ },
+ {
+  "channel": "CBS.us",
+  "id": "KREM",
+  "name": "KREM",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USGEG"
+  ],
+  "timezones": [
+   "America/Los_Angeles"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "1080i"
+ },
+ {
+  "channel": "CBS.us",
+  "id": "KREXTV",
+  "name": "KREX-TV",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USGJT"
+  ],
+  "timezones": [
+   "America/Denver"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "1080i"
+ },
+ {
+  "channel": "CBS.us",
+  "id": "KREYTV",
+  "name": "KREY-TV",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USMTJ"
+  ],
+  "timezones": [
+   "America/Denver"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "1080i"
+ },
+ {
+  "channel": "CBS.us",
+  "id": "KREZTV",
+  "name": "KREZ-TV",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USDRO"
+  ],
+  "timezones": [
+   "America/Monterrey"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "1080i"
+ },
+ {
+  "channel": "CBS.us",
+  "id": "KRII",
+  "name": "KRII",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USQCI"
+  ],
+  "timezones": [
+   "America/New_York"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "1080i"
+ },
+ {
+  "channel": "CBS.us",
+  "id": "KRQE",
+  "name": "KRQE",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USABQ"
+  ],
+  "timezones": [
+   "America/Denver"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "1080i"
+ },
+ {
+  "channel": "CBS.us",
+  "id": "KRTV",
+  "name": "KRTV",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USGTF"
+  ],
+  "timezones": [
+   "America/Denver"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "1080i"
+ },
+ {
+  "channel": "CBS.us",
+  "id": "KSCWDT",
+  "name": "KSCW-DT",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USICT"
+  ],
+  "timezones": [
+   "America/Chicago"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "480i"
+ },
+ {
+  "channel": "CBS.us",
+  "id": "KSIXTV",
+  "name": "KSIX-TV",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USITO"
+  ],
+  "timezones": [
+   "Pacific/Honolulu"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "720p"
+ },
+ {
+  "channel": "CBS.us",
+  "id": "KSLA",
+  "name": "KSLA",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USSHV"
+  ],
+  "timezones": [
+   "America/Chicago"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "1080i"
+ },
+ {
+  "channel": "CBS.us",
+  "id": "KSTF",
+  "name": "KSTF",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USBFF"
+  ],
+  "timezones": [
+   "America/Denver"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "1080i"
+ },
+ {
+  "channel": "CBS.us",
+  "id": "KTABTV",
+  "name": "KTAB-TV",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USABI"
+  ],
+  "timezones": [
+   "America/Chicago"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "1080i"
+ },
+ {
+  "channel": "CBS.us",
+  "id": "KTHV",
+  "name": "KTHV",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USLIT"
+  ],
+  "timezones": [
+   "America/Chicago"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "1080i"
+ },
+ {
+  "channel": "CBS.us",
+  "id": "KTNLTV",
+  "name": "KTNL-TV",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USSIT"
+  ],
+  "timezones": [
+   "America/Sitka"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "480i"
+ },
+ {
+  "channel": "CBS.us",
+  "id": "KTVL",
+  "name": "KTVL",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USMFR"
+  ],
+  "timezones": [
+   "America/Los_Angeles"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "1080i"
+ },
+ {
+  "channel": "CBS.us",
+  "id": "KTVMTV",
+  "name": "KTVM-TV",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USWYS"
+  ],
+  "timezones": [
+   "America/Denver"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "480i"
+ },
+ {
+  "channel": "CBS.us",
+  "id": "KTVN",
+  "name": "KTVN",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USRNO"
+  ],
+  "timezones": [
+   "America/Los_Angeles"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "1080i"
+ },
+ {
+  "channel": "CBS.us",
+  "id": "KTVO",
+  "name": "KTVO",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USIRK"
+  ],
+  "timezones": [
+   "America/New_York"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "1080i"
+ },
+ {
+  "channel": "CBS.us",
+  "id": "KTVQ",
+  "name": "KTVQ",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USBIL"
+  ],
+  "timezones": [
+   "America/Denver"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "1080i"
+ },
+ {
+  "channel": "CBS.us",
+  "id": "KTVT",
+  "name": "KTVT",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USFWT"
+  ],
+  "timezones": [
+   "America/New_York"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "1080i"
+ },
+ {
+  "channel": "CBS.us",
+  "id": "KUNSTV",
+  "name": "KUNS-TV",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USBVE"
+  ],
+  "timezones": [
+   "America/New_York"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "1080p"
+ },
+ {
+  "channel": "CBS.us",
+  "id": "KUTV",
+  "name": "KUTV",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USSLC"
+  ],
+  "timezones": [
+   "America/Denver"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "1080i"
+ },
+ {
+  "channel": "CBS.us",
+  "id": "KVALTV",
+  "name": "KVAL-TV",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USEUG"
+  ],
+  "timezones": [
+   "America/Los_Angeles"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "1080i"
+ },
+ {
+  "channel": "CBS.us",
+  "id": "KVCW",
+  "name": "KVCW",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USLAS"
+  ],
+  "timezones": [
+   "America/Los_Angeles"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "1080p"
+ },
+ {
+  "channel": "CBS.us",
+  "id": "KVEOTV",
+  "name": "KVEO-TV",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USBRO"
+  ],
+  "timezones": [
+   "America/Chicago"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "1080i"
+ },
+ {
+  "channel": "CBS.us",
+  "id": "KVIQLD",
+  "name": "KVIQ-LD",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USEKA"
+  ],
+  "timezones": [
+   "America/Los_Angeles"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "1080i"
+ },
+ {
+  "channel": "CBS.us",
+  "id": "KVLYTV",
+  "name": "KVLY-TV",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USFAR"
+  ],
+  "timezones": [
+   "America/Chicago"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "720p"
+ },
+ {
+  "channel": "CBS.us",
+  "id": "KWTVDT",
+  "name": "KWTV-DT",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USOKC"
+  ],
+  "timezones": [
+   "America/Chicago"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "1080i"
+ },
+ {
+  "channel": "CBS.us",
+  "id": "KWTXTV",
+  "name": "KWTX-TV",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USACT"
+  ],
+  "timezones": [
+   "America/Chicago"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "1080i"
+ },
+ {
+  "channel": "CBS.us",
+  "id": "KXDFCD",
+  "name": "KXDF-CD",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USFAI"
+  ],
+  "timezones": [
+   "America/Anchorage"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "1080i"
+ },
+ {
+  "channel": "CBS.us",
+  "id": "KXII",
+  "name": "KXII",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USSHP"
+  ],
+  "timezones": [
+   "America/Chicago"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "1080i"
+ },
+ {
+  "channel": "CBS.us",
+  "id": "KXLFTV",
+  "name": "KXLF-TV",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USBTM"
+  ],
+  "timezones": [
+   "America/Denver"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "1080i"
+ },
+ {
+  "channel": "CBS.us",
+  "id": "KXLHLD",
+  "name": "KXLH-LD",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USHLN"
+  ],
+  "timezones": [
+   "America/Denver"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "1080i"
+ },
+ {
+  "channel": "CBS.us",
+  "id": "KXMATV",
+  "name": "KXMA-TV",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USDIK"
+  ],
+  "timezones": [
+   "America/Denver"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "1080i"
+ },
+ {
+  "channel": "CBS.us",
+  "id": "KXMBTV",
+  "name": "KXMB-TV",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USBIS"
+  ],
+  "timezones": [
+   "America/Chicago"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "1080i"
+ },
+ {
+  "channel": "CBS.us",
+  "id": "KXMCTV",
+  "name": "KXMC-TV",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USMOT"
+  ],
+  "timezones": [
+   "America/Chicago"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "1080i"
+ },
+ {
+  "channel": "CBS.us",
+  "id": "KXMDTV",
+  "name": "KXMD-TV",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USISN"
+  ],
+  "timezones": [
+   "America/Chicago"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "1080i"
+ },
+ {
+  "channel": "CBS.us",
+  "id": "KXTSLD",
+  "name": "KXTS-LD",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USVCT"
+  ],
+  "timezones": [
+   "America/Argentina/Cordoba"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "1080i"
+ },
+ {
+  "channel": "CBS.us",
+  "id": "KYESLD",
+  "name": "KYES-LD",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USANC"
+  ],
+  "timezones": [
+   "America/Anchorage"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "1080i"
+ },
+ {
+  "channel": "CBS.us",
+  "id": "KYLXCD",
+  "name": "KYLX-CD",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USLRD"
+  ],
+  "timezones": [
+   "America/Chicago"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "480i"
+ },
+ {
+  "channel": "CBS.us",
+  "id": "KYMADT",
+  "name": "KYMA-DT",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USYUM"
+  ],
+  "timezones": [
+   "America/Phoenix"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "1080i"
+ },
+ {
+  "channel": "CBS.us",
+  "id": "KYTX",
+  "name": "KYTX",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USOCH"
+  ],
+  "timezones": [
+   "America/Chicago"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "1080i"
+ },
+ {
+  "channel": "CBS.us",
+  "id": "KYWDT",
+  "name": "KYW-DT",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USPHL"
+  ],
+  "timezones": [
+   "America/New_York"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "480i"
+ },
+ {
+  "channel": "CBS.us",
+  "id": "KZTV",
+  "name": "KZTV",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USCRP"
+  ],
+  "timezones": [
+   "America/Chicago"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "1080i"
+ },
+ {
+  "channel": "CBS.us",
+  "id": "Mountain",
+  "name": "Mountain",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "c/US"
+  ],
+  "timezones": [
+   "America/Phoenix"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "480i"
+ },
+ {
+  "channel": "CBS.us",
+  "id": "W08BPD",
+  "name": "W08BP-D",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "s/US-NC"
+  ],
+  "timezones": [
+   "America/New_York"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "480i"
+ },
+ {
+  "channel": "CBS.us",
+  "id": "W18EGD",
+  "name": "W18EG-D",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "s/US-VA"
+  ],
+  "timezones": [
+   "America/New_York"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "480i"
+ },
+ {
+  "channel": "CBS.us",
+  "id": "WABITV",
+  "name": "WABI-TV",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USBGR"
+  ],
+  "timezones": [
+   "America/New_York"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "1080i"
+ },
+ {
+  "channel": "CBS.us",
+  "id": "WAFB",
+  "name": "WAFB",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USBTR"
+  ],
+  "timezones": [
+   "America/Chicago"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "1080i"
+ },
+ {
+  "channel": "CBS.us",
+  "id": "WAGMTV",
+  "name": "WAGM-TV",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USPQI"
+  ],
+  "timezones": [
+   "America/New_York"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "1080i"
+ },
+ {
+  "channel": "CBS.us",
+  "id": "WAKA",
+  "name": "WAKA",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USSES"
+  ],
+  "timezones": [
+   "America/Chicago"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "1080i"
+ },
+ {
+  "channel": "CBS.us",
+  "id": "WAMSLD",
+  "name": "WAMS-LD",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USLIA"
+  ],
+  "timezones": [
+   "America/Lima"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "480i"
+ },
+ {
+  "channel": "CBS.us",
+  "id": "WANETV",
+  "name": "WANE-TV",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USFWA"
+  ],
+  "timezones": [
+   "America/Indiana/Indianapolis"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "1080i"
+ },
+ {
+  "channel": "CBS.us",
+  "id": "WANF",
+  "name": "WANF",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USATL"
+  ],
+  "timezones": [
+   "America/New_York"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "480i"
+ },
+ {
+  "channel": "CBS.us",
+  "id": "WBBJTV",
+  "name": "WBBJ-TV",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USMKL"
+  ],
+  "timezones": [
+   "America/Chicago"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "720p"
+ },
+ {
+  "channel": "CBS.us",
+  "id": "WBKBTV",
+  "name": "WBKB-TV",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USAPN"
+  ],
+  "timezones": [
+   "America/Detroit"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "1080i"
+ },
+ {
+  "channel": "CBS.us",
+  "id": "WBNGTV",
+  "name": "WBNG-TV",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USBIO"
+  ],
+  "timezones": [
+   "America/New_York"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "1080i"
+ },
+ {
+  "channel": "CBS.us",
+  "id": "WBNSTV",
+  "name": "WBNS-TV",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USCMH"
+  ],
+  "timezones": [
+   "America/New_York"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "1080i"
+ },
+ {
+  "channel": "CBS.us",
+  "id": "WBOCTV",
+  "name": "WBOC-TV",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USSBY"
+  ],
+  "timezones": [
+   "America/New_York"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "1080i"
+ },
+ {
+  "channel": "CBS.us",
+  "id": "WBZTV",
+  "name": "WBZ-TV",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USBOS"
+  ],
+  "timezones": [
+   "America/New_York"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "480i"
+ },
+ {
+  "channel": "CBS.us",
+  "id": "WCAXTV",
+  "name": "WCAX-TV",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USBTV"
+  ],
+  "timezones": [
+   "America/New_York"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "1080i"
+ },
+ {
+  "channel": "CBS.us",
+  "id": "WCBITV",
+  "name": "WCBI-TV",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USUBS"
+  ],
+  "timezones": [
+   "America/New_York"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "1080i"
+ },
+ {
+  "channel": "CBS.us",
+  "id": "WCBSTV",
+  "name": "WCBS-TV",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USNYC"
+  ],
+  "timezones": [
+   "America/New_York"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "1080i"
+ },
+ {
+  "channel": "CBS.us",
+  "id": "WCCO",
+  "name": "WCCO",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USAXN"
+  ],
+  "timezones": [
+   "Africa/Cairo"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "480i"
+ },
+ {
+  "channel": "CBS.us",
+  "id": "WCCOTV",
+  "name": "WCCO-TV",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USMES"
+  ],
+  "timezones": [
+   "America/Chicago"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "1080i"
+ },
+ {
+  "channel": "CBS.us",
+  "id": "WCCU",
+  "name": "WCCU",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USURB"
+  ],
+  "timezones": [
+   "America/New_York"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "1080p"
+ },
+ {
+  "channel": "CBS.us",
+  "id": "WCIA",
+  "name": "WCIA",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USCMI"
+  ],
+  "timezones": [
+   "America/New_York"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "1080i"
+ },
+ {
+  "channel": "CBS.us",
+  "id": "WCSCTV",
+  "name": "WCSC-TV",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USCHS"
+  ],
+  "timezones": [
+   "America/New_York"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "1080i"
+ },
+ {
+  "channel": "CBS.us",
+  "id": "WCTV",
+  "name": "WCTV",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USTVI"
+  ],
+  "timezones": [
+   "America/New_York"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "1080i"
+ },
+ {
+  "channel": "CBS.us",
+  "id": "WCVITV",
+  "name": "WCVI-TV",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "c/VI"
+  ],
+  "timezones": [
+   "America/St_Thomas"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "720p"
+ },
+ {
+  "channel": "CBS.us",
+  "id": "WCWF",
+  "name": "WCWF",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USGRB"
+  ],
+  "timezones": [
+   "America/Chicago"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "1080p"
+ },
+ {
+  "channel": "CBS.us",
+  "id": "WCWN",
+  "name": "WCWN",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USSCH"
+  ],
+  "timezones": [
+   "Australia/Perth"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "1080p"
+ },
+ {
+  "channel": "CBS.us",
+  "id": "WDBJ",
+  "name": "WDBJ",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USROA"
+  ],
+  "timezones": [
+   "America/New_York"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "1080i"
+ },
+ {
+  "channel": "CBS.us",
+  "id": "WDEFTV",
+  "name": "WDEF-TV",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USCHA"
+  ],
+  "timezones": [
+   "America/New_York"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "1080i"
+ },
+ {
+  "channel": "CBS.us",
+  "id": "WDJTTV",
+  "name": "WDJT-TV",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USMKE"
+  ],
+  "timezones": [
+   "America/Chicago"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "1080i"
+ },
+ {
+  "channel": "CBS.us",
+  "id": "WDTV",
+  "name": "WDTV",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USWZE"
+  ],
+  "timezones": [
+   "America/New_York"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "1080i"
+ },
+ {
+  "channel": "CBS.us",
+  "id": "WECPLD",
+  "name": "WECP-LD",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USPFN"
+  ],
+  "timezones": [
+   "America/Panama"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "1080i"
+ },
+ {
+  "channel": "CBS.us",
+  "id": "WENYTV",
+  "name": "WENY-TV",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USELM"
+  ],
+  "timezones": [
+   "America/New_York"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "1080i"
+ },
+ {
+  "channel": "CBS.us",
+  "id": "West",
+  "name": "West",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "c/US"
+  ],
+  "timezones": [
+   "America/Los_Angeles"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "480i"
+ },
+ {
+  "channel": "CBS.us",
+  "id": "WEVVTV",
+  "name": "WEVV-TV",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USEVV"
+  ],
+  "timezones": [
+   "America/Chicago"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "1080i"
+ },
+ {
+  "channel": "CBS.us",
+  "id": "WFMYTV",
+  "name": "WFMY-TV",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USGBO"
+  ],
+  "timezones": [
+   "America/New_York"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "1080i"
+ },
+ {
+  "channel": "CBS.us",
+  "id": "WFORTV",
+  "name": "WFOR-TV",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USMIA"
+  ],
+  "timezones": [
+   "America/New_York"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "1080i"
+ },
+ {
+  "channel": "CBS.us",
+  "id": "WFRVTV",
+  "name": "WFRV-TV",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USGRB"
+  ],
+  "timezones": [
+   "America/Chicago"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "1080i"
+ },
+ {
+  "channel": "CBS.us",
+  "id": "WFSB",
+  "name": "WFSB",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USHFD"
+  ],
+  "timezones": [
+   "America/New_York"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "1080i"
+ },
+ {
+  "channel": "CBS.us",
+  "id": "WGFL",
+  "name": "WGFL",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USHSS"
+  ],
+  "timezones": [
+   "America/New_York"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "1080i"
+ },
+ {
+  "channel": "CBS.us",
+  "id": "WGWG",
+  "name": "WGWG",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USCHS"
+  ],
+  "timezones": [
+   "America/New_York"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "1080p"
+ },
+ {
+  "channel": "CBS.us",
+  "id": "WHBFTV",
+  "name": "WHBF-TV",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USRKI"
+  ],
+  "timezones": [
+   "America/Chicago"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "1080i"
+ },
+ {
+  "channel": "CBS.us",
+  "id": "WHIOTV",
+  "name": "WHIO-TV",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USDAY"
+  ],
+  "timezones": [
+   "America/New_York"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "1080i"
+ },
+ {
+  "channel": "CBS.us",
+  "id": "WHLT",
+  "name": "WHLT",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USHBG"
+  ],
+  "timezones": [
+   "America/Chicago"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "1080i"
+ },
+ {
+  "channel": "CBS.us",
+  "id": "WHNTTV",
+  "name": "WHNT-TV",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USHSV"
+  ],
+  "timezones": [
+   "America/Chicago"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "1080i"
+ },
+ {
+  "channel": "CBS.us",
+  "id": "WHPDT",
+  "name": "WHP-DT",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USHAR"
+  ],
+  "timezones": [
+   "America/New_York"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "480i"
+ },
+ {
+  "channel": "CBS.us",
+  "id": "WHUTTV",
+  "name": "WHUT-TV",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USWAS"
+  ],
+  "timezones": [
+   "America/New_York"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "1080p"
+ },
+ {
+  "channel": "CBS.us",
+  "id": "WIAT",
+  "name": "WIAT",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USBHM"
+  ],
+  "timezones": [
+   "America/Chicago"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "1080i"
+ },
+ {
+  "channel": "CBS.us",
+  "id": "WIBWTV",
+  "name": "WIBW-TV",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USTOP"
+  ],
+  "timezones": [
+   "America/Chicago"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "1080i"
+ },
+ {
+  "channel": "CBS.us",
+  "id": "WINKTV",
+  "name": "WINK-TV",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USFMY"
+  ],
+  "timezones": [
+   "America/New_York"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "1080i"
+ },
+ {
+  "channel": "CBS.us",
+  "id": "WISCTV",
+  "name": "WISC-TV",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USMSN"
+  ],
+  "timezones": [
+   "America/Chicago"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "1080i"
+ },
+ {
+  "channel": "CBS.us",
+  "id": "WIVBTV",
+  "name": "WIVB-TV",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USBUF"
+  ],
+  "timezones": [
+   "America/New_York"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "1080i"
+ },
+ {
+  "channel": "CBS.us",
+  "id": "WIYELD",
+  "name": "WIYE-LD",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USPKB"
+  ],
+  "timezones": [
+   "America/New_York"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "1080i"
+ },
+ {
+  "channel": "CBS.us",
+  "id": "WJAL",
+  "name": "WJAL",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USSIS"
+  ],
+  "timezones": [
+   "America/New_York"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "1080i"
+ },
+ {
+  "channel": "CBS.us",
+  "id": "WJAXTV",
+  "name": "WJAX-TV",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USJAX"
+  ],
+  "timezones": [
+   "America/New_York"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "1080i"
+ },
+ {
+  "channel": "CBS.us",
+  "id": "WJHGTV",
+  "name": "WJHG-TV",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USPFN"
+  ],
+  "timezones": [
+   "America/Panama"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "480i"
+ },
+ {
+  "channel": "CBS.us",
+  "id": "WJHLTV",
+  "name": "WJHL-TV",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USJCI"
+  ],
+  "timezones": [
+   "America/New_York"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "1080i"
+ },
+ {
+  "channel": "CBS.us",
+  "id": "WJTV",
+  "name": "WJTV",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USJAN"
+  ],
+  "timezones": [
+   "America/Chicago"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "1080i"
+ },
+ {
+  "channel": "CBS.us",
+  "id": "WJZTV",
+  "name": "WJZ-TV",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USBAL"
+  ],
+  "timezones": [
+   "America/New_York"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "480i"
+ },
+ {
+  "channel": "CBS.us",
+  "id": "WKBTDT",
+  "name": "WKBT-DT",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USLSE"
+  ],
+  "timezones": [
+   "America/Chicago"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "1080i"
+ },
+ {
+  "channel": "CBS.us",
+  "id": "WKMGTV",
+  "name": "WKMG-TV",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USORL"
+  ],
+  "timezones": [
+   "America/New_York"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "1080i"
+ },
+ {
+  "channel": "CBS.us",
+  "id": "WKRCTV",
+  "name": "WKRC-TV",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USCVG"
+  ],
+  "timezones": [
+   "America/New_York"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "1080i"
+ },
+ {
+  "channel": "CBS.us",
+  "id": "WKTV",
+  "name": "WKTV",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USUCA"
+  ],
+  "timezones": [
+   "America/New_York"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "720p"
+ },
+ {
+  "channel": "CBS.us",
+  "id": "WKYTTV",
+  "name": "WKYT-TV",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USLEX"
+  ],
+  "timezones": [
+   "America/New_York"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "1080i"
+ },
+ {
+  "channel": "CBS.us",
+  "id": "WLAJ",
+  "name": "WLAJ",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USLAN"
+  ],
+  "timezones": [
+   "America/Detroit"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "1080i"
+ },
+ {
+  "channel": "CBS.us",
+  "id": "WLFITV",
+  "name": "WLFI-TV",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USLAF"
+  ],
+  "timezones": [
+   "America/Chicago"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "1080i"
+ },
+ {
+  "channel": "CBS.us",
+  "id": "WLKY",
+  "name": "WLKY",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USLUI"
+  ],
+  "timezones": [
+   "America/Kentucky/Louisville"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "1080i"
+ },
+ {
+  "channel": "CBS.us",
+  "id": "WLNSTV",
+  "name": "WLNS-TV",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USLAN"
+  ],
+  "timezones": [
+   "America/Detroit"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "1080i"
+ },
+ {
+  "channel": "CBS.us",
+  "id": "WLOX",
+  "name": "WLOX",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USBIX"
+  ],
+  "timezones": [
+   "America/Chicago"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "720p"
+ },
+ {
+  "channel": "CBS.us",
+  "id": "WLTX",
+  "name": "WLTX",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USCAE"
+  ],
+  "timezones": [
+   "America/New_York"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "1080i"
+ },
+ {
+  "channel": "CBS.us",
+  "id": "WMAZTV",
+  "name": "WMAZ-TV",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USMCN"
+  ],
+  "timezones": [
+   "America/New_York"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "1080i"
+ },
+ {
+  "channel": "CBS.us",
+  "id": "WMBDTV",
+  "name": "WMBD-TV",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USPIA"
+  ],
+  "timezones": [
+   "America/New_York"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "1080i"
+ },
+ {
+  "channel": "CBS.us",
+  "id": "WMDN",
+  "name": "WMDN",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USMEI"
+  ],
+  "timezones": [
+   "America/Chicago"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "1080i"
+ },
+ {
+  "channel": "CBS.us",
+  "id": "WMYATV",
+  "name": "WMYA-TV",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USGV9"
+  ],
+  "timezones": [
+   "Africa/Monrovia"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "1080p"
+ },
+ {
+  "channel": "CBS.us",
+  "id": "WNCN",
+  "name": "WNCN",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USGSB"
+  ],
+  "timezones": [
+   "America/New_York"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "1080i"
+ },
+ {
+  "channel": "CBS.us",
+  "id": "WNCTTV",
+  "name": "WNCT-TV",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USPGV"
+  ],
+  "timezones": [
+   "Africa/Monrovia"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "1080i"
+ },
+ {
+  "channel": "CBS.us",
+  "id": "WNEMTV",
+  "name": "WNEM-TV",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USBCY"
+  ],
+  "timezones": [
+   "America/Detroit"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "1080i"
+ },
+ {
+  "channel": "CBS.us",
+  "id": "WNKY",
+  "name": "WNKY",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USBWG"
+  ],
+  "timezones": [
+   "America/Chicago"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "720p"
+ },
+ {
+  "channel": "CBS.us",
+  "id": "WNLO",
+  "name": "WNLO",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USBUF"
+  ],
+  "timezones": [
+   "America/New_York"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "1080i"
+ },
+ {
+  "channel": "CBS.us",
+  "id": "WOHLCD",
+  "name": "WOHL-CD",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USLIA"
+  ],
+  "timezones": [
+   "America/Lima"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "720p"
+ },
+ {
+  "channel": "CBS.us",
+  "id": "WOWKTV",
+  "name": "WOWK-TV",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USHNU"
+  ],
+  "timezones": [
+   "America/New_York"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "1080i"
+ },
+ {
+  "channel": "CBS.us",
+  "id": "WPEC",
+  "name": "WPEC",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USPBI"
+  ],
+  "timezones": [
+   "America/New_York"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "1080i"
+ },
+ {
+  "channel": "CBS.us",
+  "id": "WPRITV",
+  "name": "WPRI-TV",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USPVD"
+  ],
+  "timezones": [
+   "America/New_York"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "1080i"
+ },
+ {
+  "channel": "CBS.us",
+  "id": "WRBL",
+  "name": "WRBL",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USCSG"
+  ],
+  "timezones": [
+   "America/New_York"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "1080i"
+ },
+ {
+  "channel": "CBS.us",
+  "id": "WRDWTV",
+  "name": "WRDW-TV",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USAGS"
+  ],
+  "timezones": [
+   "America/New_York"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "1080i"
+ },
+ {
+  "channel": "CBS.us",
+  "id": "WREGTV",
+  "name": "WREG-TV",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USMEM"
+  ],
+  "timezones": [
+   "America/Chicago"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "1080i"
+ },
+ {
+  "channel": "CBS.us",
+  "id": "WRGB",
+  "name": "WRGB",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USSCH"
+  ],
+  "timezones": [
+   "Australia/Perth"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "1080i"
+ },
+ {
+  "channel": "CBS.us",
+  "id": "WRGTTV",
+  "name": "WRGT-TV",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USDAY"
+  ],
+  "timezones": [
+   "America/New_York"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "1080p"
+ },
+ {
+  "channel": "CBS.us",
+  "id": "WROCTV",
+  "name": "WROC-TV",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USROC"
+  ],
+  "timezones": [
+   "America/New_York"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "1080i"
+ },
+ {
+  "channel": "CBS.us",
+  "id": "WSAWTV",
+  "name": "WSAW-TV",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USAUW"
+  ],
+  "timezones": [
+   "America/Chicago"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "1080i"
+ },
+ {
+  "channel": "CBS.us",
+  "id": "WSEETV",
+  "name": "WSEE-TV",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USERI"
+  ],
+  "timezones": [
+   "America/New_York"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "1080i"
+ },
+ {
+  "channel": "CBS.us",
+  "id": "WSHMLD",
+  "name": "WSHM-LD",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USSFY"
+  ],
+  "timezones": [
+   "America/Chicago"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "1080i"
+ },
+ {
+  "channel": "CBS.us",
+  "id": "WSPATV",
+  "name": "WSPA-TV",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USSPA"
+  ],
+  "timezones": [
+   "America/New_York"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "1080i"
+ },
+ {
+  "channel": "CBS.us",
+  "id": "WSWG",
+  "name": "WSWG",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USVLD"
+  ],
+  "timezones": [
+   "America/New_York"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "1080p"
+ },
+ {
+  "channel": "CBS.us",
+  "id": "WTAJTV",
+  "name": "WTAJ-TV",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USAOO"
+  ],
+  "timezones": [
+   "America/New_York"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "1080i"
+ },
+ {
+  "channel": "CBS.us",
+  "id": "WTAPTV",
+  "name": "WTAP-TV",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USPKB"
+  ],
+  "timezones": [
+   "America/New_York"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "480i"
+ },
+ {
+  "channel": "CBS.us",
+  "id": "WTHITV",
+  "name": "WTHI-TV",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USHUF"
+  ],
+  "timezones": [
+   "America/Indiana/Indianapolis"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "1080i"
+ },
+ {
+  "channel": "CBS.us",
+  "id": "WTKR",
+  "name": "WTKR",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USORF"
+  ],
+  "timezones": [
+   "America/New_York"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "1080i"
+ },
+ {
+  "channel": "CBS.us",
+  "id": "WTOCTV",
+  "name": "WTOC-TV",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USSAV"
+  ],
+  "timezones": [
+   "America/New_York"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "1080i"
+ },
+ {
+  "channel": "CBS.us",
+  "id": "WTOL",
+  "name": "WTOL",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USTOL"
+  ],
+  "timezones": [
+   "Europe/Madrid"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "1080i"
+ },
+ {
+  "channel": "CBS.us",
+  "id": "WTRFTV",
+  "name": "WTRF-TV",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USHLG"
+  ],
+  "timezones": [
+   "America/New_York"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "1080i"
+ },
+ {
+  "channel": "CBS.us",
+  "id": "WTSP",
+  "name": "WTSP",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "s/US-FL"
+  ],
+  "timezones": [
+   "America/New_York"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "1080i"
+ },
+ {
+  "channel": "CBS.us",
+  "id": "WTTV",
+  "name": "WTTV",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USBMG"
+  ],
+  "timezones": [
+   "America/Indiana/Indianapolis"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "1080i"
+ },
+ {
+  "channel": "CBS.us",
+  "id": "WTVRTV",
+  "name": "WTVR-TV",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USRIC"
+  ],
+  "timezones": [
+   "Australia/Brisbane"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "1080i"
+ },
+ {
+  "channel": "CBS.us",
+  "id": "WTVY",
+  "name": "WTVY",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USDHN"
+  ],
+  "timezones": [
+   "America/Chicago"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "1080i"
+ },
+ {
+  "channel": "CBS.us",
+  "id": "WUHF",
+  "name": "WUHF",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USROC"
+  ],
+  "timezones": [
+   "America/New_York"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "1080p"
+ },
+ {
+  "channel": "CBS.us",
+  "id": "WUPA",
+  "name": "WUPA",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USATL"
+  ],
+  "timezones": [
+   "America/New_York"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "1080i"
+ },
+ {
+  "channel": "CBS.us",
+  "id": "WUSA",
+  "name": "WUSA",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USWAS"
+  ],
+  "timezones": [
+   "America/New_York"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "1080i"
+ },
+ {
+  "channel": "CBS.us",
+  "id": "WUXPTV",
+  "name": "WUXP-TV",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USBNA"
+  ],
+  "timezones": [
+   "America/Chicago"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "1080p"
+ },
+ {
+  "channel": "CBS.us",
+  "id": "WVFX",
+  "name": "WVFX",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USCKB"
+  ],
+  "timezones": [
+   "America/New_York"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "480i"
+ },
+ {
+  "channel": "CBS.us",
+  "id": "WVLTTV",
+  "name": "WVLT-TV",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USTYS"
+  ],
+  "timezones": [
+   "America/New_York"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "1080i"
+ },
+ {
+  "channel": "CBS.us",
+  "id": "WVNSTV",
+  "name": "WVNS-TV",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USLWB"
+  ],
+  "timezones": [
+   "America/New_York"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "1080i"
+ },
+ {
+  "channel": "CBS.us",
+  "id": "WWAY",
+  "name": "WWAY",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USILM"
+  ],
+  "timezones": [
+   "America/New_York"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "1080i"
+ },
+ {
+  "channel": "CBS.us",
+  "id": "WWJTV",
+  "name": "WWJ-TV",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USDET"
+  ],
+  "timezones": [
+   "America/Detroit"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "480i"
+ },
+ {
+  "channel": "CBS.us",
+  "id": "WWLTV",
+  "name": "WWL-TV",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USMSY"
+  ],
+  "timezones": [
+   "America/Chicago"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "480i"
+ },
+ {
+  "channel": "CBS.us",
+  "id": "WWMT",
+  "name": "WWMT",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USAZO"
+  ],
+  "timezones": [
+   "America/Detroit"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "1080i"
+ },
+ {
+  "channel": "CBS.us",
+  "id": "WWNYCD",
+  "name": "WWNY-CD",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USMSS"
+  ],
+  "timezones": [
+   "America/New_York"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "1080i"
+ },
+ {
+  "channel": "CBS.us",
+  "id": "WWNYTV",
+  "name": "WWNY-TV",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USQCH"
+  ],
+  "timezones": [
+   "America/New_York"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "1080i"
+ },
+ {
+  "channel": "CBS.us",
+  "id": "WWTV",
+  "name": "WWTV",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USCAD"
+  ],
+  "timezones": [
+   "America/Detroit"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "1080i"
+ },
+ {
+  "channel": "CBS.us",
+  "id": "WWUPTV",
+  "name": "WWUP-TV",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "s/US-MI"
+  ],
+  "timezones": [
+   "America/New_York"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "1080i"
+ },
+ {
+  "channel": "CBS.us",
+  "id": "WXBU",
+  "name": "WXBU",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USLNS"
+  ],
+  "timezones": [
+   "America/New_York"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "1080i"
+ },
+ {
+  "channel": "CBS.us",
+  "id": "WXVTLD",
+  "name": "WXVT-LD",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USCVD"
+  ],
+  "timezones": [
+   "Africa/Monrovia"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "1080i"
+ },
+ {
+  "channel": "CBS.us",
+  "id": "WYCW",
+  "name": "WYCW",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USAEV"
+  ],
+  "timezones": [
+   "America/New_York"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "1080i"
+ },
+ {
+  "channel": "CBS.us",
+  "id": "WYMTTV",
+  "name": "WYMT-TV",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USUJL"
+  ],
+  "timezones": [
+   "America/New_York"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "1080i"
+ },
+ {
+  "channel": "CBS.us",
+  "id": "WYOU",
+  "name": "WYOU",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USSCR"
+  ],
+  "timezones": [
+   "America/New_York"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "1080i"
+ },
+ {
+  "channel": "CBS.us",
+  "id": "WZMQ",
+  "name": "WZMQ",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USMQT"
+  ],
+  "timezones": [
+   "America/Detroit"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "1080i"
+ },
+ {
+  "channel": "FoxSports1.us",
+  "id": "HD",
+  "name": "HD",
+  "alt_names": [],
+  "is_main": true,
+  "broadcast_area": [
+   "c/US"
+  ],
+  "timezones": [
+   "America/New_York"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "720p"
+ },
+ {
+  "channel": "NHKWorldJapan.jp",
+  "id": "HD",
+  "name": "HD",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "r/AMER",
+   "r/EMEA",
+   "r/APAC"
+  ],
+  "timezones": [
+   "Asia/Tokyo"
+  ],
+  "languages": [
+   "jpn",
+   "eng"
+  ],
+  "format": "1080i"
+ },
+ {
+  "channel": "NHKWorldJapan.jp",
+  "id": "K24ICD",
+  "name": "K24IC-D",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USBLI"
+  ],
+  "timezones": [
+   "America/Los_Angeles"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "480i"
+ },
+ {
+  "channel": "NHKWorldJapan.jp",
+  "id": "KBDITV",
+  "name": "KBDI-TV",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USBJC"
+  ],
+  "timezones": [
+   "America/Denver"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "480i"
+ },
+ {
+  "channel": "NHKWorldJapan.jp",
+  "id": "KBTCTV",
+  "name": "KBTC-TV",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USTIW"
+  ],
+  "timezones": [
+   "America/Los_Angeles"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "720p"
+ },
+ {
+  "channel": "NHKWorldJapan.jp",
+  "id": "KCET",
+  "name": "KCET",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USLAX"
+  ],
+  "timezones": [
+   "America/Santiago"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "480i"
+ },
+ {
+  "channel": "NHKWorldJapan.jp",
+  "id": "KCKA",
+  "name": "KCKA",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USCRA"
+  ],
+  "timezones": [
+   "America/Los_Angeles"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "720p"
+ },
+ {
+  "channel": "NHKWorldJapan.jp",
+  "id": "KHET",
+  "name": "KHET",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USHNL"
+  ],
+  "timezones": [
+   "Pacific/Honolulu"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "480i"
+ },
+ {
+  "channel": "NHKWorldJapan.jp",
+  "id": "KPJK",
+  "name": "KPJK",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USSXF"
+  ],
+  "timezones": [
+   "America/Los_Angeles"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "720p"
+ },
+ {
+  "channel": "NHKWorldJapan.jp",
+  "id": "KRCB",
+  "name": "KRCB",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USIAO"
+  ],
+  "timezones": [
+   "America/New_York"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "720p"
+ },
+ {
+  "channel": "NHKWorldJapan.jp",
+  "id": "KUEN",
+  "name": "KUEN",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USOGD"
+  ],
+  "timezones": [
+   "America/Denver"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "480i"
+ },
+ {
+  "channel": "NHKWorldJapan.jp",
+  "id": "KUHT",
+  "name": "KUHT",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USHOU"
+  ],
+  "timezones": [
+   "America/Chicago"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "480i"
+ },
+ {
+  "channel": "NHKWorldJapan.jp",
+  "id": "SD",
+  "name": "SD",
+  "alt_names": [],
+  "is_main": true,
+  "broadcast_area": [
+   "r/AMER",
+   "r/EMEA",
+   "r/APAC"
+  ],
+  "timezones": [
+   "Asia/Tokyo"
+  ],
+  "languages": [
+   "jpn",
+   "eng"
+  ],
+  "format": "480i"
+ },
+ {
+  "channel": "NHKWorldJapan.jp",
+  "id": "WCFETV",
+  "name": "WCFE-TV",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USPLB"
+  ],
+  "timezones": [
+   "America/New_York"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "480i"
+ },
+ {
+  "channel": "NHKWorldJapan.jp",
+  "id": "WEDQ",
+  "name": "WEDQ",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USTPA"
+  ],
+  "timezones": [
+   "America/New_York"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "480i"
+ },
+ {
+  "channel": "NHKWorldJapan.jp",
+  "id": "WEDU",
+  "name": "WEDU",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USTPA"
+  ],
+  "timezones": [
+   "America/New_York"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "480i"
+ },
+ {
+  "channel": "NHKWorldJapan.jp",
+  "id": "WFPT",
+  "name": "WFPT",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USFDK"
+  ],
+  "timezones": [
+   "America/Chicago"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "480i"
+ },
+ {
+  "channel": "NHKWorldJapan.jp",
+  "id": "WGPT",
+  "name": "WGPT",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USOBT"
+  ],
+  "timezones": [
+   "America/Los_Angeles"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "480i"
+ },
+ {
+  "channel": "NHKWorldJapan.jp",
+  "id": "WMPB",
+  "name": "WMPB",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USBAL"
+  ],
+  "timezones": [
+   "America/New_York"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "480i"
+ },
+ {
+  "channel": "NHKWorldJapan.jp",
+  "id": "WMPT",
+  "name": "WMPT",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USANP"
+  ],
+  "timezones": [
+   "America/New_York"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "480i"
+ },
+ {
+  "channel": "NHKWorldJapan.jp",
+  "id": "WNJB",
+  "name": "WNJB",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USNBJ"
+  ],
+  "timezones": [
+   "America/New_York"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "1080i"
+ },
+ {
+  "channel": "NHKWorldJapan.jp",
+  "id": "WNJN",
+  "name": "WNJN",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USMLR"
+  ],
+  "timezones": [
+   "America/New_York"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "1080i"
+ },
+ {
+  "channel": "NHKWorldJapan.jp",
+  "id": "WNJS",
+  "name": "WNJS",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USCDE"
+  ],
+  "timezones": [
+   "America/New_York"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "1080i"
+ },
+ {
+  "channel": "NHKWorldJapan.jp",
+  "id": "WNJT",
+  "name": "WNJT",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USTTN"
+  ],
+  "timezones": [
+   "America/New_York"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "1080i"
+ },
+ {
+  "channel": "NHKWorldJapan.jp",
+  "id": "WPPT",
+  "name": "WPPT",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USPHL"
+  ],
+  "timezones": [
+   "America/New_York"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "480i"
+ },
+ {
+  "channel": "NHKWorldJapan.jp",
+  "id": "WUCFTV",
+  "name": "WUCF-TV",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USORL"
+  ],
+  "timezones": [
+   "America/New_York"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "480i"
+ },
+ {
+  "channel": "NHKWorldJapan.jp",
+  "id": "WWPB",
+  "name": "WWPB",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USHGR"
+  ],
+  "timezones": [
+   "America/New_York"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "480i"
+ },
+ {
+  "channel": "NHKWorldJapan.jp",
+  "id": "WYIN",
+  "name": "WYIN",
+  "alt_names": [],
+  "is_main": false,
+  "broadcast_area": [
+   "ct/USGYY"
+  ],
+  "timezones": [
+   "America/Chicago"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "1080i"
+ },
+ {
+  "channel": "SECNetwork.us",
+  "id": "SD",
+  "name": "SD",
+  "alt_names": [],
+  "is_main": true,
+  "broadcast_area": [
+   "c/US"
+  ],
+  "timezones": [
+   "America/New_York"
+  ],
+  "languages": [
+   "eng"
+  ],
+  "format": "480i"
+ }
+]

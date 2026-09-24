@@ -1,0 +1,2662 @@
+[
+ {
+  "country": "US",
+  "subdivision": "US-AK",
+  "code": "USANC",
+  "name": "Anchorage",
+  "wikidata_id": "Q39450"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-AK",
+  "code": "USFAI",
+  "name": "Fairbanks",
+  "wikidata_id": "Q79638"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-AK",
+  "code": "USJNU",
+  "name": "Juneau",
+  "wikidata_id": "Q29445"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-AK",
+  "code": "USSIT",
+  "name": "Sitka",
+  "wikidata_id": "Q79804"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-AL",
+  "code": "USANB",
+  "name": "Anniston",
+  "wikidata_id": "Q79474"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-AL",
+  "code": "USBHM",
+  "name": "Birmingham",
+  "wikidata_id": "Q79867"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-AL",
+  "code": "USDHN",
+  "name": "Dothan",
+  "wikidata_id": "Q79519"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-AL",
+  "code": "USHSV",
+  "name": "Huntsville",
+  "wikidata_id": "Q79860"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-AL",
+  "code": "USHWA",
+  "name": "Homewood",
+  "wikidata_id": "Q79700"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-AL",
+  "code": "USMGM",
+  "name": "Montgomery",
+  "wikidata_id": "Q29364"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-AL",
+  "code": "USSES",
+  "name": "Selma",
+  "wikidata_id": "Q79941"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-AL",
+  "code": "USTCL",
+  "name": "Tuscaloosa",
+  "wikidata_id": "Q79580"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-AR",
+  "code": "USFSM",
+  "name": "Fort Smith",
+  "wikidata_id": "Q79535"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-AR",
+  "code": "USFYV",
+  "name": "Fayetteville",
+  "wikidata_id": "Q1262338"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-AR",
+  "code": "USJBR",
+  "name": "Jonesboro",
+  "wikidata_id": "Q61455"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-AR",
+  "code": "USLIT",
+  "name": "Little Rock",
+  "wikidata_id": "Q33405"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-AZ",
+  "code": "US4MI",
+  "name": "Miami",
+  "wikidata_id": "Q991525"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-AZ",
+  "code": "USAZS",
+  "name": "Sierra Vista",
+  "wikidata_id": "Q79891"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-AZ",
+  "code": "USFLG",
+  "name": "Flagstaff",
+  "wikidata_id": "Q79842"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-AZ",
+  "code": "USGBA",
+  "name": "Globe",
+  "wikidata_id": "Q79823"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-AZ",
+  "code": "USPHX",
+  "name": "Phoenix",
+  "wikidata_id": "Q3458062"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-AZ",
+  "code": "USPRC",
+  "name": "Prescott",
+  "wikidata_id": "Q79931"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-AZ",
+  "code": "USTUZ",
+  "name": "Tucson",
+  "wikidata_id": "Q18575"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-AZ",
+  "code": "USYUM",
+  "name": "Yuma",
+  "wikidata_id": "Q79820"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-CA",
+  "code": "USACV",
+  "name": "Arcata",
+  "wikidata_id": "Q631752"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-CA",
+  "code": "USBFL",
+  "name": "Bakersfield",
+  "wikidata_id": "Q49256"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-CA",
+  "code": "USCIC",
+  "name": "Chico",
+  "wikidata_id": "Q432152"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-CA",
+  "code": "USECO",
+  "name": "El Centro",
+  "wikidata_id": "Q495369"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-CA",
+  "code": "USEKA",
+  "name": "Eureka",
+  "wikidata_id": "Q16898007"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-CA",
+  "code": "USFAT",
+  "name": "Fresno",
+  "wikidata_id": "Q43301"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-CA",
+  "code": "USIAO",
+  "name": "Cotati",
+  "wikidata_id": "Q1650450"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-CA",
+  "code": "USLAX",
+  "name": "Los Angeles",
+  "wikidata_id": "Q65"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-CA",
+  "code": "USMY3",
+  "name": "Monterey",
+  "wikidata_id": "Q487315"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-CA",
+  "code": "USPSP",
+  "name": "Palm Springs",
+  "wikidata_id": "Q488004"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-CA",
+  "code": "USRAL",
+  "name": "Riverside",
+  "wikidata_id": "Q7338375"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-CA",
+  "code": "USRDD",
+  "name": "Redding",
+  "wikidata_id": "Q495361"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-CA",
+  "code": "USSAC",
+  "name": "Sacramento",
+  "wikidata_id": "Q18013"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-CA",
+  "code": "USSAN",
+  "name": "San Diego",
+  "wikidata_id": "Q16552"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-CA",
+  "code": "USSBA",
+  "name": "Santa Barbara",
+  "wikidata_id": "Q159288"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-CA",
+  "code": "USSCK",
+  "name": "Stockton",
+  "wikidata_id": "Q49240"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-CA",
+  "code": "USSFO",
+  "name": "San Francisco",
+  "wikidata_id": "Q62"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-CA",
+  "code": "USSNS",
+  "name": "Salinas",
+  "wikidata_id": "Q488125"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-CA",
+  "code": "USSXF",
+  "name": "San Mateo",
+  "wikidata_id": "Q169943"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-CA",
+  "code": "USTNP",
+  "name": "Twentynine Palms",
+  "wikidata_id": "Q846582"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-CO",
+  "code": "USBJC",
+  "name": "Broomfield",
+  "wikidata_id": "Q492819"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-CO",
+  "code": "USCEZ",
+  "name": "Cortez",
+  "wikidata_id": "Q1012688"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-CO",
+  "code": "USCOS",
+  "name": "Colorado Springs",
+  "wikidata_id": "Q49258"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-CO",
+  "code": "USDEN",
+  "name": "Denver",
+  "wikidata_id": "Q16554"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-CO",
+  "code": "USDRO",
+  "name": "Durango",
+  "wikidata_id": "Q1012665"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-CO",
+  "code": "USEEZ",
+  "name": "Peetz",
+  "wikidata_id": "Q2019021"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-CO",
+  "code": "USGJT",
+  "name": "Grand Junction",
+  "wikidata_id": "Q989903"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-CO",
+  "code": "USGUC",
+  "name": "Gunnison",
+  "wikidata_id": "Q222762"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-CO",
+  "code": "USIL3",
+  "name": "Idalia",
+  "wikidata_id": "Q3473193"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-CO",
+  "code": "USMTJ",
+  "name": "Montrose",
+  "wikidata_id": "Q994436"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-CO",
+  "code": "USSTK",
+  "name": "Sterling",
+  "wikidata_id": "Q990163"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-CO",
+  "code": "USUM2",
+  "name": "Yuma",
+  "wikidata_id": "Q2272340"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-CT",
+  "code": "USHFD",
+  "name": "Hartford",
+  "wikidata_id": "Q33486"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-CT",
+  "code": "USHVN",
+  "name": "New Haven",
+  "wikidata_id": "Q49145"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-CT",
+  "code": "USWAT",
+  "name": "Waterbury",
+  "wikidata_id": "Q49178"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-DC",
+  "code": "USWAS",
+  "name": "Washington",
+  "wikidata_id": "Q61"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-FL",
+  "code": "USAPF",
+  "name": "Naples",
+  "wikidata_id": "Q482396"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-FL",
+  "code": "USFMY",
+  "name": "Fort Myers",
+  "wikidata_id": "Q506451"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-FL",
+  "code": "USGNV",
+  "name": "Gainesville",
+  "wikidata_id": "Q487999"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-FL",
+  "code": "USHSS",
+  "name": "High Springs",
+  "wikidata_id": "Q994778"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-FL",
+  "code": "USJAX",
+  "name": "Jacksonville",
+  "wikidata_id": "Q16568"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-FL",
+  "code": "USMIA",
+  "name": "Miami",
+  "wikidata_id": "Q8652"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-FL",
+  "code": "USORL",
+  "name": "Orlando",
+  "wikidata_id": "Q49233"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-FL",
+  "code": "USORP",
+  "name": "Orange Park",
+  "wikidata_id": "Q367316"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-FL",
+  "code": "USPBI",
+  "name": "West Palm Beach",
+  "wikidata_id": "Q163749"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-FL",
+  "code": "USPFN",
+  "name": "Panama City",
+  "wikidata_id": "Q852591"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-FL",
+  "code": "USPNS",
+  "name": "Pensacola",
+  "wikidata_id": "Q486306"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-FL",
+  "code": "USTEU",
+  "name": "Tequesta",
+  "wikidata_id": "Q2010407"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-FL",
+  "code": "USTLH",
+  "name": "Tallahassee",
+  "wikidata_id": "Q37043"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-FL",
+  "code": "USTPA",
+  "name": "Tampa",
+  "wikidata_id": "Q49255"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-FL",
+  "code": "USZOR",
+  "name": "Sarasota",
+  "wikidata_id": "Q491540"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-GA",
+  "code": "USABY",
+  "name": "Albany",
+  "wikidata_id": "Q285599"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-GA",
+  "code": "USAGS",
+  "name": "Augusta",
+  "wikidata_id": "Q181962"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-GA",
+  "code": "USATL",
+  "name": "Atlanta",
+  "wikidata_id": "Q23556"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-GA",
+  "code": "USCSG",
+  "name": "Columbus",
+  "wikidata_id": "Q239870"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-GA",
+  "code": "USMCN",
+  "name": "Macon",
+  "wikidata_id": "Q219656"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-GA",
+  "code": "USSAV",
+  "name": "Savannah",
+  "wikidata_id": "Q83813"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-GA",
+  "code": "USTVI",
+  "name": "Thomasville",
+  "wikidata_id": "Q1192860"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-GA",
+  "code": "USVLD",
+  "name": "Valdosta",
+  "wikidata_id": "Q1010240"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-HI",
+  "code": "USHNL",
+  "name": "Honolulu",
+  "wikidata_id": "Q18094"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-HI",
+  "code": "USITO",
+  "name": "Hilo",
+  "wikidata_id": "Q216258"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-IA",
+  "code": "USAMW",
+  "name": "Ames",
+  "wikidata_id": "Q470273"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-IA",
+  "code": "USBRL",
+  "name": "Burlington",
+  "wikidata_id": "Q580182"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-IA",
+  "code": "USCID",
+  "name": "Cedar Rapids",
+  "wikidata_id": "Q486439"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-IA",
+  "code": "USDSM",
+  "name": "Des Moines",
+  "wikidata_id": "Q39709"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-IA",
+  "code": "USDVN",
+  "name": "Davenport",
+  "wikidata_id": "Q26887"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-IA",
+  "code": "USMCW",
+  "name": "Mason City",
+  "wikidata_id": "Q575391"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-IA",
+  "code": "USSUX",
+  "name": "Sioux City",
+  "wikidata_id": "Q489255"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-ID",
+  "code": "USBOI",
+  "name": "Boise",
+  "wikidata_id": "Q35775"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-ID",
+  "code": "USCOE",
+  "name": "Coeur d'Alene",
+  "wikidata_id": "Q499681"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-ID",
+  "code": "USIDA",
+  "name": "Idaho Falls",
+  "wikidata_id": "Q496360"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-ID",
+  "code": "USLWS",
+  "name": "Lewiston",
+  "wikidata_id": "Q505539"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-ID",
+  "code": "USNPA",
+  "name": "Nampa",
+  "wikidata_id": "Q622633"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-ID",
+  "code": "USPS9",
+  "name": "Preston",
+  "wikidata_id": "Q607332"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-ID",
+  "code": "USTWF",
+  "name": "Twin Falls",
+  "wikidata_id": "Q548384"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-IL",
+  "code": "USAUZ",
+  "name": "Aurora",
+  "wikidata_id": "Q22595"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-IL",
+  "code": "USCHI",
+  "name": "Chicago",
+  "wikidata_id": "Q1297"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-IL",
+  "code": "USCMI",
+  "name": "Champaign",
+  "wikidata_id": "Q577964"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-IL",
+  "code": "USHSB",
+  "name": "Harrisburg",
+  "wikidata_id": "Q576252"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-IL",
+  "code": "USMLI",
+  "name": "Moline",
+  "wikidata_id": "Q579736"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-IL",
+  "code": "USPIA",
+  "name": "Peoria",
+  "wikidata_id": "Q233129"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-IL",
+  "code": "USRFD",
+  "name": "Rockford",
+  "wikidata_id": "Q233892"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-IL",
+  "code": "USRKI",
+  "name": "Rock Island",
+  "wikidata_id": "Q2283144"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-IL",
+  "code": "USURB",
+  "name": "Urbana",
+  "wikidata_id": "Q462184"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-IN",
+  "code": "USBMG",
+  "name": "Bloomington",
+  "wikidata_id": "Q490385"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-IN",
+  "code": "USEVV",
+  "name": "Evansville",
+  "wikidata_id": "Q486459"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-IN",
+  "code": "USFWA",
+  "name": "Fort Wayne",
+  "wikidata_id": "Q49268"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-IN",
+  "code": "USGYY",
+  "name": "Gary",
+  "wikidata_id": "Q184116"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-IN",
+  "code": "USHUF",
+  "name": "Terre Haute",
+  "wikidata_id": "Q492478"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-IN",
+  "code": "USIND",
+  "name": "Indianapolis",
+  "wikidata_id": "Q6346"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-IN",
+  "code": "USLAF",
+  "name": "Lafayette",
+  "wikidata_id": "Q638187"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-IN",
+  "code": "USOKK",
+  "name": "Kokomo",
+  "wikidata_id": "Q913209"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-IN",
+  "code": "USSBN",
+  "name": "South Bend",
+  "wikidata_id": "Q486877"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-KS",
+  "code": "USCBK",
+  "name": "Colby",
+  "wikidata_id": "Q1931279"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-KS",
+  "code": "USGBD",
+  "name": "Great Bend",
+  "wikidata_id": "Q1065459"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-KS",
+  "code": "USGCK",
+  "name": "Garden City",
+  "wikidata_id": "Q983784"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-KS",
+  "code": "USGLD",
+  "name": "Goodland",
+  "wikidata_id": "Q1931362"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-KS",
+  "code": "USHYS",
+  "name": "Hays",
+  "wikidata_id": "Q1057071"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-KS",
+  "code": "USICT",
+  "name": "Wichita",
+  "wikidata_id": "Q49266"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-KS",
+  "code": "USPTS",
+  "name": "Pittsburg",
+  "wikidata_id": "Q1913953"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-KS",
+  "code": "USSLN",
+  "name": "Salina",
+  "wikidata_id": "Q1650620"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-KS",
+  "code": "USTOP",
+  "name": "Topeka",
+  "wikidata_id": "Q41057"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-KY",
+  "code": "USBWG",
+  "name": "Bowling Green",
+  "wikidata_id": "Q694545"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-KY",
+  "code": "USLEX",
+  "name": "Lexington",
+  "wikidata_id": "Q49241"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-KY",
+  "code": "USLUI",
+  "name": "Louisville",
+  "wikidata_id": "Q43668"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-KY",
+  "code": "USUJL",
+  "name": "Hazard",
+  "wikidata_id": "Q1144366"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-LA",
+  "code": "USBTR",
+  "name": "Baton Rouge",
+  "wikidata_id": "Q28218"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-LA",
+  "code": "USESF",
+  "name": "Alexandria",
+  "wikidata_id": "Q985351"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-LA",
+  "code": "USLCH",
+  "name": "Lake Charles",
+  "wikidata_id": "Q864106"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-LA",
+  "code": "USLFT",
+  "name": "Lafayette",
+  "wikidata_id": "Q128891"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-LA",
+  "code": "USMLU",
+  "name": "Monroe",
+  "wikidata_id": "Q947115"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-LA",
+  "code": "USMSY",
+  "name": "New Orleans",
+  "wikidata_id": "Q34404"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-LA",
+  "code": "USMYX",
+  "name": "Minden",
+  "wikidata_id": "Q2752205"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-LA",
+  "code": "USSHV",
+  "name": "Shreveport",
+  "wikidata_id": "Q80517"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-MA",
+  "code": "USBOS",
+  "name": "Boston",
+  "wikidata_id": "Q100"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-MA",
+  "code": "USSFY",
+  "name": "Springfield",
+  "wikidata_id": "Q49158"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-MA",
+  "code": "USUAN",
+  "name": "Adams",
+  "wikidata_id": "Q351740"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-MD",
+  "code": "USANP",
+  "name": "Annapolis",
+  "wikidata_id": "Q28271"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-MD",
+  "code": "USBAL",
+  "name": "Baltimore",
+  "wikidata_id": "Q5092"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-MD",
+  "code": "USFDK",
+  "name": "Frederick",
+  "wikidata_id": "Q472675"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-MD",
+  "code": "USHGR",
+  "name": "Hagerstown",
+  "wikidata_id": "Q755559"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-MD",
+  "code": "USOBT",
+  "name": "Oakland",
+  "wikidata_id": "Q755860"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-MD",
+  "code": "USSBY",
+  "name": "Salisbury",
+  "wikidata_id": "Q755566"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-MD",
+  "code": "USSIS",
+  "name": "Silver Spring",
+  "wikidata_id": "Q755741"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-ME",
+  "code": "USBGR",
+  "name": "Bangor",
+  "wikidata_id": "Q2042744"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-ME",
+  "code": "USPLD",
+  "name": "Poland Spring",
+  "wikidata_id": "Q25007074"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-ME",
+  "code": "USPQI",
+  "name": "Presque Isle",
+  "wikidata_id": "Q986013"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-ME",
+  "code": "USWVL",
+  "name": "Waterville",
+  "wikidata_id": "Q997170"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-MI",
+  "code": "USAPN",
+  "name": "Alpena",
+  "wikidata_id": "Q1012455"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-MI",
+  "code": "USAZO",
+  "name": "Kalamazoo",
+  "wikidata_id": "Q167155"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-MI",
+  "code": "USBCY",
+  "name": "Bay City",
+  "wikidata_id": "Q746820"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-MI",
+  "code": "USBTL",
+  "name": "Battle Creek",
+  "wikidata_id": "Q810998"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-MI",
+  "code": "USCAD",
+  "name": "Cadillac",
+  "wikidata_id": "Q1025149"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-MI",
+  "code": "USDET",
+  "name": "Detroit",
+  "wikidata_id": "Q12439"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-MI",
+  "code": "USESC",
+  "name": "Escanaba",
+  "wikidata_id": "Q1022872"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-MI",
+  "code": "USFNT",
+  "name": "Flint",
+  "wikidata_id": "Q490584"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-MI",
+  "code": "USGRR",
+  "name": "Grand Rapids",
+  "wikidata_id": "Q184587"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-MI",
+  "code": "USISB",
+  "name": "Ishpeming",
+  "wikidata_id": "Q2432500"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-MI",
+  "code": "USLAN",
+  "name": "Lansing",
+  "wikidata_id": "Q28237"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-MI",
+  "code": "USLMM",
+  "name": "Calumet",
+  "wikidata_id": "Q11680441"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-MI",
+  "code": "USMQT",
+  "name": "Marquette",
+  "wikidata_id": "Q12443"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-MI",
+  "code": "USTVC",
+  "name": "Traverse City",
+  "wikidata_id": "Q984544"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-MN",
+  "code": "USAUM",
+  "name": "Austin",
+  "wikidata_id": "Q780944"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-MN",
+  "code": "USAXN",
+  "name": "Alexandria",
+  "wikidata_id": "Q538210"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-MN",
+  "code": "USDLH",
+  "name": "Duluth",
+  "wikidata_id": "Q485708"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-MN",
+  "code": "USIBB",
+  "name": "Hibbing",
+  "wikidata_id": "Q828736"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-MN",
+  "code": "USMES",
+  "name": "Minneapolis",
+  "wikidata_id": "Q36091"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-MN",
+  "code": "USMKT",
+  "name": "Mankato",
+  "wikidata_id": "Q2003280"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-MN",
+  "code": "USOIV",
+  "name": "Olivia",
+  "wikidata_id": "Q1928578"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-MN",
+  "code": "USQCI",
+  "name": "Chisholm",
+  "wikidata_id": "Q3887675"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-MN",
+  "code": "USQWK",
+  "name": "Walker",
+  "wikidata_id": "Q1911158"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-MN",
+  "code": "USRWF",
+  "name": "Redwood Falls",
+  "wikidata_id": "Q1924130"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-MN",
+  "code": "USSTP",
+  "name": "Saint Paul",
+  "wikidata_id": "Q28848"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-MO",
+  "code": "USCGI",
+  "name": "Cape Girardeau",
+  "wikidata_id": "Q866294"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-MO",
+  "code": "USCOU",
+  "name": "Columbia",
+  "wikidata_id": "Q59670"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-MO",
+  "code": "USHBL",
+  "name": "Hannibal",
+  "wikidata_id": "Q961975"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-MO",
+  "code": "USIRK",
+  "name": "Kirksville",
+  "wikidata_id": "Q966460"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-MO",
+  "code": "USJEF",
+  "name": "Jefferson City",
+  "wikidata_id": "Q28180"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-MO",
+  "code": "USJLN",
+  "name": "Joplin",
+  "wikidata_id": "Q317865"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-MO",
+  "code": "USMKC",
+  "name": "Kansas City",
+  "wikidata_id": "Q41819"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-MO",
+  "code": "USPOF",
+  "name": "Poplar Bluff",
+  "wikidata_id": "Q955462"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-MO",
+  "code": "USSGF",
+  "name": "Springfield",
+  "wikidata_id": "Q135615"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-MS",
+  "code": "USBIX",
+  "name": "Biloxi",
+  "wikidata_id": "Q490720"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-MS",
+  "code": "USCVD",
+  "name": "Cleveland",
+  "wikidata_id": "Q222472"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-MS",
+  "code": "USGWO",
+  "name": "Greenwood",
+  "wikidata_id": "Q986376"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-MS",
+  "code": "USHBG",
+  "name": "Hattiesburg",
+  "wikidata_id": "Q384464"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-MS",
+  "code": "USJAN",
+  "name": "Jackson",
+  "wikidata_id": "Q28198"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-MS",
+  "code": "USLUL",
+  "name": "Laurel",
+  "wikidata_id": "Q934987"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-MS",
+  "code": "USMEI",
+  "name": "Meridian",
+  "wikidata_id": "Q118152"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-MS",
+  "code": "USTUP",
+  "name": "Tupelo",
+  "wikidata_id": "Q667727"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-MS",
+  "code": "USUBS",
+  "name": "Columbus",
+  "wikidata_id": "Q985648"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-MT",
+  "code": "USBIL",
+  "name": "Billings",
+  "wikidata_id": "Q166304"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-MT",
+  "code": "USBTM",
+  "name": "Butte",
+  "wikidata_id": "Q2617226"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-MT",
+  "code": "USBZN",
+  "name": "Bozeman",
+  "wikidata_id": "Q569678"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-MT",
+  "code": "USFCA",
+  "name": "Kalispell",
+  "wikidata_id": "Q853175"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-MT",
+  "code": "USGTF",
+  "name": "Great Falls",
+  "wikidata_id": "Q466190"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-MT",
+  "code": "USHLN",
+  "name": "Helena",
+  "wikidata_id": "Q38733"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-MT",
+  "code": "USMLS",
+  "name": "Miles City",
+  "wikidata_id": "Q960167"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-MT",
+  "code": "USMSO",
+  "name": "Missoula",
+  "wikidata_id": "Q189602"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-MT",
+  "code": "USOLF",
+  "name": "Wolf Point",
+  "wikidata_id": "Q579020"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-MT",
+  "code": "USQRN",
+  "name": "Heron",
+  "wikidata_id": "Q966608"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-MT",
+  "code": "USW3G",
+  "name": "West Glacier",
+  "wikidata_id": "Q2841651"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-MT",
+  "code": "USWYS",
+  "name": "West Yellowstone",
+  "wikidata_id": "Q956110"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-NC",
+  "code": "USAEV",
+  "name": "Asheville",
+  "wikidata_id": "Q648501"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-NC",
+  "code": "USCLT",
+  "name": "Charlotte",
+  "wikidata_id": "Q16565"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-NC",
+  "code": "USDUR",
+  "name": "Durham",
+  "wikidata_id": "Q49229"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-NC",
+  "code": "USEWN",
+  "name": "New Bern",
+  "wikidata_id": "Q1002490"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-NC",
+  "code": "USGBO",
+  "name": "Greensboro",
+  "wikidata_id": "Q49238"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-NC",
+  "code": "USGSB",
+  "name": "Goldsboro",
+  "wikidata_id": "Q367400"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-NC",
+  "code": "USILM",
+  "name": "Wilmington",
+  "wikidata_id": "Q659400"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-NC",
+  "code": "USKNP",
+  "name": "Kannapolis",
+  "wikidata_id": "Q2029146"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-NC",
+  "code": "USPGV",
+  "name": "Greenville",
+  "wikidata_id": "Q1989904"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-ND",
+  "code": "USA4R",
+  "name": "Argusville",
+  "wikidata_id": "Q748997"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-ND",
+  "code": "USBIS",
+  "name": "Bismarck",
+  "wikidata_id": "Q37066"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-ND",
+  "code": "USDIK",
+  "name": "Dickinson",
+  "wikidata_id": "Q853559"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-ND",
+  "code": "USDVL",
+  "name": "Devils Lake",
+  "wikidata_id": "Q1772496"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-ND",
+  "code": "USFAR",
+  "name": "Fargo",
+  "wikidata_id": "Q34109"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-ND",
+  "code": "USISN",
+  "name": "Williston",
+  "wikidata_id": "Q1999172"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-ND",
+  "code": "USMOT",
+  "name": "Minot",
+  "wikidata_id": "Q487201"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-NE",
+  "code": "USBFF",
+  "name": "Scottsbluff",
+  "wikidata_id": "Q959484"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-NE",
+  "code": "USEAR",
+  "name": "Kearney",
+  "wikidata_id": "Q846044"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-NE",
+  "code": "USGRI",
+  "name": "Grand Island",
+  "wikidata_id": "Q461826"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-NE",
+  "code": "USLBF",
+  "name": "North Platte",
+  "wikidata_id": "Q989960"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-NE",
+  "code": "USLNK",
+  "name": "Lincoln",
+  "wikidata_id": "Q28260"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-NE",
+  "code": "USMCK",
+  "name": "McCook",
+  "wikidata_id": "Q961951"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-NE",
+  "code": "USOFK",
+  "name": "Norfolk",
+  "wikidata_id": "Q959951"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-NE",
+  "code": "USOMA",
+  "name": "Omaha",
+  "wikidata_id": "Q43199"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-NH",
+  "code": "USMHT",
+  "name": "Manchester",
+  "wikidata_id": "Q48370"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-NJ",
+  "code": "USCDE",
+  "name": "Camden",
+  "wikidata_id": "Q138367"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-NJ",
+  "code": "USMLR",
+  "name": "Montclair",
+  "wikidata_id": "Q678437"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-NJ",
+  "code": "USNBJ",
+  "name": "New Brunswick",
+  "wikidata_id": "Q138338"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-NJ",
+  "code": "USTTN",
+  "name": "Trenton",
+  "wikidata_id": "Q25330"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-NM",
+  "code": "USABQ",
+  "name": "Albuquerque",
+  "wikidata_id": "Q34804"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-NM",
+  "code": "USALM",
+  "name": "Alamogordo",
+  "wikidata_id": "Q467617"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-NM",
+  "code": "USCVN",
+  "name": "Clovis",
+  "wikidata_id": "Q985559"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-NM",
+  "code": "USROW",
+  "name": "Roswell",
+  "wikidata_id": "Q33561"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-NV",
+  "code": "USLAS",
+  "name": "Las Vegas",
+  "wikidata_id": "Q23768"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-NV",
+  "code": "USRNO",
+  "name": "Reno",
+  "wikidata_id": "Q1100430"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-NV",
+  "code": "USVEI",
+  "name": "Verdi",
+  "wikidata_id": "Q7921102"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-NY",
+  "code": "USART",
+  "name": "Watertown",
+  "wikidata_id": "Q7974481"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-NY",
+  "code": "USBIO",
+  "name": "Binghamton",
+  "wikidata_id": "Q4914238"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-NY",
+  "code": "USBUF",
+  "name": "Buffalo",
+  "wikidata_id": "Q40435"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-NY",
+  "code": "USELM",
+  "name": "Elmira",
+  "wikidata_id": "Q934135"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-NY",
+  "code": "USMSS",
+  "name": "Massena",
+  "wikidata_id": "Q3306151"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-NY",
+  "code": "USNYC",
+  "name": "New York City",
+  "wikidata_id": "Q60"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-NY",
+  "code": "USPLB",
+  "name": "Plattsburgh",
+  "wikidata_id": "Q998669"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-NY",
+  "code": "USQCH",
+  "name": "Carthage",
+  "wikidata_id": "Q533728"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-NY",
+  "code": "USROC",
+  "name": "Rochester",
+  "wikidata_id": "Q49218"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-NY",
+  "code": "USSCH",
+  "name": "Schenectady",
+  "wikidata_id": "Q331380"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-NY",
+  "code": "USSYR",
+  "name": "Syracuse",
+  "wikidata_id": "Q128069"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-NY",
+  "code": "USUCA",
+  "name": "Utica",
+  "wikidata_id": "Q2495519"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-OH",
+  "code": "USCIY",
+  "name": "Chillicothe",
+  "wikidata_id": "Q43160551"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-OH",
+  "code": "USCLE",
+  "name": "Cleveland",
+  "wikidata_id": "Q37320"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-OH",
+  "code": "USCMH",
+  "name": "Columbus",
+  "wikidata_id": "Q16567"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-OH",
+  "code": "USCVG",
+  "name": "Cincinnati",
+  "wikidata_id": "Q43196"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-OH",
+  "code": "USDAY",
+  "name": "Dayton",
+  "wikidata_id": "Q34739"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-OH",
+  "code": "USLIA",
+  "name": "Lima",
+  "wikidata_id": "Q983974"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-OH",
+  "code": "USTOL",
+  "name": "Toledo",
+  "wikidata_id": "Q49239"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-OH",
+  "code": "USYNG",
+  "name": "Youngstown",
+  "wikidata_id": "Q216820"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-OK",
+  "code": "USADT",
+  "name": "Ada",
+  "wikidata_id": "Q345921"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-OK",
+  "code": "USDUC",
+  "name": "Duncan",
+  "wikidata_id": "Q3041247"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-OK",
+  "code": "USLAW",
+  "name": "Lawton",
+  "wikidata_id": "Q503336"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-OK",
+  "code": "USOKC",
+  "name": "Oklahoma City",
+  "wikidata_id": "Q34863"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-OK",
+  "code": "USTUL",
+  "name": "Tulsa",
+  "wikidata_id": "Q44989"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-OR",
+  "code": "USAST",
+  "name": "Astoria",
+  "wikidata_id": "Q490724"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-OR",
+  "code": "USBZO",
+  "name": "Bend",
+  "wikidata_id": "Q671288"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-OR",
+  "code": "USCOB",
+  "name": "Coos Bay",
+  "wikidata_id": "Q913266"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-OR",
+  "code": "USDLS",
+  "name": "The Dalles",
+  "wikidata_id": "Q985271"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-OR",
+  "code": "USEUG",
+  "name": "Eugene",
+  "wikidata_id": "Q171224"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-OR",
+  "code": "USLGD",
+  "name": "La Grande",
+  "wikidata_id": "Q1645049"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-OR",
+  "code": "USLMT",
+  "name": "Klamath Falls",
+  "wikidata_id": "Q846146"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-OR",
+  "code": "USLPH",
+  "name": "La Pine",
+  "wikidata_id": "Q1003838"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-OR",
+  "code": "USMDM",
+  "name": "Madras",
+  "wikidata_id": "Q334041"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-OR",
+  "code": "USMFR",
+  "name": "Medford",
+  "wikidata_id": "Q836663"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-OR",
+  "code": "USMZH",
+  "name": "Milton-Freewater",
+  "wikidata_id": "Q2401051"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-OR",
+  "code": "USPDT",
+  "name": "Pendleton",
+  "wikidata_id": "Q944507"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-OR",
+  "code": "USPDX",
+  "name": "Portland",
+  "wikidata_id": "Q6106"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-OR",
+  "code": "USPRZ",
+  "name": "Prineville",
+  "wikidata_id": "Q330678"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-OR",
+  "code": "USRAI",
+  "name": "Rainier",
+  "wikidata_id": "Q594515"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-OR",
+  "code": "USRBG",
+  "name": "Roseburg",
+  "wikidata_id": "Q846170"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-OR",
+  "code": "USSLE",
+  "name": "Salem",
+  "wikidata_id": "Q43919"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-OR",
+  "code": "USYOC",
+  "name": "Lincoln City",
+  "wikidata_id": "Q988751"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-PA",
+  "code": "USAOO",
+  "name": "Altoona",
+  "wikidata_id": "Q444210"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-PA",
+  "code": "USERI",
+  "name": "Erie",
+  "wikidata_id": "Q234061"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-PA",
+  "code": "USHAR",
+  "name": "Harrisburg",
+  "wikidata_id": "Q25280"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-PA",
+  "code": "USJST",
+  "name": "Johnstown",
+  "wikidata_id": "Q1070763"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-PA",
+  "code": "USLNS",
+  "name": "Lancaster",
+  "wikidata_id": "Q320514"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-PA",
+  "code": "USPHL",
+  "name": "Philadelphia",
+  "wikidata_id": "Q1345"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-PA",
+  "code": "USPIT",
+  "name": "Pittsburgh",
+  "wikidata_id": "Q1342"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-PA",
+  "code": "USPSV",
+  "name": "Pottsville",
+  "wikidata_id": "Q2106682"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-PA",
+  "code": "USSCR",
+  "name": "Scranton",
+  "wikidata_id": "Q271395"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-RI",
+  "code": "USPVD",
+  "name": "Providence",
+  "wikidata_id": "Q18383"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-SC",
+  "code": "USCAE",
+  "name": "Columbia",
+  "wikidata_id": "Q38453"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-SC",
+  "code": "USCHS",
+  "name": "Charleston",
+  "wikidata_id": "Q47716"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-SC",
+  "code": "USFLO",
+  "name": "Florence",
+  "wikidata_id": "Q597842"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-SC",
+  "code": "USGV9",
+  "name": "Greenville",
+  "wikidata_id": "Q574192"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-SC",
+  "code": "USSPA",
+  "name": "Spartanburg",
+  "wikidata_id": "Q773325"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-SD",
+  "code": "USFSD",
+  "name": "Sioux Falls",
+  "wikidata_id": "Q131335"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-SD",
+  "code": "USRAP",
+  "name": "Rapid City",
+  "wikidata_id": "Q213325"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-TN",
+  "code": "USBNA",
+  "name": "Nashville",
+  "wikidata_id": "Q23197"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-TN",
+  "code": "USCHA",
+  "name": "Chattanooga",
+  "wikidata_id": "Q186702"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-TN",
+  "code": "USJCI",
+  "name": "Johnson City",
+  "wikidata_id": "Q770571"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-TN",
+  "code": "USMEM",
+  "name": "Memphis",
+  "wikidata_id": "Q16563"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-TN",
+  "code": "USMKL",
+  "name": "Jackson",
+  "wikidata_id": "Q985409"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-TN",
+  "code": "USTYS",
+  "name": "Knoxville",
+  "wikidata_id": "Q185582"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-TX",
+  "code": "USABI",
+  "name": "Abilene",
+  "wikidata_id": "Q128295"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-TX",
+  "code": "USACT",
+  "name": "Waco",
+  "wikidata_id": "Q128244"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-TX",
+  "code": "USAMA",
+  "name": "Amarillo",
+  "wikidata_id": "Q51691"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-TX",
+  "code": "USAUS",
+  "name": "Austin",
+  "wikidata_id": "Q16559"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-TX",
+  "code": "USBPT",
+  "name": "Beaumont",
+  "wikidata_id": "Q128282"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-TX",
+  "code": "USBRO",
+  "name": "Brownsville",
+  "wikidata_id": "Q51693"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-TX",
+  "code": "USCFD",
+  "name": "Bryan",
+  "wikidata_id": "Q695556"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-TX",
+  "code": "USCRP",
+  "name": "Corpus Christi",
+  "wikidata_id": "Q49242"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-TX",
+  "code": "USDAL",
+  "name": "Dallas",
+  "wikidata_id": "Q16557"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-TX",
+  "code": "USELP",
+  "name": "El Paso",
+  "wikidata_id": "Q16562"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-TX",
+  "code": "USFWT",
+  "name": "Fort Worth",
+  "wikidata_id": "Q16558"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-TX",
+  "code": "USHOU",
+  "name": "Houston",
+  "wikidata_id": "Q16555"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-TX",
+  "code": "USLBB",
+  "name": "Lubbock",
+  "wikidata_id": "Q49273"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-TX",
+  "code": "USLFK",
+  "name": "Lufkin",
+  "wikidata_id": "Q975590"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-TX",
+  "code": "USLRD",
+  "name": "Laredo",
+  "wikidata_id": "Q16868"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-TX",
+  "code": "USMAF",
+  "name": "Midland",
+  "wikidata_id": "Q128321"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-TX",
+  "code": "USOCH",
+  "name": "Nacogdoches",
+  "wikidata_id": "Q970482"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-TX",
+  "code": "USOSD",
+  "name": "Odessa",
+  "wikidata_id": "Q128361"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-TX",
+  "code": "USSAT",
+  "name": "San Antonio",
+  "wikidata_id": "Q975"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-TX",
+  "code": "USSHP",
+  "name": "Sherman",
+  "wikidata_id": "Q982379"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-TX",
+  "code": "USSJT",
+  "name": "San Angelo",
+  "wikidata_id": "Q925598"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-TX",
+  "code": "USSPS",
+  "name": "Wichita Falls",
+  "wikidata_id": "Q128349"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-TX",
+  "code": "USSWW",
+  "name": "Sweetwater",
+  "wikidata_id": "Q981845"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-TX",
+  "code": "USTYR",
+  "name": "Tyler",
+  "wikidata_id": "Q499169"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-TX",
+  "code": "USVCT",
+  "name": "Victoria",
+  "wikidata_id": "Q784496"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-TX",
+  "code": "USWKO",
+  "name": "Weslaco",
+  "wikidata_id": "Q976553"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-UT",
+  "code": "USM7Y",
+  "name": "Midway",
+  "wikidata_id": "Q485211"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-UT",
+  "code": "USOGD",
+  "name": "Ogden",
+  "wikidata_id": "Q52471"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-UT",
+  "code": "USSLC",
+  "name": "Salt Lake City",
+  "wikidata_id": "Q23337"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-VA",
+  "code": "USALD",
+  "name": "Ashland",
+  "wikidata_id": "Q725586"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-VA",
+  "code": "USCHO",
+  "name": "Charlottesville",
+  "wikidata_id": "Q123766"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-VA",
+  "code": "USHBV",
+  "name": "Harrisonburg",
+  "wikidata_id": "Q511935"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-VA",
+  "code": "USHNV",
+  "name": "Hampton",
+  "wikidata_id": "Q342043"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-VA",
+  "code": "USORF",
+  "name": "Norfolk",
+  "wikidata_id": "Q49231"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-VA",
+  "code": "USPTB",
+  "name": "Petersburg",
+  "wikidata_id": "Q511964"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-VA",
+  "code": "USRIC",
+  "name": "Richmond",
+  "wikidata_id": "Q43421"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-VA",
+  "code": "USROA",
+  "name": "Roanoke",
+  "wikidata_id": "Q501796"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-VT",
+  "code": "USBTV",
+  "name": "Burlington",
+  "wikidata_id": "Q31058"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-WA",
+  "code": "USBLI",
+  "name": "Bellingham",
+  "wikidata_id": "Q430267"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-WA",
+  "code": "USBVE",
+  "name": "Bellevue",
+  "wikidata_id": "Q214164"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-WA",
+  "code": "USCRA",
+  "name": "Centralia",
+  "wikidata_id": "Q868700"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-WA",
+  "code": "USELN",
+  "name": "Ellensburg",
+  "wikidata_id": "Q868684"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-WA",
+  "code": "USGEG",
+  "name": "Spokane",
+  "wikidata_id": "Q187805"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-WA",
+  "code": "USGRV",
+  "name": "Grays River",
+  "wikidata_id": "Q3474297"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-WA",
+  "code": "USKWC",
+  "name": "Kennewick",
+  "wikidata_id": "Q844033"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-WA",
+  "code": "USMWH",
+  "name": "Moses Lake",
+  "wikidata_id": "Q1065526"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-WA",
+  "code": "USPSC",
+  "name": "Pasco",
+  "wikidata_id": "Q844016"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-WA",
+  "code": "USSEA",
+  "name": "Seattle",
+  "wikidata_id": "Q5083"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-WA",
+  "code": "USTIW",
+  "name": "Tacoma",
+  "wikidata_id": "Q199797"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-WA",
+  "code": "USYKM",
+  "name": "Yakima",
+  "wikidata_id": "Q499203"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-WI",
+  "code": "USAUW",
+  "name": "Wausau",
+  "wikidata_id": "Q998675"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-WI",
+  "code": "USEAU",
+  "name": "Eau Claire",
+  "wikidata_id": "Q122563"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-WI",
+  "code": "USGRB",
+  "name": "Green Bay",
+  "wikidata_id": "Q47430"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-WI",
+  "code": "USLSE",
+  "name": "La Crosse",
+  "wikidata_id": "Q936780"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-WI",
+  "code": "USMKE",
+  "name": "Milwaukee",
+  "wikidata_id": "Q37836"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-WI",
+  "code": "USMSN",
+  "name": "Madison",
+  "wikidata_id": "Q43788"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-WI",
+  "code": "USRWZ",
+  "name": "Crandon",
+  "wikidata_id": "Q1138847"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-WI",
+  "code": "USSUW",
+  "name": "Superior",
+  "wikidata_id": "Q2367645"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-WV",
+  "code": "USCKB",
+  "name": "Clarksburg",
+  "wikidata_id": "Q1010199"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-WV",
+  "code": "USCRW",
+  "name": "Charleston",
+  "wikidata_id": "Q44564"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-WV",
+  "code": "USHLG",
+  "name": "Wheeling",
+  "wikidata_id": "Q838112"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-WV",
+  "code": "USHNU",
+  "name": "Huntington",
+  "wikidata_id": "Q241808"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-WV",
+  "code": "USKHJ",
+  "name": "Oak Hill",
+  "wikidata_id": "Q285202"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-WV",
+  "code": "USLWB",
+  "name": "Lewisburg",
+  "wikidata_id": "Q731071"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-WV",
+  "code": "USPKB",
+  "name": "Parkersburg",
+  "wikidata_id": "Q965095"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-WV",
+  "code": "USWZE",
+  "name": "Weston",
+  "wikidata_id": "Q2532326"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-WY",
+  "code": "USCPR",
+  "name": "Casper",
+  "wikidata_id": "Q223177"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-WY",
+  "code": "USCYS",
+  "name": "Cheyenne",
+  "wikidata_id": "Q39042"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-WY",
+  "code": "USLND",
+  "name": "Lander",
+  "wikidata_id": "Q992094"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-WY",
+  "code": "USRKS",
+  "name": "Rock Springs",
+  "wikidata_id": "Q378071"
+ },
+ {
+  "country": "US",
+  "subdivision": "US-WY",
+  "code": "USSHR",
+  "name": "Sheridan",
+  "wikidata_id": "Q1017214"
+ }
+]

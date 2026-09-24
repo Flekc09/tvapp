@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## State of the repository
 
-Planning and UI design are complete; no product code exists yet. The repo holds an approved design spec, two implementation plans, a UI design package, and two framework agents. Read the spec before touching anything, and execute only from the plans.
+Planning and UI design are complete. The catalog job (`catalog/`, `.github/workflows/catalog.yml`) was built from its plan on 2026-09-24 on branch `catalog-job`: 13 tasks, one commit each, 77 tests, a live run against the API, and a whole-branch review whose two Important findings were fixed (`docs/superpowers/reviews/2026-09-24-catalog-branch-fable.md`, deferred minors listed there). The app has no code yet. The repo also holds the approved design spec, two implementation plans, a UI design package, and two framework agents. Read the spec before touching anything, and execute only from the plans.
 
 - `docs/superpowers/specs/2026-09-22-tv-app-design.md` — the approved spec. Every decision, with the rejected alternatives, is in its section 11.
 - `docs/superpowers/plans/2026-09-22-catalog-job.md` — 13 tasks, TypeScript. Build this first; the app consumes its output.
@@ -13,7 +13,7 @@ Planning and UI design are complete; no product code exists yet. The repo holds 
 - `docs/superpowers/reviews/` — review reports kept verbatim. `2026-09-23-adversarial-opus.md` is the Opus 5.5 adversarial review; its three blockers (B1 float `responseMs`, B2 toolchain re-pin to AGP 9.4.1 / compileSdk 37 / built-in Kotlin 2.2.10, B3 compile errors) were applied to the plans the same day and are annotated inline as "Opus adversarial review 2026-09-23". Its catalog-side majors M12 (geo-blocked media playlist is `unverified`), M13 (no ccTLD guess for generic-use TLDs or redirector hosts; the `countryCounts` half is app-side and still open) and M14 (`force` input, post-deploy `latest.json` check, issue de-duplication) were applied on 2026-09-24 with the same annotation. The app-side majors and all minors are still open.
 - `.claude/agents/sdlc.md` governs the engineering lifecycle; `.claude/agents/ui-ux.md` guides screen design. The owner designs the UI screen by screen with Claude using the ui-ux playbooks; do not generate all screens in one pass.
 
-The spec, both plans and the UI package have been through adversarial reviews (engineering, viewer psychology, cold-executor, and a UI review whose blockers, majors and minors were all applied). The catalog plan's tasks were executed verbatim in a scratch directory and pass (76 tests) with type-checking. The app plan's library calls were verified against Media3, Room and Compose sources at the pinned versions. Do not "fix" the plans from memory; if a step fails, record the exact error and fix minimally, then update the plan.
+The spec, both plans and the UI package have been through adversarial reviews (engineering, viewer psychology, cold-executor, and a UI review whose blockers, majors and minors were all applied). The catalog plan's tasks were executed verbatim in a scratch directory and pass (77 tests) with type-checking. The app plan's library calls were verified against Media3, Room and Compose sources at the pinned versions. Do not "fix" the plans from memory; if a step fails, record the exact error and fix minimally, then update the plan.
 
 ## What is being built
 
@@ -50,9 +50,7 @@ Single activity. Room holds the imported catalog plus local state. Catalog impor
 
 ## Commands
 
-None run yet. Once the plans are executed:
-
-Catalog job (Node 22 in CI, ESM, vitest):
+Catalog job (built; Node 22 in CI, ESM, vitest):
 ```
 cd catalog
 npm install
@@ -67,7 +65,7 @@ UI package:
 python3 docs/ui/tools/contrast.py        # every text/background ratio; zero FAIL lines is the gate
 ```
 
-TV app (Android Studio, Android TV emulator "Television (1080p)" API 34):
+TV app (not built yet; Android Studio, Android TV emulator "Television (1080p)" API 34):
 ```
 cd app
 ./gradlew testDebugUnitTest                                              # JVM tests

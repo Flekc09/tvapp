@@ -1,0 +1,117 @@
+name: catalog
+
+on:
+  schedule:
+    - cron: '17 6 * * *'   # 06:17 UTC daily; off the hour to dodge the busiest scheduler minute
+  workflow_dispatch:
+    inputs:
+      force:
+        description: 'Publish even if the up-rate guard would refuse; the new rate becomes the baseline. Only after a confirmed permanent drop.'
+        type: boolean
+        default: false
+
+# Permissions are granted per job (final review 2026-09-24): only `deploy` can publish to Pages, only
+# `report-failure` can write issues, only `keepalive` can touch the workflow itself.
+permissions: {}
+
+concurrency:
+  group: catalog
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    permissions:
+      contents: read
+    outputs:
+      version: ${{ steps.built.outputs.version }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: catalog/package-lock.json
+      - name: Log runner egress
+        run: curl -s --max-time 10 https://ipinfo.io/json || echo "egress lookup failed"
+      - name: Install
+        working-directory: catalog
+        run: npm ci
+      - name: Typecheck and test
+        working-directory: catalog
+        run: npm run typecheck && npm test
+      - name: Build catalog
+        working-directory: catalog
+        env:
+          PAGES_BASE: ${{ vars.PAGES_BASE }}
+          OUT_DIR: out
+          FORCE_PUBLISH: ${{ inputs.force == true && '1' || '0' }}   # false or absent (schedule) -> '0'
+        run: npm run run
+      - name: Record the built version
+        id: built
+        working-directory: catalog
+        run: echo "version=$(jq -r .version out/latest.json)" >> "$GITHUB_OUTPUT"
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: catalog/out
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4
+      - name: Verify Pages serves the version just built
+        env:
+          PAGES_BASE: ${{ vars.PAGES_BASE }}
+          EXPECTED: ${{ needs.build.outputs.version }}
+        run: |
+          # A wrong PAGES_BASE (typo, rename, custom domain) makes every night a "first run": history 404s and the guard never fires. Fail here instead.
+          for i in $(seq 1 20); do
+            got=$(curl -fsS --max-time 20 "$PAGES_BASE/latest.json" | jq -r .version 2>/dev/null || echo none)
+            if [ "$got" = "$EXPECTED" ]; then echo "Pages serves version $got"; exit 0; fi
+            echo "attempt $i: Pages serves $got, expected $EXPECTED; waiting for propagation"; sleep 15
+          done
+          echo "PAGES_BASE=$PAGES_BASE does not serve the version just built; check the repository variable"; exit 1
+
+  keepalive:
+    runs-on: ubuntu-latest
+    permissions:
+      actions: write
+    steps:
+      # GitHub disables a scheduled workflow after 60 days without repository activity. Re-enabling it through the
+      # API each run is what the gautamkrishnar/keepalive-workflow action did; that repository is blocked by GitHub
+      # (terms of service, since 2025-04-21) so the call is made directly, with no third-party code (final review 2026-09-24).
+      - name: Re-enable the schedule
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh api -X PUT "repos/${{ github.repository }}/actions/workflows/catalog.yml/enable"
+
+  report-failure:
+    needs: [build, deploy]
+    if: failure()
+    runs-on: ubuntu-latest
+    permissions:
+      issues: write
+    steps:
+      - name: Open issue
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+        run: |
+          gh label create catalog-failure --color B60205 --description "Nightly catalog run failed" --force
+          run_url="${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
+          existing=$(gh issue list --label catalog-failure --state open --json number --jq '.[0].number')
+          if [ -n "$existing" ]; then
+            gh issue comment "$existing" --body "Failed again $(date -u +%F): $run_url"
+          else
+            gh issue create --title "Catalog run failed $(date -u +%F)" --body "Run: $run_url" --label catalog-failure
+          fi
