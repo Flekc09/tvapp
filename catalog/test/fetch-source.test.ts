@@ -26,4 +26,10 @@ describe('fetchSource', () => {
     const f = (async () => new Response('<html>', { status: 200 })) as typeof fetch;
     await expect(fetchSource(f, 'https://x/api')).rejects.toThrow(/JSON/);
   });
+  it('gives up on a response that never arrives instead of holding the runner', async () => {
+    const f = ((_: unknown, init?: RequestInit) => new Promise((_res, rej) => {
+      init?.signal?.addEventListener('abort', () => rej(new DOMException('timed out', 'TimeoutError')));
+    })) as typeof fetch;
+    await expect(fetchSource(f, 'https://x/api', 20)).rejects.toThrow(/timed out/);
+  });
 });

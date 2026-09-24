@@ -5,11 +5,12 @@ const FILES = ['channels', 'streams', 'categories', 'countries', 'logos', 'feeds
 export async function fetchSource(
   fetchFn: FetchFn,
   baseUrl = 'https://iptv-org.github.io/api',
+  timeoutMs = 60_000,
 ): Promise<SourceData> {
   const out: Partial<SourceData> = {};
   for (const name of FILES) {
     const url = `${baseUrl}/${name}.json`;
-    const res = await fetchFn(url);
+    const res = await fetchFn(url, { signal: AbortSignal.timeout(timeoutMs) }); // a hung response must not hold the runner for the job timeout (catalog branch review 2026-09-24, minor 6)
     if (!res.ok) throw new Error(`fetchSource: ${name}.json returned ${res.status}`);
     let body: unknown;
     try { body = await res.json(); } catch { throw new Error(`fetchSource: ${name}.json is not valid JSON`); }

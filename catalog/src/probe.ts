@@ -20,8 +20,10 @@ async function get(url: string, headers: Record<string, string>, fetchFn: FetchF
     let head = new Uint8Array(0);
     if (res.body) {
       // Playlists are read in full (capped at 1 MB) so an #EXT-X-ENDLIST past 64 KB is not missed; TS needs only two packets; everything else 64 KB.
+      // A .m3u8 served as octet-stream is a playlist too (catalog branch review 2026-09-24, minor 7).
       const ct = (res.headers.get('content-type') ?? '').toLowerCase();
-      const wantBytes = ct.includes('mpegurl') ? 1_048_576 : ct.includes('mp2t') ? 2 * 188 + 1 : HEAD_BYTES;
+      const isPlaylist = ct.includes('mpegurl') || /\.m3u8?$/i.test(new URL(res.url || url).pathname);
+      const wantBytes = isPlaylist ? 1_048_576 : ct.includes('mp2t') ? 2 * 188 + 1 : HEAD_BYTES;
       const reader = res.body.getReader();
       const chunks: Uint8Array[] = []; let total = 0;
       try {
@@ -92,6 +94,7 @@ async function probeOnce(
       if ([401, 403, 429, 451].includes(media.status)) return result(url, 'unverified', 'hls', got.ms, `media http ${media.status}`, finalHost); // geo-blocked variant behind a public master (spec 4.3; Opus adversarial review 2026-09-23, major 12)
       if (media.status < 200 || media.status >= 300) return result(url, 'down', 'hls', got.ms, `media http ${media.status}`, finalHost);
       parsed = parseHls(new TextDecoder().decode(media.head));
+      if (parsed.kind === 'invalid') return result(url, 'unverified', 'hls', got.ms, 'media not a playlist', finalHost); // same as the top level: an html login page is not proof of death (minor 8)
       if (parsed.kind !== 'media') return result(url, 'down', 'hls', got.ms, 'media playlist invalid', finalHost);
     }
     if (parsed.ended) return result(url, 'down', 'hls', got.ms, 'playlist ended', finalHost);

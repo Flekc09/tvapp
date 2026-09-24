@@ -111,6 +111,23 @@ describe('probeStream', () => {
     const r = await probeStream(s('http://a/x.m3u8'), fake({ 'http://a/x.m3u8': { status: 200, body: '#EXTM3U\n#EXT-X-STREAM-INF:BANDWIDTH=1\nhttp://bad host:abc/x.m3u8\n' } }));
     expect(r.health).toBe('down'); expect(r.format).toBe('unknown'); expect(r.reason).toMatch(/Invalid URL/);
   });
+  it('reads a .m3u8 served as octet-stream in full, so an ENDLIST past 64 KB is seen', async () => {
+    const enc = new TextEncoder();
+    const parts = [MEDIA, ...Array<string>(30).fill('#X\n'.repeat(1_000)), '#EXT-X-ENDLIST\n'].map(t => enc.encode(t)); // 90 KB in 3 KB chunks
+    const f = (async () => {
+      const body = new ReadableStream<Uint8Array>({ start(c) { for (const p of parts) c.enqueue(p); c.close(); } });
+      return new Response(body, { status: 200, headers: { 'content-type': 'application/octet-stream' } });
+    }) as typeof fetch;
+    const r = await probeStream(s('http://a/x.m3u8?token=1'), f);
+    expect(r.health).toBe('down'); expect(r.reason).toBe('playlist ended');
+  });
+  it('a variant answering 200 with html is unverified, as the same body at the top level is', async () => {
+    const r = await probeStream(s('http://a/x.m3u8'), fake({
+      'http://a/x.m3u8': { status: 200, body: MASTER },
+      'http://a/media/mono.m3u8': { status: 200, body: '<html>login</html>', type: 'text/html' },
+    }));
+    expect(r.health).toBe('unverified'); expect(r.format).toBe('hls'); expect(r.reason).toBe('media not a playlist');
+  });
 });
 
 describe('hostOf', () => {
