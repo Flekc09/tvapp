@@ -42,3 +42,15 @@ fun Modifier.tvFocus(interaction: MutableInteractionSource, shape: androidx.comp
 }
 
 @Composable fun rememberInteraction() = remember { MutableInteractionSource() }
+
+/**
+ * Asks for focus once per frame until `landed()` says it arrived (up to ~0.5 s). A LazyColumn row only exists once the
+ * list has scrolled to it, so a single request right after scrollToItem can miss (Task 13 emulator check).
+ */
+suspend fun androidx.compose.ui.focus.FocusRequester.requestWhenReady(landed: () -> Boolean) {
+    repeat(30) {
+        kotlinx.coroutines.delay(16)
+        runCatching { requestFocus() }
+        if (landed()) return
+    }
+}

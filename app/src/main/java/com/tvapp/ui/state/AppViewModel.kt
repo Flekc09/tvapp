@@ -55,9 +55,28 @@ class AppViewModel(private val c: AppContainer) : ViewModel() {
     private val activeIds = local.settingFlow(CatalogImporter.KEY_ACTIVE).map { listOfNotNull(it?.toLongOrNull()) }.distinctUntilChanged()
     private val flags = combine(showAdult, showNoUp, showBrokenHere) { a, n, b -> Triple(a, n, b) }
 
-    val visibleChannels: StateFlow<List<ChannelEntity>> = combine(_filter, flags, local.brokenHereIdsFlow(), activeIds) { f, (adult, noUp, broken), brokenIds, ids ->
+    val visibleChannels: StateFlow<List<ChannelEntity>> = channelsOf(_filter).stateIn(viewModelScope, SharingStarted.Eagerly, emptyList())
+
+    /** The list for any filter under the same settings as visibleChannels: the Channels column previews an entry with it before it is committed (Task 13). */
+    fun channelsOf(filter: Flow<ListFilter>): Flow<List<ChannelEntity>> = combine(filter, flags, local.brokenHereIdsFlow(), activeIds) { f, (adult, noUp, broken), brokenIds, ids ->
         Params(f, adult, noUp, if (broken) emptyList() else brokenIds, ids)
-    }.flatMapLatest { p -> channelsFor(p) }.stateIn(viewModelScope, SharingStarted.Eagerly, emptyList())
+    }.flatMapLatest { p -> channelsFor(p) }
+
+    /** Channels marked broken here, for the rows' status word (Task 13). */
+    val brokenIds: StateFlow<Set<String>> = local.brokenHereIdsFlow().map { it.toSet() }.stateIn(viewModelScope, SharingStarted.Eagerly, emptySet())
+
+    /** The adult / no-up / broken-here arguments every count shares with channelList, so a count never disagrees with its list. */
+    private suspend fun countArgs(): Triple<Boolean, Boolean, List<String>> {
+        val broken = if (local.setting("show_broken_here") == "true") emptyList() else local.brokenHereIds()
+        return Triple(local.setting("show_adult") == "true", local.setting("show_no_up") == "true", broken)
+    }
+    /** Visible channels per country, as its "All categories" list counts them (Browse, the Channels column). */
+    suspend fun countryCounts(): Map<String?, Int> { val (a, n, h) = countArgs(); return catalog.countryCounts(c.importer.activeImportIds(), a, n, h).associate { it.country to it.n } }
+    /** Visible channels per category within a country (null: worldwide), counted in Kotlin from the '|'-joined strings. */
+    suspend fun categoryCounts(country: String?): Map<String, Int> {
+        val (a, n, h) = countArgs()
+        return catalog.categoryStrings(c.importer.activeImportIds(), country, a, n, h).flatMap { it.split('|') }.filter { it.isNotEmpty() }.groupingBy { it }.eachCount()
+    }
     private data class Params(val f: ListFilter, val adult: Boolean, val noUp: Boolean, val hidden: List<String>, val ids: List<Long>)
 
     companion object { const val SOURCE_MISSING = "missing" } // placeholder rows for favorites no longer in the catalog

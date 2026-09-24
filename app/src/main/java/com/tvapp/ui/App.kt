@@ -20,6 +20,17 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.lerp
+import androidx.compose.ui.draw.drawBehind
+import androidx.compose.ui.geometry.CornerRadius
+import androidx.compose.ui.geometry.Offset
+import androidx.compose.ui.geometry.Size
+import androidx.compose.ui.graphics.BlendMode
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.CompositingStrategy
+import androidx.compose.ui.graphics.drawscope.Stroke
+import androidx.compose.ui.graphics.graphicsLayer
+import com.tvapp.ui.browse.BrowseOverlay
+import com.tvapp.ui.channels.ChannelsOverlay
 import com.tvapp.ui.player.Banner
 import com.tvapp.ui.player.ChannelStrip
 import com.tvapp.ui.player.ContextMenu
@@ -56,7 +67,18 @@ fun App(vm: AppViewModel) {
         val w = lerp(maxWidth, 288.dp, inset); val h = lerp(maxHeight, 162.dp, inset)
         PlayerSurface(vm.player.player, Modifier.offset(x = lerp(0.dp, maxWidth - 48.dp - 288.dp, inset), y = lerp(0.dp, 27.dp, inset)).size(w, h))
 
-        if (top in SCRIM_OVERLAYS) Box(Modifier.fillMaxSize().background(Tok.scrim))
+        // The scrim is cut out where the inset is, so the preview stays undimmed, with the 3 dp outline at 60 % white (02-channels.md §1).
+        if (top in SCRIM_OVERLAYS) {
+            val cut = inset >= 1f
+            Box(Modifier.fillMaxSize().graphicsLayer(compositingStrategy = CompositingStrategy.Offscreen).drawBehind {
+                drawRect(Tok.scrim)
+                if (cut) {
+                    val tl = Offset((maxWidth - 48.dp - 288.dp).toPx(), 27.dp.toPx()); val sz = Size(288.dp.toPx(), 162.dp.toPx())
+                    drawRoundRect(Color.Black, tl, sz, CornerRadius(16.dp.toPx()), blendMode = BlendMode.Clear)
+                    drawRoundRect(Color.White.copy(alpha = 0.6f), tl, sz, CornerRadius(16.dp.toPx()), style = Stroke(3.dp.toPx()))
+                }
+            })
+        }
         val safe = Modifier.fillMaxSize().padding(horizontal = 48.dp, vertical = 27.dp)
         Box(safe) {
             if (bannerVisible && top == Overlay.NONE) Banner(vm, state, Modifier.align(Alignment.BottomStart))
@@ -65,6 +87,8 @@ fun App(vm: AppViewModel) {
                 Overlay.CONTEXT_MENU -> ContextMenu(vm, Modifier.align(Alignment.BottomStart))
                 Overlay.SOURCES -> SourcesMenu(vm, Modifier.align(Alignment.BottomStart))
                 Overlay.STRIP -> ChannelStrip(vm, Modifier.align(Alignment.BottomStart))
+                Overlay.CHANNELS -> ChannelsOverlay(vm)
+                Overlay.BROWSE -> BrowseOverlay(vm)
                 Overlay.NONE -> {}
                 // Channels, Browse, Search, Settings, Advanced, Diagnostics, PIN and the address dialog arrive in Tasks 13-16.
                 else -> Text("${top.name.lowercase().replaceFirstChar { it.uppercase() }} (built in a later task)", style = Tok.md,
