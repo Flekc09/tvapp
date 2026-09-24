@@ -845,7 +845,7 @@ Co-Authored-By: Claude Fable 5.1 <noreply@anthropic.com>"
 - Consumes: `detectFormat`, `parseHls`, `isTsSync`, `isMpd` from Task 4.
 - Produces: `probeStream(stream: GroupedStream, fetchFn: FetchFn, opts?: { timeoutMs?: number; now?: () => number }): Promise<ProbeResult>` and `DEFAULT_UA = 'TVApp/1.0 (Android TV; Media3)'` and `hostOf(url: string): string`.
 
-Rules implemented (spec 4.3): GET with timeout, headers from the stream, else default UA. 401/403/429/451 → `unverified` (geo-block, missing token, rate limit). 404/5xx, timeout before headers, network error → `down`. A body that stalls after headers is judged on the bytes received. 200 → detect format; HLS master → follow first media URI resolved against the *final* response URL, require segments and no ENDLIST; HLS media → same check; TS → sync bytes; DASH → MPD check; unknown → `unverified`. `responseMs` is time to first response headers. `finalHost` is the host of the final URL after redirects.
+Rules implemented (spec 4.3): GET with timeout, headers from the stream, else default UA. 401/403/429/451 → `unverified` (geo-block, missing token, rate limit). 404/5xx, timeout before headers, network error → `down`. A body that stalls after headers is judged on the bytes received. 200 → detect format; HLS master → follow first media URI resolved against the *final* response URL, require segments and no ENDLIST; HLS media → same check; TS → sync bytes; DASH → MPD check; unknown → `unverified`. `responseMs` is time to first response headers, rounded to an integer (spec 4.4 shows an int and the app parses it as one; `performance.now()` is fractional). `finalHost` is the host of the final URL after redirects.
 
 - [ ] **Step 1: Write the failing tests**
 
@@ -937,6 +937,7 @@ describe('probeStream', () => {
     }) as typeof fetch;
     const r = await probeStream(s('http://a/live.ts'), stall, { timeoutMs: 100 });
     expect(r.health).toBe('up'); expect(r.format).toBe('ts'); expect(r.responseMs).not.toBeNull();
+    expect(Number.isInteger(r.responseMs)).toBe(true); // contract with the app's parser (Opus adversarial review 2026-09-23, blocker 1)
   });
   it('a thrown network error is down', async () => {
     const f = (async () => { throw new TypeError('fetch failed'); }) as typeof fetch;
@@ -990,7 +991,7 @@ async function get(url: string, headers: Record<string, string>, fetchFn: FetchF
   const t0 = now();
   try {
     const res = await fetchFn(url, { headers, signal: ac.signal, redirect: 'follow' });
-    const ms = now() - t0;
+    const ms = Math.round(now() - t0); // integer: spec 4.4, and the app reads it with JsonReader.nextInt; performance.now() is fractional (Opus adversarial review 2026-09-23, blocker 1)
     let head = new Uint8Array(0);
     if (res.body) {
       // Playlists are read in full (capped at 1 MB) so an #EXT-X-ENDLIST past 64 KB is not missed; TS needs only two packets; everything else 64 KB.
