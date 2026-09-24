@@ -1936,7 +1936,7 @@ Expected: typecheck clean, all tests pass, including the 4 pipeline tests.
 - [ ] **Step 6: Run the real pipeline once locally against the live API**
 
 Run: `cd catalog && PAGES_BASE=https://example.invalid ALLOW_EMPTY_HISTORY=1 OUT_DIR=out npm run run`
-Expected: completes in under 60 minutes on home broadband (per-host cap slows it), prints stats with thousands of `up`, writes `catalog/out/catalog.json.gz` between 1.5 and 4 MB. `ALLOW_EMPTY_HISTORY=1` lets the DNS failure on `.invalid` start with empty history; without it the run aborts, which is the CI behavior. Record the stats and runtime in the commit message.
+Expected: completes in under 60 minutes on home broadband (per-host cap slows it), prints stats with thousands of `up`, writes `catalog/out/catalog.json.gz` of roughly 1 MB (measured 2026-09-24: 985,246 bytes for 12,160 channels and 17,432 streams in 21 minutes; the earlier "1.5 to 4 MB" was an estimate). `ALLOW_EMPTY_HISTORY=1` lets the DNS failure on `.invalid` start with empty history; without it the run aborts, which is the CI behavior. Record the stats and runtime in the commit message.
 
 - [ ] **Step 7: Commit**
 

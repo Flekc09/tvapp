@@ -1,0 +1,114 @@
+[
+ {
+  "id": "ABC.us",
+  "name": "ABC",
+  "alt_names": [],
+  "network": "ABC",
+  "owners": [
+   "The Walt Disney Company"
+  ],
+  "country": "US",
+  "categories": [
+   "general"
+  ],
+  "is_nsfw": false,
+  "launched": "1948-04-19",
+  "closed": null,
+  "replaced_by": null,
+  "website": "https://abc.com/"
+ },
+ {
+  "id": "BBCNews.uk",
+  "name": "BBC News",
+  "alt_names": [],
+  "network": null,
+  "owners": [
+   "BBC Studios"
+  ],
+  "country": "UK",
+  "categories": [
+   "news"
+  ],
+  "is_nsfw": false,
+  "launched": "1997-11-09",
+  "closed": null,
+  "replaced_by": null,
+  "website": "https://www.bbc.co.uk/tv/bbcnews"
+ },
+ {
+  "id": "CBS.us",
+  "name": "CBS",
+  "alt_names": [],
+  "network": "CBS Entertainment",
+  "owners": [
+   "CBS Broadcasting Inc.",
+   "Paramount Skydance Corporation"
+  ],
+  "country": "US",
+  "categories": [
+   "general"
+  ],
+  "is_nsfw": false,
+  "launched": "1941-07-01",
+  "closed": null,
+  "replaced_by": null,
+  "website": "https://www.cbs.com/"
+ },
+ {
+  "id": "FoxSports1.us",
+  "name": "Fox Sports 1",
+  "alt_names": [
+   "FS1"
+  ],
+  "network": "Fox Sports",
+  "owners": [
+   "Fox Sports Media Group"
+  ],
+  "country": "US",
+  "categories": [
+   "sports"
+  ],
+  "is_nsfw": false,
+  "launched": "2013-08-17",
+  "closed": null,
+  "replaced_by": null,
+  "website": "https://www.foxsports.com/"
+ },
+ {
+  "id": "NHKWorldJapan.jp",
+  "name": "NHK World-Japan",
+  "alt_names": [
+   "NHK World"
+  ],
+  "network": null,
+  "owners": [
+   "Government of Japan"
+  ],
+  "country": "JP",
+  "categories": [
+   "news",
+   "culture"
+  ],
+  "is_nsfw": false,
+  "launched": "1998-04-01",
+  "closed": null,
+  "replaced_by": null,
+  "website": "https://www3.nhk.or.jp/nhkworld/"
+ },
+ {
+  "id": "SECNetwork.us",
+  "name": "SEC Network",
+  "alt_names": [],
+  "network": null,
+  "owners": [
+   "ESPN Inc."
+  ],
+  "country": "US",
+  "categories": [],
+  "is_nsfw": false,
+  "launched": "2014-08-14",
+  "closed": null,
+  "replaced_by": null,
+  "website": "https://www.secsports.com/"
+ }
+]

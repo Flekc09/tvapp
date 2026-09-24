@@ -1,0 +1,1328 @@
+[
+ {
+  "channel": "ABC.us",
+  "feed": "East",
+  "title": "ABC",
+  "url": "http://190.11.225.124:5000/live/abc_hd/playlist.m3u8",
+  "quality": "1080p",
+  "labels": [],
+  "user_agent": null,
+  "referrer": null
+ },
+ {
+  "channel": "ABC.us",
+  "feed": "KAAL",
+  "title": "ABC 6 Austin TX (KAAL)",
+  "url": "https://amg01942-amg01942c6-stirr-us-10178.playouts.now.amagi.tv/playlist.m3u8",
+  "quality": "1080p",
+  "labels": [],
+  "user_agent": null,
+  "referrer": null
+ },
+ {
+  "channel": "ABC.us",
+  "feed": "KATC",
+  "title": "KATC 3.1",
+  "url": "http://stream.cammonitorplus.net/1753/index.m3u8",
+  "quality": "1080p",
+  "labels": [],
+  "user_agent": null,
+  "referrer": null
+ },
+ {
+  "channel": "ABC.us",
+  "feed": "KEROTV",
+  "title": "ABC 23 Bakersfield CA (KERO)",
+  "url": "https://aegis-cloudfront-1.tubi.video/69c4e4f9-84fa-43eb-b38e-6d1f9464ca73/playlist.m3u8",
+  "quality": "720p",
+  "labels": [],
+  "user_agent": null,
+  "referrer": null
+ },
+ {
+  "channel": "ABC.us",
+  "feed": "KEROTV",
+  "title": "23 ABC Bakersfield CA (KERO)",
+  "url": "https://content.uplynk.com/channel/ff809e6d9ec34109abfb333f0d4444b5.m3u8",
+  "quality": "720p",
+  "labels": [],
+  "user_agent": null,
+  "referrer": null
+ },
+ {
+  "channel": "ABC.us",
+  "feed": "KGTV",
+  "title": "ABC 10 San Diego CA (KGTV)",
+  "url": "https://aegis-cloudfront-1.tubi.video/1a352414-3a30-4f42-b14b-c091d02a5e45/playlist.m3u8",
+  "quality": "720p",
+  "labels": [],
+  "user_agent": null,
+  "referrer": null
+ },
+ {
+  "channel": "ABC.us",
+  "feed": "KGUNTV",
+  "title": "ABC 9 Tucson AZ (KGUN)",
+  "url": "https://aegis-cloudfront-1.tubi.video/a53514a7-f2aa-4d34-802e-c2b5594fc0d7/playlist.m3u8",
+  "quality": "720p",
+  "labels": [],
+  "user_agent": null,
+  "referrer": null
+ },
+ {
+  "channel": "ABC.us",
+  "feed": "KITV",
+  "title": "KITV 4 Island News",
+  "url": "https://fuel-streaming-prod01.fuelmedia.io/v1/sem/c4067ddc-0e67-4928-b7ec-624481f721a6.m3u8",
+  "quality": "720p",
+  "labels": [],
+  "user_agent": null,
+  "referrer": null
+ },
+ {
+  "channel": "ABC.us",
+  "feed": "KMGHTV",
+  "title": "ABC 7 Denver CO (KMGH)",
+  "url": "https://content.uplynk.com/channel/64ca339f04964a5e961c3207a7771bf1.m3u8",
+  "quality": "720p",
+  "labels": [],
+  "user_agent": null,
+  "referrer": null
+ },
+ {
+  "channel": "ABC.us",
+  "feed": "KOATTV",
+  "title": "ABC 7 Albuquerque NM (KOAT)",
+  "url": "https://aegis-cloudfront-1.tubi.video/2dba5dd9-4097-45e3-b169-56735cc48476/playlist.m3u8",
+  "quality": "720p",
+  "labels": [],
+  "user_agent": null,
+  "referrer": null
+ },
+ {
+  "channel": "ABC.us",
+  "feed": "KRCA",
+  "title": "KRCA-TV Estrella Los Angeles",
+  "url": "https://content.uplynk.com/channel/829a8c85f9e840c6bed963856c231428.m3u8",
+  "quality": "720p",
+  "labels": [],
+  "user_agent": null,
+  "referrer": null
+ },
+ {
+  "channel": "ABC.us",
+  "feed": "KRGVTV",
+  "title": "ABC 5",
+  "url": "https://d3svnrf3rmq619.cloudfront.net/krgv-live/smil:krgv-live.smil/playlist.m3u8",
+  "quality": null,
+  "labels": [],
+  "user_agent": null,
+  "referrer": null
+ },
+ {
+  "channel": "ABC.us",
+  "feed": "KSTPTV",
+  "title": "ABC 5 St. Paul MN (KSTP)",
+  "url": "https://amg01942-amg01942c2-stirr-us-10173.playouts.now.amagi.tv/playlist.m3u8",
+  "quality": "1080p",
+  "labels": [],
+  "user_agent": null,
+  "referrer": null
+ },
+ {
+  "channel": "ABC.us",
+  "feed": "KXXV",
+  "title": "ABC 25 News Central Texas",
+  "url": "https://content.uplynk.com/channel/9d4e02c9c3544c269d32e6b316792c8f.m3u8",
+  "quality": "720p",
+  "labels": [],
+  "user_agent": null,
+  "referrer": null
+ },
+ {
+  "channel": "ABC.us",
+  "feed": "WBBJTV",
+  "title": "WBBJ (Jackson TN)",
+  "url": "https://dai.google.com/linear/hls/event/HZ3JdLVcQ463l3b1BLXmmQ/master.m3u8",
+  "quality": "432p",
+  "labels": [],
+  "user_agent": null,
+  "referrer": null
+ },
+ {
+  "channel": "ABC.us",
+  "feed": "WBRZTV",
+  "title": "WBRZ Weather Channel Baton Rouge LA",
+  "url": "https://d2a6g6zgxepbwi.cloudfront.net/wbrz-edge/weather.stream_360p/playlist.m3u8",
+  "quality": "480p",
+  "labels": [],
+  "user_agent": null,
+  "referrer": null
+ },
+ {
+  "channel": "ABC.us",
+  "feed": "WDIODT",
+  "title": "ABC 10 Duluth MN (WDIO)",
+  "url": "https://amg01942-amg01942c3-stirr-us-10196.playouts.now.amagi.tv/playlist.m3u8",
+  "quality": "1080p",
+  "labels": [],
+  "user_agent": null,
+  "referrer": null
+ },
+ {
+  "channel": "ABC.us",
+  "feed": "WFTV",
+  "title": "ABC 9 Orlando FL (WFTV)",
+  "url": "https://amg00327-coxmediagroup-wftvbreaking-ono-hec7b.amagi.tv/playlist/amg00327-coxmediagroup-wftvbreaking-ono/playlist.m3u8",
+  "quality": "720p",
+  "labels": [],
+  "user_agent": null,
+  "referrer": null
+ },
+ {
+  "channel": "ABC.us",
+  "feed": "WISNTV",
+  "title": "ABC 12 Milwaukee WI (WISN)",
+  "url": "https://aegis-cloudfront-1.tubi.video/ec903a48-3638-4d0b-ac89-813e147bca58/playlist.m3u8",
+  "quality": "720p",
+  "labels": [],
+  "user_agent": null,
+  "referrer": null
+ },
+ {
+  "channel": "ABC.us",
+  "feed": "WJLATV",
+  "title": "ABC 7 Washington DC (WJLA)",
+  "url": "https://linear-681.frequency.stream/dist/stirr/681/hls/master/playlist.m3u8",
+  "quality": "1080p",
+  "labels": [],
+  "user_agent": null,
+  "referrer": null
+ },
+ {
+  "channel": "ABC.us",
+  "feed": "WLOS",
+  "title": "ABC 13 Asheville NC (WLOS)",
+  "url": "https://linear-695.frequency.stream/dist/stirr/695/hls/master/playlist.m3u8",
+  "quality": "1080p",
+  "labels": [],
+  "user_agent": null,
+  "referrer": null
+ },
+ {
+  "channel": "ABC.us",
+  "feed": "WMARTV",
+  "title": "ABC 2 Baltimore MD (WMAR)",
+  "url": "https://aegis-cloudfront-1.tubi.video/c28d1ca8-9467-4798-81dc-09c1d6e90be1/playlist.m3u8",
+  "quality": "720p",
+  "labels": [],
+  "user_agent": null,
+  "referrer": null
+ },
+ {
+  "channel": "ABC.us",
+  "feed": "WMURTV",
+  "title": "ABC 9 Manchester NH (WMUR-TV)",
+  "url": "https://aegis-cloudfront-1.tubi.video/b77ffe96-c5d1-43a7-8687-306ff244d725/playlist.m3u8",
+  "quality": "720p",
+  "labels": [],
+  "user_agent": null,
+  "referrer": null
+ },
+ {
+  "channel": "ABC.us",
+  "feed": "WPDETV",
+  "title": "ABC 15 Myrtle Beach FL (WPDE)",
+  "url": "https://linear-696.frequency.stream/dist/stirr/696/hls/master/playlist.m3u8",
+  "quality": "1080p",
+  "labels": [],
+  "user_agent": null,
+  "referrer": null
+ },
+ {
+  "channel": "ABC.us",
+  "feed": "WSOCTV",
+  "title": "WSOC-DT1",
+  "url": "https://cdn-ue1-prod.tsv2.amagi.tv/linear/amg00327-coxmediagroup-wsocbreaking-ono/playlist.m3u8",
+  "quality": "1080p",
+  "labels": [],
+  "user_agent": null,
+  "referrer": null
+ },
+ {
+  "channel": "ABC.us",
+  "feed": "WSOCTV",
+  "title": "WSOC Charlotte",
+  "url": "https://d1q60ra9vxbqm1.cloudfront.net/playlist.m3u8",
+  "quality": "1080p",
+  "labels": [
+   "Geo-blocked"
+  ],
+  "user_agent": null,
+  "referrer": null
+ },
+ {
+  "channel": "ABC.us",
+  "feed": "WSOCTV",
+  "title": "ABC 9 Charlotte NC (WSOC)",
+  "url": "https://aegis-cloudfront-1.tubi.video/d864a20b-85bb-41bc-8fbe-6c9d8a88a32d/playlist.m3u8",
+  "quality": "720p",
+  "labels": [],
+  "user_agent": null,
+  "referrer": null
+ },
+ {
+  "channel": "ABC.us",
+  "feed": "WSYX",
+  "title": "ABC 6 Columbus OH (WSYX)",
+  "url": "https://linear-689.frequency.stream/dist/stirr/689/hls/master/playlist.m3u8",
+  "quality": "1080p",
+  "labels": [],
+  "user_agent": null,
+  "referrer": null
+ },
+ {
+  "channel": "ABC.us",
+  "feed": "WTNH",
+  "title": "WTNH-DT1",
+  "url": "https://tkx.mp.lura.live/rest/v2/mcp/video/11135425.m3u8?anvack=pDKqMLyG9pVqMkSYRJHWu3XROjAlvR6z&eud=1iqQ+zazzEobWIhmmj6bA8STRJm4HceYQApO7QYBvy9BTps0KI7LuXGD4KK7RLtBTyO8KsbFw40vgX8hrw+xqw==",
+  "quality": "720p",
+  "labels": [],
+  "user_agent": null,
+  "referrer": null
+ },
+ {
+  "channel": "ABC.us",
+  "feed": "WTVQDT",
+  "title": "WTVQ ABC 36 News (Lexington KY)",
+  "url": "https://townnews.g-mana.live/media/14d1fd2c-0548-4803-80ad-6657831a7981/main.m3u8",
+  "quality": "720p",
+  "labels": [],
+  "user_agent": null,
+  "referrer": null
+ },
+ {
+  "channel": "ABC.us",
+  "feed": "WTXLTV",
+  "title": "ABC 27 Tallahassee FL (WTXL)",
+  "url": "https://aegis-cloudfront-1.tubi.video/e739361e-fa12-4cac-92f3-e0dbf332cd88/playlist.m3u8",
+  "quality": "720p",
+  "labels": [],
+  "user_agent": null,
+  "referrer": null
+ },
+ {
+  "channel": "ABC.us",
+  "feed": "WTXLTV",
+  "title": "ABC Tallahassee",
+  "url": "https://content.uplynk.com/channel/c66d1d2d9e2c46cea1cf22a33f6ca488.m3u8",
+  "quality": "720p",
+  "labels": [
+   "Not 24/7"
+  ],
+  "user_agent": null,
+  "referrer": null
+ },
+ {
+  "channel": "ABC.us",
+  "feed": "WWAY",
+  "title": "ABC WWAY 3",
+  "url": "https://townnews.g-mana.live/media/027a05c7-43b6-49eb-ad10-a0c0f10a0754/main.m3u8",
+  "quality": null,
+  "labels": [],
+  "user_agent": null,
+  "referrer": null
+ },
+ {
+  "channel": "BBCNews.uk",
+  "feed": "Africa",
+  "title": "BBC News",
+  "url": "https://vs-cmaf-push-ww-live.akamaized.net/x=4/i=urn:bbc:pips:service:bbc_news_channel_hd/iptv_hd_abr_v1.mpd",
+  "quality": "720p",
+  "labels": [],
+  "user_agent": null,
+  "referrer": null
+ },
+ {
+  "channel": "BBCNews.uk",
+  "feed": "Africa",
+  "title": "BBC News",
+  "url": "https://vs-hls-push-ww-live.akamaized.net/x=4/i=urn:bbc:pips:service:bbc_news_channel_hd/mobile_wifi_main_hd_abr_v2.m3u8",
+  "quality": "720p",
+  "labels": [],
+  "user_agent": null,
+  "referrer": null
+ },
+ {
+  "channel": "BBCNews.uk",
+  "feed": "Africa",
+  "title": "BBC News",
+  "url": "https://vs-hls-push-uk-live.akamaized.net/x=4/i=urn:bbc:pips:service:bbc_news_channel_hd/mobile_wifi_main_sd_abr_v2.m3u8",
+  "quality": "540p",
+  "labels": [
+   "Geo-blocked"
+  ],
+  "user_agent": null,
+  "referrer": null
+ },
+ {
+  "channel": "BBCNews.uk",
+  "feed": "Africa",
+  "title": "BBC News",
+  "url": "https://vs-hls-push-ww-live.akamaized.net/x=4/i=urn:bbc:pips:service:bbc_news_channel_hd/mobile_wifi_main_sd_abr_v2.m3u8",
+  "quality": "540p",
+  "labels": [],
+  "user_agent": null,
+  "referrer": null
+ },
+ {
+  "channel": "BBCNews.uk",
+  "feed": "Africa",
+  "title": "BBC News (1080p) (HEVC)",
+  "url": "https://vs-cmaf-push-ww-live.akamaized.net/x=4/i=urn:bbc:pips:service:bbc_news_channel_hd/hevc_iptv_mse_v0.mpd",
+  "quality": "1080p",
+  "labels": [],
+  "user_agent": null,
+  "referrer": null
+ },
+ {
+  "channel": "BBCNews.uk",
+  "feed": "Africa",
+  "title": "BBC News (1080p) (HEVC)",
+  "url": "https://vs-cmaf-push-uk-live.akamaized.net/x=4/i=urn:bbc:pips:service:bbc_news_channel_hd/hevc_iptv_mse_v0.mpd",
+  "quality": null,
+  "labels": [
+   "Geo-blocked"
+  ],
+  "user_agent": null,
+  "referrer": null
+ },
+ {
+  "channel": "BBCNews.uk",
+  "feed": "Africa",
+  "title": "BBC News HD",
+  "url": "https://vs-cmaf-push-uk-live.akamaized.net/x=4/i=urn:bbc:pips:service:bbc_news_channel_hd/iptv_hd_abr_v1.mpd",
+  "quality": "720p",
+  "labels": [
+   "Geo-blocked"
+  ],
+  "user_agent": null,
+  "referrer": null
+ },
+ {
+  "channel": "BBCNews.uk",
+  "feed": "Africa",
+  "title": "BBC News HD",
+  "url": "https://vs-hls-push-uk-live.akamaized.net/x=4/i=urn:bbc:pips:service:bbc_news_channel_hd/mobile_wifi_main_hd_abr_v2.m3u8",
+  "quality": "720p",
+  "labels": [
+   "Geo-blocked"
+  ],
+  "user_agent": null,
+  "referrer": null
+ },
+ {
+  "channel": "BBCNews.uk",
+  "feed": "AsiaPacific",
+  "title": "BBC News Asia Pacific",
+  "url": "https://thinkkast.dpdns.org/thinkkast/bbcworld_news_sd/versiglia/index.m3u8",
+  "quality": "576p",
+  "labels": [],
+  "user_agent": null,
+  "referrer": null
+ },
+ {
+  "channel": "BBCNews.uk",
+  "feed": "Europe",
+  "title": "BBC News Europe",
+  "url": "https://dash2.antik.sk/live/test_bbc_world/playlist.m3u8",
+  "quality": null,
+  "labels": [],
+  "user_agent": null,
+  "referrer": null
+ },
+ {
+  "channel": "BBCNews.uk",
+  "feed": "Europe",
+  "title": "BBC News Europe",
+  "url": "http://46.32.176.50/bbcworld/index.m3u8",
+  "quality": "576p",
+  "labels": [],
+  "user_agent": null,
+  "referrer": null
+ },
+ {
+  "channel": "BBCNews.uk",
+  "feed": "Europe",
+  "title": "BBC News Europe",
+  "url": "http://stream.mcquack.net/85/index.m3u8",
+  "quality": "576p",
+  "labels": [],
+  "user_agent": null,
+  "referrer": null
+ },
+ {
+  "channel": "BBCNews.uk",
+  "feed": "Europe",
+  "title": "BBC News Europe",
+  "url": "https://stream8.cinerama.uz/1251/tracks-v1a1/mono.m3u8",
+  "quality": "576p",
+  "labels": [],
+  "user_agent": null,
+  "referrer": null
+ },
+ {
+  "channel": "BBCNews.uk",
+  "feed": "Europe",
+  "title": "BBC News Europe",
+  "url": "http://str2.iptvhd.ru:8080/bbc/index.m3u8",
+  "quality": "576p",
+  "labels": [],
+  "user_agent": null,
+  "referrer": null
+ },
+ {
+  "channel": "BBCNews.uk",
+  "feed": "Europe",
+  "title": "BBC News",
+  "url": "https://pb-iiczlgfysam0q.akamaized.net/v1/amcnetworks_bbcnews_1/samsungheadend_us/latest/main/hls/playlist.m3u8",
+  "quality": "1080p",
+  "labels": [
+   "Geo-blocked"
+  ],
+  "user_agent": null,
+  "referrer": null
+ },
+ {
+  "channel": "BBCNews.uk",
+  "feed": "LatinAmerica",
+  "title": "BBC News Latin America",
+  "url": "http://138.121.15.230:9002/BBC-NEWS/index.m3u8",
+  "quality": "720p",
+  "labels": [],
+  "user_agent": null,
+  "referrer": null
+ },
+ {
+  "channel": "BBCNews.uk",
+  "feed": "NorthAmerica",
+  "title": "BBC News North America",
+  "url": "https://tvsen1.aynaott.com/shn6jGTk/index.m3u8",
+  "quality": "576p",
+  "labels": [],
+  "user_agent": null,
+  "referrer": null
+ },
+ {
+  "channel": "BBCNews.uk",
+  "feed": "NorthAmerica",
+  "title": "BBC News North America",
+  "url": "http://23.237.104.106:8080/USA_BBC_NEWS/index.m3u8",
+  "quality": "1080p",
+  "labels": [],
+  "user_agent": null,
+  "referrer": null
+ },
+ {
+  "channel": "BBCNews.uk",
+  "feed": "NorthAmerica",
+  "title": "BBC News North America",
+  "url": "https://jmp2.uk/plu-65d92a8c8b24c80008e285c0.m3u8",
+  "quality": "720p",
+  "labels": [],
+  "user_agent": null,
+  "referrer": null
+ },
+ {
+  "channel": "BBCNews.uk",
+  "feed": "SouthAsia",
+  "title": "BBC News South Asia",
+  "url": "https://mumbai-edge.smartplaytv.in/BBCNews/index.m3u8",
+  "quality": "720p",
+  "labels": [],
+  "user_agent": null,
+  "referrer": null
+ },
+ {
+  "channel": "BBCNews.uk",
+  "feed": "UK",
+  "title": "BBC News",
+  "url": "https://xemzi.short.gy/1000015",
+  "quality": "1080p",
+  "labels": [],
+  "user_agent": null,
+  "referrer": null
+ },
+ {
+  "channel": "BBCNews.uk",
+  "feed": "UKHD",
+  "title": "BBC News UK HD",
+  "url": "http://45.153.96.44:8001",
+  "quality": "1080p",
+  "labels": [],
+  "user_agent": null,
+  "referrer": null
+ },
+ {
+  "channel": "CBS.us",
+  "feed": "East",
+  "title": "CBS",
+  "url": "http://stream.cammonitorplus.net/1783/index.m3u8",
+  "quality": "1080p",
+  "labels": [],
+  "user_agent": null,
+  "referrer": null
+ },
+ {
+  "channel": "CBS.us",
+  "feed": "East",
+  "title": "CBS",
+  "url": "http://190.11.225.124:5000/live/cbs_hd/playlist.m3u8",
+  "quality": "720p",
+  "labels": [],
+  "user_agent": null,
+  "referrer": null
+ },
+ {
+  "channel": "CBS.us",
+  "feed": "East",
+  "title": "CBS",
+  "url": "http://tvsen7.aynascope.net/cbs/index.m3u8",
+  "quality": "576p",
+  "labels": [],
+  "user_agent": null,
+  "referrer": null
+ },
+ {
+  "channel": "CBS.us",
+  "feed": "East",
+  "title": "CBS",
+  "url": "https://tvsen3.aynaott.com/34fJSjZP/index.m3u8",
+  "quality": "576p",
+  "labels": [],
+  "user_agent": null,
+  "referrer": null
+ },
+ {
+  "channel": "CBS.us",
+  "feed": "KCCI",
+  "title": "CBS 8 Des Moines IA (KCCI)",
+  "url": "https://aegis-cloudfront-1.tubi.video/8d1f164d-34ef-4f70-b948-ae33826a0aaa/playlist.m3u8",
+  "quality": "720p",
+  "labels": [],
+  "user_agent": null,
+  "referrer": null
+ },
+ {
+  "channel": "CBS.us",
+  "feed": "KDBCTV",
+  "title": "CBS 4 El Paso TX (KDBC)",
+  "url": "https://linear-706.frequency.stream/dist/stirr/706/hls/master/playlist.m3u8",
+  "quality": "1080p",
+  "labels": [],
+  "user_agent": null,
+  "referrer": null
+ },
+ {
+  "channel": "CBS.us",
+  "feed": "KEYETV",
+  "title": "CBS 42 Austin TX (KEYE)",
+  "url": "https://linear-704.frequency.stream/dist/stirr/704/hls/master/playlist.m3u8",
+  "quality": "1080p",
+  "labels": [],
+  "user_agent": null,
+  "referrer": null
+ },
+ {
+  "channel": "CBS.us",
+  "feed": "KIROTV",
+  "title": "KIRO-DT1",
+  "url": "https://cdn-ue1-prod.tsv2.amagi.tv/linear/amg00327-coxmediagroup-kirobreaking-ono/playlist.m3u8",
+  "quality": "1080p",
+  "labels": [],
+  "user_agent": null,
+  "referrer": null
+ },
+ {
+  "channel": "CBS.us",
+  "feed": "KMOV",
+  "title": "CBS KMOV",
+  "url": "http://best.happytv.xyz:2082/live/JThibodeau0923/gcEyG7W3/2193473.m3u8",
+  "quality": "1080p",
+  "labels": [],
+  "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:109.0) Gecko/20100101 Firefox/117.0",
+  "referrer": null
+ },
+ {
+  "channel": "CBS.us",
+  "feed": "KMTVTV",
+  "title": "CBS 3 Omaha NE (KMTV)",
+  "url": "https://aegis-cloudfront-1.tubi.video/0b16cabe-a8fd-4d91-99e5-3efb7aa740cc/playlist.m3u8",
+  "quality": "720p",
+  "labels": [],
+  "user_agent": null,
+  "referrer": null
+ },
+ {
+  "channel": "CBS.us",
+  "feed": "KMTVTV",
+  "title": "CBS 3 Omaha NE (KMTV-TV)",
+  "url": "https://content.uplynk.com/channel/328d1434fb51476cb6567c74d5b2cc70.m3u8",
+  "quality": "720p",
+  "labels": [],
+  "user_agent": null,
+  "referrer": null
+ },
+ {
+  "channel": "CBS.us",
+  "feed": "KUTV",
+  "title": "CBS 2 Salt Lake City UT (KUTV)",
+  "url": "https://linear-707.frequency.stream/dist/stirr/707/hls/master/playlist.m3u8",
+  "quality": "1080p",
+  "labels": [],
+  "user_agent": null,
+  "referrer": null
+ },
+ {
+  "channel": "CBS.us",
+  "feed": "KWTVDT",
+  "title": "CBS 9 Oklahoma City OK (KWTV-DT1)",
+  "url": "https://fuel-streaming-prod01.fuelmedia.io/v1/sem/e48409e7-672d-42f2-b5e0-ebb6744b0425.m3u8",
+  "quality": "720p",
+  "labels": [
+   "Not 24/7"
+  ],
+  "user_agent": null,
+  "referrer": null
+ },
+ {
+  "channel": "CBS.us",
+  "feed": "KZTV",
+  "title": "KZTV-DT1",
+  "url": "https://content.uplynk.com/channel/d1f868588ae5476dadaeff450170a183.m3u8",
+  "quality": "720p",
+  "labels": [],
+  "user_agent": null,
+  "referrer": null
+ },
+ {
+  "channel": "CBS.us",
+  "feed": "WCBITV",
+  "title": "WCBI (Columbus MI)",
+  "url": "https://townnews.g-mana.live/media/4efc62fa-ad0b-445c-a839-4d1e7636988e/main.m3u8",
+  "quality": "720p",
+  "labels": [],
+  "user_agent": null,
+  "referrer": null
+ },
+ {
+  "channel": "CBS.us",
+  "feed": "WDEFTV",
+  "title": "WDEF-TV News Chattanooga TN",
+  "url": "https://townnews.g-mana.live/media/a54a6409-5e91-46f0-9fee-06904c1fd094/main.m3u8",
+  "quality": "720p",
+  "labels": [],
+  "user_agent": null,
+  "referrer": null
+ },
+ {
+  "channel": "CBS.us",
+  "feed": "WHIOTV",
+  "title": "WHIO-DT1",
+  "url": "https://cdn-ue1-prod.tsv2.amagi.tv/linear/amg00327-coxmediagroup-whiobreaking-ono/playlist.m3u8",
+  "quality": "1080p",
+  "labels": [],
+  "user_agent": null,
+  "referrer": null
+ },
+ {
+  "channel": "CBS.us",
+  "feed": "WJAXTV",
+  "title": "WJAX-DT1",
+  "url": "https://cdn-ue1-prod.tsv2.amagi.tv/linear/amg00327-coxmediagroup-wjaxbreaking-ono/playlist.m3u8",
+  "quality": "1080p",
+  "labels": [],
+  "user_agent": null,
+  "referrer": null
+ },
+ {
+  "channel": "CBS.us",
+  "feed": "WKRCTV",
+  "title": "CBS 12 Cincinnati OH (WKRC)",
+  "url": "https://linear-691.frequency.stream/dist/stirr/691/hls/master/playlist.m3u8",
+  "quality": "1080p",
+  "labels": [],
+  "user_agent": null,
+  "referrer": null
+ },
+ {
+  "channel": "CBS.us",
+  "feed": "WPEC",
+  "title": "CBS 12 West Palm Beach FL (WPEC)",
+  "url": "https://linear-692.frequency.stream/dist/stirr/692/hls/master/playlist.m3u8",
+  "quality": "1080p",
+  "labels": [],
+  "user_agent": null,
+  "referrer": null
+ },
+ {
+  "channel": "CBS.us",
+  "feed": "WTVRTV",
+  "title": "CBS 6 Richmond VA (WTVR)",
+  "url": "https://aegis-cloudfront-1.tubi.video/d8fc1d6c-fd55-45c8-973b-b7327ee1a6e0/playlist.m3u8",
+  "quality": "720p",
+  "labels": [],
+  "user_agent": null,
+  "referrer": null
+ },
+ {
+  "channel": "CBS.us",
+  "feed": "WWMT",
+  "title": "CBS 3 Kalamazoo MI (WWMT)",
+  "url": "https://linear-701.frequency.stream/dist/stirr/701/hls/master/playlist.m3u8",
+  "quality": "1080p",
+  "labels": [],
+  "user_agent": null,
+  "referrer": null
+ },
+ {
+  "channel": "FoxSports1.us",
+  "feed": "HD",
+  "title": "Fox Sports 1",
+  "url": "http://85.237.89.160:9590/usa-s/FOX-SPORTS-1/index.m3u8",
+  "quality": "720p",
+  "labels": [],
+  "user_agent": null,
+  "referrer": null
+ },
+ {
+  "channel": "FoxSports1.us",
+  "feed": "HD",
+  "title": "Fox Sports 1",
+  "url": "http://190.11.225.124:5000/live/fs1_hd/playlist.m3u8",
+  "quality": "720p",
+  "labels": [],
+  "user_agent": null,
+  "referrer": null
+ },
+ {
+  "channel": "FoxSports1.us",
+  "feed": "HD",
+  "title": "Fox Sports 1",
+  "url": "https://tvsen7.aynascope.net/foxsports1/index.m3u8",
+  "quality": "720p",
+  "labels": [],
+  "user_agent": null,
+  "referrer": null
+ },
+ {
+  "channel": "NHKWorldJapan.jp",
+  "feed": "HD",
+  "title": "NHK World-Japan HD",
+  "url": "https://nhk.lls.pbs.org/index.m3u8",
+  "quality": "1080p",
+  "labels": [
+   "Geo-blocked"
+  ],
+  "user_agent": null,
+  "referrer": null
+ },
+ {
+  "channel": "NHKWorldJapan.jp",
+  "feed": "HD",
+  "title": "NHK World-Japan HD",
+  "url": "http://170.83.16.50/NHK_WORLD/index.m3u8",
+  "quality": "720p",
+  "labels": [],
+  "user_agent": null,
+  "referrer": null
+ },
+ {
+  "channel": "NHKWorldJapan.jp",
+  "feed": "HD",
+  "title": "NHK World-Japan HD",
+  "url": "http://nmk.ioapk.com:5050/4gtv-live168/index.m3u8",
+  "quality": "1080p",
+  "labels": [],
+  "user_agent": null,
+  "referrer": null
+ },
+ {
+  "channel": "NHKWorldJapan.jp",
+  "feed": "SD",
+  "title": "NHK World-Japan",
+  "url": "https://masterpl.hls.nhkworld.jp/hls/w/live/smarttv.m3u8",
+  "quality": "1080p",
+  "labels": [],
+  "user_agent": null,
+  "referrer": null
+ },
+ {
+  "channel": "NHKWorldJapan.jp",
+  "feed": "SD",
+  "title": "NHK World-Japan",
+  "url": "https://media-osa.hls.nhkworld.jp/hls/w/live/master.m3u8",
+  "quality": "720p",
+  "labels": [],
+  "user_agent": null,
+  "referrer": null
+ },
+ {
+  "channel": "NHKWorldJapan.jp",
+  "feed": "SD",
+  "title": "NHK World-Japan",
+  "url": "https://media-tyo.hls.nhkworld.jp/hls/w/live/master.m3u8",
+  "quality": "720p",
+  "labels": [],
+  "user_agent": null,
+  "referrer": null
+ },
+ {
+  "channel": "NHKWorldJapan.jp",
+  "feed": "SD",
+  "title": "NHK World-Japan",
+  "url": "https://cdn-7.pishow.tv/live/455/master.m3u8",
+  "quality": "576p",
+  "labels": [],
+  "user_agent": null,
+  "referrer": null
+ },
+ {
+  "channel": "NHKWorldJapan.jp",
+  "feed": "SD",
+  "title": "NHK World-Japan",
+  "url": "https://mumt07.tangotv.in/zHjX9OFlNHKWORLD/index.m3u8",
+  "quality": "576p",
+  "labels": [],
+  "user_agent": null,
+  "referrer": null
+ },
+ {
+  "channel": "SECNetwork.us",
+  "feed": "SD",
+  "title": "SEC Network",
+  "url": "http://23.237.104.106:8080/USA_SEC_NETWORK/index.m3u8",
+  "quality": "1080p",
+  "labels": [],
+  "user_agent": null,
+  "referrer": null
+ },
+ {
+  "channel": null,
+  "feed": null,
+  "title": "TV Publica",
+  "url": "http://playcom.trapemn.tv:1935/transcoderip/tvpublica.stream/playlist.m3u8",
+  "quality": "1080p",
+  "labels": [],
+  "user_agent": null,
+  "referrer": null
+ },
+ {
+  "channel": null,
+  "feed": null,
+  "title": "Race Central TV",
+  "url": "https://nrpus.bozztv.com/36bay2/gusa-racecentral/index.m3u8",
+  "quality": "720p",
+  "labels": [
+   "Not 24/7"
+  ],
+  "user_agent": null,
+  "referrer": null
+ },
+ {
+  "channel": null,
+  "feed": null,
+  "title": "Travel & Food TV",
+  "url": "https://nrpus.bozztv.com/36bay2/gusa-moviemagictv/index.m3u8",
+  "quality": "720p",
+  "labels": [],
+  "user_agent": null,
+  "referrer": null
+ },
+ {
+  "channel": null,
+  "feed": null,
+  "title": "8 Out of 10 Cats",
+  "url": "https://amg00627-amg00627c37-samsung-au-4294.playouts.now.amagi.tv/playlist/amg00627-banijayfast-8outof10cats-samsungau/playlist.m3u8",
+  "quality": "1080p",
+  "labels": [
+   "Geo-blocked"
+  ],
+  "user_agent": null,
+  "referrer": null
+ },
+ {
+  "channel": null,
+  "feed": null,
+  "title": "Action Hollywood Movies",
+  "url": "https://amg01076-lightningintern-actionhollywood-samsungau-rs69y.amagi.tv/playlist/amg01076-lightningintern-actionhollywood-samsungau/playlist.m3u8",
+  "quality": "1080p",
+  "labels": [],
+  "user_agent": null,
+  "referrer": null
+ },
+ {
+  "channel": null,
+  "feed": null,
+  "title": "Bondi Vet",
+  "url": "https://wtfn-bondivet-1-au.samsung.wurl.tv/playlist.m3u8",
+  "quality": "720p",
+  "labels": [],
+  "user_agent": null,
+  "referrer": null
+ },
+ {
+  "channel": null,
+  "feed": null,
+  "title": "Breaking News by LeadStory",
+  "url": "https://amg02703-leadstory-leadstory-samsungau-rr75f.amagi.tv/playlist/amg02703-leadstory-leadstory-samsungau/playlist.m3u8",
+  "quality": "1080p",
+  "labels": [],
+  "user_agent": null,
+  "referrer": null
+ },
+ {
+  "channel": null,
+  "feed": null,
+  "title": "Come Dine With Me",
+  "url": "https://amg00654-itv-amg00654c2-samsung-au-925.playouts.now.amagi.tv/itv-cdwmug/playlist.m3u8",
+  "quality": "1080p",
+  "labels": [],
+  "user_agent": null,
+  "referrer": null
+ },
+ {
+  "channel": null,
+  "feed": null,
+  "title": "Escape to the Country",
+  "url": "https://amg00145-amg00145c11-samsung-au-6579.playouts.now.amagi.tv/playlist.m3u8",
+  "quality": "1080p",
+  "labels": [],
+  "user_agent": null,
+  "referrer": null
+ },
+ {
+  "channel": null,
+  "feed": null,
+  "title": "Four in a Bed",
+  "url": "https://all3media-four-in-a-bed-1-au.samsung.wurl.tv/playlist.m3u8",
+  "quality": "720p",
+  "labels": [],
+  "user_agent": null,
+  "referrer": null
+ },
+ {
+  "channel": null,
+  "feed": null,
+  "title": "Hardcore Pawn",
+  "url": "https://amg00627-banijay-amg00627c8-samsung-au-1827.playouts.now.amagi.tv/playlist.m3u8",
+  "quality": "1080p",
+  "labels": [],
+  "user_agent": null,
+  "referrer": null
+ },
+ {
+  "channel": null,
+  "feed": null,
+  "title": "Highway Thru Hell",
+  "url": "https://amg00627-amg00627c15-samsung-au-2899.playouts.now.amagi.tv/playlist/amg00627-banijayfast-highwaythruhell-samsungau/playlist.m3u8",
+  "quality": "1080p",
+  "labels": [],
+  "user_agent": null,
+  "referrer": null
+ },
+ {
+  "channel": null,
+  "feed": null,
+  "title": "History and Warfare Now",
+  "url": "https://d28gzbv9fhdm3h.cloudfront.net/playlist/amg00376-magellantv-historyandwarfarenowaunzin-samsungau/playlist.m3u8",
+  "quality": "1080p",
+  "labels": [],
+  "user_agent": null,
+  "referrer": null
+ },
+ {
+  "channel": null,
+  "feed": null,
+  "title": "Inside Outside",
+  "url": "https://all3media-international-insideoutside-1-au.samsung.wurl.tv/playlist.m3u8",
+  "quality": "720p",
+  "labels": [],
+  "user_agent": null,
+  "referrer": null
+ },
+ {
+  "channel": null,
+  "feed": null,
+  "title": "ITV Choice",
+  "url": "https://amg00654-itvstudios-itvchoice-samsungau-2bacj.amagi.tv/playlist/amg00654-itvstudios-itvchoice-samsungau/playlist.m3u8",
+  "quality": "1080p",
+  "labels": [
+   "Geo-blocked"
+  ],
+  "user_agent": null,
+  "referrer": null
+ },
+ {
+  "channel": null,
+  "feed": null,
+  "title": "Leaderboard Sports News",
+  "url": "https://amg02703-amg02703c20-samsung-au-9093.playouts.now.amagi.tv/playlist.m3u8",
+  "quality": "1080p",
+  "labels": [],
+  "user_agent": null,
+  "referrer": null
+ },
+ {
+  "channel": null,
+  "feed": null,
+  "title": "Life Downunder",
+  "url": "https://wtfn-lifedownunder-1-au.samsung.wurl.tv/playlist.m3u8",
+  "quality": "720p",
+  "labels": [],
+  "user_agent": null,
+  "referrer": null
+ },
+ {
+  "channel": null,
+  "feed": null,
+  "title": "MTRSPT 1",
+  "url": "https://amg02873-kravemedia-mtrspt1-samsungau-2anp4.amagi.tv/playlist/amg02873-kravemedia-mtrspt1-samsungau/playlist.m3u8",
+  "quality": "1080p",
+  "labels": [],
+  "user_agent": null,
+  "referrer": null
+ },
+ {
+  "channel": null,
+  "feed": null,
+  "title": "PBS History",
+  "url": "https://amg02333-pbs-amg02333c1-samsung-au-1253.playouts.now.amagi.tv/playlist/amg02333-pbsdistributionfast-pbshistory-samsungau/playlist.m3u8",
+  "quality": "1080p",
+  "labels": [],
+  "user_agent": null,
+  "referrer": null
+ },
+ {
+  "channel": null,
+  "feed": null,
+  "title": "PBS Science",
+  "url": "https://amg02333-pbs-amg02333c13-samsung-au-6858.playouts.now.amagi.tv/playlist.m3u8",
+  "quality": "1080p",
+  "labels": [],
+  "user_agent": null,
+  "referrer": null
+ },
+ {
+  "channel": null,
+  "feed": null,
+  "title": "Pointless",
+  "url": "https://amg00627-amg00627c34-samsung-au-8173.playouts.now.amagi.tv/playlist/amg00627-banijayfast-pointless-samsungau/playlist.m3u8",
+  "quality": "1080p",
+  "labels": [
+   "Geo-blocked"
+  ],
+  "user_agent": null,
+  "referrer": null
+ },
+ {
+  "channel": null,
+  "feed": null,
+  "title": "Project Runway",
+  "url": "https://amg02189-amg02189c1-samsung-au-5798.playouts.now.amagi.tv/playlist.m3u8",
+  "quality": "1080p",
+  "labels": [],
+  "user_agent": null,
+  "referrer": null
+ },
+ {
+  "channel": null,
+  "feed": null,
+  "title": "Pulse",
+  "url": "https://amg01076-lightningintern-pulse-samsungau-4a45e.amagi.tv/playlist/amg01076-lightningintern-pulse-samsungau/playlist.m3u8",
+  "quality": "1080p",
+  "labels": [],
+  "user_agent": null,
+  "referrer": null
+ },
+ {
+  "channel": null,
+  "feed": null,
+  "title": "RCM",
+  "url": "https://samsungau-rialtosamsungaustralia-al2rg.amagi.tv/playlist/samsungau-rialtosamsungaustralia/playlist.m3u8",
+  "quality": "1080p",
+  "labels": [],
+  "user_agent": null,
+  "referrer": null
+ },
+ {
+  "channel": null,
+  "feed": null,
+  "title": "Real Crime",
+  "url": "https://lds-realcrime-samsungau.amagi.tv/playlist.m3u8",
+  "quality": "1080p",
+  "labels": [],
+  "user_agent": null,
+  "referrer": null
+ },
+ {
+  "channel": null,
+  "feed": null,
+  "title": "Surf Cinema",
+  "url": "https://amg13231-actve-amg13231c4-samsung-au-2990.playouts.now.amagi.tv/playlist/amg13231-actvefast-surfer-samsungau/playlist.m3u8",
+  "quality": "1080p",
+  "labels": [],
+  "user_agent": null,
+  "referrer": null
+ },
+ {
+  "channel": null,
+  "feed": null,
+  "title": "The Hotel Inspector",
+  "url": "https://amg00654-itv-amg00654c4-samsung-au-998.playouts.now.amagi.tv/playlist/amg00654-itvstudiosfast-hotelinspector-samsungau/playlist.m3u8",
+  "quality": "1080p",
+  "labels": [],
+  "user_agent": null,
+  "referrer": null
+ },
+ {
+  "channel": null,
+  "feed": null,
+  "title": "The Wicked Tuna Channel",
+  "url": "https://amg00353-lionsgatestudio-wickedtuna-samsungau-26lq4.amagi.tv/playlist/amg00353-lionsgatestudio-wickedtuna-samsungau/playlist.m3u8",
+  "quality": "1080p",
+  "labels": [],
+  "user_agent": null,
+  "referrer": null
+ },
+ {
+  "channel": null,
+  "feed": null,
+  "title": "Malta",
+  "url": "https://webtvstream.bhtelecom.ba/malta.m3u8",
+  "quality": "720p",
+  "labels": [
+   "Not 24/7"
+  ],
+  "user_agent": null,
+  "referrer": null
+ },
+ {
+  "channel": null,
+  "feed": null,
+  "title": "RTC Télé Liège",
+  "url": "https://tvlocales-live.freecaster.com/live/95d2f6eb-6f01-4d1d-8543-d14966de7b04/95d2f6eb-6f01-4d1d-8543-d14966de7b04.isml/master.m3u8",
+  "quality": null,
+  "labels": [
+   "Geo-blocked"
+  ],
+  "user_agent": null,
+  "referrer": null
+ },
+ {
+  "channel": null,
+  "feed": null,
+  "title": "Mojitv",
+  "url": "https://odmedia-mojitv-1-be.samsung.wurl.tv/playlist.m3u8",
+  "quality": null,
+  "labels": [],
+  "user_agent": null,
+  "referrer": null
+ },
+ {
+  "channel": null,
+  "feed": null,
+  "title": "UniversidadMayordeSanAndres",
+  "url": "https://live.enhdtv.com:8081/8190/index.m3u8",
+  "quality": "1080p",
+  "labels": [
+   "Not 24/7"
+  ],
+  "user_agent": null,
+  "referrer": "https://tvu.umsa.bo/en-vivo"
+ },
+ {
+  "channel": null,
+  "feed": null,
+  "title": "UPP TV/Bolivisión SCZ",
+  "url": "https://alba-bo-bolivision-upptv.stream.mediatiquestream.com/index.m3u8",
+  "quality": "720p",
+  "labels": [
+   "Not 24/7"
+  ],
+  "user_agent": null,
+  "referrer": null
+ },
+ {
+  "channel": null,
+  "feed": null,
+  "title": "Slime",
+  "url": "https://slime.x1co.com.br/hls/stream.m3u8",
+  "quality": "576p",
+  "labels": [
+   "Not 24/7"
+  ],
+  "user_agent": null,
+  "referrer": null
+ },
+ {
+  "channel": null,
+  "feed": null,
+  "title": "A Caçadora de Relíquias",
+  "url": "https://jmp2.uk/plu-67e59a6557487a8b7fe73e23.m3u8",
+  "quality": null,
+  "labels": [],
+  "user_agent": null,
+  "referrer": null
+ },
+ {
+  "channel": null,
+  "feed": null,
+  "title": "A Feiticeira",
+  "url": "https://jmp2.uk/plu-631fa8dd7f25240007099a40.m3u8",
+  "quality": null,
+  "labels": [],
+  "user_agent": null,
+  "referrer": null
+ },
+ {
+  "channel": null,
+  "feed": null,
+  "title": "Acumuladores Obsessivos",
+  "url": "https://jmp2.uk/plu-656e2a4b4261ca00083aa99e.m3u8",
+  "quality": null,
+  "labels": [],
+  "user_agent": null,
+  "referrer": null
+ },
+ {
+  "channel": null,
+  "feed": null,
+  "title": "Assombrações",
+  "url": "https://jmp2.uk/plu-620d1512c7986a0007220213.m3u8",
+  "quality": null,
+  "labels": [],
+  "user_agent": null,
+  "referrer": null
+ },
+ {
+  "channel": null,
+  "feed": null,
+  "title": "Beyblade",
+  "url": "https://jmp2.uk/plu-633dc392e0282400071b0d39.m3u8",
+  "quality": null,
+  "labels": [],
+  "user_agent": null,
+  "referrer": null
+ },
+ {
+  "channel": null,
+  "feed": null,
+  "title": "Boruto: Naruto Next Generations",
+  "url": "https://jmp2.uk/plu-656f389c3944b60008e5bdab.m3u8",
+  "quality": null,
+  "labels": [],
+  "user_agent": null,
+  "referrer": null
+ }
+]
