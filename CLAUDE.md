@@ -66,7 +66,7 @@ UI package:
 python3 docs/ui/tools/contrast.py        # every text/background ratio; zero FAIL lines is the gate
 ```
 
-TV app (not built yet; Android Studio, Android TV emulator "Television (1080p)" API 34):
+TV app (not built yet; no Android Studio needed: JDK 21 and the Android SDK at `~/Library/Android/sdk`, set up 2026-09-24 and exported in `~/.zshrc`; emulator AVD `tv_api34`, "Television (1080p)" Android TV API 34, started with `emulator -avd tv_api34 &`):
 ```
 cd app
 ./gradlew testDebugUnitTest                                              # JVM tests
