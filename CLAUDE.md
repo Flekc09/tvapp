@@ -72,7 +72,7 @@ cd app
 ./gradlew testDebugUnitTest                                              # JVM tests
 ./gradlew testDebugUnitTest --tests 'com.tvapp.playback.FailoverEngineTest'
 ./gradlew connectedDebugAndroidTest                                      # needs the emulator
-./gradlew connectedDebugAndroidTest --tests 'com.tvapp.playback.FailoverInstrumentedTest'
+./gradlew connectedDebugAndroidTest -Pandroid.testInstrumentationRunnerArguments.class=com.tvapp.playback.FailoverInstrumentedTest
 ./gradlew installDebug
 ```
 
