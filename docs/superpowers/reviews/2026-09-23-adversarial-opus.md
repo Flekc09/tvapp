@@ -11,6 +11,8 @@ Method: I read every line of items 1–5. I extracted the catalog plan's code an
 ## Blockers
 
 > Status 2026-09-23: B1, B2 and B3 applied to both plans (annotated "Opus adversarial review 2026-09-23"). B1 was re-verified by running the patched catalog code (typecheck clean, 74/74). B2 and B3 are metadata- and text-verified only: no JDK or Android SDK on this machine, so the Kotlin side is confirmed at Task 1 step 7 and Task 4 step 4 when the plan is executed.
+>
+> Status 2026-09-24: M12, M13 (catalog half; the `countryCounts` half is in the app plan and still open) and M14 applied to the catalog plan and spec with the same annotation. Re-verified by extracting the edited plan and running it: typecheck clean, 76/76, workflow YAML parses. The ccTLD change was measured on the 2026-09-23 API snapshot: guessed countries went from UK 777 / TV 390 / IO 28 to none of those, with CN 47, MN 11, RU 5 unchanged. Everything else in this review is still open.
 
 ### B1. Every real catalog import fails: the job writes `responseMs` as a float and the app reads it with `nextInt()`
 - Where:

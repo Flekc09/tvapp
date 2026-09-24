@@ -318,7 +318,7 @@ Co-Authored-By: Claude Fable 5.1 <noreply@anthropic.com>"
 - Produces: `groupStreams(src: SourceData): Grouped`, `pickLogo(logos: ApiLogo[], channelId: string): string | null`, `syntheticId(url: string): string`. Rules (spec 4.2):
   - Only catalog channels with at least one stream are returned. `hasUp` is left `false` here; Task 11 fills it.
   - A stream whose feed (looked up in `feeds` by channel id and feed id) has any `s/` or `ct/` broadcast area belongs to a split channel `<channel>@<feedId>` named `<channel name> · <feed name>` with `region` from the cities file (`ct/` code) or the subdivisions file (`s/` code), inheriting the parent's country, categories, network and logo. Any other feed, a missing feed, or a feed id not found in `feeds` maps to the plain channel id.
-  - Streams with no channel get a synthetic channel with id `synthetic:<10 hex chars of sha1(url)>`, category `other`, country from the URL's ccTLD if it matches a known country code, else null.
+  - Streams with no channel get a synthetic channel with id `synthetic:<10 hex chars of sha1(url)>`, category `other`, country from the URL's ccTLD if it matches a known country code, else null. No guess for ccTLDs marketed as generic domains (`.tv`, `.io`, `.me`, `.co`, `.cc`, `.fm`, `.am`, `.to`, `.ly`, `.ws`, `.nu`, `.ai`, `.gg`, `.la`, `.sh`, `.st`, `.su`, `.tk`, `.ml`, `.ga`, `.cf`, `.gq`) or for known redirector hosts (`jmp2.uk`): measured on the live API 2026-09-23, the plain guess filed 777 `jmp2.uk` FAST channels under the United Kingdom and 390 `.tv` channels from 260 unrelated hosts under Tuvalu, which has 2 real channels (Opus adversarial review 2026-09-23, major 13).
   - Closed channels are excluded with their streams. A stream whose channel id is not in `channels.json` is kept as a synthetic channel, exactly like a stream with no channel. A feed is regional when any of its broadcast areas is `s/` or `ct/`, even if a `c/` entry is also present. Channels with `is_nsfw` or the `xxx` category are kept with `adult: true`. Channels with no categories get `['other']`.
 
 - [ ] **Step 1: Write the failing tests**
@@ -355,10 +355,12 @@ const base: SourceData = {
     st('NoCat.us', null, 'No Cat', 'http://nocat/1.m3u8'),
     st(null, null, 'TV Publica', 'http://playcom.trapemn.tv:1935/x/playlist.m3u8', { quality: '1080p' }),
     st(null, null, 'Mystery', 'http://1.2.3.4:8080/y/index.m3u8'),
+    st(null, null, 'Deutsche Welle', 'http://live.example.de/x.m3u8'),
+    st(null, null, 'Redirected', 'http://jmp2.uk/abc-123.m3u8'),
     st('Ghost.xx', null, 'Ghost', 'http://ghost/1.m3u8'),
   ],
   categories: [{ id: 'general', name: 'General' }],
-  countries: [{ name: 'United States', code: 'US', flag: '🇺🇸', languages: [] }, { name: 'Tuvalu', code: 'TV', flag: '🇹🇻', languages: [] }],
+  countries: [{ name: 'United States', code: 'US', flag: '🇺🇸', languages: [] }, { name: 'Tuvalu', code: 'TV', flag: '🇹🇻', languages: [] }, { name: 'Germany', code: 'DE', flag: '🇩🇪', languages: [] }, { name: 'United Kingdom', code: 'UK', flag: '🇬🇧', languages: [] }],
   logos: [
     { channel: 'ABC.us', feed: 'West', in_use: true, width: 100, height: 100, format: 'PNG', url: 'http://l/west.png' },
     { channel: 'ABC.us', feed: null, in_use: true, width: 300, height: 200, format: 'PNG', url: 'http://l/main.png' },
@@ -417,15 +419,17 @@ describe('groupStreams', () => {
     expect(byId('ABC.us@MIXED')!.region).toBe('Charlotte');
     expect(g.streams.find(s => s.url === 'http://mixed/1.m3u8')!.channel).toBe('ABC.us@MIXED');
   });
-  it('creates a synthetic channel for streams with no channel, guessing country from ccTLD', () => {
+  it('creates a synthetic channel for streams with no channel, guessing country from ccTLD except generic-use TLDs and redirector hosts', () => {
     const syn = g.channels.filter(c => c.id.startsWith('synthetic:'));
-    expect(syn).toHaveLength(3);
+    expect(syn).toHaveLength(5);
     const publica = syn.find(c => c.name === 'TV Publica')!;
-    expect(publica.country).toBe('TV');
+    expect(publica.country).toBeNull(); // .tv is sold as a generic domain; guessing would file 390 live channels under Tuvalu (Opus adversarial review 2026-09-23, major 13)
     expect(publica.categories).toEqual(['other']);
     expect(publica.adult).toBe(false);
     expect(publica.id).toBe(syntheticId('http://playcom.trapemn.tv:1935/x/playlist.m3u8'));
     expect(syn.find(c => c.name === 'Mystery')!.country).toBeNull();
+    expect(syn.find(c => c.name === 'Deutsche Welle')!.country).toBe('DE');
+    expect(syn.find(c => c.name === 'Redirected')!.country).toBeNull(); // jmp2.uk redirects to FAST channels from anywhere; 777 of them are not British
   });
   it('the same URL under two channels keeps both links', () => {
     const src: SourceData = { ...base, streams: [
@@ -466,11 +470,19 @@ export function pickLogo(logos: ApiLogo[], channelId: string): string | null {
   return main ? main.url : null;
 }
 
+// ccTLDs sold as generic domains say nothing about a channel's audience, and redirector hosts front channels from anywhere.
+// Measured on the live API 2026-09-23: without these lists, 777 jmp2.uk channels landed under the United Kingdom and
+// 390 .tv channels under Tuvalu, which has 2 real channels (Opus adversarial review 2026-09-23, major 13).
+const GENERIC_CCTLDS = new Set(['TV', 'IO', 'ME', 'CO', 'CC', 'FM', 'AM', 'TO', 'LY', 'WS', 'NU', 'AI', 'GG', 'LA', 'SH', 'ST', 'SU', 'TK', 'ML', 'GA', 'CF', 'GQ']);
+const REDIRECTOR_HOSTS = new Set(['jmp2.uk']);
+
 function ccTldCountry(url: string, codes: Set<string>): string | null {
   let host: string;
   try { host = new URL(url).hostname; } catch { return null; }
   if (/^\d+\.\d+\.\d+\.\d+$/.test(host)) return null;
+  if (REDIRECTOR_HOSTS.has(host)) return null;
   const tld = host.split('.').pop()?.toUpperCase() ?? '';
+  if (GENERIC_CCTLDS.has(tld)) return null;
   return tld.length === 2 && codes.has(tld) ? tld : null;
 }
 
@@ -845,7 +857,7 @@ Co-Authored-By: Claude Fable 5.1 <noreply@anthropic.com>"
 - Consumes: `detectFormat`, `parseHls`, `isTsSync`, `isMpd` from Task 4.
 - Produces: `probeStream(stream: GroupedStream, fetchFn: FetchFn, opts?: { timeoutMs?: number; now?: () => number }): Promise<ProbeResult>` and `DEFAULT_UA = 'TVApp/1.0 (Android TV; Media3)'` and `hostOf(url: string): string`.
 
-Rules implemented (spec 4.3): GET with timeout, headers from the stream, else default UA. 401/403/429/451 → `unverified` (geo-block, missing token, rate limit). 404/5xx, timeout before headers, network error → `down`. A body that stalls after headers is judged on the bytes received. 200 → detect format; HLS master → follow first media URI resolved against the *final* response URL, require segments and no ENDLIST; HLS media → same check; TS → sync bytes; DASH → MPD check; unknown → `unverified`. `responseMs` is time to first response headers, rounded to an integer (spec 4.4 shows an int and the app parses it as one; `performance.now()` is fractional). `finalHost` is the host of the final URL after redirects.
+Rules implemented (spec 4.3): GET with timeout, headers from the stream, else default UA. 401/403/429/451 → `unverified` (geo-block, missing token, rate limit), whether on the stream URL itself or on the media playlist a master points to (CDNs commonly serve the master publicly and geo-block the variant; Opus adversarial review 2026-09-23, major 12). 404/5xx, timeout before headers, network error → `down`. A body that stalls after headers is judged on the bytes received. 200 → detect format; HLS master → follow first media URI resolved against the *final* response URL, require segments and no ENDLIST; HLS media → same check; TS → sync bytes; DASH → MPD check; unknown → `unverified`. `responseMs` is time to first response headers, rounded to an integer (spec 4.4 shows an int and the app parses it as one; `performance.now()` is fractional). `finalHost` is the host of the final URL after redirects.
 
 - [ ] **Step 1: Write the failing tests**
 
@@ -896,6 +908,11 @@ describe('probeStream', () => {
   it('a master whose media playlist 404s is down', async () => {
     const r = await probeStream(s('http://a/x.m3u8'), fake({ 'http://a/x.m3u8': { status: 200, body: MASTER } }));
     expect(r.health).toBe('down'); expect(r.reason).toMatch(/404/);
+  });
+  it('a master whose media playlist is geo-blocked (403) is unverified, not down', async () => {
+    // The master is public and the variant is blocked from datacenter IPs: a TV in the home region may still play it (spec 4.3; Opus adversarial review 2026-09-23, major 12).
+    const r = await probeStream(s('http://a/x.m3u8'), fake({ 'http://a/x.m3u8': { status: 200, body: MASTER }, 'http://a/media/mono.m3u8': { status: 403 } }));
+    expect(r.health).toBe('unverified'); expect(r.format).toBe('hls'); expect(r.reason).toMatch(/media http 403/);
   });
   it('401, 403, 429 and 451 are unverified; 404 and 503 are down', async () => {
     for (const [code, h] of [[401, 'unverified'], [403, 'unverified'], [429, 'unverified'], [451, 'unverified'], [404, 'down'], [503, 'down']] as const) {
@@ -1054,6 +1071,7 @@ export async function probeStream(
       let media: Got;
       try { media = await get(mediaUrl, headers, fetchFn, timeoutMs, now); }
       catch (e) { return result(url, 'down', 'hls', got.ms, `media ${(e as Error).name === 'AbortError' ? 'timeout' : 'error'}`, finalHost); }
+      if ([401, 403, 429, 451].includes(media.status)) return result(url, 'unverified', 'hls', got.ms, `media http ${media.status}`, finalHost); // geo-blocked variant behind a public master (spec 4.3; Opus adversarial review 2026-09-23, major 12)
       if (media.status < 200 || media.status >= 300) return result(url, 'down', 'hls', got.ms, `media http ${media.status}`, finalHost);
       parsed = parseHls(new TextDecoder().decode(media.head));
       if (parsed.kind !== 'media') return result(url, 'down', 'hls', got.ms, 'media playlist invalid', finalHost);
@@ -1678,7 +1696,7 @@ Co-Authored-By: Claude Fable 5.1 <noreply@anthropic.com>"
 **Interfaces:**
 - Consumes: everything above.
 - Produces: `runPipeline(opts: { fetchFn: FetchFn; apiBase: string; pagesBase: string; outDir: string; now: () => Date; concurrency?: number; perHost?: number; timeoutMs?: number; log?: (s: string) => void }): Promise<{ published: boolean; reason?: string; latest?: Latest; stats: { channels: number; streams: number; up: number; down: number; unverified: number } }>`.
-- `main.ts` reads env: `PAGES_BASE` (required, e.g. `https://user.github.io/tv-app`), `OUT_DIR` (default `out`), `API_BASE` (default iptv-org), `CONCURRENCY` (50), `PER_HOST` (2), `TIMEOUT_MS` (10000), `ALLOW_EMPTY_HISTORY` (`1` to tolerate an unreachable history file; local runs only). Exits 1 if not published.
+- `main.ts` reads env: `PAGES_BASE` (required, e.g. `https://user.github.io/tv-app`), `OUT_DIR` (default `out`), `API_BASE` (default iptv-org), `CONCURRENCY` (50), `PER_HOST` (2), `TIMEOUT_MS` (10000), `ALLOW_EMPTY_HISTORY` (`1` to tolerate an unreachable history file; local runs only), `FORCE_PUBLISH` (`1` to publish through the up-rate guard so the new rate becomes the baseline; set only by the workflow's manual `force` input). Exits 1 if not published.
 
 - [ ] **Step 1: Write the fixture generator**
 
@@ -1768,20 +1786,32 @@ describe('runPipeline (offline, fixture API)', () => {
     const latest = JSON.parse(await readFile(join(outDir, 'latest.json'), 'utf8'));
     expect(latest.version).toBe(cat.version);
   });
+  // Every stream host 404s; the API, history and logo HEADs still answer.
+  const allDead = (prev: unknown) => (async (input: string | URL | Request, init?: RequestInit) => {
+    const url = String(input);
+    if (url.startsWith('https://api.test/') || url.endsWith('history.json') || init?.method === 'HEAD') return fakeFetch(prev)(input, init);
+    return new Response('nf', { status: 404 });
+  }) as typeof fetch;
   it('refuses to publish when the up rate collapses versus the previous run', async () => {
     const outDir = await mkdtemp(join(tmpdir(), 'pipe-'));
     const prev = { generatedAt: '2026-09-21', upRate: 0.99, streams: {} };
-    const allDead = (async (input: string | URL | Request, init?: RequestInit) => {
-      const url = String(input);
-      if (url.startsWith('https://api.test/') || url.endsWith('history.json') || init?.method === 'HEAD') return fakeFetch(prev)(input, init);
-      return new Response('nf', { status: 404 });
-    }) as typeof fetch;
-    const r = await runPipeline({ fetchFn: allDead, apiBase: 'https://api.test', pagesBase: 'https://pages.test', outDir, now: () => new Date(), concurrency: 8, perHost: 2, timeoutMs: 1000, log: () => {} });
+    const r = await runPipeline({ fetchFn: allDead(prev), apiBase: 'https://api.test', pagesBase: 'https://pages.test', outDir, now: () => new Date(), concurrency: 8, perHost: 2, timeoutMs: 1000, log: () => {} });
     expect(r.published).toBe(false);
     expect(r.reason).toMatch(/up rate fell/);
     await expect(readFile(join(outDir, 'catalog.json.gz'))).rejects.toThrow();
     await expect(readFile(join(outDir, 'history.json'))).rejects.toThrow(); // history must not advance on a failed guard
     await expect(readFile(join(outDir, 'latest.json'))).rejects.toThrow();
+  });
+  it('force publishes through a collapsed up rate and makes the new rate the baseline', async () => {
+    // The guard compares against the last published rate and refusal never writes history, so a permanent drop of more than
+    // 25 points (runner region change, a big host blocking Azure) would block every later run (Opus adversarial review 2026-09-23, major 14).
+    const outDir = await mkdtemp(join(tmpdir(), 'pipe-'));
+    const prev = { generatedAt: '2026-09-21', upRate: 0.99, streams: {} };
+    const r = await runPipeline({ fetchFn: allDead(prev), apiBase: 'https://api.test', pagesBase: 'https://pages.test', outDir, now: () => new Date('2026-09-22T06:00:00Z'), concurrency: 8, perHost: 2, timeoutMs: 1000, log: () => {}, force: true });
+    expect(r.published).toBe(true);
+    expect(r.stats.up).toBe(0);
+    const hist = JSON.parse(await readFile(join(outDir, 'history.json'), 'utf8'));
+    expect(hist.upRate).toBe(0); // next night's guard compares against this, not the stale 0.99
   });
   it('second run extends history to two entries', async () => {
     const outDir = await mkdtemp(join(tmpdir(), 'pipe-'));
@@ -1820,6 +1850,7 @@ export interface PipelineOpts {
   fetchFn: FetchFn; apiBase: string; pagesBase: string; outDir: string; now: () => Date;
   concurrency?: number; perHost?: number; timeoutMs?: number; log?: (s: string) => void;
   allowEmptyHistory?: boolean; // local runs only; CI never sets it
+  force?: boolean; // FORCE_PUBLISH: publish through the up-rate guard so the new rate becomes the baseline (Opus adversarial review 2026-09-23, major 14)
 }
 export interface PipelineResult {
   published: boolean; reason?: string; latest?: Latest;
@@ -1856,7 +1887,8 @@ export async function runPipeline(o: PipelineOpts): Promise<PipelineResult> {
   log(`probe results: ${JSON.stringify(counts)}`);
 
   const history = mergeHistory(prev, [...results.values()], today);
-  const guard = checkGuard(prev.upRate, history.upRate);
+  if (o.force) log('FORCE_PUBLISH set: the up-rate drop guard is off for this run and the new rate becomes the baseline');
+  const guard = checkGuard(prev.upRate, history.upRate, o.force ? Number.POSITIVE_INFINITY : undefined); // still refuses when nothing was probed
   const stats = { channels: grouped.channels.length, streams: grouped.streams.length, ...counts };
   if (!guard.ok) { log(`GUARD FAILED: ${guard.reason}`); return { published: false, reason: guard.reason, stats }; }
 
@@ -1890,6 +1922,7 @@ const result = await runPipeline({
   perHost: Number(process.env.PER_HOST ?? 2),
   timeoutMs: Number(process.env.TIMEOUT_MS ?? 10_000),
   allowEmptyHistory: process.env.ALLOW_EMPTY_HISTORY === '1',
+  force: process.env.FORCE_PUBLISH === '1',
 });
 console.log(JSON.stringify(result.stats));
 if (!result.published) { console.error(`NOT PUBLISHED: ${result.reason}`); process.exit(1); }
@@ -1898,7 +1931,7 @@ if (!result.published) { console.error(`NOT PUBLISHED: ${result.reason}`); proce
 - [ ] **Step 5: Run to verify pass**
 
 Run: `cd catalog && npm run typecheck && npx vitest run`
-Expected: typecheck clean, all tests pass, including the 3 pipeline tests.
+Expected: typecheck clean, all tests pass, including the 4 pipeline tests.
 
 - [ ] **Step 6: Run the real pipeline once locally against the live API**
 
@@ -1940,6 +1973,11 @@ on:
   schedule:
     - cron: '17 6 * * *'   # 06:17 UTC daily; off the hour to dodge the busiest scheduler minute
   workflow_dispatch:
+    inputs:
+      force:
+        description: 'Publish even if the up-rate guard would refuse; the new rate becomes the baseline. Only after a confirmed permanent drop.'
+        type: boolean
+        default: false
 
 permissions:
   contents: read
@@ -1956,6 +1994,8 @@ jobs:
   build:
     runs-on: ubuntu-latest
     timeout-minutes: 120
+    outputs:
+      version: ${{ steps.built.outputs.version }}
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -1976,7 +2016,12 @@ jobs:
         env:
           PAGES_BASE: ${{ vars.PAGES_BASE }}
           OUT_DIR: out
+          FORCE_PUBLISH: ${{ inputs.force == true && '1' || '0' }}   # false or absent (schedule) -> '0'
         run: npm run run
+      - name: Record the built version
+        id: built
+        working-directory: catalog
+        run: echo "version=$(jq -r .version out/latest.json)" >> "$GITHUB_OUTPUT"
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
         with:
@@ -1991,6 +2036,18 @@ jobs:
     steps:
       - id: deployment
         uses: actions/deploy-pages@v4
+      - name: Verify Pages serves the version just built
+        env:
+          PAGES_BASE: ${{ vars.PAGES_BASE }}
+          EXPECTED: ${{ needs.build.outputs.version }}
+        run: |
+          # A wrong PAGES_BASE (typo, rename, custom domain) makes every night a "first run": history 404s and the guard never fires. Fail here instead.
+          for i in $(seq 1 20); do
+            got=$(curl -fsS --max-time 20 "$PAGES_BASE/latest.json" | jq -r .version 2>/dev/null || echo none)
+            if [ "$got" = "$EXPECTED" ]; then echo "Pages serves version $got"; exit 0; fi
+            echo "attempt $i: Pages serves $got, expected $EXPECTED; waiting for propagation"; sleep 15
+          done
+          echo "PAGES_BASE=$PAGES_BASE does not serve the version just built; check the repository variable"; exit 1
 
   keepalive:
     runs-on: ubuntu-latest
@@ -2011,13 +2068,16 @@ jobs:
           GH_REPO: ${{ github.repository }}
         run: |
           gh label create catalog-failure --color B60205 --description "Nightly catalog run failed" --force
-          gh issue create \
-            --title "Catalog run failed $(date -u +%F)" \
-            --body "Run: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}" \
-            --label catalog-failure
+          run_url="${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
+          existing=$(gh issue list --label catalog-failure --state open --json number --jq '.[0].number')
+          if [ -n "$existing" ]; then
+            gh issue comment "$existing" --body "Failed again $(date -u +%F): $run_url"
+          else
+            gh issue create --title "Catalog run failed $(date -u +%F)" --body "Run: $run_url" --label catalog-failure
+          fi
 ```
 
-The issue is opened by a separate job that depends on both `build` and `deploy`, so a failure in either opens one, and the label is created on the spot so the first failure is never swallowed.
+The issue is opened by a separate job that depends on both `build` and `deploy`, so a failure in either opens one, and the label is created on the spot so the first failure is never swallowed. While a `catalog-failure` issue is open, later failures comment on it instead of opening one a night. The `force` input exists because the guard compares against the last *published* rate and a refused run never writes history: a permanent drop of more than 25 points would otherwise block every later run. The deploy job's last step fails when `latest.json` on Pages does not carry the version just built, which is what a wrong `PAGES_BASE` looks like; without it every night would be a silent "first run" with the guard off (Opus adversarial review 2026-09-23, major 14).
 
 - [ ] **Step 2: Write the README**
 
@@ -2032,7 +2092,7 @@ Nightly job that turns the iptv-org API into `catalog.json.gz`, `history.json` a
 1. Push this repository to GitHub as a **public** repo (scheduled workflows and free Pages need it).
 2. Settings → Pages → Source: **GitHub Actions**.
 3. Settings → Secrets and variables → Actions → Variables → New: `PAGES_BASE` = `https://<owner>.github.io/<repo>`.
-4. Actions → catalog → Run workflow. First run takes 30 to 60 minutes. When it finishes, `https://<owner>.github.io/<repo>/latest.json` must return JSON.
+4. Actions → catalog → Run workflow (leave `force` off). First run takes 30 to 60 minutes. The deploy job's last step checks that `https://<owner>.github.io/<repo>/latest.json` returns the version it just built; if that step fails, `PAGES_BASE` is wrong.
 5. Nothing else. The workflow creates the `catalog-failure` label itself the first time it needs it.
 
 ## Platform rules
@@ -2048,11 +2108,15 @@ Nightly job that turns the iptv-org API into `catalog.json.gz`, `history.json` a
     npm test
     PAGES_BASE=https://<owner>.github.io/<repo> npm run run     # writes ./out
 
-Env: `PAGES_BASE` (required), `OUT_DIR` (out), `API_BASE`, `CONCURRENCY` (50), `PER_HOST` (2), `TIMEOUT_MS` (10000), `ALLOW_EMPTY_HISTORY` (`1` for local runs when the Pages site is unreachable; never set in CI).
+Env: `PAGES_BASE` (required), `OUT_DIR` (out), `API_BASE`, `CONCURRENCY` (50), `PER_HOST` (2), `TIMEOUT_MS` (10000), `ALLOW_EMPTY_HISTORY` (`1` for local runs when the Pages site is unreachable; never set in CI), `FORCE_PUBLISH` (`1` to publish through the up-rate guard; the workflow sets it from its `force` input).
 
 ## Guards
 
-The run refuses to publish, and opens an issue, when the up-rate falls more than 25 points below the previous run or the API is unreachable. The previous catalog stays live.
+The run refuses to publish, and opens an issue (or comments on the open one), when the up-rate falls more than 25 points below the previous run or the API is unreachable. The previous catalog stays live.
+
+The guard compares against the last *published* rate, so after a real, permanent drop (the runner moved region, a large host started blocking Azure, iptv-org bulk-added dead feeds) every later night would fail too. When you have confirmed the drop is genuine, run the workflow by hand with `force` on: it publishes and the new rate becomes the baseline. Never use it for a drop you cannot explain.
+
+After each deploy the workflow fetches `latest.json` from `PAGES_BASE` and fails if it does not carry the version just built. That catches a wrong `PAGES_BASE`, which would otherwise make every night a "first run" with the guard silently off.
 ```
 
 - [ ] **Step 3: Validate the workflow file parses**

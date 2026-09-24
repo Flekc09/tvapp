@@ -111,7 +111,7 @@ The unit the viewer tunes, and the unit failover operates within, is a **catalog
 
 - A stream whose feed has a country-level or wider broadcast area (`c/US`, `r/EUR`), or no feed, belongs to the catalog channel with the iptv-org channel id, for example `ABC.us`.
 - A stream whose feed has a city- or state-level broadcast area (`ct/USCLT`, `s/US-NC`) belongs to a **split** catalog channel with id `<channel>@<feed>`, for example `ABC.us@WSOCTV`, named `<channel name> · <feed name>` with a `region` field holding the city or state name from the cities or subdivisions file, for example "Charlotte". It inherits the parent's country, categories, network and logo.
-- Streams with no channel record become synthetic channels named from their playlist title, with country guessed from the URL's ccTLD where possible and category `other`. Nothing is dropped.
+- Streams with no channel record become synthetic channels named from their playlist title, with country guessed from the URL's ccTLD where possible and category `other`. Nothing is dropped. The guess is skipped for ccTLDs marketed as generic domains (`.tv`, `.io`, `.me`, `.co` and the like) and for known redirector hosts: on 2026-09-23 data the plain guess would have filed 390 channels under Tuvalu and 777 under the United Kingdom (Opus adversarial review 2026-09-23, major 13).
 - Closed channels (`closed` set) are excluded with their streams. A stream whose channel id has no channel record at all is treated exactly like a stream with no channel: it becomes a synthetic channel.
 - A feed counts as regional when any of its broadcast areas is a subdivision or city, even if a country-level area is also listed.
 - Channels with `is_nsfw` or the `xxx` category are kept and flagged `adult: true`. The app hides them by default.
@@ -134,7 +134,7 @@ Format is decided from Content-Type and URL suffix first, then body:
 Status rules:
 
 - **`up`**: the format-specific test passed.
-- **`unverified`**: HTTP 401, 403, 429 or 451, or a 200 body that does not match any known format. These are the signatures of geo-blocking, missing tokens, rate limiting, or a host that answers but is not playable from the runner. Unverified streams stay in the catalog and rank last within their channel, so a TV in the stream's home region can still try them.
+- **`unverified`**: HTTP 401, 403, 429 or 451 on the stream URL or on the media playlist its master points to, or a 200 body that does not match any known format. These are the signatures of geo-blocking, missing tokens, rate limiting, or a host that answers but is not playable from the runner. Unverified streams stay in the catalog and rank last within their channel, so a TV in the stream's home region can still try them.
 - **`down`**: timeout, refused connection, DNS failure, 404, or any 5xx.
 
 The runner's egress region is logged per run, since GitHub-hosted runners are Azure hosts in unspecified regions and results depend on it.
@@ -168,8 +168,9 @@ Logos are validated by the job with a HEAD request. Dead logo URLs are replaced 
 
 - Any API fetch failure aborts the run. Nothing is published.
 - A run whose `up` rate is more than 25 percentage points below the previous published catalog is treated as a runner or network problem, not a catalog change. It is not published and history is not updated, so one bad night cannot poison 7-day uptime.
-- Either failure opens a GitHub issue automatically.
+- Either failure opens a GitHub issue automatically; while that issue is open, later failures comment on it rather than opening one a night.
 - The previous catalog stays live until a new one publishes successfully. Partial files are never published.
+- Because the guard compares against the last published rate and a refused run never writes history, a permanent drop of more than 25 points would block every later run. A manual run can set `force` to publish anyway, after which the new rate is the baseline. After each deploy the job checks that `latest.json` on Pages carries the version just built, so a wrong Pages address fails loudly instead of silently turning every night into a guard-free first run (Opus adversarial review 2026-09-23, major 14).
 
 ## 5. TV app
 
