@@ -26,15 +26,9 @@ android {
 // Room exports every schema version as JSON; the files are committed so each later version ships a tested migration (Opus adversarial review 2026-09-23, major 17).
 room { schemaDirectory("$projectDir/schemas") }
 
-// AGP 9's built-in Kotlin registers the `kotlin` extension itself: `kotlinOptions` is gone and jvmTarget follows
-// compileOptions.targetCompatibility, so only the opt-in is set here.
-kotlin {
-    compilerOptions {
-        // Media3's DefaultLoadControl, OkHttpDataSource, DefaultMediaSourceFactory, AnalyticsListener and PlayerView
-        // extras are @UnstableApi, which is an error-level opt-in. Without this nothing in playback/ compiles.
-        freeCompilerArgs.add("-opt-in=androidx.media3.common.util.UnstableApi")
-    }
-}
+// No Kotlin opt-in flag for Media3: @UnstableApi is an androidx.annotation.RequiresOptIn marker, enforced by Android Lint
+// (UnsafeOptInUsageError, which also fails lintVitalRelease), and the compiler flag was a no-op ("not an opt-in requirement
+// marker"). Each file that uses @UnstableApi classes declares @file:OptIn(UnstableApi::class) with androidx.annotation.OptIn.
 
 dependencies {
     implementation(platform(libs.compose.bom))
