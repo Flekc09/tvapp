@@ -29,7 +29,8 @@ export function buildCatalog(input: {
   const healthRank = (h: string) => (h === 'up' ? 0 : h === 'unverified' ? 1 : 2);
   streams.sort((a, b) => (order.get(a.channel)! - order.get(b.channel)!) || (healthRank(a.health) - healthRank(b.health)) || (b.score - a.score));
 
-  const withUp = new Set(streams.filter(s => s.health !== 'down').map(s => s.channel));
+  // Spec 4.4 (Opus adversarial review 2026-09-23, major 15): a stream that was up at least once in the 7-day window keeps its channel listed.
+  const withUp = new Set(streams.filter(s => s.health !== 'down' || s.uptime7d > 0).map(s => s.channel));
   const channels = grouped.channels.map(c => ({ ...c, hasUp: withUp.has(c.id) }));
 
   const used = new Set(channels.map(c => c.country).filter((c): c is string => !!c));
